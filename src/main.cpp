@@ -2,71 +2,7 @@
 
 #include "display.h"
 #include "lvgl_port.h"
-
-lv_obj_t *labelTitle;
-lv_obj_t *labelVersion;
-lv_obj_t *labelStatus;
-
-void createGUI()
-{
-    lv_obj_set_style_bg_color(lv_scr_act(),
-                              lv_color_black(),
-                              LV_PART_MAIN);
-
-    //--------------------------------------------
-    // Заголовок
-    //--------------------------------------------
-
-    labelTitle = lv_label_create(lv_scr_act());
-
-    lv_label_set_text(labelTitle,
-                      "WORLD CLOCK");
-
-    lv_obj_set_style_text_font(labelTitle,
-                               &lv_font_montserrat_28,
-                               0);
-
-    lv_obj_align(labelTitle,
-                 LV_ALIGN_TOP_MID,
-                 0,
-                 20);
-
-    //--------------------------------------------
-    // Version
-    //--------------------------------------------
-
-    labelVersion = lv_label_create(lv_scr_act());
-
-    lv_label_set_text(labelVersion,
-                      "Version 1.0");
-
-    lv_obj_set_style_text_font(labelVersion,
-                               &lv_font_montserrat_18,
-                               0);
-
-    lv_obj_align(labelVersion,
-                 LV_ALIGN_TOP_MID,
-                 0,
-                 70);
-
-    //--------------------------------------------
-    // Status
-    //--------------------------------------------
-
-    labelStatus = lv_label_create(lv_scr_act());
-
-    lv_label_set_text(labelStatus,
-                      "Initializing...");
-
-    lv_obj_set_style_text_font(labelStatus,
-                               &lv_font_montserrat_16,
-                               0);
-
-    lv_obj_align(labelStatus,
-                 LV_ALIGN_BOTTOM_MID,
-                 0,
-                 -20);
-}
+#include "gui/screen_main.h"
 
 void setup()
 {
@@ -77,6 +13,10 @@ void setup()
     Serial.println("WORLD CLOCK");
     Serial.println("--------------------------------");
 
+    //--------------------------------------------------------
+    // Display
+    //--------------------------------------------------------
+
     if (!displayInit())
     {
         Serial.println("Display error");
@@ -84,6 +24,10 @@ void setup()
         while (true)
             delay(100);
     }
+
+    //--------------------------------------------------------
+    // LVGL
+    //--------------------------------------------------------
 
     if (!lvglInit())
     {
@@ -93,7 +37,29 @@ void setup()
             delay(100);
     }
 
-    createGUI();
+    //--------------------------------------------------------
+    // GUI
+    //--------------------------------------------------------
+
+    screenMainCreate();
+
+    screenMainUpdate(
+        "Kyiv",
+        "12:34:56",
+
+        "Delhi",
+        "16:04:56",
+
+        "Washington",
+        "05:34:56",
+
+        "15 Jul 2026",
+
+        "WiFi : Offline",
+
+        "NTP : Waiting",
+
+        "IP : ---");
 
     Serial.println("Ready.");
 }
