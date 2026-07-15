@@ -3,6 +3,7 @@
 #include "display.h"
 #include "lvgl_port.h"
 #include "gui/screen_main.h"
+#include "clock/clock_engine.h"
 
 void setup()
 {
@@ -60,11 +61,16 @@ void setup()
         "NTP : Waiting",
 
         "IP : ---");
+        clockEngineInit();
 
     Serial.println("Ready.");
 }
 
 void loop()
 {
+
+    clockEngineUpdate();
+
     lvglLoop();
+
 }

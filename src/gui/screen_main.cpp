@@ -77,14 +77,10 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblTime1,
-        &lv_font_montserrat_28,
+        &lv_font_montserrat_24,
         0);
 
-    lv_obj_align(
-        lblTime1,
-        LV_ALIGN_TOP_RIGHT,
-        -15,
-        48);
+    lv_obj_set_pos(lblTime1, 300, 48);
 
     //--------------------------------------------------------
     // Delhi
@@ -115,14 +111,10 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblTime2,
-        &lv_font_montserrat_28,
+        &lv_font_montserrat_24,
         0);
 
-    lv_obj_align(
-        lblTime2,
-        LV_ALIGN_TOP_RIGHT,
-        -15,
-        98);
+    lv_obj_set_pos(lblTime2, 300, 98);
 
     //--------------------------------------------------------
     // Washington
@@ -153,14 +145,10 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblTime3,
-        &lv_font_montserrat_28,
+        &lv_font_montserrat_24,
         0);
 
-    lv_obj_align(
-        lblTime3,
-        LV_ALIGN_TOP_RIGHT,
-        -15,
-        148);
+    lv_obj_set_pos(lblTime3, 300, 148);
 
     //--------------------------------------------------------
     // Date
