@@ -64,7 +64,51 @@ void prefSetBrightness(uint8_t brightness);
 uint8_t prefGetBrightness();
 
 //------------------------------------------------------------
+// Preferences version
+//------------------------------------------------------------
+
+uint16_t prefGetVersion();
+
+void prefSetVersion(uint16_t version);
+
+//------------------------------------------------------------
 // Factory reset
 //------------------------------------------------------------
 
 void prefClearAll();
+
+//------------------------------------------------------------
+// Business hours
+//------------------------------------------------------------
+
+void prefSetWorkStart(uint8_t index, uint16_t minutes);
+
+uint16_t prefGetWorkStart(uint8_t index);
+
+void prefSetWorkEnd(uint8_t index, uint16_t minutes);
+
+uint16_t prefGetWorkEnd(uint8_t index);
+
+void prefSetWorkSaturday(uint8_t index, bool enabled);
+
+bool prefGetWorkSaturday(uint8_t index);
+
+void prefSetWorkSunday(uint8_t index, bool enabled);
+
+bool prefGetWorkSunday(uint8_t index);
+
+//------------------------------------------------------------
+// Reference city
+//------------------------------------------------------------
+
+void prefSetReferenceCity(uint8_t index);
+
+uint8_t prefGetReferenceCity();
+
+//------------------------------------------------------------
+// Overlap warning
+//------------------------------------------------------------
+
+void prefSetOverlapWarning(uint16_t minutes);
+
+uint16_t prefGetOverlapWarning();

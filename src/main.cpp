@@ -4,12 +4,19 @@
 #include "lvgl_port.h"
 #include "gui/screen_main.h"
 #include "clock/clock_engine.h"
+#include "ntp/ntp_manager.h"
 #include "network/wifi_manager.h"
+#include "network/web_server.h"
 #include "storage/preferences_manager.h"
+
 
 void setup()
 {
     Serial.begin(115200);
+    delay(2000);
+
+Serial.println();
+Serial.println("===== SETUP START =====");
  //--------------------------------------------------------
 // Preferences
 //--------------------------------------------------------
@@ -26,7 +33,7 @@ prefLoadDefaults();
 //--------------------------------------------------------
 // Preferences
 //--------------------------------------------------------
-
+/*
 if (!preferencesInit())
 {
     Serial.println("Preferences error");
@@ -34,7 +41,7 @@ if (!preferencesInit())
     while (true)
         delay(100);
 }
-
+*/
 //--------------------------------------------------------
 // First start defaults
 //--------------------------------------------------------
@@ -93,23 +100,32 @@ if (prefGetWiFiSSID().isEmpty())
 
     screenMainCreate();
 
+   /*
     screenMainUpdate(
-        "Kyiv",
-        "12:34:56",
 
-        "Delhi",
-        "16:04:56",
+    "Kyiv",
+    "12:34:56",
 
-        "Washington",
-        "05:34:56",
+    "Delhi",
+    "16:04:56",
 
-        "15 Jul 2026",
+    "Washington",
+    "05:34:56",
 
-        "WiFi : Offline",
+    "Valencia",
+    "11:34:56",
 
-        "NTP : Waiting",
+    "Tokyo",
+    "19:34:56",
 
-        "IP : ---");
+    "15 Jul 2026",
+
+    "WiFi : Offline",
+
+    "NTP : Waiting",
+
+    "IP : ---");
+    */
         clockEngineInit();
 //========================================================
 // WiFi
@@ -119,16 +135,26 @@ if (prefGetWiFiSSID().isEmpty())
 // Пізніше ці параметри будуть читатися з Preferences.
 
 wifiManagerInit();
-    Serial.println("Ready.");
+
+webServerInit();
+
+ntpInit();
+
+Serial.println("Web Server started.");
+Serial.println("Ready.");
 }
 
 void loop()
 {
 
-    clockEngineUpdate();
-    
-   wifiManagerLoop();
+wifiManagerLoop();
 
-    lvglLoop();
+webServerLoop();
+
+ntpLoop();
+
+clockEngineUpdate();
+
+lvglLoop();
 
 }

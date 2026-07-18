@@ -21,12 +21,40 @@ void preferencesEnd()
 {
     prefs.end();
 }
+
+//------------------------------------------------------------
+// Preferences version
+//------------------------------------------------------------
+
+static const uint16_t PREF_VERSION = 2;
+
+//------------------------------------------------------------
+
+uint16_t prefGetVersion()
+{
+    return prefs.getUShort("version", 0);
+}
+
+//------------------------------------------------------------
+
+void prefSetVersion(uint16_t version)
+{
+    prefs.putUShort("version", version);
+}
 //------------------------------------------------------------
 // Load default values
 //------------------------------------------------------------
 
 void prefLoadDefaults()
 {
+        //--------------------------------------------------------
+    // Preferences version
+    //--------------------------------------------------------
+
+    if (prefGetVersion() == PREF_VERSION)
+        return;
+
+    Serial.println("Initializing Preferences...");
     //--------------------------------------------------------
     // WiFi
     //--------------------------------------------------------
@@ -69,7 +97,7 @@ void prefLoadDefaults()
     //--------------------------------------------------------
     // Time zones
     //--------------------------------------------------------
-
+ /*
     for (uint8_t i = 0; i < MAX_WORLD_CLOCKS; i++)
     {
         if (prefGetTimeZone(i) == 0)
@@ -77,7 +105,7 @@ void prefLoadDefaults()
             prefSetTimeZone(i, i);
         }
     }
-
+*/
     //--------------------------------------------------------
     // NTP
     //--------------------------------------------------------
@@ -104,6 +132,46 @@ void prefLoadDefaults()
     {
         prefSetBrightness(100);
     }
+        //--------------------------------------------------------
+    // Business hours
+    //--------------------------------------------------------
+
+    for (uint8_t i = 0; i < MAX_WORLD_CLOCKS; i++)
+    {
+        if (prefGetWorkStart(i) > 1439)
+            prefSetWorkStart(i, 9 * 60);
+
+        if (prefGetWorkEnd(i) > 1439)
+            prefSetWorkEnd(i, 18 * 60);
+
+        prefSetWorkSaturday(i, false);
+        prefSetWorkSunday(i, false);
+    }
+
+    //--------------------------------------------------------
+    // Reference city
+    //--------------------------------------------------------
+
+    if (prefGetReferenceCity() >= MAX_WORLD_CLOCKS)
+    {
+        prefSetReferenceCity(0);
+    }
+
+    //--------------------------------------------------------
+    // Overlap warning
+    //--------------------------------------------------------
+
+    if (prefGetOverlapWarning() == 0)
+    {
+        prefSetOverlapWarning(60);
+    }
+        //--------------------------------------------------------
+    // Save version
+    //--------------------------------------------------------
+
+    prefSetVersion(PREF_VERSION);
+
+    Serial.println("Preferences initialized.");
 }
 //------------------------------------------------------------
 // WiFi
@@ -277,4 +345,145 @@ uint8_t prefGetBrightness()
 void prefClearAll()
 {
     prefs.clear();
+}
+//------------------------------------------------------------
+// Business hours
+//------------------------------------------------------------
+
+void prefSetWorkStart(uint8_t index, uint16_t minutes)
+{
+    if (index >= MAX_WORLD_CLOCKS)
+        return;
+
+    char key[16];
+    sprintf(key, "ws%u", index);
+
+    prefs.putUShort(key, minutes);
+}
+
+//------------------------------------------------------------
+
+uint16_t prefGetWorkStart(uint8_t index)
+{
+    if (index >= MAX_WORLD_CLOCKS)
+        return 540;      // 09:00
+
+    char key[16];
+    sprintf(key, "ws%u", index);
+
+    return prefs.getUShort(key, 540);
+}
+
+//------------------------------------------------------------
+
+void prefSetWorkEnd(uint8_t index, uint16_t minutes)
+{
+    if (index >= MAX_WORLD_CLOCKS)
+        return;
+
+    char key[16];
+    sprintf(key, "we%u", index);
+
+    prefs.putUShort(key, minutes);
+}
+
+//------------------------------------------------------------
+
+uint16_t prefGetWorkEnd(uint8_t index)
+{
+    if (index >= MAX_WORLD_CLOCKS)
+        return 1080;     // 18:00
+
+    char key[16];
+    sprintf(key, "we%u", index);
+
+    return prefs.getUShort(key, 1080);
+}
+
+//------------------------------------------------------------
+// Saturday
+//------------------------------------------------------------
+
+void prefSetWorkSaturday(uint8_t index, bool enabled)
+{
+    if (index >= MAX_WORLD_CLOCKS)
+        return;
+
+    char key[16];
+    sprintf(key, "sat%u", index);
+
+    prefs.putBool(key, enabled);
+}
+
+//------------------------------------------------------------
+
+bool prefGetWorkSaturday(uint8_t index)
+{
+    if (index >= MAX_WORLD_CLOCKS)
+        return false;
+
+    char key[16];
+    sprintf(key, "sat%u", index);
+
+    return prefs.getBool(key, false);
+}
+
+//------------------------------------------------------------
+// Sunday
+//------------------------------------------------------------
+
+void prefSetWorkSunday(uint8_t index, bool enabled)
+{
+    if (index >= MAX_WORLD_CLOCKS)
+        return;
+
+    char key[16];
+    sprintf(key, "sun%u", index);
+
+    prefs.putBool(key, enabled);
+}
+
+//------------------------------------------------------------
+
+bool prefGetWorkSunday(uint8_t index)
+{
+    if (index >= MAX_WORLD_CLOCKS)
+        return false;
+
+    char key[16];
+    sprintf(key, "sun%u", index);
+
+    return prefs.getBool(key, false);
+}
+
+//------------------------------------------------------------
+// Reference city
+//------------------------------------------------------------
+
+void prefSetReferenceCity(uint8_t index)
+{
+    prefs.putUChar("ref_city", index);
+}
+
+//------------------------------------------------------------
+
+uint8_t prefGetReferenceCity()
+{
+    return prefs.getUChar("ref_city", 0);
+}
+
+//------------------------------------------------------------
+// Overlap warning
+//------------------------------------------------------------
+
+void prefSetOverlapWarning(uint16_t minutes)
+{
+    prefs.putUShort("overlap", minutes);
+}
+
+//------------------------------------------------------------
+
+uint16_t prefGetOverlapWarning()
+{
+    return prefs.getUShort("overlap", 60);
 }
