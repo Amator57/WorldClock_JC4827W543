@@ -5,8 +5,8 @@
 //------------------------------------------------------------
 // Daylight Saving Time rules
 //------------------------------------------------------------
-/*
-enum DSTRule
+
+enum DSTRule : uint8_t
 {
     TZ_DST_NONE = 0,
 
@@ -17,7 +17,7 @@ enum DSTRule
 
     TZ_DST_EGYPT
 };
-*/
+
 //------------------------------------------------------------
 // Time zone database
 //------------------------------------------------------------
@@ -29,20 +29,8 @@ struct TimeZoneInfo
     int8_t utcHour;
     int8_t utcMinute;
 
-    bool useDST;
-};
-/*
-struct TimeZoneInfo
-{
-    const char *nameEN;
-    const char *nameUA;
-
-    int8_t utcHour;
-    int8_t utcMinute;
-
     DSTRule dstRule;
 };
-*/
 //------------------------------------------------------------
 // Database
 //------------------------------------------------------------

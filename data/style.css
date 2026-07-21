@@ -359,3 +359,13 @@ select:focus{
     }
 
 }
+
+.workTimeRow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.workTimeRow input{
+    min-width:0;
+}

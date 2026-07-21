@@ -3,16 +3,47 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <stdio.h>
+#include <string.h>
 #include <time.h>
 
+#include "dst_engine.h"
+#include "timezones_db.h"
 #include "../gui/screen_main.h"
 #include "../ntp/ntp_manager.h"
 #include "../storage/preferences_manager.h"
-#include "timezones_db.h"
 
 //------------------------------------------------------------
 
 static uint32_t lastUpdate = 0;
+
+//------------------------------------------------------------
+
+static bool isDstActive(
+    const TimeZoneInfo *tz,
+    const struct tm &utc)
+{
+    switch (tz->dstRule)
+    {
+        case TZ_DST_EUROPE:
+            return dstEurope(utc);
+
+        case TZ_DST_USA_CANADA:
+            return dstUSA(utc, tz->utcHour * 60 + tz->utcMinute);
+
+        case TZ_DST_AUSTRALIA:
+            return dstAustralia(utc, tz->utcHour * 60 + tz->utcMinute);
+
+        case TZ_DST_NEW_ZEALAND:
+            return dstNewZealand(utc, tz->utcHour * 60 + tz->utcMinute);
+
+        case TZ_DST_EGYPT:
+            return dstEgypt(utc);
+
+        case TZ_DST_NONE:
+        default:
+            return false;
+    }
+}
 
 //------------------------------------------------------------
 
@@ -29,25 +60,12 @@ static void formatCityTime(
         return;
     }
 
-    //--------------------------------------------------------
-    // Convert UTC to minutes
-    //--------------------------------------------------------
+    int totalMinutes = utc.tm_hour * 60 + utc.tm_min;
 
-    int totalMinutes =
-        utc.tm_hour * 60 +
-        utc.tm_min;
+    totalMinutes += tz->utcHour * 60 + tz->utcMinute;
 
-    //--------------------------------------------------------
-    // Apply UTC offset
-    //--------------------------------------------------------
-
-    totalMinutes +=
-        tz->utcHour * 60 +
-        tz->utcMinute;
-
-    //--------------------------------------------------------
-    // Wrap
-    //--------------------------------------------------------
+    if (isDstActive(tz, utc))
+        totalMinutes += 60;
 
     while (totalMinutes < 0)
         totalMinutes += 24 * 60;
@@ -55,17 +73,12 @@ static void formatCityTime(
     while (totalMinutes >= 24 * 60)
         totalMinutes -= 24 * 60;
 
-    //--------------------------------------------------------
-
-    int hh = totalMinutes / 60;
-    int mm = totalMinutes % 60;
-
     snprintf(
         buffer,
         len,
         "%02d:%02d:%02d",
-        hh,
-        mm,
+        totalMinutes / 60,
+        totalMinutes % 60,
         utc.tm_sec);
 }
 
@@ -75,6 +88,7 @@ void clockEngineInit()
 {
     lastUpdate = 0;
 }
+
 //------------------------------------------------------------
 
 void clockEngineUpdate()
@@ -83,10 +97,6 @@ void clockEngineUpdate()
         return;
 
     lastUpdate = millis();
-
-    //--------------------------------------------------------
-    // UTC time from NTP
-    //--------------------------------------------------------
 
     struct tm utc;
 
@@ -102,144 +112,45 @@ void clockEngineUpdate()
             "WiFi : Waiting",
             ntpStatusString(),
             "IP : ---");
-
         return;
     }
 
-    //--------------------------------------------------------
-    // Date
-    //--------------------------------------------------------
-
     char dateString[24];
+    strftime(dateString, sizeof(dateString), "%d %b %Y", &utc);
 
-    strftime(
-        dateString,
-        sizeof(dateString),
-        "%d %b %Y",
-        &utc);
+    String cities[5] =
+    {
+        prefGetCity(0), prefGetCity(1), prefGetCity(2),
+        prefGetCity(3), prefGetCity(4)
+    };
 
-    //--------------------------------------------------------
-    // Read cities from Preferences
-    //--------------------------------------------------------
+    const TimeZoneInfo *zones[5];
+    char times[5][16];
+    const char *names[5];
 
-    String city1 = prefGetCity(0);
-    String city2 = prefGetCity(1);
-    String city3 = prefGetCity(2);
-    String city4 = prefGetCity(3);
-    String city5 = prefGetCity(4);
-
-    //--------------------------------------------------------
-    // Find in database
-    //--------------------------------------------------------
-
-    const TimeZoneInfo *tz1 =
-        findTimeZoneByEnglish(city1.c_str());
-
-    const TimeZoneInfo *tz2 =
-        findTimeZoneByEnglish(city2.c_str());
-
-    const TimeZoneInfo *tz3 =
-        findTimeZoneByEnglish(city3.c_str());
-
-    const TimeZoneInfo *tz4 =
-        findTimeZoneByEnglish(city4.c_str());
-
-    const TimeZoneInfo *tz5 =
-        findTimeZoneByEnglish(city5.c_str());
-
-    //--------------------------------------------------------
-    // Time strings
-    //--------------------------------------------------------
-
-    char time1[16];
-    char time2[16];
-    char time3[16];
-    char time4[16];
-    char time5[16];
-
-    formatCityTime(tz1, utc, time1, sizeof(time1));
-    formatCityTime(tz2, utc, time2, sizeof(time2));
-    formatCityTime(tz3, utc, time3, sizeof(time3));
-    formatCityTime(tz4, utc, time4, sizeof(time4));
-    formatCityTime(tz5, utc, time5, sizeof(time5));
-        //--------------------------------------------------------
-    // City names
-    //--------------------------------------------------------
-
-    const char *name1 = tz1 ? tz1->nameEN : city1.c_str();
-    const char *name2 = tz2 ? tz2->nameEN : city2.c_str();
-    const char *name3 = tz3 ? tz3->nameEN : city3.c_str();
-    const char *name4 = tz4 ? tz4->nameEN : city4.c_str();
-    const char *name5 = tz5 ? tz5->nameEN : city5.c_str();
-
-    //--------------------------------------------------------
-    // WiFi status
-    //--------------------------------------------------------
+    for (uint8_t i = 0; i < 5; i++)
+    {
+        zones[i] = findTimeZoneByEnglish(cities[i].c_str());
+        formatCityTime(zones[i], utc, times[i], sizeof(times[i]));
+        names[i] = zones[i] ? zones[i]->nameEN : cities[i].c_str();
+    }
 
     char wifiText[32];
-
-    if (WiFi.status() == WL_CONNECTED)
-        strcpy(wifiText, "WiFi : Connected");
-    else
-        strcpy(wifiText, "WiFi : Offline");
-
-    //--------------------------------------------------------
-    // NTP status
-    //--------------------------------------------------------
+    strcpy(wifiText, WiFi.status() == WL_CONNECTED ?
+        "WiFi : Connected" : "WiFi : Offline");
 
     char ntpText[32];
-
-    snprintf(
-        ntpText,
-        sizeof(ntpText),
-        "NTP : %s",
-        ntpStatusString());
-
-    //--------------------------------------------------------
-    // IP address
-    //--------------------------------------------------------
+    snprintf(ntpText, sizeof(ntpText), "NTP : %s", ntpStatusString());
 
     char ipText[40];
-
     if (WiFi.status() == WL_CONNECTED)
-    {
-        snprintf(
-            ipText,
-            sizeof(ipText),
-            "IP : %s",
+        snprintf(ipText, sizeof(ipText), "IP : %s",
             WiFi.localIP().toString().c_str());
-    }
     else
-    {
         strcpy(ipText, "IP : ---");
-    }
-
-    //--------------------------------------------------------
-    // Update screen
-    //--------------------------------------------------------
 
     screenMainUpdate(
-
-        name1,
-        time1,
-
-        name2,
-        time2,
-
-        name3,
-        time3,
-
-        name4,
-        time4,
-
-        name5,
-        time5,
-
-        dateString,
-
-        wifiText,
-
-        ntpText,
-
-        ipText);
+        names[0], times[0], names[1], times[1], names[2], times[2],
+        names[3], times[3], names[4], times[4], dateString,
+        wifiText, ntpText, ipText);
 }
