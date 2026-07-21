@@ -27,6 +27,30 @@ bool wifiSTAConnect()
     }
 
     //--------------------------------------------------------
+    // Static IP configuration (if DHCP disabled)
+    //--------------------------------------------------------
+
+    if (!prefGetWiFiDHCP())
+    {
+        IPAddress ip, subnet, gateway, dns;
+
+        if (ip.fromString(prefGetWiFiIP()) &&
+            subnet.fromString(prefGetWiFiSubnet()) &&
+            gateway.fromString(prefGetWiFiGateway()) &&
+            dns.fromString(prefGetWiFiDNS()))
+        {
+            WiFi.config(ip, gateway, subnet, dns);
+
+            Serial.print("Static IP: ");
+            Serial.println(ip);
+        }
+        else
+        {
+            Serial.println("WiFi: Invalid static IP config, using DHCP.");
+        }
+    }
+
+    //--------------------------------------------------------
     // Connect
     //--------------------------------------------------------
 

@@ -29,6 +29,21 @@ String prefGetWiFiSSID();
 void prefSetWiFiPassword(const String &password);
 String prefGetWiFiPassword();
 
+void prefSetWiFiDHCP(bool enabled);
+bool prefGetWiFiDHCP();
+
+void prefSetWiFiIP(const String &ip);
+String prefGetWiFiIP();
+
+void prefSetWiFiSubnet(const String &subnet);
+String prefGetWiFiSubnet();
+
+void prefSetWiFiGateway(const String &gateway);
+String prefGetWiFiGateway();
+
+void prefSetWiFiDNS(const String &dns);
+String prefGetWiFiDNS();
+
 //------------------------------------------------------------
 // World clocks
 //------------------------------------------------------------

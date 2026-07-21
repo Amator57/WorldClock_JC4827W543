@@ -1,9 +1,9 @@
 #pragma once
 
+#include <ESPAsyncWebServer.h>
+
 //------------------------------------------------------------
-// Web server
+// Web Handlers
 //------------------------------------------------------------
 
-bool webServerInit();
-
-void webServerLoop();
+void webRegisterHandlers(AsyncWebServer &server);

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>World Clock</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <div class="title">
+        World Clock
+    </div>
+
+</div>
+
+<div class="menu">
+
+    <button class="tabButton active"
+            onclick="showPage('home',this)">
+        Home
+    </button>
+
+    <button class="tabButton"
+            onclick="showPage('network',this)">
+        Network
+    </button>
+
+    <button class="tabButton"
+            onclick="showPage('clocks',this)">
+        Clocks
+    </button>
+
+    <button class="tabButton"
+            onclick="showPage('system',this)">
+        System
+    </button>
+
+    <button class="tabButton"
+            onclick="showPage('about',this)">
+        About
+    </button>
+
+</div>
+
+<div class="container">
+
+<!-- ====================================================== -->
+<!-- HOME -->
+<!-- ====================================================== -->
+
+<div id="home" class="page active">
+
+<h2>Home</h2>
+
+<div class="card">
+
+<p>
+Welcome to World Clock configuration.
+</p>
+
+<p>
+Select a menu item above.
+</p>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- NETWORK -->
+<!-- ====================================================== -->
+
+<div id="network" class="page">
+
+<h2>Network</h2>
+
+<div class="card">
+
+<label>WiFi SSID</label>
+
+<input
+    id="wifi_ssid"
+    type="text">
+
+<label>Password</label>
+
+<input
+    id="wifi_password"
+    type="password">
+
+<div class="checkboxRow">
+    <input
+        id="wifi_dhcp"
+        type="checkbox"
+        onchange="toggleDHCPFields()">
+    <label for="wifi_dhcp" class="checkboxLabel">Use DHCP (automatic IP)</label>
+</div>
+
+<div id="staticIPFields">
+
+<label>IP Address</label>
+<input id="wifi_ip" type="text" placeholder="192.168.1.100">
+
+<label>Subnet Mask</label>
+<input id="wifi_subnet" type="text" placeholder="255.255.255.0">
+
+<label>Gateway</label>
+<input id="wifi_gateway" type="text" placeholder="192.168.1.1">
+
+<label>DNS Server</label>
+<input id="wifi_dns" type="text" placeholder="8.8.8.8">
+
+</div>
+
+<button
+    class="saveButton"
+    onclick="saveNetwork()">
+
+    Save
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- CLOCKS -->
+<!-- ====================================================== -->
+
+<div id="clocks" class="page">
+
+<h2>World Clocks</h2>
+
+<div id="clockContainer">
+
+</div>
+
+<button
+    class="saveButton"
+    onclick="saveClocks()">
+
+    Save
+
+</button>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- SYSTEM -->
+<!-- ====================================================== -->
+
+<div id="system" class="page">
+
+<h2>System</h2>
+
+<div class="card">
+
+<table class="infoTable">
+
+<tr>
+<td>Chip</td>
+<td id="chipModel"></td>
+</tr>
+
+<tr>
+<td>Revision</td>
+<td id="chipRevision"></td>
+</tr>
+
+<tr>
+<td>CPU</td>
+<td id="cpuMHz"></td>
+</tr>
+
+<tr>
+<td>Flash</td>
+<td id="flashSize"></td>
+</tr>
+
+<tr>
+<td>Heap</td>
+<td id="freeHeap"></td>
+</tr>
+
+<tr>
+<td>PSRAM</td>
+<td id="freePsram"></td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- ABOUT -->
+<!-- ====================================================== -->
+
+<div id="about" class="page">
+
+<h2>About</h2>
+
+<div class="card">
+
+<p>
+World Clock for ESP32-S3
+</p>
+
+<p>
+REST API version 1.0
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+ESP32 World Clock
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

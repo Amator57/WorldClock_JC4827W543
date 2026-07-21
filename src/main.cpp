@@ -6,9 +6,9 @@
 #include "clock/clock_engine.h"
 #include "ntp/ntp_manager.h"
 #include "network/wifi_manager.h"
-#include "network/web_server.h"
 #include "storage/preferences_manager.h"
-
+#include "web/filesystem.h"
+#include "web/web_server.h"
 
 void setup()
 {
@@ -30,41 +30,6 @@ if (!preferencesInit())
 }
 
 prefLoadDefaults();   
-//--------------------------------------------------------
-// Preferences
-//--------------------------------------------------------
-/*
-if (!preferencesInit())
-{
-    Serial.println("Preferences error");
-
-    while (true)
-        delay(100);
-}
-*/
-//--------------------------------------------------------
-// First start defaults
-//--------------------------------------------------------
-
-if (prefGetWiFiSSID().isEmpty())
-{
-    prefSetWiFiSSID("YOUR_WIFI");
-    prefSetWiFiPassword("YOUR_PASSWORD");
-
-    prefSetClockCount(5);
-
-    prefSetCity(0, "Kyiv");
-    prefSetCity(1, "Valencia");
-    prefSetCity(2, "Delhi");
-    prefSetCity(3, "Washington");
-    prefSetCity(4, "Tokyo");
-
-    prefSetNTPServer("pool.ntp.org");
-
-    prefSetLanguage("EN");
-
-    prefSetBrightness(100);
-}
     Serial.println();
     Serial.println("--------------------------------");
     Serial.println("WORLD CLOCK");
@@ -94,6 +59,15 @@ if (prefGetWiFiSSID().isEmpty())
             delay(100);
     }
 
+    //--------------------------------------------------------
+// LittleFS
+//--------------------------------------------------------
+
+if (!filesystemInit())
+{
+    while (true)
+        delay(100);
+}
     //--------------------------------------------------------
     // GUI
     //--------------------------------------------------------
@@ -135,8 +109,8 @@ if (prefGetWiFiSSID().isEmpty())
 // Пізніше ці параметри будуть читатися з Preferences.
 
 wifiManagerInit();
-
 webServerInit();
+
 
 ntpInit();
 

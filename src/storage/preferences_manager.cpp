@@ -61,8 +61,17 @@ void prefLoadDefaults()
 
     if (prefGetWiFiSSID().isEmpty())
     {
-        prefSetWiFiSSID("YOUR_WIFI");
-        prefSetWiFiPassword("YOUR_PASSWORD");
+        prefSetWiFiSSID("");
+        prefSetWiFiPassword("");
+    }
+
+    if (prefGetWiFiIP().isEmpty())
+    {
+        prefSetWiFiDHCP(true);
+        prefSetWiFiIP("192.168.1.100");
+        prefSetWiFiSubnet("255.255.255.0");
+        prefSetWiFiGateway("192.168.1.1");
+        prefSetWiFiDNS("8.8.8.8");
     }
 
     //--------------------------------------------------------
@@ -197,6 +206,68 @@ void prefSetWiFiPassword(const String &password)
 String prefGetWiFiPassword()
 {
     return prefs.getString("wifi_pass", "");
+}
+
+//------------------------------------------------------------
+// WiFi Static IP
+//------------------------------------------------------------
+
+void prefSetWiFiDHCP(bool enabled)
+{
+    prefs.putBool("wifi_dhcp", enabled);
+}
+
+bool prefGetWiFiDHCP()
+{
+    return prefs.getBool("wifi_dhcp", true);
+}
+
+//------------------------------------------------------------
+
+void prefSetWiFiIP(const String &ip)
+{
+    prefs.putString("wifi_ip", ip);
+}
+
+String prefGetWiFiIP()
+{
+    return prefs.getString("wifi_ip", "");
+}
+
+//------------------------------------------------------------
+
+void prefSetWiFiSubnet(const String &subnet)
+{
+    prefs.putString("wifi_subnet", subnet);
+}
+
+String prefGetWiFiSubnet()
+{
+    return prefs.getString("wifi_subnet", "255.255.255.0");
+}
+
+//------------------------------------------------------------
+
+void prefSetWiFiGateway(const String &gateway)
+{
+    prefs.putString("wifi_gw", gateway);
+}
+
+String prefGetWiFiGateway()
+{
+    return prefs.getString("wifi_gw", "");
+}
+
+//------------------------------------------------------------
+
+void prefSetWiFiDNS(const String &dns)
+{
+    prefs.putString("wifi_dns", dns);
+}
+
+String prefGetWiFiDNS()
+{
+    return prefs.getString("wifi_dns", "8.8.8.8");
 }
 
 //------------------------------------------------------------

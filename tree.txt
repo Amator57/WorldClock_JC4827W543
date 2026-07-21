@@ -1,0 +1,4000 @@
+Folder PATH listing for volume Data
+Volume serial number is 2C8D-E1BB
+D:.
+і   .gitignore
+і   compile_commands.json
+і   platformio.ini
+і   tree.txt
+і   
+ГДДД.cache
+і   АДДДclangd
+і       АДДДindex
+і               .gitignore
+і               Arduino_AVRPAR16.cpp.494C049D5FA34027.idx
+і               Arduino_AVRPAR16.h.FFA28C8303B94CB6.idx
+і               Arduino_AVRPAR8.cpp.D2DE7A100629DEDD.idx
+і               Arduino_AVRPAR8.h.58B6629272E09FD0.idx
+і               Arduino_AXS15231B.cpp.7FF47925D9F1CD64.idx
+і               Arduino_AXS15231B.h.F055967F3A876331.idx
+і               Arduino_Canvas.cpp.8A1F8BBF5FC2517F.idx
+і               Arduino_Canvas.h.03A78ABDE619F058.idx
+і               Arduino_Canvas_3bit.cpp.65AEA622DEBA6174.idx
+і               Arduino_Canvas_3bit.h.681B65848D7A2299.idx
+і               Arduino_Canvas_Indexed.cpp.D8687918790E9EF4.idx
+і               Arduino_Canvas_Indexed.h.9B0F4B75D240FCA7.idx
+і               Arduino_Canvas_Mono.cpp.1D1DB487C8676582.idx
+і               Arduino_Canvas_Mono.h.2548B3466C58DDCD.idx
+і               Arduino_CO5300.cpp.6CF16E8B431A302E.idx
+і               Arduino_CO5300.h.E059435D06159C4A.idx
+і               Arduino_DataBus.cpp.AF914B7264E495E2.idx
+і               Arduino_DataBus.h.FA55BE5C0DBB1406.idx
+і               Arduino_DSI_Display.cpp.35D81468EA76B75B.idx
+і               Arduino_DSI_Display.h.B0C05E553D2EB487.idx
+і               Arduino_DUEPAR16.cpp.360A129B2F57044B.idx
+і               Arduino_DUEPAR16.h.2705876C2DB51970.idx
+і               Arduino_ESP32DSIPanel.cpp.B246D6F476CB86E0.idx
+і               Arduino_ESP32DSIPanel.h.3E3100BBE64B8C28.idx
+і               Arduino_ESP32LCD16.cpp.3404FDB1D9B39AFD.idx
+і               Arduino_ESP32LCD16.h.44FFBA489735DD8D.idx
+і               Arduino_ESP32LCD8.cpp.4667E9B8EF773E60.idx
+і               Arduino_ESP32LCD8.h.EC910B5291CDB207.idx
+і               Arduino_ESP32PAR16.cpp.9FBAF5C0DDB02169.idx
+і               Arduino_ESP32PAR16.h.EF1658F6071054A8.idx
+і               Arduino_ESP32PAR16Q.cpp.69732411C98800E9.idx
+і               Arduino_ESP32PAR16Q.h.BAC18C910BF0DF89.idx
+і               Arduino_ESP32PAR16QQ.cpp.6F389FA5710510F2.idx
+і               Arduino_ESP32PAR16QQ.h.853420C9D776AE82.idx
+і               Arduino_ESP32PAR8.cpp.E4F97E5FB73B478E.idx
+і               Arduino_ESP32PAR8.h.FFBAA452EDBA3018.idx
+і               Arduino_ESP32PAR8Q.cpp.AF00AFB6B2511D0E.idx
+і               Arduino_ESP32PAR8Q.h.CCD095C3A05C4DE2.idx
+і               Arduino_ESP32PAR8QQ.cpp.5FE20EFFC51E3E59.idx
+і               Arduino_ESP32PAR8QQ.h.F34653B149231B55.idx
+і               Arduino_ESP32PAR8QQQ.cpp.A60FCE585D9A5E0F.idx
+і               Arduino_ESP32PAR8QQQ.h.6CD69B249DFDD111.idx
+і               Arduino_ESP32QSPI.cpp.A12A685D67EAA552.idx
+і               Arduino_ESP32QSPI.h.7AC9206EEE2D25E1.idx
+і               Arduino_ESP32RGBPanel.cpp.8E8BB97A5736825B.idx
+і               Arduino_ESP32RGBPanel.h.8CFA14EBBB253EA6.idx
+і               Arduino_ESP32S2PAR16.cpp.7656B6F5C430BFC1.idx
+і               Arduino_ESP32S2PAR16.h.09EF0E77FEA2AF58.idx
+і               Arduino_ESP32S2PAR16Q.cpp.29DC01D16E269DE3.idx
+і               Arduino_ESP32S2PAR16Q.h.975AFEF0F151AB4A.idx
+і               Arduino_ESP32S2PAR8.cpp.5C9089142658C9D8.idx
+і               Arduino_ESP32S2PAR8.h.18E05FE0093D30D5.idx
+і               Arduino_ESP32S2PAR8Q.cpp.43CC72C593CC5345.idx
+і               Arduino_ESP32S2PAR8Q.h.B42DC5E2F02385B3.idx
+і               Arduino_ESP32SPI.cpp.73BE055D0614A8E9.idx
+і               Arduino_ESP32SPI.h.8CB77CA7B461CB5A.idx
+і               Arduino_ESP32SPIDMA.cpp.29869733210ACCED.idx
+і               Arduino_ESP32SPIDMA.h.613F3FB4617E381D.idx
+і               Arduino_ESP8266SPI.cpp.17DE836CBBF6881D.idx
+і               Arduino_ESP8266SPI.h.24A99673B91DCE6E.idx
+і               Arduino_G.cpp.F5586005C447B8F0.idx
+і               Arduino_G.h.93184C7E69E9834C.idx
+і               Arduino_GC9106.cpp.3F2806686071C8E8.idx
+і               Arduino_GC9106.h.858F6E31A1E37109.idx
+і               Arduino_GC9107.cpp.A1D9BEAE53C8450E.idx
+і               Arduino_GC9107.h.EA169CD659BA8BB3.idx
+і               Arduino_GC9A01.cpp.E948284CAB08A53A.idx
+і               Arduino_GC9A01.h.F478DB58BF7AD889.idx
+і               Arduino_GC9C01.cpp.52825D4FE0525BA8.idx
+і               Arduino_GC9C01.h.C53592051268335E.idx
+і               Arduino_GC9D01.cpp.A034BE191124A86D.idx
+і               Arduino_GC9D01.h.BCD9746718E3D779.idx
+і               Arduino_GFX.cpp.0643CFEABE156EAA.idx
+і               Arduino_GFX.h.17904A44220D8F95.idx
+і               Arduino_GFX_Library.cpp.96BE4655A0FA4376.idx
+і               Arduino_GFX_Library.h.190DFCC69E39D590.idx
+і               Arduino_HWSPI.cpp.F432118A622F4281.idx
+і               Arduino_HWSPI.h.41D528BDD6053148.idx
+і               Arduino_HX8347C.cpp.1F835016D5C5D5E3.idx
+і               Arduino_HX8347C.h.652B3B811D572D3C.idx
+і               Arduino_HX8347D.cpp.F97FE391861D0364.idx
+і               Arduino_HX8347D.h.D416F14FF77AA753.idx
+і               Arduino_HX8352C.cpp.B1431D0A4EBA9B6B.idx
+і               Arduino_HX8352C.h.DE4CA61919DA313F.idx
+і               Arduino_HX8357A.cpp.8A004EBA8FEE091B.idx
+і               Arduino_HX8357A.h.4B3E9AFBB38E65EE.idx
+і               Arduino_HX8357B.cpp.CE99D43CEB1B6C7B.idx
+і               Arduino_HX8357B.h.1499D6379707E11F.idx
+і               Arduino_HX8369A.cpp.B237DA820C90D534.idx
+і               Arduino_HX8369A.h.FBDEFA46F4921FE6.idx
+і               Arduino_ILI9225.cpp.E4EB2C199108C8E0.idx
+і               Arduino_ILI9225.h.2F5BD2148CFFB4FA.idx
+і               Arduino_ILI9331.cpp.D2A099CFFD065435.idx
+і               Arduino_ILI9331.h.A8A1B8BE8A317D46.idx
+і               Arduino_ILI9341.cpp.7ECE7EE2DAFD2AB8.idx
+і               Arduino_ILI9341.h.C2944D5177307BC4.idx
+і               Arduino_ILI9342.cpp.0213FCDDD57CA687.idx
+і               Arduino_ILI9342.h.85BCE83B26188014.idx
+і               Arduino_ILI9481_18bit.cpp.442E2FB2A0012BC8.idx
+і               Arduino_ILI9481_18bit.h.4849DE50B21F506D.idx
+і               Arduino_ILI9486.cpp.71D400BC62A2023A.idx
+і               Arduino_ILI9486.h.4855E6DB696FB790.idx
+і               Arduino_ILI9486_18bit.cpp.6456EB10E1498550.idx
+і               Arduino_ILI9486_18bit.h.AD1A517CE812FD2A.idx
+і               Arduino_ILI9488.cpp.2FD67C39AC14FF01.idx
+і               Arduino_ILI9488.h.4F13E45159D77546.idx
+і               Arduino_ILI9488_18bit.cpp.5B4B1CCED4E29E7B.idx
+і               Arduino_ILI9488_18bit.h.930EF32CCDD5446D.idx
+і               Arduino_ILI9488_3bit.cpp.230D902BC5D14916.idx
+і               Arduino_ILI9488_3bit.h.24CFC968FB57EE3F.idx
+і               Arduino_ILI9806.cpp.F4F0F5252583BB8A.idx
+і               Arduino_ILI9806.h.B773FFE3ABA8C011.idx
+і               Arduino_JBT6K71.cpp.77B486FF6EFC70D8.idx
+і               Arduino_JBT6K71.h.994676477885C375.idx
+і               Arduino_JD9613.cpp.E1AEF300B7A21E68.idx
+і               Arduino_JD9613.h.05478C18BA1802EF.idx
+і               Arduino_mbedSPI.cpp.8462975E7E1D76E2.idx
+і               Arduino_mbedSPI.h.F342FEF56C6F5661.idx
+і               Arduino_NRFXSPI.cpp.EE78A9D446600C73.idx
+і               Arduino_NRFXSPI.h.C9B99826987F0756.idx
+і               Arduino_NT35310.cpp.103425E82AC03DC5.idx
+і               Arduino_NT35310.h.36A571E5D04B84C8.idx
+і               Arduino_NT35510.cpp.77C11D6CC85CE5EB.idx
+і               Arduino_NT35510.h.FBF0B55679678A2E.idx
+і               Arduino_NT39125.cpp.FFEF9F3105AAE169.idx
+і               Arduino_NT39125.h.2144E36A399A6A35.idx
+і               Arduino_NV3007.cpp.9D21E5EFD49AB57B.idx
+і               Arduino_NV3007.h.610C8B077D5AA2A2.idx
+і               Arduino_NV3023.cpp.44406F1C9D5C7140.idx
+і               Arduino_NV3023.h.32C1E13F4E44141F.idx
+і               Arduino_NV3041A.cpp.1139032FC4488BEF.idx
+і               Arduino_NV3041A.h.64ED5BEFFCEAB57E.idx
+і               Arduino_OLED.cpp.F7BA3ED35AD7E931.idx
+і               Arduino_OLED.h.713FE0943D8BF0CA.idx
+і               Arduino_OTM8009A.cpp.A3F878AB908A76CF.idx
+і               Arduino_OTM8009A.h.CF4CCF6FD247CFD6.idx
+і               Arduino_R61529.cpp.4C553DB0A69FC373.idx
+і               Arduino_R61529.h.453521899BB5126F.idx
+і               Arduino_RGB_Display.cpp.C26BE3344F25571D.idx
+і               Arduino_RGB_Display.h.F518B2173682CA50.idx
+і               Arduino_RM67162.cpp.0CB3A28A7571B3D2.idx
+і               Arduino_RM67162.h.1A79B978F0192F53.idx
+і               Arduino_RM690B0.cpp.B442B027ED82BFF8.idx
+і               Arduino_RM690B0.h.BD3F33D53C3EECA1.idx
+і               Arduino_RPiPicoPAR16.cpp.1E2021C5C6971DBB.idx
+і               Arduino_RPiPicoPAR16.h.8B4E6202EE717B75.idx
+і               Arduino_RPiPicoPAR8.cpp.1C4123C5BF594F90.idx
+і               Arduino_RPiPicoPAR8.h.D917884827B06240.idx
+і               Arduino_RPiPicoSPI.cpp.85832BD37E8F2699.idx
+і               Arduino_RPiPicoSPI.h.4D7CB9D01A33BF4A.idx
+і               Arduino_RTLPAR8.cpp.94CB86A709D077FB.idx
+і               Arduino_RTLPAR8.h.CEB8EC054A7A9D44.idx
+і               Arduino_SEPS525.cpp.95A8A380794F1216.idx
+і               Arduino_SEPS525.h.B0D28172C7FA345D.idx
+і               Arduino_SH1106.cpp.26006D48A10F9B7E.idx
+і               Arduino_SH1106.h.1B2B361B0313CE07.idx
+і               Arduino_SH8601.cpp.FC0D6EA26F556E43.idx
+і               Arduino_SH8601.h.914B3F1881FF34DA.idx
+і               Arduino_SPD2010.cpp.629009F6F1F5C6BC.idx
+і               Arduino_SPD2010.h.22AE740C80BF7E87.idx
+і               Arduino_SSD1283A.cpp.78D6690D66EC8EED.idx
+і               Arduino_SSD1283A.h.22DD7770A789C955.idx
+і               Arduino_SSD1306.cpp.80798DB2D73C1F4E.idx
+і               Arduino_SSD1306.h.7A8D664DFBE6CFCD.idx
+і               Arduino_SSD1331.cpp.5E0E54D1997CDCAE.idx
+і               Arduino_SSD1331.h.09FB6ED9CCD4454B.idx
+і               Arduino_SSD1351.cpp.895EF8F94E70B300.idx
+і               Arduino_SSD1351.h.1A8ED360E57E89A5.idx
+і               Arduino_SSD1357.cpp.395118721F74FF15.idx
+і               Arduino_SSD1357.h.2EEEAE36B0903FD5.idx
+і               Arduino_ST7735.cpp.E050B987E7A3142F.idx
+і               Arduino_ST7735.h.B8F42662D2D30C5F.idx
+і               Arduino_ST7789.cpp.62422BCAFA02268E.idx
+і               Arduino_ST7789.h.1A1E4830777CF6F2.idx
+і               Arduino_ST77916.cpp.AD3B4C2CAEBF9502.idx
+і               Arduino_ST77916.h.3EF9A3A642CF190D.idx
+і               Arduino_ST7796.cpp.E71628659DCC0354.idx
+і               Arduino_ST7796.h.D8CDC5081C863DD7.idx
+і               Arduino_STM32PAR8.cpp.74BD2F6ABA9743CB.idx
+і               Arduino_STM32PAR8.h.982A9A5AE730E36C.idx
+і               Arduino_SWPAR16.cpp.D9435FDB62572F2A.idx
+і               Arduino_SWPAR16.h.E901D39FB601E560.idx
+і               Arduino_SWPAR8.cpp.773B18A331662643.idx
+і               Arduino_SWPAR8.h.508AAB5F5301C873.idx
+і               Arduino_SWSPI.cpp.0923E76221E4A98D.idx
+і               Arduino_SWSPI.h.17ACAFCFB28D02EA.idx
+і               Arduino_TFT.cpp.A7B84458F630B0BE.idx
+і               Arduino_TFT.h.F7142F9759093F02.idx
+і               Arduino_TFT_18bit.cpp.E1D20C794D7DFA3A.idx
+і               Arduino_TFT_18bit.h.C175B6B4684CC6A5.idx
+і               Arduino_UNOPAR8.cpp.E4490C4C218336D3.idx
+і               Arduino_UNOPAR8.h.E0CE0300D7E42243.idx
+і               Arduino_WEA2012.cpp.0912384D63CC8B43.idx
+і               Arduino_WEA2012.h.30E8C90580AB9EB0.idx
+і               Arduino_Wire.cpp.B570938ADE8ACF41.idx
+і               Arduino_Wire.h.9AC47BACACAEF1EB.idx
+і               Arduino_XCA9554SWSPI.cpp.547BF82400B5802E.idx
+і               Arduino_XCA9554SWSPI.h.80A270D82BCD1DB1.idx
+і               Arduino_XL9535SWSPI.cpp.39473601F7A45BE1.idx
+і               Arduino_XL9535SWSPI.h.C12426D67D0176F4.idx
+і               clock_engine.h.BCB3F1AA092CA3C9.idx
+і               display.cpp.CA699021C75D32EF.idx
+і               display.h.9913E7937D4997B1.idx
+і               gfxfont.h.158B49EA503607EC.idx
+і               gifdec.c.3B6DBD6547AC4A59.idx
+і               gifdec.h.1898CF93F308D5EC.idx
+і               glcdfont.h.8E31D702D202D255.idx
+і               lodepng.c.56CE42C6F7BAADF0.idx
+і               lodepng.h.DB733F015F4EA111.idx
+і               lvgl.h.12B3297FCBA1773D.idx
+і               lvgl.h.9227948B622E09C4.idx
+і               lvgl_port.cpp.7C4253FE97B71B64.idx
+і               lvgl_port.h.47A5DAE4D1F622E2.idx
+і               lv_anim.c.909C038340583B1E.idx
+і               lv_anim.h.2711714571949CA5.idx
+і               lv_animimg.c.F2B0D22141483B20.idx
+і               lv_animimg.h.E6D6BAB1F8B241E9.idx
+і               lv_anim_timeline.c.E363575F75EFBAA0.idx
+і               lv_anim_timeline.h.63BA74A25B82BEBB.idx
+і               lv_api_map.h.32DE92A26FFC5845.idx
+і               lv_arc.c.85C306027703C406.idx
+і               lv_arc.h.ED28A3BD5D9683AF.idx
+і               lv_area.c.18B73CA9D3654C5A.idx
+і               lv_area.h.792926AF58C16B08.idx
+і               lv_assert.h.E82E84DC50A1808F.idx
+і               lv_async.c.050C7C7026F48A1F.idx
+і               lv_async.h.1B5954F180FCCF41.idx
+і               lv_bar.c.2DCF940F5F5EFD3B.idx
+і               lv_bar.h.98A3EDDB3BF5CDF6.idx
+і               lv_bidi.c.76D873A98461246E.idx
+і               lv_bidi.h.909FC99114273642.idx
+і               lv_bmp.c.D0064FE8E41691C1.idx
+і               lv_bmp.h.64FE264C1CC6BB14.idx
+і               lv_btn.c.51377DEA63939689.idx
+і               lv_btn.h.DBE8E08B996EB176.idx
+і               lv_btnmatrix.c.BDF9425389C6999F.idx
+і               lv_btnmatrix.h.D9AF9479A330F04C.idx
+і               lv_calendar.c.62CCB210B7C4B6A9.idx
+і               lv_calendar.h.8A2071A3429A3E32.idx
+і               lv_calendar_header_arrow.c.B9EBC5379E624BF7.idx
+і               lv_calendar_header_arrow.h.2B412BB78FD5338D.idx
+і               lv_calendar_header_dropdown.c.00CBA30E9B122000.idx
+і               lv_calendar_header_dropdown.h.987812D930F25DB1.idx
+і               lv_canvas.c.5F4D6DAC0BE00797.idx
+і               lv_canvas.h.7EC660976528906A.idx
+і               lv_chart.c.10028B526C96C9CA.idx
+і               lv_chart.h.112D2E7FC5D73E6A.idx
+і               lv_checkbox.c.4FBF8471755EAE0D.idx
+і               lv_checkbox.h.B40B5A5304891941.idx
+і               lv_color.c.6D85AAF362CA2160.idx
+і               lv_color.h.7A3A971D846A920A.idx
+і               lv_colorwheel.c.AC781902D65C3254.idx
+і               lv_colorwheel.h.0452D31670BF0A72.idx
+і               lv_conf.h.C6D8BC4B80C77067.idx
+і               lv_conf_internal.h.D9B7926A01699073.idx
+і               lv_conf_kconfig.h.35BF2A1A0906B59C.idx
+і               lv_disp.c.BC747E7BE1092B60.idx
+і               lv_disp.h.347FCC6B2FF7FD37.idx
+і               lv_draw.c.19541092EFF30684.idx
+і               lv_draw.h.52760B5CBC9C4C55.idx
+і               lv_draw_arc.c.252908C6108B720D.idx
+і               lv_draw_arc.h.FE2068C97E0B1CE8.idx
+і               lv_draw_img.c.88E676AA88E26BD4.idx
+і               lv_draw_img.h.958F63FC55728017.idx
+і               lv_draw_label.c.4C1627B935C3F5AE.idx
+і               lv_draw_label.h.E078A415A290B139.idx
+і               lv_draw_layer.c.31BF63816E4A2233.idx
+і               lv_draw_layer.h.B3241E83DEC8A44F.idx
+і               lv_draw_line.c.AD3F9BF82DD20CCC.idx
+і               lv_draw_line.h.2EA12B9405880681.idx
+і               lv_draw_mask.c.10153CF65E510523.idx
+і               lv_draw_mask.h.19A3A3F02873AA35.idx
+і               lv_draw_pxp.c.9B5A71192590B0FD.idx
+і               lv_draw_pxp.h.C35622F4DDE82978.idx
+і               lv_draw_pxp_blend.c.5FE0E8C9EA0C14CA.idx
+і               lv_draw_pxp_blend.h.DB0C71D4FD88BC06.idx
+і               lv_draw_rect.c.1C0800C79FA73FD5.idx
+і               lv_draw_rect.h.38E47F20B69DB7BC.idx
+і               lv_draw_sdl.c.976C842406B9C690.idx
+і               lv_draw_sdl.h.769F213D440E0BE9.idx
+і               lv_draw_sdl_arc.c.17243C55BF08E3FE.idx
+і               lv_draw_sdl_bg.c.56EABB7FD8D40EC1.idx
+і               lv_draw_sdl_composite.c.64CF80E69EB5B49B.idx
+і               lv_draw_sdl_img.c.9809F7A6B852C1FF.idx
+і               lv_draw_sdl_label.c.4F82DE4C933AFAF9.idx
+і               lv_draw_sdl_layer.c.BDC067D1468E18A7.idx
+і               lv_draw_sdl_line.c.709220CF68EBE01E.idx
+і               lv_draw_sdl_mask.c.5E7F3F00C69EF9F4.idx
+і               lv_draw_sdl_polygon.c.C397F86F1403B747.idx
+і               lv_draw_sdl_rect.c.39DD1C1D2FD36E41.idx
+і               lv_draw_sdl_stack_blur.c.4F07E3C00DE0F7EF.idx
+і               lv_draw_sdl_stack_blur.h.782170CE3F0CD6EF.idx
+і               lv_draw_sdl_texture_cache.c.077895DB0472EE6C.idx
+і               lv_draw_sdl_utils.c.808ACF9C72ECAE78.idx
+і               lv_draw_sw.c.0637F4CB008029AF.idx
+і               lv_draw_sw.h.554F6087054F53F8.idx
+і               lv_draw_sw_arc.c.B8F5B5812F300D06.idx
+і               lv_draw_sw_blend.c.8FA6A3BDB9A9471C.idx
+і               lv_draw_sw_blend.h.B29175FBA6B36B67.idx
+і               lv_draw_sw_dither.c.5819C7929E0DEC73.idx
+і               lv_draw_sw_dither.h.A9ADD6C95DC60EAE.idx
+і               lv_draw_sw_gradient.c.EFA6BB46C9B360E1.idx
+і               lv_draw_sw_gradient.h.792BA4A60E02DD84.idx
+і               lv_draw_sw_img.c.10B1AFB138D89213.idx
+і               lv_draw_sw_layer.c.89767B9FC7531C59.idx
+і               lv_draw_sw_letter.c.35223A369D5E91A3.idx
+і               lv_draw_sw_line.c.ABBD1B28418BF530.idx
+і               lv_draw_sw_polygon.c.AC31B3E0FE5103ED.idx
+і               lv_draw_sw_rect.c.4402A995434A079A.idx
+і               lv_draw_sw_transform.c.2AD67C953AA93825.idx
+і               lv_draw_transform.c.4D52E85B308A2301.idx
+і               lv_draw_transform.h.CF6EF478C5DB7949.idx
+і               lv_draw_triangle.c.7FD5194957FD31AD.idx
+і               lv_draw_triangle.h.0087AFA08530B1CE.idx
+і               lv_draw_vglite.c.098C601A03EB943E.idx
+і               lv_draw_vglite.h.DF68AFEF81D63676.idx
+і               lv_draw_vglite_arc.c.594A242CEDACF6B3.idx
+і               lv_draw_vglite_arc.h.AB903F5523C282D1.idx
+і               lv_draw_vglite_blend.c.A59B7A4692427B0A.idx
+і               lv_draw_vglite_blend.h.BE0C58F850A840D0.idx
+і               lv_draw_vglite_line.c.C44E248C4A9A3BC5.idx
+і               lv_draw_vglite_line.h.EC49CFCD9166F9C8.idx
+і               lv_draw_vglite_rect.c.50CADCB66562197E.idx
+і               lv_draw_vglite_rect.h.23D355CCCC378993.idx
+і               lv_dropdown.c.E71950BB1B758EF3.idx
+і               lv_dropdown.h.B252319C0D9BC497.idx
+і               lv_event.c.84CA2A3E0EEC2E79.idx
+і               lv_event.h.623F4F87AD598F6C.idx
+і               lv_extra.c.6784EEAF36AB0E2A.idx
+і               lv_extra.h.AF82870B268A9CFB.idx
+і               lv_ffmpeg.c.47B002CB44931E1D.idx
+і               lv_ffmpeg.h.5B0F1F65F195A11B.idx
+і               lv_flex.c.8443B3CF2BB484BF.idx
+і               lv_flex.h.B84E034E1589DCD1.idx
+і               lv_font.c.DC53C078303DBC05.idx
+і               lv_font.h.32EAB3D9DE5C88F1.idx
+і               lv_font_dejavu_16_persian_hebrew.c.DD3083A78E72C985.idx
+і               lv_font_fmt_txt.c.63FBCD36FC799EB3.idx
+і               lv_font_fmt_txt.h.82A90DF3231A68C9.idx
+і               lv_font_loader.c.870178DA9E4EADC0.idx
+і               lv_font_loader.h.92B3352D8155636D.idx
+і               lv_font_montserrat_10.c.93D20178B76BE153.idx
+і               lv_font_montserrat_12.c.0C9BE0496CA4F743.idx
+і               lv_font_montserrat_12_subpx.c.1EA3215A70802E51.idx
+і               lv_font_montserrat_14.c.27D10DA3841A3860.idx
+і               lv_font_montserrat_16.c.B77638C4348FBAC3.idx
+і               lv_font_montserrat_18.c.10BDC43199552B38.idx
+і               lv_font_montserrat_20.c.F39CCCA6E4FFB15B.idx
+і               lv_font_montserrat_22.c.9B2A48D6B48F8062.idx
+і               lv_font_montserrat_24.c.07E0CCCA6F2E1275.idx
+і               lv_font_montserrat_26.c.BBC727370700F46D.idx
+і               lv_font_montserrat_28.c.DDE8774B578E424B.idx
+і               lv_font_montserrat_28_compressed.c.6140A21655C56051.idx
+і               lv_font_montserrat_30.c.0E9203C9A5FCBA4E.idx
+і               lv_font_montserrat_32.c.401700D8A353DBEA.idx
+і               lv_font_montserrat_34.c.E1FF55605C80E36A.idx
+і               lv_font_montserrat_36.c.BC969C03ECD3EC7C.idx
+і               lv_font_montserrat_38.c.76C6C67090B74BB0.idx
+і               lv_font_montserrat_40.c.1292EA948400A1B8.idx
+і               lv_font_montserrat_42.c.2879C107560D378D.idx
+і               lv_font_montserrat_44.c.1855439678C1C754.idx
+і               lv_font_montserrat_46.c.C0E168921DD06B89.idx
+і               lv_font_montserrat_48.c.9F191AA2D4459377.idx
+і               lv_font_montserrat_8.c.4D38F0B36B3E638C.idx
+і               lv_font_simsun_16_cjk.c.B8D169E720E966AA.idx
+і               lv_font_unscii_16.c.AFDB48EF8FDAAD01.idx
+і               lv_font_unscii_8.c.9CEF7956F15679F3.idx
+і               lv_fragment.c.7B44808FCBD447D1.idx
+і               lv_fragment.h.3C10494E09EBE429.idx
+і               lv_fragment_manager.c.1A60D37CF5AE99D2.idx
+і               lv_freetype.c.F555E9FF9829835C.idx
+і               lv_freetype.h.664E38654D0CEEEC.idx
+і               lv_fs.c.D4D01C07B445BB52.idx
+і               lv_fs.h.4C12ABCC900DECE9.idx
+і               lv_fsdrv.h.52CF705598989C0D.idx
+і               lv_fs_fatfs.c.5836260C8A4533F5.idx
+і               lv_fs_littlefs.c.EBD43D14D8F08C86.idx
+і               lv_fs_posix.c.600F121462C5D818.idx
+і               lv_fs_stdio.c.F7565C0873F4A19D.idx
+і               lv_fs_win32.c.0D3548938BFB4227.idx
+і               lv_gc.c.68ADB339264CA9B5.idx
+і               lv_gc.h.D8650FC820E2B2FB.idx
+і               lv_gif.c.4F71151B12582BA1.idx
+і               lv_gif.h.D06985D86E76D2F9.idx
+і               lv_gpu_arm2d.c.15C1F29EC65B9AC3.idx
+і               lv_gpu_arm2d.h.AD547677ABB66B06.idx
+і               lv_gpu_d2_draw_label.c.0CBFEA4D781BB309.idx
+і               lv_gpu_d2_ra6m3.c.3BCFDA775621E402.idx
+і               lv_gpu_d2_ra6m3.h.C043CBEFB595E2EA.idx
+і               lv_gpu_nxp_pxp.c.9B644EADC0469DBC.idx
+і               lv_gpu_nxp_pxp.h.BC8E417529DE1E1D.idx
+і               lv_gpu_nxp_pxp_osa.c.B574646B962DB735.idx
+і               lv_gpu_nxp_pxp_osa.h.B35BBF5608E5286F.idx
+і               lv_gpu_stm32_dma2d.c.EB9186425A0A6D7D.idx
+і               lv_gpu_stm32_dma2d.h.41886FDC7918418D.idx
+і               lv_gpu_swm341_dma2d.c.5D2926373E822D24.idx
+і               lv_gpu_swm341_dma2d.h.E21E1FCBC4D49544.idx
+і               lv_grid.c.5796B20FE4324B7D.idx
+і               lv_grid.h.F63DB5C7637FFC17.idx
+і               lv_gridnav.c.416BFDF5E1963FED.idx
+і               lv_gridnav.h.0ED861B49F338DB4.idx
+і               lv_group.c.F15586B90333703D.idx
+і               lv_group.h.DE8AAA3FF90EC0A7.idx
+і               lv_hal.h.BDE2475E5B36461D.idx
+і               lv_hal_disp.c.B18C68A0745AFAEF.idx
+і               lv_hal_disp.h.C0D6405FCF229B36.idx
+і               lv_hal_indev.c.1AD9C51621DBF603.idx
+і               lv_hal_indev.h.77913C6344F7CFB8.idx
+і               lv_hal_tick.c.32C9F0C215B6E72F.idx
+і               lv_hal_tick.h.D19BF27BE9ED48E4.idx
+і               lv_ime_pinyin.c.E5A2CDCC21BF2554.idx
+і               lv_ime_pinyin.h.9496EF71FCBD63BB.idx
+і               lv_img.c.B6DD6C9CA5D9D51A.idx
+і               lv_img.h.73BEE481387126F4.idx
+і               lv_imgbtn.c.E73B56B3E9DC84CE.idx
+і               lv_imgbtn.h.0CCB0CAED05A6846.idx
+і               lv_imgfont.c.795DBAE01FE444B2.idx
+і               lv_imgfont.h.5C69BBCEB411C4A3.idx
+і               lv_img_buf.c.C97D0BBEFCACD1DE.idx
+і               lv_img_buf.h.6D9A95F858756E94.idx
+і               lv_img_cache.c.0175905F58A98B75.idx
+і               lv_img_cache.h.88E5273BB3F1274E.idx
+і               lv_img_decoder.c.EE0842F0F110B548.idx
+і               lv_img_decoder.h.288C0CE446A6BF46.idx
+і               lv_indev.c.361D0F5FC50BCE3E.idx
+і               lv_indev.h.6CF8DD97E5D6600D.idx
+і               lv_indev_scroll.c.73AE3C1AEB8483B7.idx
+і               lv_indev_scroll.h.D138B22E56F15039.idx
+і               lv_keyboard.c.CD5095991DF1251C.idx
+і               lv_keyboard.h.C9566636B574B05F.idx
+і               lv_label.c.7121ABA2B1258F91.idx
+і               lv_label.h.9F08EF5B48D95711.idx
+і               lv_layouts.h.4751EE1693027729.idx
+і               lv_led.c.4F0D4F2AEDE6A121.idx
+і               lv_led.h.5603123F93D6735C.idx
+і               lv_libs.h.660F29F94E1E8018.idx
+і               lv_line.c.6EFB80233869A77A.idx
+і               lv_line.h.6192B031C782E070.idx
+і               lv_list.c.CB0706BBCD27DA89.idx
+і               lv_list.h.ED23B48210FA9C84.idx
+і               lv_ll.c.B1187086BBE68784.idx
+і               lv_ll.h.3332016E957FBC4B.idx
+і               lv_log.c.942DC30BC6DF03CD.idx
+і               lv_log.h.B5F6010771FCBCE1.idx
+і               lv_lru.c.346FF91FD6B9EE80.idx
+і               lv_lru.h.8B82D402E310B593.idx
+і               lv_math.c.30008248A9CC1C73.idx
+і               lv_math.h.99B14E24A250DC93.idx
+і               lv_mem.c.2E7A34153BCD986D.idx
+і               lv_mem.h.12D811301D2EB9AE.idx
+і               lv_menu.c.F9D4513E3912B428.idx
+і               lv_menu.h.218B104FD1D8641D.idx
+і               lv_meter.c.847EA4A4BE7573D4.idx
+і               lv_meter.h.736E4E9079E48085.idx
+і               lv_monkey.c.7F1AC53D3D75A00A.idx
+і               lv_monkey.h.D852520D0B57A833.idx
+і               lv_msg.c.A35F9C41A38C90F1.idx
+і               lv_msg.h.ECD139F14A361E98.idx
+і               lv_msgbox.c.4F8D825134327B5C.idx
+і               lv_msgbox.h.A5C5711A97F42568.idx
+і               lv_obj.c.1882959A31F4254B.idx
+і               lv_obj.h.DBC5892C2823A033.idx
+і               lv_objx_templ.c.1E4BFE5060D494C1.idx
+і               lv_obj_class.c.56124036CDC57446.idx
+і               lv_obj_class.h.C827E48E34E12044.idx
+і               lv_obj_draw.c.74E4CC9FBA525595.idx
+і               lv_obj_draw.h.E7424C4EAF44C8B9.idx
+і               lv_obj_pos.c.6E1A510400F17EB8.idx
+і               lv_obj_pos.h.3FAF27D286C524DD.idx
+і               lv_obj_scroll.c.45A0697EE1A8A0DA.idx
+і               lv_obj_scroll.h.6D08C6DD6E030EF0.idx
+і               lv_obj_style.c.7B3F0B36B5C628B6.idx
+і               lv_obj_style.h.F41786C886DA5D5C.idx
+і               lv_obj_style_gen.c.F27B1635C4B06759.idx
+і               lv_obj_style_gen.h.61D4C1C3FA246C75.idx
+і               lv_obj_tree.c.B5F563721318E2AA.idx
+і               lv_obj_tree.h.B2026A457CBF8525.idx
+і               lv_others.h.5BC5350DA8FDA437.idx
+і               lv_png.c.B7BC1ECB94DFA8CE.idx
+і               lv_png.h.33B0A44DEFF48683.idx
+і               lv_printf.c.2F0D3D3E3B05214C.idx
+і               lv_printf.h.44A4FD6DE57DED7D.idx
+і               lv_qrcode.c.375ACD5AEF3E3654.idx
+і               lv_qrcode.h.178F459413CC518F.idx
+і               lv_refr.c.BF78883CD0F07550.idx
+і               lv_refr.h.E6226A624CE961DD.idx
+і               lv_rlottie.c.2CA6453BF16ACAE3.idx
+і               lv_rlottie.h.321BC716D72522E2.idx
+і               lv_roller.c.FE2A346EE9041ABC.idx
+і               lv_roller.h.92188BF7B448000E.idx
+і               lv_sjpg.c.2D1FD6DEA6AFF06B.idx
+і               lv_sjpg.h.C09E22544A3CB1A7.idx
+і               lv_slider.c.F6C4444685506E5C.idx
+і               lv_slider.h.CC7345ED4E4E5761.idx
+і               lv_snapshot.c.56B15EFA226FD928.idx
+і               lv_snapshot.h.28F9B3E918C7AC2A.idx
+і               lv_span.c.8E957142E9C0ECFD.idx
+і               lv_span.h.87ECB78F9D0F802B.idx
+і               lv_spinbox.c.3ED854E66CC1284D.idx
+і               lv_spinbox.h.91AC11DBF1B2B610.idx
+і               lv_spinner.c.22D13732F2D162D0.idx
+і               lv_spinner.h.EB2006D8F8B652A8.idx
+і               lv_style.c.E1CBFCE888FE5348.idx
+і               lv_style.h.EAFCDE89E8A1FA80.idx
+і               lv_style_gen.c.8F5CDBA0ACE621FF.idx
+і               lv_style_gen.h.92C9B92544736D7B.idx
+і               lv_switch.c.05CD6A0AF7075DB3.idx
+і               lv_switch.h.5DDE06B5F792C95B.idx
+і               lv_symbol_def.h.DB0166C37A6EF63D.idx
+і               lv_table.c.28E815917D039D83.idx
+і               lv_table.h.6F0FB7364DA2A4DF.idx
+і               lv_tabview.c.4EBB6CAE6969FCF1.idx
+і               lv_tabview.h.1D33AC48BD21EA63.idx
+і               lv_templ.c.6A1B9A390A72CC86.idx
+і               lv_textarea.c.4D7C6B2A241AD808.idx
+і               lv_textarea.h.05F6F1DCB578E656.idx
+і               lv_theme.c.09602F2B900C327D.idx
+і               lv_theme.h.9EBE04353173C864.idx
+і               lv_themes.h.14FD2FEF78883CEB.idx
+і               lv_theme_basic.c.E24F5E20DCA4696F.idx
+і               lv_theme_basic.h.C6C32F637040B69B.idx
+і               lv_theme_default.c.2EC5C52719CDF658.idx
+і               lv_theme_default.h.4D00E3A8FB27257A.idx
+і               lv_theme_mono.c.D9D4FA7795545305.idx
+і               lv_theme_mono.h.4B385013E770AC61.idx
+і               lv_tileview.c.3D84AB9E207F87EB.idx
+і               lv_tileview.h.BE649585F2233059.idx
+і               lv_timer.c.9B027683DB94F16E.idx
+і               lv_timer.h.A098E15E61EA31C8.idx
+і               lv_tiny_ttf.c.91DB07B17DB5113A.idx
+і               lv_tiny_ttf.h.3B74F8D240E3379C.idx
+і               lv_tlsf.c.2F6EF02854DF98DB.idx
+і               lv_tlsf.h.4B0A44D55AA1E3E2.idx
+і               lv_txt.c.7E637EAE90762CF4.idx
+і               lv_txt.h.66084660CD5B1CFA.idx
+і               lv_txt_ap.c.F3EAA9222945554F.idx
+і               lv_txt_ap.h.E6BBF5CED0CE0DE2.idx
+і               lv_types.h.866276492F2FC6AC.idx
+і               lv_utils.c.95ADA56F43141224.idx
+і               lv_utils.h.5B08A5B8B59C7BE0.idx
+і               lv_vglite_buf.c.9ADF4C3E3F5BC605.idx
+і               lv_vglite_buf.h.465F840A87ACC22A.idx
+і               lv_vglite_utils.c.884B49B811023166.idx
+і               lv_vglite_utils.h.43D037226727F040.idx
+і               lv_widgets.h.E520F8A2B874048F.idx
+і               lv_win.c.9FF0881ED1C8F7C6.idx
+і               lv_win.h.4546F60ADE9DCF9B.idx
+і               main.cpp.81CE027694781420.idx
+і               ntp_manager.h.3681097C0507D319.idx
+і               preferences_manager.h.9AA1E90152690A58.idx
+і               qrcodegen.c.E3E5EF3E4EAE57C3.idx
+і               qrcodegen.h.517C22CA62860434.idx
+і               screen_main.cpp.EB1AFF74D7BD06C4.idx
+і               screen_main.h.D5E29B3623549681.idx
+і               tjpgd.c.E6CFDF66B98F447C.idx
+і               tjpgd.h.C8160E954C217471.idx
+і               web_server.h.923BF21C8F501276.idx
+і               wifi_manager.h.E1FB322CBF1CB499.idx
+і               YCbCr2RGB.h.28FF98A72D2E64CD.idx
+і               
+ГДДД.pio
+і   ГДДДbuild
+і   і   і   project.checksum
+і   і   і   
+і   і   АДДДJC4827W543
+і   і       і   .sconsign311.dblite
+і   і       і   bootloader.bin
+і   і       і   firmware.bin
+і   і       і   firmware.elf
+і   і       і   firmware.map
+і   і       і   idedata.json
+і   і       і   libFrameworkArduino.a
+і   і       і   longcmd-06c43af36269c5dc9f421383c9274103
+і   і       і   longcmd-25a249f762716097f306fc849bf58525
+і   і       і   partitions.bin
+і   і       і   
+і   і       ГДДДFrameworkArduino
+і   і       і   і   base64.cpp.d
+і   і       і   і   base64.cpp.o
+і   і       і   і   cbuf.cpp.d
+і   і       і   і   cbuf.cpp.o
+і   і       і   і   chip-debug-report.cpp.d
+і   і       і   і   chip-debug-report.cpp.o
+і   і       і   і   ColorFormat.c.d
+і   і       і   і   ColorFormat.c.o
+і   і       і   і   Esp.cpp.d
+і   і       і   і   Esp.cpp.o
+і   і       і   і   esp32-hal-adc.c.d
+і   і       і   і   esp32-hal-adc.c.o
+і   і       і   і   esp32-hal-bt.c.d
+і   і       і   і   esp32-hal-bt.c.o
+і   і       і   і   esp32-hal-cpu.c.d
+і   і       і   і   esp32-hal-cpu.c.o
+і   і       і   і   esp32-hal-dac.c.d
+і   і       і   і   esp32-hal-dac.c.o
+і   і       і   і   esp32-hal-gpio.c.d
+і   і       і   і   esp32-hal-gpio.c.o
+і   і       і   і   esp32-hal-i2c-slave.c.d
+і   і       і   і   esp32-hal-i2c-slave.c.o
+і   і       і   і   esp32-hal-i2c.c.d
+і   і       і   і   esp32-hal-i2c.c.o
+і   і       і   і   esp32-hal-ledc.c.d
+і   і       і   і   esp32-hal-ledc.c.o
+і   і       і   і   esp32-hal-matrix.c.d
+і   і       і   і   esp32-hal-matrix.c.o
+і   і       і   і   esp32-hal-misc.c.d
+і   і       і   і   esp32-hal-misc.c.o
+і   і       і   і   esp32-hal-periman.c.d
+і   і       і   і   esp32-hal-periman.c.o
+і   і       і   і   esp32-hal-psram.c.d
+і   і       і   і   esp32-hal-psram.c.o
+і   і       і   і   esp32-hal-rgb-led.c.d
+і   і       і   і   esp32-hal-rgb-led.c.o
+і   і       і   і   esp32-hal-rmt.c.d
+і   і       і   і   esp32-hal-rmt.c.o
+і   і       і   і   esp32-hal-sigmadelta.c.d
+і   і       і   і   esp32-hal-sigmadelta.c.o
+і   і       і   і   esp32-hal-spi.c.d
+і   і       і   і   esp32-hal-spi.c.o
+і   і       і   і   esp32-hal-time.c.d
+і   і       і   і   esp32-hal-time.c.o
+і   і       і   і   esp32-hal-timer.c.d
+і   і       і   і   esp32-hal-timer.c.o
+і   і       і   і   esp32-hal-tinyusb.c.d
+і   і       і   і   esp32-hal-tinyusb.c.o
+і   і       і   і   esp32-hal-touch-ng.c.d
+і   і       і   і   esp32-hal-touch-ng.c.o
+і   і       і   і   esp32-hal-touch.c.d
+і   і       і   і   esp32-hal-touch.c.o
+і   і       і   і   esp32-hal-uart.c.d
+і   і       і   і   esp32-hal-uart.c.o
+і   і       і   і   FirmwareMSC.cpp.d
+і   і       і   і   FirmwareMSC.cpp.o
+і   і       і   і   firmware_msc_fat.c.d
+і   і       і   і   firmware_msc_fat.c.o
+і   і       і   і   freertos_stats.cpp.d
+і   і       і   і   freertos_stats.cpp.o
+і   і       і   і   FunctionalInterrupt.cpp.d
+і   і       і   і   FunctionalInterrupt.cpp.o
+і   і       і   і   HardwareSerial.cpp.d
+і   і       і   і   HardwareSerial.cpp.o
+і   і       і   і   HEXBuilder.cpp.d
+і   і       і   і   HEXBuilder.cpp.o
+і   і       і   і   HWCDC.cpp.d
+і   і       і   і   HWCDC.cpp.o
+і   і       і   і   IPAddress.cpp.d
+і   і       і   і   IPAddress.cpp.o
+і   і       і   і   MacAddress.cpp.d
+і   і       і   і   MacAddress.cpp.o
+і   і       і   і   main.cpp.d
+і   і       і   і   main.cpp.o
+і   і       і   і   MD5Builder.cpp.d
+і   і       і   і   MD5Builder.cpp.o
+і   і       і   і   Print.cpp.d
+і   і       і   і   Print.cpp.o
+і   і       і   і   SHA1Builder.cpp.d
+і   і       і   і   SHA1Builder.cpp.o
+і   і       і   і   stdlib_noniso.c.d
+і   і       і   і   stdlib_noniso.c.o
+і   і       і   і   Stream.cpp.d
+і   і       і   і   Stream.cpp.o
+і   і       і   і   StreamString.cpp.d
+і   і       і   і   StreamString.cpp.o
+і   і       і   і   Tone.cpp.d
+і   і       і   і   Tone.cpp.o
+і   і       і   і   USB.cpp.d
+і   і       і   і   USB.cpp.o
+і   і       і   і   USBCDC.cpp.d
+і   і       і   і   USBCDC.cpp.o
+і   і       і   і   USBMSC.cpp.d
+і   і       і   і   USBMSC.cpp.o
+і   і       і   і   wiring_pulse.c.d
+і   і       і   і   wiring_pulse.c.o
+і   і       і   і   wiring_shift.c.d
+і   і       і   і   wiring_shift.c.o
+і   і       і   і   WMath.cpp.d
+і   і       і   і   WMath.cpp.o
+і   і       і   і   WString.cpp.d
+і   і       і   і   WString.cpp.o
+і   і       і   і   
+і   і       і   АДДДlibb64
+і   і       і           cdecode.c.d
+і   і       і           cdecode.c.o
+і   і       і           cencode.c.d
+і   і       і           cencode.c.o
+і   і       і           
+і   і       ГДДДlib094
+і   і       і   і   libPreferences.a
+і   і       і   і   
+і   і       і   АДДДPreferences
+і   і       і           Preferences.cpp.d
+і   і       і           Preferences.cpp.o
+і   і       і           
+і   і       ГДДДlib1c9
+і   і       і   і   liblvgl.a
+і   і       і   і   
+і   і       і   АДДДlvgl
+і   і       і       ГДДДcore
+і   і       і       і       lv_disp.c.d
+і   і       і       і       lv_disp.c.o
+і   і       і       і       lv_event.c.d
+і   і       і       і       lv_event.c.o
+і   і       і       і       lv_group.c.d
+і   і       і       і       lv_group.c.o
+і   і       і       і       lv_indev.c.d
+і   і       і       і       lv_indev.c.o
+і   і       і       і       lv_indev_scroll.c.d
+і   і       і       і       lv_indev_scroll.c.o
+і   і       і       і       lv_obj.c.d
+і   і       і       і       lv_obj.c.o
+і   і       і       і       lv_obj_class.c.d
+і   і       і       і       lv_obj_class.c.o
+і   і       і       і       lv_obj_draw.c.d
+і   і       і       і       lv_obj_draw.c.o
+і   і       і       і       lv_obj_pos.c.d
+і   і       і       і       lv_obj_pos.c.o
+і   і       і       і       lv_obj_scroll.c.d
+і   і       і       і       lv_obj_scroll.c.o
+і   і       і       і       lv_obj_style.c.d
+і   і       і       і       lv_obj_style.c.o
+і   і       і       і       lv_obj_style_gen.c.d
+і   і       і       і       lv_obj_style_gen.c.o
+і   і       і       і       lv_obj_tree.c.d
+і   і       і       і       lv_obj_tree.c.o
+і   і       і       і       lv_refr.c.d
+і   і       і       і       lv_refr.c.o
+і   і       і       і       lv_theme.c.d
+і   і       і       і       lv_theme.c.o
+і   і       і       і       
+і   і       і       ГДДДdraw
+і   і       і       і   і   lv_draw.c.d
+і   і       і       і   і   lv_draw.c.o
+і   і       і       і   і   lv_draw_arc.c.d
+і   і       і       і   і   lv_draw_arc.c.o
+і   і       і       і   і   lv_draw_img.c.d
+і   і       і       і   і   lv_draw_img.c.o
+і   і       і       і   і   lv_draw_label.c.d
+і   і       і       і   і   lv_draw_label.c.o
+і   і       і       і   і   lv_draw_layer.c.d
+і   і       і       і   і   lv_draw_layer.c.o
+і   і       і       і   і   lv_draw_line.c.d
+і   і       і       і   і   lv_draw_line.c.o
+і   і       і       і   і   lv_draw_mask.c.d
+і   і       і       і   і   lv_draw_mask.c.o
+і   і       і       і   і   lv_draw_rect.c.d
+і   і       і       і   і   lv_draw_rect.c.o
+і   і       і       і   і   lv_draw_transform.c.d
+і   і       і       і   і   lv_draw_transform.c.o
+і   і       і       і   і   lv_draw_triangle.c.d
+і   і       і       і   і   lv_draw_triangle.c.o
+і   і       і       і   і   lv_img_buf.c.d
+і   і       і       і   і   lv_img_buf.c.o
+і   і       і       і   і   lv_img_cache.c.d
+і   і       і       і   і   lv_img_cache.c.o
+і   і       і       і   і   lv_img_decoder.c.d
+і   і       і       і   і   lv_img_decoder.c.o
+і   і       і       і   і   
+і   і       і       і   ГДДДarm2d
+і   і       і       і   і       lv_gpu_arm2d.c.d
+і   і       і       і   і       lv_gpu_arm2d.c.o
+і   і       і       і   і       
+і   і       і       і   ГДДДnxp
+і   і       і       і   і   ГДДДpxp
+і   і       і       і   і   і       lv_draw_pxp.c.d
+і   і       і       і   і   і       lv_draw_pxp.c.o
+і   і       і       і   і   і       lv_draw_pxp_blend.c.d
+і   і       і       і   і   і       lv_draw_pxp_blend.c.o
+і   і       і       і   і   і       lv_gpu_nxp_pxp.c.d
+і   і       і       і   і   і       lv_gpu_nxp_pxp.c.o
+і   і       і       і   і   і       lv_gpu_nxp_pxp_osa.c.d
+і   і       і       і   і   і       lv_gpu_nxp_pxp_osa.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   АДДДvglite
+і   і       і       і   і           lv_draw_vglite.c.d
+і   і       і       і   і           lv_draw_vglite.c.o
+і   і       і       і   і           lv_draw_vglite_arc.c.d
+і   і       і       і   і           lv_draw_vglite_arc.c.o
+і   і       і       і   і           lv_draw_vglite_blend.c.d
+і   і       і       і   і           lv_draw_vglite_blend.c.o
+і   і       і       і   і           lv_draw_vglite_line.c.d
+і   і       і       і   і           lv_draw_vglite_line.c.o
+і   і       і       і   і           lv_draw_vglite_rect.c.d
+і   і       і       і   і           lv_draw_vglite_rect.c.o
+і   і       і       і   і           lv_vglite_buf.c.d
+і   і       і       і   і           lv_vglite_buf.c.o
+і   і       і       і   і           lv_vglite_utils.c.d
+і   і       і       і   і           lv_vglite_utils.c.o
+і   і       і       і   і           
+і   і       і       і   ГДДДrenesas
+і   і       і       і   і       lv_gpu_d2_draw_label.c.d
+і   і       і       і   і       lv_gpu_d2_draw_label.c.o
+і   і       і       і   і       lv_gpu_d2_ra6m3.c.d
+і   і       і       і   і       lv_gpu_d2_ra6m3.c.o
+і   і       і       і   і       
+і   і       і       і   ГДДДsdl
+і   і       і       і   і       lv_draw_sdl.c.d
+і   і       і       і   і       lv_draw_sdl.c.o
+і   і       і       і   і       lv_draw_sdl_arc.c.d
+і   і       і       і   і       lv_draw_sdl_arc.c.o
+і   і       і       і   і       lv_draw_sdl_bg.c.d
+і   і       і       і   і       lv_draw_sdl_bg.c.o
+і   і       і       і   і       lv_draw_sdl_composite.c.d
+і   і       і       і   і       lv_draw_sdl_composite.c.o
+і   і       і       і   і       lv_draw_sdl_img.c.d
+і   і       і       і   і       lv_draw_sdl_img.c.o
+і   і       і       і   і       lv_draw_sdl_label.c.d
+і   і       і       і   і       lv_draw_sdl_label.c.o
+і   і       і       і   і       lv_draw_sdl_layer.c.d
+і   і       і       і   і       lv_draw_sdl_layer.c.o
+і   і       і       і   і       lv_draw_sdl_line.c.d
+і   і       і       і   і       lv_draw_sdl_line.c.o
+і   і       і       і   і       lv_draw_sdl_mask.c.d
+і   і       і       і   і       lv_draw_sdl_mask.c.o
+і   і       і       і   і       lv_draw_sdl_polygon.c.d
+і   і       і       і   і       lv_draw_sdl_polygon.c.o
+і   і       і       і   і       lv_draw_sdl_rect.c.d
+і   і       і       і   і       lv_draw_sdl_rect.c.o
+і   і       і       і   і       lv_draw_sdl_stack_blur.c.d
+і   і       і       і   і       lv_draw_sdl_stack_blur.c.o
+і   і       і       і   і       lv_draw_sdl_texture_cache.c.d
+і   і       і       і   і       lv_draw_sdl_texture_cache.c.o
+і   і       і       і   і       lv_draw_sdl_utils.c.d
+і   і       і       і   і       lv_draw_sdl_utils.c.o
+і   і       і       і   і       
+і   і       і       і   ГДДДstm32_dma2d
+і   і       і       і   і       lv_gpu_stm32_dma2d.c.d
+і   і       і       і   і       lv_gpu_stm32_dma2d.c.o
+і   і       і       і   і       
+і   і       і       і   ГДДДsw
+і   і       і       і   і       lv_draw_sw.c.d
+і   і       і       і   і       lv_draw_sw.c.o
+і   і       і       і   і       lv_draw_sw_arc.c.d
+і   і       і       і   і       lv_draw_sw_arc.c.o
+і   і       і       і   і       lv_draw_sw_blend.c.d
+і   і       і       і   і       lv_draw_sw_blend.c.o
+і   і       і       і   і       lv_draw_sw_dither.c.d
+і   і       і       і   і       lv_draw_sw_dither.c.o
+і   і       і       і   і       lv_draw_sw_gradient.c.d
+і   і       і       і   і       lv_draw_sw_gradient.c.o
+і   і       і       і   і       lv_draw_sw_img.c.d
+і   і       і       і   і       lv_draw_sw_img.c.o
+і   і       і       і   і       lv_draw_sw_layer.c.d
+і   і       і       і   і       lv_draw_sw_layer.c.o
+і   і       і       і   і       lv_draw_sw_letter.c.d
+і   і       і       і   і       lv_draw_sw_letter.c.o
+і   і       і       і   і       lv_draw_sw_line.c.d
+і   і       і       і   і       lv_draw_sw_line.c.o
+і   і       і       і   і       lv_draw_sw_polygon.c.d
+і   і       і       і   і       lv_draw_sw_polygon.c.o
+і   і       і       і   і       lv_draw_sw_rect.c.d
+і   і       і       і   і       lv_draw_sw_rect.c.o
+і   і       і       і   і       lv_draw_sw_transform.c.d
+і   і       і       і   і       lv_draw_sw_transform.c.o
+і   і       і       і   і       
+і   і       і       і   АДДДswm341_dma2d
+і   і       і       і           lv_gpu_swm341_dma2d.c.d
+і   і       і       і           lv_gpu_swm341_dma2d.c.o
+і   і       і       і           
+і   і       і       ГДДДextra
+і   і       і       і   і   lv_extra.c.d
+і   і       і       і   і   lv_extra.c.o
+і   і       і       і   і   
+і   і       і       і   ГДДДlayouts
+і   і       і       і   і   ГДДДflex
+і   і       і       і   і   і       lv_flex.c.d
+і   і       і       і   і   і       lv_flex.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   АДДДgrid
+і   і       і       і   і           lv_grid.c.d
+і   і       і       і   і           lv_grid.c.o
+і   і       і       і   і           
+і   і       і       і   ГДДДlibs
+і   і       і       і   і   ГДДДbmp
+і   і       і       і   і   і       lv_bmp.c.d
+і   і       і       і   і   і       lv_bmp.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДffmpeg
+і   і       і       і   і   і       lv_ffmpeg.c.d
+і   і       і       і   і   і       lv_ffmpeg.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДfreetype
+і   і       і       і   і   і       lv_freetype.c.d
+і   і       і       і   і   і       lv_freetype.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДfsdrv
+і   і       і       і   і   і       lv_fs_fatfs.c.d
+і   і       і       і   і   і       lv_fs_fatfs.c.o
+і   і       і       і   і   і       lv_fs_littlefs.c.d
+і   і       і       і   і   і       lv_fs_littlefs.c.o
+і   і       і       і   і   і       lv_fs_posix.c.d
+і   і       і       і   і   і       lv_fs_posix.c.o
+і   і       і       і   і   і       lv_fs_stdio.c.d
+і   і       і       і   і   і       lv_fs_stdio.c.o
+і   і       і       і   і   і       lv_fs_win32.c.d
+і   і       і       і   і   і       lv_fs_win32.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДgif
+і   і       і       і   і   і       gifdec.c.d
+і   і       і       і   і   і       gifdec.c.o
+і   і       і       і   і   і       lv_gif.c.d
+і   і       і       і   і   і       lv_gif.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДpng
+і   і       і       і   і   і       lodepng.c.d
+і   і       і       і   і   і       lodepng.c.o
+і   і       і       і   і   і       lv_png.c.d
+і   і       і       і   і   і       lv_png.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДqrcode
+і   і       і       і   і   і       lv_qrcode.c.d
+і   і       і       і   і   і       lv_qrcode.c.o
+і   і       і       і   і   і       qrcodegen.c.d
+і   і       і       і   і   і       qrcodegen.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДrlottie
+і   і       і       і   і   і       lv_rlottie.c.d
+і   і       і       і   і   і       lv_rlottie.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДsjpg
+і   і       і       і   і   і       lv_sjpg.c.d
+і   і       і       і   і   і       lv_sjpg.c.o
+і   і       і       і   і   і       tjpgd.c.d
+і   і       і       і   і   і       tjpgd.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   АДДДtiny_ttf
+і   і       і       і   і           lv_tiny_ttf.c.d
+і   і       і       і   і           lv_tiny_ttf.c.o
+і   і       і       і   і           
+і   і       і       і   ГДДДothers
+і   і       і       і   і   ГДДДfragment
+і   і       і       і   і   і       lv_fragment.c.d
+і   і       і       і   і   і       lv_fragment.c.o
+і   і       і       і   і   і       lv_fragment_manager.c.d
+і   і       і       і   і   і       lv_fragment_manager.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДgridnav
+і   і       і       і   і   і       lv_gridnav.c.d
+і   і       і       і   і   і       lv_gridnav.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДime
+і   і       і       і   і   і       lv_ime_pinyin.c.d
+і   і       і       і   і   і       lv_ime_pinyin.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДimgfont
+і   і       і       і   і   і       lv_imgfont.c.d
+і   і       і       і   і   і       lv_imgfont.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДmonkey
+і   і       і       і   і   і       lv_monkey.c.d
+і   і       і       і   і   і       lv_monkey.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДmsg
+і   і       і       і   і   і       lv_msg.c.d
+і   і       і       і   і   і       lv_msg.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   АДДДsnapshot
+і   і       і       і   і           lv_snapshot.c.d
+і   і       і       і   і           lv_snapshot.c.o
+і   і       і       і   і           
+і   і       і       і   ГДДДthemes
+і   і       і       і   і   ГДДДbasic
+і   і       і       і   і   і       lv_theme_basic.c.d
+і   і       і       і   і   і       lv_theme_basic.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   ГДДДdefault
+і   і       і       і   і   і       lv_theme_default.c.d
+і   і       і       і   і   і       lv_theme_default.c.o
+і   і       і       і   і   і       
+і   і       і       і   і   АДДДmono
+і   і       і       і   і           lv_theme_mono.c.d
+і   і       і       і   і           lv_theme_mono.c.o
+і   і       і       і   і           
+і   і       і       і   АДДДwidgets
+і   і       і       і       ГДДДanimimg
+і   і       і       і       і       lv_animimg.c.d
+і   і       і       і       і       lv_animimg.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДcalendar
+і   і       і       і       і       lv_calendar.c.d
+і   і       і       і       і       lv_calendar.c.o
+і   і       і       і       і       lv_calendar_header_arrow.c.d
+і   і       і       і       і       lv_calendar_header_arrow.c.o
+і   і       і       і       і       lv_calendar_header_dropdown.c.d
+і   і       і       і       і       lv_calendar_header_dropdown.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДchart
+і   і       і       і       і       lv_chart.c.d
+і   і       і       і       і       lv_chart.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДcolorwheel
+і   і       і       і       і       lv_colorwheel.c.d
+і   і       і       і       і       lv_colorwheel.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДimgbtn
+і   і       і       і       і       lv_imgbtn.c.d
+і   і       і       і       і       lv_imgbtn.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДkeyboard
+і   і       і       і       і       lv_keyboard.c.d
+і   і       і       і       і       lv_keyboard.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДled
+і   і       і       і       і       lv_led.c.d
+і   і       і       і       і       lv_led.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДlist
+і   і       і       і       і       lv_list.c.d
+і   і       і       і       і       lv_list.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДmenu
+і   і       і       і       і       lv_menu.c.d
+і   і       і       і       і       lv_menu.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДmeter
+і   і       і       і       і       lv_meter.c.d
+і   і       і       і       і       lv_meter.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДmsgbox
+і   і       і       і       і       lv_msgbox.c.d
+і   і       і       і       і       lv_msgbox.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДspan
+і   і       і       і       і       lv_span.c.d
+і   і       і       і       і       lv_span.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДspinbox
+і   і       і       і       і       lv_spinbox.c.d
+і   і       і       і       і       lv_spinbox.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДspinner
+і   і       і       і       і       lv_spinner.c.d
+і   і       і       і       і       lv_spinner.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДtabview
+і   і       і       і       і       lv_tabview.c.d
+і   і       і       і       і       lv_tabview.c.o
+і   і       і       і       і       
+і   і       і       і       ГДДДtileview
+і   і       і       і       і       lv_tileview.c.d
+і   і       і       і       і       lv_tileview.c.o
+і   і       і       і       і       
+і   і       і       і       АДДДwin
+і   і       і       і               lv_win.c.d
+і   і       і       і               lv_win.c.o
+і   і       і       і               
+і   і       і       ГДДДfont
+і   і       і       і       lv_font.c.d
+і   і       і       і       lv_font.c.o
+і   і       і       і       lv_font_dejavu_16_persian_hebrew.c.d
+і   і       і       і       lv_font_dejavu_16_persian_hebrew.c.o
+і   і       і       і       lv_font_fmt_txt.c.d
+і   і       і       і       lv_font_fmt_txt.c.o
+і   і       і       і       lv_font_loader.c.d
+і   і       і       і       lv_font_loader.c.o
+і   і       і       і       lv_font_montserrat_10.c.d
+і   і       і       і       lv_font_montserrat_10.c.o
+і   і       і       і       lv_font_montserrat_12.c.d
+і   і       і       і       lv_font_montserrat_12.c.o
+і   і       і       і       lv_font_montserrat_12_subpx.c.d
+і   і       і       і       lv_font_montserrat_12_subpx.c.o
+і   і       і       і       lv_font_montserrat_14.c.d
+і   і       і       і       lv_font_montserrat_14.c.o
+і   і       і       і       lv_font_montserrat_16.c.d
+і   і       і       і       lv_font_montserrat_16.c.o
+і   і       і       і       lv_font_montserrat_18.c.d
+і   і       і       і       lv_font_montserrat_18.c.o
+і   і       і       і       lv_font_montserrat_20.c.d
+і   і       і       і       lv_font_montserrat_20.c.o
+і   і       і       і       lv_font_montserrat_22.c.d
+і   і       і       і       lv_font_montserrat_22.c.o
+і   і       і       і       lv_font_montserrat_24.c.d
+і   і       і       і       lv_font_montserrat_24.c.o
+і   і       і       і       lv_font_montserrat_26.c.d
+і   і       і       і       lv_font_montserrat_26.c.o
+і   і       і       і       lv_font_montserrat_28.c.d
+і   і       і       і       lv_font_montserrat_28.c.o
+і   і       і       і       lv_font_montserrat_28_compressed.c.d
+і   і       і       і       lv_font_montserrat_28_compressed.c.o
+і   і       і       і       lv_font_montserrat_30.c.d
+і   і       і       і       lv_font_montserrat_30.c.o
+і   і       і       і       lv_font_montserrat_32.c.d
+і   і       і       і       lv_font_montserrat_32.c.o
+і   і       і       і       lv_font_montserrat_34.c.d
+і   і       і       і       lv_font_montserrat_34.c.o
+і   і       і       і       lv_font_montserrat_36.c.d
+і   і       і       і       lv_font_montserrat_36.c.o
+і   і       і       і       lv_font_montserrat_38.c.d
+і   і       і       і       lv_font_montserrat_38.c.o
+і   і       і       і       lv_font_montserrat_40.c.d
+і   і       і       і       lv_font_montserrat_40.c.o
+і   і       і       і       lv_font_montserrat_42.c.d
+і   і       і       і       lv_font_montserrat_42.c.o
+і   і       і       і       lv_font_montserrat_44.c.d
+і   і       і       і       lv_font_montserrat_44.c.o
+і   і       і       і       lv_font_montserrat_46.c.d
+і   і       і       і       lv_font_montserrat_46.c.o
+і   і       і       і       lv_font_montserrat_48.c.d
+і   і       і       і       lv_font_montserrat_48.c.o
+і   і       і       і       lv_font_montserrat_8.c.d
+і   і       і       і       lv_font_montserrat_8.c.o
+і   і       і       і       lv_font_simsun_16_cjk.c.d
+і   і       і       і       lv_font_simsun_16_cjk.c.o
+і   і       і       і       lv_font_unscii_16.c.d
+і   і       і       і       lv_font_unscii_16.c.o
+і   і       і       і       lv_font_unscii_8.c.d
+і   і       і       і       lv_font_unscii_8.c.o
+і   і       і       і       
+і   і       і       ГДДДhal
+і   і       і       і       lv_hal_disp.c.d
+і   і       і       і       lv_hal_disp.c.o
+і   і       і       і       lv_hal_indev.c.d
+і   і       і       і       lv_hal_indev.c.o
+і   і       і       і       lv_hal_tick.c.d
+і   і       і       і       lv_hal_tick.c.o
+і   і       і       і       
+і   і       і       ГДДДmisc
+і   і       і       і       lv_anim.c.d
+і   і       і       і       lv_anim.c.o
+і   і       і       і       lv_anim_timeline.c.d
+і   і       і       і       lv_anim_timeline.c.o
+і   і       і       і       lv_area.c.d
+і   і       і       і       lv_area.c.o
+і   і       і       і       lv_async.c.d
+і   і       і       і       lv_async.c.o
+і   і       і       і       lv_bidi.c.d
+і   і       і       і       lv_bidi.c.o
+і   і       і       і       lv_color.c.d
+і   і       і       і       lv_color.c.o
+і   і       і       і       lv_fs.c.d
+і   і       і       і       lv_fs.c.o
+і   і       і       і       lv_gc.c.d
+і   і       і       і       lv_gc.c.o
+і   і       і       і       lv_ll.c.d
+і   і       і       і       lv_ll.c.o
+і   і       і       і       lv_log.c.d
+і   і       і       і       lv_log.c.o
+і   і       і       і       lv_lru.c.d
+і   і       і       і       lv_lru.c.o
+і   і       і       і       lv_math.c.d
+і   і       і       і       lv_math.c.o
+і   і       і       і       lv_mem.c.d
+і   і       і       і       lv_mem.c.o
+і   і       і       і       lv_printf.c.d
+і   і       і       і       lv_printf.c.o
+і   і       і       і       lv_style.c.d
+і   і       і       і       lv_style.c.o
+і   і       і       і       lv_style_gen.c.d
+і   і       і       і       lv_style_gen.c.o
+і   і       і       і       lv_templ.c.d
+і   і       і       і       lv_templ.c.o
+і   і       і       і       lv_timer.c.d
+і   і       і       і       lv_timer.c.o
+і   і       і       і       lv_tlsf.c.d
+і   і       і       і       lv_tlsf.c.o
+і   і       і       і       lv_txt.c.d
+і   і       і       і       lv_txt.c.o
+і   і       і       і       lv_txt_ap.c.d
+і   і       і       і       lv_txt_ap.c.o
+і   і       і       і       lv_utils.c.d
+і   і       і       і       lv_utils.c.o
+і   і       і       і       
+і   і       і       АДДДwidgets
+і   і       і               lv_arc.c.d
+і   і       і               lv_arc.c.o
+і   і       і               lv_bar.c.d
+і   і       і               lv_bar.c.o
+і   і       і               lv_btn.c.d
+і   і       і               lv_btn.c.o
+і   і       і               lv_btnmatrix.c.d
+і   і       і               lv_btnmatrix.c.o
+і   і       і               lv_canvas.c.d
+і   і       і               lv_canvas.c.o
+і   і       і               lv_checkbox.c.d
+і   і       і               lv_checkbox.c.o
+і   і       і               lv_dropdown.c.d
+і   і       і               lv_dropdown.c.o
+і   і       і               lv_img.c.d
+і   і       і               lv_img.c.o
+і   і       і               lv_label.c.d
+і   і       і               lv_label.c.o
+і   і       і               lv_line.c.d
+і   і       і               lv_line.c.o
+і   і       і               lv_objx_templ.c.d
+і   і       і               lv_objx_templ.c.o
+і   і       і               lv_roller.c.d
+і   і       і               lv_roller.c.o
+і   і       і               lv_slider.c.d
+і   і       і               lv_slider.c.o
+і   і       і               lv_switch.c.d
+і   і       і               lv_switch.c.o
+і   і       і               lv_table.c.d
+і   і       і               lv_table.c.o
+і   і       і               lv_textarea.c.d
+і   і       і               lv_textarea.c.o
+і   і       і               
+і   і       ГДДДlib240
+і   і       і   і   libNetwork.a
+і   і       і   і   
+і   і       і   АДДДNetwork
+і   і       і           NetworkClient.cpp.d
+і   і       і           NetworkClient.cpp.o
+і   і       і           NetworkEvents.cpp.d
+і   і       і           NetworkEvents.cpp.o
+і   і       і           NetworkInterface.cpp.d
+і   і       і           NetworkInterface.cpp.o
+і   і       і           NetworkManager.cpp.d
+і   і       і           NetworkManager.cpp.o
+і   і       і           NetworkServer.cpp.d
+і   і       і           NetworkServer.cpp.o
+і   і       і           NetworkUdp.cpp.d
+і   і       і           NetworkUdp.cpp.o
+і   і       і           
+і   і       ГДДДlib326
+і   і       і   і   libWiFi.a
+і   і       і   і   
+і   і       і   АДДДWiFi
+і   і       і           AP.cpp.d
+і   і       і           AP.cpp.o
+і   і       і           STA.cpp.d
+і   і       і           STA.cpp.o
+і   і       і           WiFi.cpp.d
+і   і       і           WiFi.cpp.o
+і   і       і           WiFiAP.cpp.d
+і   і       і           WiFiAP.cpp.o
+і   і       і           WiFiGeneric.cpp.d
+і   і       і           WiFiGeneric.cpp.o
+і   і       і           WiFiMulti.cpp.d
+і   і       і           WiFiMulti.cpp.o
+і   і       і           WiFiScan.cpp.d
+і   і       і           WiFiScan.cpp.o
+і   і       і           WiFiSTA.cpp.d
+і   і       і           WiFiSTA.cpp.o
+і   і       і           
+і   і       ГДДДlib3b9
+і   і       і   і   libGFX Library for Arduino.a
+і   і       і   і   
+і   і       і   АДДДGFX Library for Arduino
+і   і       і       і   Arduino_DataBus.cpp.d
+і   і       і       і   Arduino_DataBus.cpp.o
+і   і       і       і   Arduino_G.cpp.d
+і   і       і       і   Arduino_G.cpp.o
+і   і       і       і   Arduino_GFX.cpp.d
+і   і       і       і   Arduino_GFX.cpp.o
+і   і       і       і   Arduino_GFX_Library.cpp.d
+і   і       і       і   Arduino_GFX_Library.cpp.o
+і   і       і       і   Arduino_OLED.cpp.d
+і   і       і       і   Arduino_OLED.cpp.o
+і   і       і       і   Arduino_TFT.cpp.d
+і   і       і       і   Arduino_TFT.cpp.o
+і   і       і       і   Arduino_TFT_18bit.cpp.d
+і   і       і       і   Arduino_TFT_18bit.cpp.o
+і   і       і       і   
+і   і       і       ГДДДcanvas
+і   і       і       і       Arduino_Canvas.cpp.d
+і   і       і       і       Arduino_Canvas.cpp.o
+і   і       і       і       Arduino_Canvas_3bit.cpp.d
+і   і       і       і       Arduino_Canvas_3bit.cpp.o
+і   і       і       і       Arduino_Canvas_Indexed.cpp.d
+і   і       і       і       Arduino_Canvas_Indexed.cpp.o
+і   і       і       і       Arduino_Canvas_Mono.cpp.d
+і   і       і       і       Arduino_Canvas_Mono.cpp.o
+і   і       і       і       
+і   і       і       ГДДДdatabus
+і   і       і       і       Arduino_AVRPAR16.cpp.d
+і   і       і       і       Arduino_AVRPAR16.cpp.o
+і   і       і       і       Arduino_AVRPAR8.cpp.d
+і   і       і       і       Arduino_AVRPAR8.cpp.o
+і   і       і       і       Arduino_DUEPAR16.cpp.d
+і   і       і       і       Arduino_DUEPAR16.cpp.o
+і   і       і       і       Arduino_ESP32DSIPanel.cpp.d
+і   і       і       і       Arduino_ESP32DSIPanel.cpp.o
+і   і       і       і       Arduino_ESP32LCD16.cpp.d
+і   і       і       і       Arduino_ESP32LCD16.cpp.o
+і   і       і       і       Arduino_ESP32LCD8.cpp.d
+і   і       і       і       Arduino_ESP32LCD8.cpp.o
+і   і       і       і       Arduino_ESP32PAR16.cpp.d
+і   і       і       і       Arduino_ESP32PAR16.cpp.o
+і   і       і       і       Arduino_ESP32PAR16Q.cpp.d
+і   і       і       і       Arduino_ESP32PAR16Q.cpp.o
+і   і       і       і       Arduino_ESP32PAR16QQ.cpp.d
+і   і       і       і       Arduino_ESP32PAR16QQ.cpp.o
+і   і       і       і       Arduino_ESP32PAR8.cpp.d
+і   і       і       і       Arduino_ESP32PAR8.cpp.o
+і   і       і       і       Arduino_ESP32PAR8Q.cpp.d
+і   і       і       і       Arduino_ESP32PAR8Q.cpp.o
+і   і       і       і       Arduino_ESP32PAR8QQ.cpp.d
+і   і       і       і       Arduino_ESP32PAR8QQ.cpp.o
+і   і       і       і       Arduino_ESP32PAR8QQQ.cpp.d
+і   і       і       і       Arduino_ESP32PAR8QQQ.cpp.o
+і   і       і       і       Arduino_ESP32QSPI.cpp.d
+і   і       і       і       Arduino_ESP32QSPI.cpp.o
+і   і       і       і       Arduino_ESP32RGBPanel.cpp.d
+і   і       і       і       Arduino_ESP32RGBPanel.cpp.o
+і   і       і       і       Arduino_ESP32S2PAR16.cpp.d
+і   і       і       і       Arduino_ESP32S2PAR16.cpp.o
+і   і       і       і       Arduino_ESP32S2PAR16Q.cpp.d
+і   і       і       і       Arduino_ESP32S2PAR16Q.cpp.o
+і   і       і       і       Arduino_ESP32S2PAR8.cpp.d
+і   і       і       і       Arduino_ESP32S2PAR8.cpp.o
+і   і       і       і       Arduino_ESP32S2PAR8Q.cpp.d
+і   і       і       і       Arduino_ESP32S2PAR8Q.cpp.o
+і   і       і       і       Arduino_ESP32SPI.cpp.d
+і   і       і       і       Arduino_ESP32SPI.cpp.o
+і   і       і       і       Arduino_ESP32SPIDMA.cpp.d
+і   і       і       і       Arduino_ESP32SPIDMA.cpp.o
+і   і       і       і       Arduino_ESP8266SPI.cpp.d
+і   і       і       і       Arduino_ESP8266SPI.cpp.o
+і   і       і       і       Arduino_HWSPI.cpp.d
+і   і       і       і       Arduino_HWSPI.cpp.o
+і   і       і       і       Arduino_mbedSPI.cpp.d
+і   і       і       і       Arduino_mbedSPI.cpp.o
+і   і       і       і       Arduino_NRFXSPI.cpp.d
+і   і       і       і       Arduino_NRFXSPI.cpp.o
+і   і       і       і       Arduino_RPiPicoPAR16.cpp.d
+і   і       і       і       Arduino_RPiPicoPAR16.cpp.o
+і   і       і       і       Arduino_RPiPicoPAR8.cpp.d
+і   і       і       і       Arduino_RPiPicoPAR8.cpp.o
+і   і       і       і       Arduino_RPiPicoSPI.cpp.d
+і   і       і       і       Arduino_RPiPicoSPI.cpp.o
+і   і       і       і       Arduino_RTLPAR8.cpp.d
+і   і       і       і       Arduino_RTLPAR8.cpp.o
+і   і       і       і       Arduino_STM32PAR8.cpp.d
+і   і       і       і       Arduino_STM32PAR8.cpp.o
+і   і       і       і       Arduino_SWPAR16.cpp.d
+і   і       і       і       Arduino_SWPAR16.cpp.o
+і   і       і       і       Arduino_SWPAR8.cpp.d
+і   і       і       і       Arduino_SWPAR8.cpp.o
+і   і       і       і       Arduino_SWSPI.cpp.d
+і   і       і       і       Arduino_SWSPI.cpp.o
+і   і       і       і       Arduino_UNOPAR8.cpp.d
+і   і       і       і       Arduino_UNOPAR8.cpp.o
+і   і       і       і       Arduino_Wire.cpp.d
+і   і       і       і       Arduino_Wire.cpp.o
+і   і       і       і       Arduino_XCA9554SWSPI.cpp.d
+і   і       і       і       Arduino_XCA9554SWSPI.cpp.o
+і   і       і       і       Arduino_XL9535SWSPI.cpp.d
+і   і       і       і       Arduino_XL9535SWSPI.cpp.o
+і   і       і       і       
+і   і       і       АДДДdisplay
+і   і       і               Arduino_AXS15231B.cpp.d
+і   і       і               Arduino_AXS15231B.cpp.o
+і   і       і               Arduino_CO5300.cpp.d
+і   і       і               Arduino_CO5300.cpp.o
+і   і       і               Arduino_DSI_Display.cpp.d
+і   і       і               Arduino_DSI_Display.cpp.o
+і   і       і               Arduino_GC9106.cpp.d
+і   і       і               Arduino_GC9106.cpp.o
+і   і       і               Arduino_GC9107.cpp.d
+і   і       і               Arduino_GC9107.cpp.o
+і   і       і               Arduino_GC9A01.cpp.d
+і   і       і               Arduino_GC9A01.cpp.o
+і   і       і               Arduino_GC9C01.cpp.d
+і   і       і               Arduino_GC9C01.cpp.o
+і   і       і               Arduino_GC9D01.cpp.d
+і   і       і               Arduino_GC9D01.cpp.o
+і   і       і               Arduino_HX8347C.cpp.d
+і   і       і               Arduino_HX8347C.cpp.o
+і   і       і               Arduino_HX8347D.cpp.d
+і   і       і               Arduino_HX8347D.cpp.o
+і   і       і               Arduino_HX8352C.cpp.d
+і   і       і               Arduino_HX8352C.cpp.o
+і   і       і               Arduino_HX8357A.cpp.d
+і   і       і               Arduino_HX8357A.cpp.o
+і   і       і               Arduino_HX8357B.cpp.d
+і   і       і               Arduino_HX8357B.cpp.o
+і   і       і               Arduino_HX8369A.cpp.d
+і   і       і               Arduino_HX8369A.cpp.o
+і   і       і               Arduino_ILI9225.cpp.d
+і   і       і               Arduino_ILI9225.cpp.o
+і   і       і               Arduino_ILI9331.cpp.d
+і   і       і               Arduino_ILI9331.cpp.o
+і   і       і               Arduino_ILI9341.cpp.d
+і   і       і               Arduino_ILI9341.cpp.o
+і   і       і               Arduino_ILI9342.cpp.d
+і   і       і               Arduino_ILI9342.cpp.o
+і   і       і               Arduino_ILI9481_18bit.cpp.d
+і   і       і               Arduino_ILI9481_18bit.cpp.o
+і   і       і               Arduino_ILI9486.cpp.d
+і   і       і               Arduino_ILI9486.cpp.o
+і   і       і               Arduino_ILI9486_18bit.cpp.d
+і   і       і               Arduino_ILI9486_18bit.cpp.o
+і   і       і               Arduino_ILI9488.cpp.d
+і   і       і               Arduino_ILI9488.cpp.o
+і   і       і               Arduino_ILI9488_18bit.cpp.d
+і   і       і               Arduino_ILI9488_18bit.cpp.o
+і   і       і               Arduino_ILI9488_3bit.cpp.d
+і   і       і               Arduino_ILI9488_3bit.cpp.o
+і   і       і               Arduino_ILI9806.cpp.d
+і   і       і               Arduino_ILI9806.cpp.o
+і   і       і               Arduino_JBT6K71.cpp.d
+і   і       і               Arduino_JBT6K71.cpp.o
+і   і       і               Arduino_JD9613.cpp.d
+і   і       і               Arduino_JD9613.cpp.o
+і   і       і               Arduino_NT35310.cpp.d
+і   і       і               Arduino_NT35310.cpp.o
+і   і       і               Arduino_NT35510.cpp.d
+і   і       і               Arduino_NT35510.cpp.o
+і   і       і               Arduino_NT39125.cpp.d
+і   і       і               Arduino_NT39125.cpp.o
+і   і       і               Arduino_NV3007.cpp.d
+і   і       і               Arduino_NV3007.cpp.o
+і   і       і               Arduino_NV3023.cpp.d
+і   і       і               Arduino_NV3023.cpp.o
+і   і       і               Arduino_NV3041A.cpp.d
+і   і       і               Arduino_NV3041A.cpp.o
+і   і       і               Arduino_OTM8009A.cpp.d
+і   і       і               Arduino_OTM8009A.cpp.o
+і   і       і               Arduino_R61529.cpp.d
+і   і       і               Arduino_R61529.cpp.o
+і   і       і               Arduino_RGB_Display.cpp.d
+і   і       і               Arduino_RGB_Display.cpp.o
+і   і       і               Arduino_RM67162.cpp.d
+і   і       і               Arduino_RM67162.cpp.o
+і   і       і               Arduino_RM690B0.cpp.d
+і   і       і               Arduino_RM690B0.cpp.o
+і   і       і               Arduino_SEPS525.cpp.d
+і   і       і               Arduino_SEPS525.cpp.o
+і   і       і               Arduino_SH1106.cpp.d
+і   і       і               Arduino_SH1106.cpp.o
+і   і       і               Arduino_SH8601.cpp.d
+і   і       і               Arduino_SH8601.cpp.o
+і   і       і               Arduino_SPD2010.cpp.d
+і   і       і               Arduino_SPD2010.cpp.o
+і   і       і               Arduino_SSD1283A.cpp.d
+і   і       і               Arduino_SSD1283A.cpp.o
+і   і       і               Arduino_SSD1306.cpp.d
+і   і       і               Arduino_SSD1306.cpp.o
+і   і       і               Arduino_SSD1331.cpp.d
+і   і       і               Arduino_SSD1331.cpp.o
+і   і       і               Arduino_SSD1351.cpp.d
+і   і       і               Arduino_SSD1351.cpp.o
+і   і       і               Arduino_SSD1357.cpp.d
+і   і       і               Arduino_SSD1357.cpp.o
+і   і       і               Arduino_ST7735.cpp.d
+і   і       і               Arduino_ST7735.cpp.o
+і   і       і               Arduino_ST7789.cpp.d
+і   і       і               Arduino_ST7789.cpp.o
+і   і       і               Arduino_ST77916.cpp.d
+і   і       і               Arduino_ST77916.cpp.o
+і   і       і               Arduino_ST7796.cpp.d
+і   і       і               Arduino_ST7796.cpp.o
+і   і       і               Arduino_WEA2012.cpp.d
+і   і       і               Arduino_WEA2012.cpp.o
+і   і       і               
+і   і       ГДДДlib6a0
+і   і       і   і   libAsyncTCP.a
+і   і       і   і   
+і   і       і   АДДДAsyncTCP
+і   і       і           AsyncTCP.cpp.d
+і   і       і           AsyncTCP.cpp.o
+і   і       і           
+і   і       ГДДДlib6dc
+і   і       і   і   libESPAsyncWebServer.a
+і   і       і   і   
+і   і       і   АДДДESPAsyncWebServer
+і   і       і           AsyncEventSource.cpp.d
+і   і       і           AsyncEventSource.cpp.o
+і   і       і           AsyncJson.cpp.d
+і   і       і           AsyncJson.cpp.o
+і   і       і           AsyncWebHeader.cpp.d
+і   і       і           AsyncWebHeader.cpp.o
+і   і       і           AsyncWebServerRequest.cpp.d
+і   і       і           AsyncWebServerRequest.cpp.o
+і   і       і           AsyncWebSocket.cpp.d
+і   і       і           AsyncWebSocket.cpp.o
+і   і       і           BackPort_SHA1Builder.cpp.d
+і   і       і           BackPort_SHA1Builder.cpp.o
+і   і       і           ChunkPrint.cpp.d
+і   і       і           ChunkPrint.cpp.o
+і   і       і           Middleware.cpp.d
+і   і       і           Middleware.cpp.o
+і   і       і           WebAuthentication.cpp.d
+і   і       і           WebAuthentication.cpp.o
+і   і       і           WebHandlers.cpp.d
+і   і       і           WebHandlers.cpp.o
+і   і       і           WebRequest.cpp.d
+і   і       і           WebRequest.cpp.o
+і   і       і           WebResponses.cpp.d
+і   і       і           WebResponses.cpp.o
+і   і       і           WebServer.cpp.d
+і   і       і           WebServer.cpp.o
+і   і       і           
+і   і       ГДДДlib7fe
+і   і       і   і   libFS.a
+і   і       і   і   
+і   і       і   АДДДFS
+і   і       і           FS.cpp.d
+і   і       і           FS.cpp.o
+і   і       і           vfs_api.cpp.d
+і   і       і           vfs_api.cpp.o
+і   і       і           
+і   і       ГДДДlib811
+і   і       і   і   libWire.a
+і   і       і   і   
+і   і       і   АДДДWire
+і   і       і           Wire.cpp.d
+і   і       і           Wire.cpp.o
+і   і       і           
+і   і       ГДДДlibdfc
+і   і       і   і   libSPI.a
+і   і       і   і   
+і   і       і   АДДДSPI
+і   і       і           SPI.cpp.d
+і   і       і           SPI.cpp.o
+і   і       і           
+і   і       ГДДДlibe20
+і   і       і   і   libLittleFS.a
+і   і       і   і   
+і   і       і   АДДДLittleFS
+і   і       і           LittleFS.cpp.d
+і   і       і           LittleFS.cpp.o
+і   і       і           
+і   і       АДДДsrc
+і   і           і   display.cpp.d
+і   і           і   display.cpp.o
+і   і           і   lvgl_port.cpp.d
+і   і           і   lvgl_port.cpp.o
+і   і           і   main.cpp.d
+і   і           і   main.cpp.o
+і   і           і   
+і   і           ГДДДbusiness
+і   і           і       business_time.cpp.d
+і   і           і       business_time.cpp.o
+і   і           і       
+і   і           ГДДДclock
+і   і           і       clock_engine.cpp.d
+і   і           і       clock_engine.cpp.o
+і   і           і       dst_engine.cpp.d
+і   і           і       dst_engine.cpp.o
+і   і           і       timezone.cpp.d
+і   і           і       timezone.cpp.o
+і   і           і       timezones_db.cpp.d
+і   і           і       timezones_db.cpp.o
+і   і           і       
+і   і           ГДДДgui
+і   і           і       screen_main.cpp.d
+і   і           і       screen_main.cpp.o
+і   і           і       
+і   і           ГДДДnetwork
+і   і           і       web_handlers.cpp.d
+і   і           і       web_handlers.cpp.o
+і   і           і       web_pages.cpp.d
+і   і           і       web_pages.cpp.o
+і   і           і       wifi_ap.cpp.d
+і   і           і       wifi_ap.cpp.o
+і   і           і       wifi_manager.cpp.d
+і   і           і       wifi_manager.cpp.o
+і   і           і       wifi_sta.cpp.d
+і   і           і       wifi_sta.cpp.o
+і   і           і       
+і   і           ГДДДntp
+і   і           і       ntp_manager.cpp.d
+і   і           і       ntp_manager.cpp.o
+і   і           і       
+і   і           ГДДДstorage
+і   і           і       preferences_manager.cpp.d
+і   і           і       preferences_manager.cpp.o
+і   і           і       
+і   і           АДДДweb
+і   і               і   filesystem.cpp.d
+і   і               і   filesystem.cpp.o
+і   і               і   web_api.cpp.d
+і   і               і   web_api.cpp.o
+і   і               і   web_handlers.cpp.d
+і   і               і   web_handlers.cpp.o
+і   і               і   web_routes.cpp.d
+і   і               і   web_routes.cpp.o
+і   і               і   web_server.cpp.d
+і   і               і   web_server.cpp.o
+і   і               і   
+і   і               АДДДpages
+і   і                       page_about.cpp.d
+і   і                       page_about.cpp.o
+і   і                       page_clocks.cpp.d
+і   і                       page_clocks.cpp.o
+і   і                       page_home.cpp.d
+і   і                       page_home.cpp.o
+і   і                       page_network.cpp.d
+і   і                       page_network.cpp.o
+і   і                       page_system.cpp.d
+і   і                       page_system.cpp.o
+і   і                       
+і   АДДДlibdeps
+і       АДДДJC4827W543
+і           і   integrity.dat
+і           і   
+і           ГДДДArduinoJson
+і           і   і   .piopm
+і           і   і   ArduinoJson.h
+і           і   і   library.json
+і           і   і   library.properties
+і           і   і   LICENSE.txt
+і           і   і   README.md
+і           і   і   
+і           і   ГДДДexamples
+і           і   і   ГДДДJsonConfigFile
+і           і   і   і       JsonConfigFile.ino
+і           і   і   і       
+і           і   і   ГДДДJsonFilterExample
+і           і   і   і       JsonFilterExample.ino
+і           і   і   і       
+і           і   і   ГДДДJsonGeneratorExample
+і           і   і   і       JsonGeneratorExample.ino
+і           і   і   і       
+і           і   і   ГДДДJsonHttpClient
+і           і   і   і       JsonHttpClient.ino
+і           і   і   і       
+і           і   і   ГДДДJsonParserExample
+і           і   і   і       JsonParserExample.ino
+і           і   і   і       
+і           і   і   ГДДДJsonServer
+і           і   і   і       JsonServer.ino
+і           і   і   і       
+і           і   і   ГДДДJsonUdpBeacon
+і           і   і   і       JsonUdpBeacon.ino
+і           і   і   і       
+і           і   і   ГДДДMsgPackParser
+і           і   і   і       MsgPackParser.ino
+і           і   і   і       
+і           і   і   ГДДДProgmemExample
+і           і   і   і       ProgmemExample.ino
+і           і   і   і       
+і           і   і   АДДДStringExample
+і           і   і           StringExample.ino
+і           і   і           
+і           і   АДДДsrc
+і           і       і   ArduinoJson.h
+і           і       і   ArduinoJson.hpp
+і           і       і   CMakeLists.txt
+і           і       і   
+і           і       АДДДArduinoJson
+і           і           і   compatibility.hpp
+і           і           і   Configuration.hpp
+і           і           і   Namespace.hpp
+і           і           і   version.hpp
+і           і           і   
+і           і           ГДДДArray
+і           і           і       ArrayData.hpp
+і           і           і       ArrayImpl.hpp
+і           і           і       ElementProxy.hpp
+і           і           і       JsonArray.hpp
+і           і           і       JsonArrayConst.hpp
+і           і           і       JsonArrayIterator.hpp
+і           і           і       Utilities.hpp
+і           і           і       
+і           і           ГДДДCollection
+і           і           і       CollectionData.hpp
+і           і           і       CollectionImpl.hpp
+і           і           і       
+і           і           ГДДДDeserialization
+і           і           і   і   DeserializationError.hpp
+і           і           і   і   DeserializationOptions.hpp
+і           і           і   і   deserialize.hpp
+і           і           і   і   Filter.hpp
+і           і           і   і   NestingLimit.hpp
+і           і           і   і   Reader.hpp
+і           і           і   і   
+і           і           і   АДДДReaders
+і           і           і           ArduinoStreamReader.hpp
+і           і           і           ArduinoStringReader.hpp
+і           і           і           FlashReader.hpp
+і           і           і           IteratorReader.hpp
+і           і           і           RamReader.hpp
+і           і           і           StdStreamReader.hpp
+і           і           і           VariantReader.hpp
+і           і           і           
+і           і           ГДДДDocument
+і           і           і       JsonDocument.hpp
+і           і           і       
+і           і           ГДДДJson
+і           і           і       EscapeSequence.hpp
+і           і           і       JsonDeserializer.hpp
+і           і           і       JsonSerializer.hpp
+і           і           і       Latch.hpp
+і           і           і       PrettyJsonSerializer.hpp
+і           і           і       TextFormatter.hpp
+і           і           і       Utf16.hpp
+і           і           і       Utf8.hpp
+і           і           і       
+і           і           ГДДДMemory
+і           і           і       Alignment.hpp
+і           і           і       Allocator.hpp
+і           і           і       MemoryPool.hpp
+і           і           і       MemoryPoolList.hpp
+і           і           і       ResourceManager.hpp
+і           і           і       ResourceManagerImpl.hpp
+і           і           і       StringBuffer.hpp
+і           і           і       StringBuilder.hpp
+і           і           і       StringNode.hpp
+і           і           і       StringPool.hpp
+і           і           і       
+і           і           ГДДДMisc
+і           і           і       SerializedValue.hpp
+і           і           і       
+і           і           ГДДДMsgPack
+і           і           і       endianness.hpp
+і           і           і       ieee754.hpp
+і           і           і       MsgPackBinary.hpp
+і           і           і       MsgPackDeserializer.hpp
+і           і           і       MsgPackExtension.hpp
+і           і           і       MsgPackSerializer.hpp
+і           і           і       
+і           і           ГДДДNumbers
+і           і           і       arithmeticCompare.hpp
+і           і           і       convertNumber.hpp
+і           і           і       FloatParts.hpp
+і           і           і       FloatTraits.hpp
+і           і           і       JsonFloat.hpp
+і           і           і       JsonInteger.hpp
+і           і           і       parseNumber.hpp
+і           і           і       
+і           і           ГДДДObject
+і           і           і       JsonObject.hpp
+і           і           і       JsonObjectConst.hpp
+і           і           і       JsonObjectIterator.hpp
+і           і           і       JsonPair.hpp
+і           і           і       MemberProxy.hpp
+і           і           і       ObjectData.hpp
+і           і           і       ObjectImpl.hpp
+і           і           і       
+і           і           ГДДДPolyfills
+і           і           і   і   alias_cast.hpp
+і           і           і   і   assert.hpp
+і           і           і   і   attributes.hpp
+і           і           і   і   ctype.hpp
+і           і           і   і   integer.hpp
+і           і           і   і   limits.hpp
+і           і           і   і   math.hpp
+і           і           і   і   pgmspace.hpp
+і           і           і   і   pgmspace_generic.hpp
+і           і           і   і   preprocessor.hpp
+і           і           і   і   type_traits.hpp
+і           і           і   і   utility.hpp
+і           і           і   і   
+і           і           і   ГДДДmpl
+і           і           і   і       max.hpp
+і           і           і   і       
+і           і           і   АДДДtype_traits
+і           і           і           conditional.hpp
+і           і           і           decay.hpp
+і           і           і           declval.hpp
+і           і           і           enable_if.hpp
+і           і           і           function_traits.hpp
+і           і           і           integral_constant.hpp
+і           і           і           is_array.hpp
+і           і           і           is_base_of.hpp
+і           і           і           is_class.hpp
+і           і           і           is_const.hpp
+і           і           і           is_convertible.hpp
+і           і           і           is_enum.hpp
+і           і           і           is_floating_point.hpp
+і           і           і           is_integral.hpp
+і           і           і           is_pointer.hpp
+і           і           і           is_same.hpp
+і           і           і           is_signed.hpp
+і           і           і           is_unsigned.hpp
+і           і           і           make_unsigned.hpp
+і           і           і           remove_const.hpp
+і           і           і           remove_cv.hpp
+і           і           і           remove_reference.hpp
+і           і           і           type_identity.hpp
+і           і           і           void_t.hpp
+і           і           і           
+і           і           ГДДДSerialization
+і           і           і   і   CountingDecorator.hpp
+і           і           і   і   measure.hpp
+і           і           і   і   serialize.hpp
+і           і           і   і   Writer.hpp
+і           і           і   і   
+і           і           і   АДДДWriters
+і           і           і           ArduinoStringWriter.hpp
+і           і           і           DummyWriter.hpp
+і           і           і           PrintWriter.hpp
+і           і           і           StaticStringWriter.hpp
+і           і           і           StdStreamWriter.hpp
+і           і           і           StdStringWriter.hpp
+і           і           і           
+і           і           ГДДДStrings
+і           і           і   і   IsString.hpp
+і           і           і   і   JsonString.hpp
+і           і           і   і   StringAdapter.hpp
+і           і           і   і   StringAdapters.hpp
+і           і           і   і   StringTraits.hpp
+і           і           і   і   
+і           і           і   АДДДAdapters
+і           і           і           FlashString.hpp
+і           і           і           RamString.hpp
+і           і           і           StringObject.hpp
+і           і           і           
+і           і           АДДДVariant
+і           і                   Converter.hpp
+і           і                   ConverterImpl.hpp
+і           і                   JsonVariant.hpp
+і           і                   JsonVariantConst.hpp
+і           і                   JsonVariantCopier.hpp
+і           і                   JsonVariantVisitor.hpp
+і           і                   VariantAttorney.hpp
+і           і                   VariantCompare.hpp
+і           і                   VariantContent.hpp
+і           і                   VariantData.hpp
+і           і                   VariantDataVisitor.hpp
+і           і                   VariantImpl.hpp
+і           і                   VariantOperators.hpp
+і           і                   VariantRefBase.hpp
+і           і                   VariantRefBaseImpl.hpp
+і           і                   VariantTag.hpp
+і           і                   VariantTo.hpp
+і           і                   
+і           ГДДДAsyncTCP
+і           і   і   .piopm
+і           і   і   library.json
+і           і   і   library.properties
+і           і   і   LICENSE
+і           і   і   README.md
+і           і   і   
+і           і   ГДДДexamples
+і           і   і   ГДДДAsyncSend
+і           і   і   і       AsyncSend.ino
+і           і   і   і       
+і           і   і   ГДДДChargenServer
+і           і   і   і       ChargenServer.ino
+і           і   і   і       
+і           і   і   ГДДДClient
+і           і   і   і       Client.ino
+і           і   і   і       
+і           і   і   АДДДFetchWebsite
+і           і   і           FetchWebsite.ino
+і           і   і           
+і           і   АДДДsrc
+і           і           AsyncTCP.cpp
+і           і           AsyncTCP.h
+і           і           AsyncTCPLogging.h
+і           і           AsyncTCPSimpleIntrusiveList.h
+і           і           AsyncTCPVersion.h
+і           і           
+і           ГДДДESPAsyncWebServer
+і           і   і   .piopm
+і           і   і   library.json
+і           і   і   library.properties
+і           і   і   LICENSE
+і           і   і   README.md
+і           і   і   
+і           і   ГДДДexamples
+і           і   і   ГДДДarduino
+і           і   і   і   ГДДДAsyncResponseStream
+і           і   і   і   і       AsyncResponseStream.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДAsyncTunnel
+і           і   і   і   і       AsyncTunnel.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДAuth
+і           і   і   і   і       Auth.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДCaptivePortal
+і           і   і   і   і       CaptivePortal.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДCatchAllHandler
+і           і   і   і   і       CatchAllHandler.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДChunkRequest
+і           і   і   і   і       ChunkRequest.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДChunkResponse
+і           і   і   і   і       ChunkResponse.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДChunkRetryResponse
+і           і   і   і   і       ChunkRetryResponse.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДCORS
+і           і   і   і   і       CORS.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДEndBegin
+і           і   і   і   і       EndBegin.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДFilters
+і           і   і   і   і       Filters.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДFlashResponse
+і           і   і   і   і       FlashResponse.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДHeaderManipulation
+і           і   і   і   і       HeaderManipulation.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДHeaders
+і           і   і   і   і       Headers.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДHTTPMethodsWithArduino
+і           і   і   і   і       HTTPMethodsWithArduino.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДHTTPMethodsWithESPIDF
+і           і   і   і   і       HTTPMethodsWithESPIDF.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДJson
+і           і   і   і   і       Json.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДLargeResponse
+і           і   і   і   і       LargeResponse.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДLogging
+і           і   і   і   і       Logging.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДMessagePack
+і           і   і   і   і       MessagePack.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДMiddleware
+і           і   і   і   і       Middleware.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДMultiPart
+і           і   і   і   і       MultiPart.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДParams
+і           і   і   і   і       Params.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДPartitionDownloader
+і           і   і   і   і       PartitionDownloader.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДPerfTests
+і           і   і   і   і       PerfTests.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДRateLimit
+і           і   і   і   і       RateLimit.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДRedirect
+і           і   і   і   і       Redirect.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДRequestContinuation
+і           і   і   і   і       RequestContinuation.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДRequestContinuationComplete
+і           і   і   і   і       RequestContinuationComplete.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДResumableDownload
+і           і   і   і   і       ResumableDownload.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДRewrite
+і           і   і   і   і       Rewrite.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДServerSentEvents
+і           і   і   і   і       ServerSentEvents.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДServerSentEvents_PR156
+і           і   і   і   і       ServerSentEvents_PR156.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДServerState
+і           і   і   і   і       ServerState.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДSkipServerMiddleware
+і           і   і   і   і       SkipServerMiddleware.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДSlowChunkResponse
+і           і   і   і   і       SlowChunkResponse.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДStaticFile
+і           і   і   і   і       StaticFile.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДTemplates
+і           і   і   і   і       Templates.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДUpload
+і           і   і   і   і       Upload.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДUploadFlash
+і           і   і   і   і       UploadFlash.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДURIMatcher
+і           і   і   і   і       README.md
+і           і   і   і   і       URIMatcher.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДURIMatcherTest
+і           і   і   і   і       test_routes.sh
+і           і   і   і   і       URIMatcherTest.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДWebDAVMethods
+і           і   і   і   і       WebDAVMethods.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДWebSocket
+і           і   і   і   і       WebSocket.ino
+і           і   і   і   і       
+і           і   і   і   АДДДWebSocketEasy
+і           і   і   і           WebSocketEasy.ino
+і           і   і   і           
+і           і   і   ГДДДarduino_emulator
+і           і   і   і       CMakeLists.txt
+і           і   і   і       FS.cpp
+і           і   і   і       FS.h
+і           і   і   і       FSImpl.h
+і           і   і   і       main.cpp
+і           і   і   і       README_FS.md
+і           і   і   і       
+і           і   і   ГДДДidf_component
+і           і   і   і   ГДДДcatchall
+і           і   і   і   і   і   CMakeLists.txt
+і           і   і   і   і   і   README.md
+і           і   і   і   і   і   sdkconfig.defaults
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДmain
+і           і   і   і   і           CMakeLists.txt
+і           і   і   і   і           idf_component.yml
+і           і   і   і   і           main.cpp
+і           і   і   і   і           
+і           і   і   і   ГДДДserversentevents
+і           і   і   і   і   і   CMakeLists.txt
+і           і   і   і   і   і   README.md
+і           і   і   і   і   і   sdkconfig.defaults
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДmain
+і           і   і   і   і           CMakeLists.txt
+і           і   і   і   і           idf_component.yml
+і           і   і   і   і           main.cpp
+і           і   і   і   і           
+і           і   і   і   АДДДwebsocket
+і           і   і   і       і   CMakeLists.txt
+і           і   і   і       і   README.md
+і           і   і   і       і   sdkconfig.defaults
+і           і   і   і       і   
+і           і   і   і       АДДДmain
+і           і   і   і               CMakeLists.txt
+і           і   і   і               idf_component.yml
+і           і   і   і               main.cpp
+і           і   і   і               
+і           і   і   АДДДpioarduino
+і           і   і       АДДДIncreaseMaxSockets
+і           і   і           і   .gitignore
+і           і   і           і   platformio.ini
+і           і   і           і   
+і           і   і           АДДДsrc
+і           і   і                   main.cpp
+і           і   і                   
+і           і   АДДДsrc
+і           і           AsyncEventSource.cpp
+і           і           AsyncEventSource.h
+і           і           AsyncJson.cpp
+і           і           AsyncJson.h
+і           і           AsyncMessagePack.h
+і           і           AsyncWebHeader.cpp
+і           і           AsyncWebServerLogging.h
+і           і           AsyncWebServerRequest.cpp
+і           і           AsyncWebServerVersion.h
+і           і           AsyncWebSocket.cpp
+і           і           AsyncWebSocket.h
+і           і           BackPort_SHA1Builder.cpp
+і           і           BackPort_SHA1Builder.h
+і           і           ChunkPrint.cpp
+і           і           ChunkPrint.h
+і           і           ESPAsyncWebServer.h
+і           і           literals.h
+і           і           Middleware.cpp
+і           і           WebAuthentication.cpp
+і           і           WebAuthentication.h
+і           і           WebHandlerImpl.h
+і           і           WebHandlers.cpp
+і           і           WebRequest.cpp
+і           і           WebResponseImpl.h
+і           і           WebResponses.cpp
+і           і           WebServer.cpp
+і           і           
+і           ГДДДGFX Library for Arduino
+і           і   і   .gitignore
+і           і   і   gen_keywords.pl
+і           і   і   keywords.txt
+і           і   і   library.properties
+і           і   і   license.txt
+і           і   і   README.md
+і           і   і   
+і           і   ГДДД.git
+і           і   і   і   .piopm
+і           і   і   і   config
+і           і   і   і   description
+і           і   і   і   HEAD
+і           і   і   і   index
+і           і   і   і   packed-refs
+і           і   і   і   shallow
+і           і   і   і   
+і           і   і   ГДДДhooks
+і           і   і   і       applypatch-msg.sample
+і           і   і   і       commit-msg.sample
+і           і   і   і       fsmonitor-watchman.sample
+і           і   і   і       post-update.sample
+і           і   і   і       pre-applypatch.sample
+і           і   і   і       pre-commit.sample
+і           і   і   і       pre-merge-commit.sample
+і           і   і   і       pre-push.sample
+і           і   і   і       pre-rebase.sample
+і           і   і   і       pre-receive.sample
+і           і   і   і       prepare-commit-msg.sample
+і           і   і   і       push-to-checkout.sample
+і           і   і   і       sendemail-validate.sample
+і           і   і   і       update.sample
+і           і   і   і       
+і           і   і   ГДДДinfo
+і           і   і   і       exclude
+і           і   і   і       
+і           і   і   ГДДДlogs
+і           і   і   і   і   HEAD
+і           і   і   і   і   
+і           і   і   і   АДДДrefs
+і           і   і   і       ГДДДheads
+і           і   і   і       і       master
+і           і   і   і       і       
+і           і   і   і       АДДДremotes
+і           і   і   і           АДДДorigin
+і           і   і   і                   HEAD
+і           і   і   і                   
+і           і   і   ГДДДobjects
+і           і   і   і   ГДДДinfo
+і           і   і   і   АДДДpack
+і           і   і   і           pack-7562da54d3dd024e13a7874079571e1653efa57f.idx
+і           і   і   і           pack-7562da54d3dd024e13a7874079571e1653efa57f.pack
+і           і   і   і           pack-7562da54d3dd024e13a7874079571e1653efa57f.rev
+і           і   і   і           
+і           і   і   АДДДrefs
+і           і   і       ГДДДheads
+і           і   і       і       master
+і           і   і       і       
+і           і   і       ГДДДremotes
+і           і   і       і   АДДДorigin
+і           і   і       і           HEAD
+і           і   і       і           
+і           і   і       АДДДtags
+і           і   ГДДД.github
+і           і   і       FUNDING.yml
+і           і   і       
+і           і   ГДДДexamples
+і           і   і   ГДДДArduinoVNC
+і           і   і   і       ArduinoVNC.ino
+і           і   і   і       keyboard.h
+і           і   і   і       touch.h
+і           і   і   і       VNC_GFX.h
+і           і   і   і       
+і           і   і   ГДДДAsciiTable
+і           і   і   і       AsciiTable.ino
+і           і   і   і       
+і           і   і   ГДДДCanvas
+і           і   і   і   АДДДCanvasMonoOLED
+і           і   і   і           CanvasMonoOLED.ino
+і           і   і   і           
+і           і   і   ГДДДClock
+і           і   і   і   ГДДДAnalogClock
+і           і   і   і   і       AnalogClock.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДAnalogClockNTP
+і           і   і   і   і       AnalogClockNTP.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДDigitalClock
+і           і   і   і   і       DigitalClock.ino
+і           і   і   і   і       
+і           і   і   і   АДДДDigitalClockNTP
+і           і   і   і           DigitalClockNTP.ino
+і           і   і   і           
+і           і   і   ГДДДHelloWorld
+і           і   і   і       HelloWorld.ino
+і           і   і   і       
+і           і   і   ГДДДHelloWorldGfxfont
+і           і   і   і       FreeMono8pt7b.h
+і           і   і   і       FreeSansBold10pt7b.h
+і           і   і   і       FreeSerifBoldItalic12pt7b.h
+і           і   і   і       HelloWorldGfxfont.ino
+і           і   і   і       
+і           і   і   ГДДДImgViewer
+і           і   і   і   ГДДДImgViewerAnimatedGIF_bitbank
+і           і   і   і   і   і   ImgViewerAnimatedGIF_bitbank.ino
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДdata
+і           і   і   і   і           ezgif.com-optimize.gif
+і           і   і   і   і           ezgif.com-resize.gif
+і           і   і   і   і           
+і           і   і   і   ГДДДImgViewerAnimatedGIF_GIFDEC
+і           і   і   і   і   і   GifClass.h
+і           і   і   і   і   і   ImgViewerAnimatedGIF_GIFDEC.ino
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДdata
+і           і   і   і   і           ezgif.com-optimize.gif
+і           і   і   і   і           ezgif.com-resize.gif
+і           і   і   і   і           
+і           і   і   і   ГДДДImgViewerBmp
+і           і   і   і   і   і   BmpClass.h
+і           і   і   і   і   і   ImgViewerBmp.ino
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДdata
+і           і   і   і   і           octocatL.bmp
+і           і   і   і   і           octocatM.bmp
+і           і   і   і   і           octocatS.bmp
+і           і   і   і   і           
+і           і   і   і   ГДДДImgViewerJpeg
+і           і   і   і   і   і   ImgViewerJpeg.ino
+і           і   і   і   і   і   JpegFunc.h
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДdata
+і           і   і   і   і           octocat.jpg
+і           і   і   і   і           
+і           і   і   і   ГДДДImgViewerMjpeg_ESP32P4
+і           і   і   і   і   і   ImgViewerMjpeg_ESP32P4.ino
+і           і   і   і   і   і   MjpegClass.h
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДdata
+і           і   і   і   і           earth.mjpeg
+і           і   і   і   і           
+і           і   і   і   ГДДДImgViewerMjpeg_ESP32_JPEG
+і           і   і   і   і   і   ImgViewerMjpeg_ESP32_JPEG.ino
+і           і   і   і   і   і   MjpegClass.h
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДdata
+і           і   і   і   і           earth.mjpeg
+і           і   і   і   і           
+і           і   і   і   ГДДДImgViewerMjpeg_JPEGDEC
+і           і   і   і   і   і   ImgViewerMjpeg_JPEGDEC.ino
+і           і   і   і   і   і   MjpegClass.h
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДdata
+і           і   і   і   і           earth.mjpeg
+і           і   і   і   і           earth128.mjpeg
+і           і   і   і   і           
+і           і   і   і   ГДДДImgViewerPng_PNGdec
+і           і   і   і   і   і   ImgViewerPng_PNGdec.ino
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДdata
+і           і   і   і   і           octocat-4bpp.png
+і           і   і   і   і           octocat.png
+і           і   і   і   і           
+і           і   і   і   ГДДДImgViewerPROGMEM
+і           і   і   і   і       Arduino_UNO_Rev3_Ok.c
+і           і   і   і   і       ImgViewerPROGMEM.ino
+і           і   і   і   і       
+і           і   і   і   АДДДImgViewerTiff_G4
+і           і   і   і       і   ImgViewerTiff_G4.ino
+і           і   і   і       і   
+і           і   і   і       АДДДdata
+і           і   і   і               at3_1m4_01_g4.tif
+і           і   і   і               
+і           і   і   ГДДДLVGL
+і           і   і   і   ГДДДLvglBenchmark
+і           і   і   і   і       img_benchmark_cogwheel_alpha16.c
+і           і   і   і   і       img_benchmark_cogwheel_argb.c
+і           і   і   і   і       img_benchmark_cogwheel_chroma_keyed.c
+і           і   і   і   і       img_benchmark_cogwheel_indexed16.c
+і           і   і   і   і       img_benchmark_cogwheel_rgb.c
+і           і   і   і   і       LvglBenchmark.ino
+і           і   і   і   і       lv_demo_benchmark.c
+і           і   і   і   і       lv_demo_benchmark.h
+і           і   і   і   і       lv_font_bechmark_montserrat_12_compr_az.c
+і           і   і   і   і       lv_font_bechmark_montserrat_16_compr_az.c
+і           і   і   і   і       lv_font_bechmark_montserrat_28_compr_az.c
+і           і   і   і   і       touch.h
+і           і   і   і   і       
+і           і   і   і   ГДДДLvglHelloNeoPixel
+і           і   і   і   і       Adafruit_NeoPixel_GFX.h
+і           і   і   і   і       LvglHelloNeoPixel.ino
+і           і   і   і   і       ui_font_Chill7.c
+і           і   і   і   і       
+і           і   і   і   ГДДДLVGL_Arduino_v8
+і           і   і   і   і       LVGL_Arduino_v8.ino
+і           і   і   і   і       touch.h
+і           і   і   і   і       
+і           і   і   і   АДДДLVGL_Arduino_v9
+і           і   і   і           LVGL_Arduino_v9.ino
+і           і   і   і           touch.h
+і           і   і   і           
+і           і   і   ГДДДMultipleDisplay
+і           і   і   і   ГДДДMultipleAnimatedGIF
+і           і   і   і   і   і   GifClass.h
+і           і   і   і   і   і   MultipleAnimatedGIF.ino
+і           і   і   і   і   і   
+і           і   і   і   і   АДДДdata
+і           і   і   і   і           archer.gif
+і           і   і   і   і           jobs.gif
+і           і   і   і   і           lancer.gif
+і           і   і   і   і           white.gif
+і           і   і   і   і           
+і           і   і   і   АДДДMultiplePDQgraphicstest
+і           і   і   і           MultiplePDQgraphicstest.ino
+і           і   і   і           
+і           і   і   ГДДДNeoPixel
+і           і   і   і   ГДДДAdafruit_NeoPixel
+і           і   і   і   і       Adafruit_NeoPixel.ino
+і           і   і   і   і       Adafruit_NeoPixel_GFX.h
+і           і   і   і   і       
+і           і   і   і   АДДДFastLED
+і           і   і   і           FastLED.ino
+і           і   і   і           FastLED_GFX.h
+і           і   і   і           
+і           і   і   ГДДДPDQgraphicstest
+і           і   і   і       Arduino_GFX_databus.h
+і           і   і   і       Arduino_GFX_dev_device.h
+і           і   і   і       Arduino_GFX_display.h
+і           і   і   і       Arduino_GFX_pins.h
+і           і   і   і       PDQgraphicstest.ino
+і           і   і   і       
+і           і   і   ГДДДSetTextBound
+і           і   і   і       SetTextBound.ino
+і           і   і   і       
+і           і   і   ГДДДSprite
+і           і   і   і   АДДДSpriteGif
+і           і   і   і       і   GifClass.h
+і           і   і   і       і   IndexedSprite.h
+і           і   і   і       і   SpriteGif.ino
+і           і   і   і       і   
+і           і   і   і       АДДДdata
+і           і   і   і               city17_240.gif
+і           і   і   і               
+і           і   і   ГДДДTouchCalibration
+і           і   і   і       touch.h
+і           і   і   і       TouchCalibration.ino
+і           і   і   і       
+і           і   і   ГДДДU8g2Font
+і           і   і   і   ГДДДU8g2FontHelloWorld
+і           і   і   і   і       U8g2FontHelloWorld.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДU8g2FontPrintUTF8
+і           і   і   і   і       U8g2FontPrintUTF8.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДU8g2FontUTF8Chinese
+і           і   і   і   і       U8g2FontUTF8Chinese.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДU8g2FontUTF8FullCJK
+і           і   і   і   і       U8g2FontUTF8FullCJK.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДU8g2FontUTF8FullUnifont
+і           і   і   і   і       U8g2FontUTF8FullUnifont.ino
+і           і   і   і   і       
+і           і   і   і   АДДДU8g2RssReader
+і           і   і   і           U8g2RssReader.ino
+і           і   і   і           
+і           і   і   ГДДДWiFiAnalyzer
+і           і   і   і   ГДДДESP32C5WiFiAnalyzer
+і           і   і   і   і       ESP32C5WiFiAnalyzer.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДESP32C5WiFiAnalyzerUTF8
+і           і   і   і   і       ESP32C5WiFiAnalyzerUTF8.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДESPWiFiAnalyzer
+і           і   і   і   і       ESPWiFiAnalyzer.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДESPWiFiAnalyzerUTF8
+і           і   і   і   і       ESPWiFiAnalyzerUTF8.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДPicoWiFiAnalyzer
+і           і   і   і   і       PicoWiFiAnalyzer.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДPicoWiFiAnalyzerUTF8
+і           і   і   і   і       PicoWiFiAnalyzerUTF8.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДRTLWiFiAnalyzer
+і           і   і   і   і       RTLWiFiAnalyzer.ino
+і           і   і   і   і       
+і           і   і   і   ГДДДRTLWiFiAnalyzerUTF8
+і           і   і   і   і       RTLWiFiAnalyzerUTF8.ino
+і           і   і   і   і       
+і           і   і   і   АДДДWioWiFiAnalyzer
+і           і   і   і           WioWiFiAnalyzer.ino
+і           і   і   і           
+і           і   і   АДДДWiFiPhotoFrame
+і           і   і           JpegFunc.h
+і           і   і           WiFiPhotoFrame.ino
+і           і   і           
+і           і   АДДДsrc
+і           і       і   Arduino_DataBus.cpp
+і           і       і   Arduino_DataBus.h
+і           і       і   Arduino_G.cpp
+і           і       і   Arduino_G.h
+і           і       і   Arduino_GFX.cpp
+і           і       і   Arduino_GFX.h
+і           і       і   Arduino_GFX_Library.cpp
+і           і       і   Arduino_GFX_Library.h
+і           і       і   Arduino_OLED.cpp
+і           і       і   Arduino_OLED.h
+і           і       і   Arduino_TFT.cpp
+і           і       і   Arduino_TFT.h
+і           і       і   Arduino_TFT_18bit.cpp
+і           і       і   Arduino_TFT_18bit.h
+і           і       і   gfxfont.h
+і           і       і   YCbCr2RGB.h
+і           і       і   
+і           і       ГДДДcanvas
+і           і       і       Arduino_Canvas.cpp
+і           і       і       Arduino_Canvas.h
+і           і       і       Arduino_Canvas_3bit.cpp
+і           і       і       Arduino_Canvas_3bit.h
+і           і       і       Arduino_Canvas_Indexed.cpp
+і           і       і       Arduino_Canvas_Indexed.h
+і           і       і       Arduino_Canvas_Mono.cpp
+і           і       і       Arduino_Canvas_Mono.h
+і           і       і       readme.md
+і           і       і       
+і           і       ГДДДdatabus
+і           і       і       Arduino_AVRPAR16.cpp
+і           і       і       Arduino_AVRPAR16.h
+і           і       і       Arduino_AVRPAR8.cpp
+і           і       і       Arduino_AVRPAR8.h
+і           і       і       Arduino_DUEPAR16.cpp
+і           і       і       Arduino_DUEPAR16.h
+і           і       і       Arduino_ESP32DSIPanel.cpp
+і           і       і       Arduino_ESP32DSIPanel.h
+і           і       і       Arduino_ESP32LCD16.cpp
+і           і       і       Arduino_ESP32LCD16.h
+і           і       і       Arduino_ESP32LCD8.cpp
+і           і       і       Arduino_ESP32LCD8.h
+і           і       і       Arduino_ESP32PAR16.cpp
+і           і       і       Arduino_ESP32PAR16.h
+і           і       і       Arduino_ESP32PAR16Q.cpp
+і           і       і       Arduino_ESP32PAR16Q.h
+і           і       і       Arduino_ESP32PAR16QQ.cpp
+і           і       і       Arduino_ESP32PAR16QQ.h
+і           і       і       Arduino_ESP32PAR8.cpp
+і           і       і       Arduino_ESP32PAR8.h
+і           і       і       Arduino_ESP32PAR8Q.cpp
+і           і       і       Arduino_ESP32PAR8Q.h
+і           і       і       Arduino_ESP32PAR8QQ.cpp
+і           і       і       Arduino_ESP32PAR8QQ.h
+і           і       і       Arduino_ESP32PAR8QQQ.cpp
+і           і       і       Arduino_ESP32PAR8QQQ.h
+і           і       і       Arduino_ESP32QSPI.cpp
+і           і       і       Arduino_ESP32QSPI.h
+і           і       і       Arduino_ESP32RGBPanel.cpp
+і           і       і       Arduino_ESP32RGBPanel.h
+і           і       і       Arduino_ESP32S2PAR16.cpp
+і           і       і       Arduino_ESP32S2PAR16.h
+і           і       і       Arduino_ESP32S2PAR16Q.cpp
+і           і       і       Arduino_ESP32S2PAR16Q.h
+і           і       і       Arduino_ESP32S2PAR8.cpp
+і           і       і       Arduino_ESP32S2PAR8.h
+і           і       і       Arduino_ESP32S2PAR8Q.cpp
+і           і       і       Arduino_ESP32S2PAR8Q.h
+і           і       і       Arduino_ESP32SPI.cpp
+і           і       і       Arduino_ESP32SPI.h
+і           і       і       Arduino_ESP32SPIDMA.cpp
+і           і       і       Arduino_ESP32SPIDMA.h
+і           і       і       Arduino_ESP8266SPI.cpp
+і           і       і       Arduino_ESP8266SPI.h
+і           і       і       Arduino_HWSPI.cpp
+і           і       і       Arduino_HWSPI.h
+і           і       і       Arduino_mbedSPI.cpp
+і           і       і       Arduino_mbedSPI.h
+і           і       і       Arduino_NRFXSPI.cpp
+і           і       і       Arduino_NRFXSPI.h
+і           і       і       Arduino_RPiPicoPAR16.cpp
+і           і       і       Arduino_RPiPicoPAR16.h
+і           і       і       Arduino_RPiPicoPAR8.cpp
+і           і       і       Arduino_RPiPicoPAR8.h
+і           і       і       Arduino_RPiPicoSPI.cpp
+і           і       і       Arduino_RPiPicoSPI.h
+і           і       і       Arduino_RTLPAR8.cpp
+і           і       і       Arduino_RTLPAR8.h
+і           і       і       Arduino_STM32PAR8.cpp
+і           і       і       Arduino_STM32PAR8.h
+і           і       і       Arduino_SWPAR16.cpp
+і           і       і       Arduino_SWPAR16.h
+і           і       і       Arduino_SWPAR8.cpp
+і           і       і       Arduino_SWPAR8.h
+і           і       і       Arduino_SWSPI.cpp
+і           і       і       Arduino_SWSPI.h
+і           і       і       Arduino_UNOPAR8.cpp
+і           і       і       Arduino_UNOPAR8.h
+і           і       і       Arduino_Wire.cpp
+і           і       і       Arduino_Wire.h
+і           і       і       Arduino_XCA9554SWSPI.cpp
+і           і       і       Arduino_XCA9554SWSPI.h
+і           і       і       Arduino_XL9535SWSPI.cpp
+і           і       і       Arduino_XL9535SWSPI.h
+і           і       і       
+і           і       ГДДДdisplay
+і           і       і       Arduino_AXS15231B.cpp
+і           і       і       Arduino_AXS15231B.h
+і           і       і       Arduino_CO5300.cpp
+і           і       і       Arduino_CO5300.h
+і           і       і       Arduino_DSI_Display.cpp
+і           і       і       Arduino_DSI_Display.h
+і           і       і       Arduino_GC9106.cpp
+і           і       і       Arduino_GC9106.h
+і           і       і       Arduino_GC9107.cpp
+і           і       і       Arduino_GC9107.h
+і           і       і       Arduino_GC9A01.cpp
+і           і       і       Arduino_GC9A01.h
+і           і       і       Arduino_GC9C01.cpp
+і           і       і       Arduino_GC9C01.h
+і           і       і       Arduino_GC9D01.cpp
+і           і       і       Arduino_GC9D01.h
+і           і       і       Arduino_HX8347C.cpp
+і           і       і       Arduino_HX8347C.h
+і           і       і       Arduino_HX8347D.cpp
+і           і       і       Arduino_HX8347D.h
+і           і       і       Arduino_HX8352C.cpp
+і           і       і       Arduino_HX8352C.h
+і           і       і       Arduino_HX8357A.cpp
+і           і       і       Arduino_HX8357A.h
+і           і       і       Arduino_HX8357B.cpp
+і           і       і       Arduino_HX8357B.h
+і           і       і       Arduino_HX8369A.cpp
+і           і       і       Arduino_HX8369A.h
+і           і       і       Arduino_ILI9225.cpp
+і           і       і       Arduino_ILI9225.h
+і           і       і       Arduino_ILI9331.cpp
+і           і       і       Arduino_ILI9331.h
+і           і       і       Arduino_ILI9341.cpp
+і           і       і       Arduino_ILI9341.h
+і           і       і       Arduino_ILI9342.cpp
+і           і       і       Arduino_ILI9342.h
+і           і       і       Arduino_ILI9481_18bit.cpp
+і           і       і       Arduino_ILI9481_18bit.h
+і           і       і       Arduino_ILI9486.cpp
+і           і       і       Arduino_ILI9486.h
+і           і       і       Arduino_ILI9486_18bit.cpp
+і           і       і       Arduino_ILI9486_18bit.h
+і           і       і       Arduino_ILI9488.cpp
+і           і       і       Arduino_ILI9488.h
+і           і       і       Arduino_ILI9488_18bit.cpp
+і           і       і       Arduino_ILI9488_18bit.h
+і           і       і       Arduino_ILI9488_3bit.cpp
+і           і       і       Arduino_ILI9488_3bit.h
+і           і       і       Arduino_ILI9806.cpp
+і           і       і       Arduino_ILI9806.h
+і           і       і       Arduino_JBT6K71.cpp
+і           і       і       Arduino_JBT6K71.h
+і           і       і       Arduino_JD9613.cpp
+і           і       і       Arduino_JD9613.h
+і           і       і       Arduino_NT35310.cpp
+і           і       і       Arduino_NT35310.h
+і           і       і       Arduino_NT35510.cpp
+і           і       і       Arduino_NT35510.h
+і           і       і       Arduino_NT39125.cpp
+і           і       і       Arduino_NT39125.h
+і           і       і       Arduino_NV3007.cpp
+і           і       і       Arduino_NV3007.h
+і           і       і       Arduino_NV3023.cpp
+і           і       і       Arduino_NV3023.h
+і           і       і       Arduino_NV3041A.cpp
+і           і       і       Arduino_NV3041A.h
+і           і       і       Arduino_OTM8009A.cpp
+і           і       і       Arduino_OTM8009A.h
+і           і       і       Arduino_R61529.cpp
+і           і       і       Arduino_R61529.h
+і           і       і       Arduino_RGB_Display.cpp
+і           і       і       Arduino_RGB_Display.h
+і           і       і       Arduino_RM67162.cpp
+і           і       і       Arduino_RM67162.h
+і           і       і       Arduino_RM690B0.cpp
+і           і       і       Arduino_RM690B0.h
+і           і       і       Arduino_SEPS525.cpp
+і           і       і       Arduino_SEPS525.h
+і           і       і       Arduino_SH1106.cpp
+і           і       і       Arduino_SH1106.h
+і           і       і       Arduino_SH8601.cpp
+і           і       і       Arduino_SH8601.h
+і           і       і       Arduino_SPD2010.cpp
+і           і       і       Arduino_SPD2010.h
+і           і       і       Arduino_SSD1283A.cpp
+і           і       і       Arduino_SSD1283A.h
+і           і       і       Arduino_SSD1306.cpp
+і           і       і       Arduino_SSD1306.h
+і           і       і       Arduino_SSD1331.cpp
+і           і       і       Arduino_SSD1331.h
+і           і       і       Arduino_SSD1351.cpp
+і           і       і       Arduino_SSD1351.h
+і           і       і       Arduino_SSD1357.cpp
+і           і       і       Arduino_SSD1357.h
+і           і       і       Arduino_ST7735.cpp
+і           і       і       Arduino_ST7735.h
+і           і       і       Arduino_ST7789.cpp
+і           і       і       Arduino_ST7789.h
+і           і       і       Arduino_ST77916.cpp
+і           і       і       Arduino_ST77916.h
+і           і       і       Arduino_ST7796.cpp
+і           і       і       Arduino_ST7796.h
+і           і       і       Arduino_WEA2012.cpp
+і           і       і       Arduino_WEA2012.h
+і           і       і       
+і           і       АДДДfont
+і           і               chinese4.list
+і           і               glcdfont.h
+і           і               u8g2_font_chill7_h_cjk.h
+і           і               u8g2_font_cubic11_h_cjk.h
+і           і               u8g2_font_quan7_h_cjk.h
+і           і               u8g2_font_unifont_h_chinese.h
+і           і               u8g2_font_unifont_h_chinese4.h
+і           і               u8g2_font_unifont_h_cjk.h
+і           і               u8g2_font_unifont_h_utf8.h
+і           і               
+і           АДДДlvgl
+і               і   .codecov.yml
+і               і   .editorconfig
+і               і   .git
+і               і   .gitignore
+і               і   .piopm
+і               і   .pre-commit-config.yaml
+і               і   CMakeLists.txt
+і               і   component.mk
+і               і   idf_component.yml
+і               і   Kconfig
+і               і   library.json
+і               і   library.properties
+і               і   LICENCE.txt
+і               і   lvgl.h
+і               і   lvgl.mk
+і               і   lvgl.pc.in
+і               і   lv_conf_template.h
+і               і   README.md
+і               і   README_pt_BR.md
+і               і   README_zh.md
+і               і   SConscript
+і               і   
+і               ГДДД.github
+і               і   і   auto-comment.yml
+і               і   і   FUNDING.yml
+і               і   і   pull_request_template.md
+і               і   і   
+і               і   ГДДДISSUE_TEMPLATE
+і               і   і       bug-report.md
+і               і   і       config.yml
+і               і   і       dev-discussion.md
+і               і   і       
+і               і   АДДДworkflows
+і               і           arduino.yml
+і               і           build_micropython.yml
+і               і           ccpp.yml
+і               і           check_conf.yml
+і               і           check_style.yml
+і               і           close_old_issues.yml
+і               і           compile_docs.yml
+і               і           esp_upload_component.yml
+і               і           main.yml
+і               і           makefile.yml
+і               і           release.yml
+і               і           
+і               ГДДДdemos
+і               і   і   lv_demos.h
+і               і   і   lv_demos.mk
+і               і   і   README.md
+і               і   і   
+і               і   ГДДДbenchmark
+і               і   і   і   lv_demo_benchmark.c
+і               і   і   і   lv_demo_benchmark.h
+і               і   і   і   README.md
+і               і   і   і   
+і               і   і   АДДДassets
+і               і   і           img_benchmark_cogwheel_alpha16.c
+і               і   і           img_benchmark_cogwheel_argb.c
+і               і   і           img_benchmark_cogwheel_chroma_keyed.c
+і               і   і           img_benchmark_cogwheel_indexed16.c
+і               і   і           img_benchmark_cogwheel_rgb.c
+і               і   і           img_benchmark_cogwheel_rgb565a8.c
+і               і   і           lv_font_bechmark_montserrat_12_compr_az.c.c
+і               і   і           lv_font_bechmark_montserrat_16_compr_az.c.c
+і               і   і           lv_font_bechmark_montserrat_28_compr_az.c.c
+і               і   і           
+і               і   ГДДДkeypad_encoder
+і               і   і       lv_demo_keypad_encoder.c
+і               і   і       lv_demo_keypad_encoder.h
+і               і   і       README.md
+і               і   і       
+і               і   ГДДДmusic
+і               і   і   і   lv_demo_music.c
+і               і   і   і   lv_demo_music.h
+і               і   і   і   lv_demo_music_list.c
+і               і   і   і   lv_demo_music_list.h
+і               і   і   і   lv_demo_music_main.c
+і               і   і   і   lv_demo_music_main.h
+і               і   і   і   README.md
+і               і   і   і   
+і               і   і   АДДДassets
+і               і   і           img_lv_demo_music_btn_corner_large.c
+і               і   і           img_lv_demo_music_btn_list_pause.c
+і               і   і           img_lv_demo_music_btn_list_pause_large.c
+і               і   і           img_lv_demo_music_btn_list_play.c
+і               і   і           img_lv_demo_music_btn_list_play_large.c
+і               і   і           img_lv_demo_music_btn_loop.c
+і               і   і           img_lv_demo_music_btn_loop_large.c
+і               і   і           img_lv_demo_music_btn_next.c
+і               і   і           img_lv_demo_music_btn_next_large.c
+і               і   і           img_lv_demo_music_btn_pause.c
+і               і   і           img_lv_demo_music_btn_pause_large.c
+і               і   і           img_lv_demo_music_btn_play.c
+і               і   і           img_lv_demo_music_btn_play_large.c
+і               і   і           img_lv_demo_music_btn_prev.c
+і               і   і           img_lv_demo_music_btn_prev_large.c
+і               і   і           img_lv_demo_music_btn_rnd.c
+і               і   і           img_lv_demo_music_btn_rnd_large.c
+і               і   і           img_lv_demo_music_corner_left.c
+і               і   і           img_lv_demo_music_corner_left_large.c
+і               і   і           img_lv_demo_music_corner_right.c
+і               і   і           img_lv_demo_music_corner_right_large.c
+і               і   і           img_lv_demo_music_cover_1.c
+і               і   і           img_lv_demo_music_cover_1_large.c
+і               і   і           img_lv_demo_music_cover_2.c
+і               і   і           img_lv_demo_music_cover_2_large.c
+і               і   і           img_lv_demo_music_cover_3.c
+і               і   і           img_lv_demo_music_cover_3_large.c
+і               і   і           img_lv_demo_music_icon_1.c
+і               і   і           img_lv_demo_music_icon_1_large.c
+і               і   і           img_lv_demo_music_icon_2.c
+і               і   і           img_lv_demo_music_icon_2_large.c
+і               і   і           img_lv_demo_music_icon_3.c
+і               і   і           img_lv_demo_music_icon_3_large.c
+і               і   і           img_lv_demo_music_icon_4.c
+і               і   і           img_lv_demo_music_icon_4_large.c
+і               і   і           img_lv_demo_music_list_border.c
+і               і   і           img_lv_demo_music_list_border_large.c
+і               і   і           img_lv_demo_music_logo.c
+і               і   і           img_lv_demo_music_slider_knob.c
+і               і   і           img_lv_demo_music_slider_knob_large.c
+і               і   і           img_lv_demo_music_wave_bottom.c
+і               і   і           img_lv_demo_music_wave_bottom_large.c
+і               і   і           img_lv_demo_music_wave_top.c
+і               і   і           img_lv_demo_music_wave_top_large.c
+і               і   і           spectrum.py
+і               і   і           spectrum_1.h
+і               і   і           spectrum_2.h
+і               і   і           spectrum_3.h
+і               і   і           
+і               і   ГДДДstress
+і               і   і       lv_demo_stress.c
+і               і   і       lv_demo_stress.h
+і               і   і       README.md
+і               і   і       
+і               і   АДДДwidgets
+і               і       і   lv_demo_widgets.c
+і               і       і   lv_demo_widgets.h
+і               і       і   lv_demo_widgets.py
+і               і       і   
+і               і       АДДДassets
+і               і               img_clothes.c
+і               і               img_demo_widgets_avatar.c
+і               і               img_lvgl_logo.c
+і               і               
+і               ГДДДenv_support
+і               і   ГДДДcmake
+і               і   і       custom.cmake
+і               і   і       esp.cmake
+і               і   і       micropython.cmake
+і               і   і       zephyr.cmake
+і               і   і       
+і               і   ГДДДcmsis-pack
+і               і   і       gen_pack.sh
+і               і   і       LVGL.lvgl.8.4.0.pack
+і               і   і       LVGL.lvgl.pdsc
+і               і   і       LVGL.pidx
+і               і   і       lv_cmsis_pack.txt
+і               і   і       lv_conf_cmsis.h
+і               і   і       README.md
+і               і   і       
+і               і   ГДДДrt-thread
+і               і   і   і   lv_rt_thread_conf.h
+і               і   і   і   lv_rt_thread_port.c
+і               і   і   і   SConscript
+і               і   і   і   
+і               і   і   АДДДsquareline
+і               і   і       і   lv_ui_entry.c
+і               і   і       і   README.md
+і               і   і       і   SConscript
+і               і   і       і   
+і               і   і       АДДДui
+і               і   і           АДДДlvgl
+і               і   і                   lvgl.h
+і               і   і                   
+і               і   АДДДzephyr
+і               і           module.yml
+і               і           
+і               ГДДДexamples
+і               і   і   header.py
+і               і   і   lv_examples.h
+і               і   і   lv_examples.mk
+і               і   і   test_ex.sh
+і               і   і   
+і               і   ГДДДanim
+і               і   і       index.rst
+і               і   і       lv_example_anim.h
+і               і   і       lv_example_anim_1.c
+і               і   і       lv_example_anim_1.py
+і               і   і       lv_example_anim_2.c
+і               і   і       lv_example_anim_2.py
+і               і   і       lv_example_anim_3.c
+і               і   і       lv_example_anim_3.py
+і               і   і       lv_example_anim_timeline_1.c
+і               і   і       lv_example_anim_timeline_1.py
+і               і   і       
+і               і   ГДДДarduino
+і               і   і   АДДДLVGL_Arduino
+і               і   і           LVGL_Arduino.ino
+і               і   і           
+і               і   ГДДДassets
+і               і   і   і   animimg001.c
+і               і   і   і   animimg002.c
+і               і   і   і   animimg003.c
+і               і   і   і   imgbtn_left.c
+і               і   і   і   imgbtn_mid.c
+і               і   і   і   imgbtn_right.c
+і               і   і   і   img_caret_down.c
+і               і   і   і   img_cogwheel_alpha16.c
+і               і   і   і   img_cogwheel_argb.c
+і               і   і   і   img_cogwheel_chroma_keyed.c
+і               і   і   і   img_cogwheel_indexed16.c
+і               і   і   і   img_cogwheel_rgb.c
+і               і   і   і   img_hand.c
+і               і   і   і   img_skew_strip.c
+і               і   і   і   img_skew_strip_80x20_argb8888.fnt
+і               і   і   і   img_star.c
+і               і   і   і   
+і               і   і   ГДДДemoji
+і               і   і   і       img_emoji_F617.c
+і               і   і   і       
+і               і   і   АДДДfont
+і               і   і           lv_font_simsun_16_cjk.fnt
+і               і   і           montserrat-16.fnt
+і               і   і           montserrat-22.fnt
+і               і   і           
+і               і   ГДДДevent
+і               і   і       index.rst
+і               і   і       lv_example_event.h
+і               і   і       lv_example_event_1.c
+і               і   і       lv_example_event_1.py
+і               і   і       lv_example_event_2.c
+і               і   і       lv_example_event_2.py
+і               і   і       lv_example_event_3.c
+і               і   і       lv_example_event_3.py
+і               і   і       lv_example_event_4.c
+і               і   і       
+і               і   ГДДДget_started
+і               і   і       index.rst
+і               і   і       lv_example_get_started.h
+і               і   і       lv_example_get_started_1.c
+і               і   і       lv_example_get_started_1.py
+і               і   і       lv_example_get_started_2.c
+і               і   і       lv_example_get_started_2.py
+і               і   і       lv_example_get_started_3.c
+і               і   і       lv_example_get_started_3.py
+і               і   і       
+і               і   ГДДДlayouts
+і               і   і   і   lv_example_layout.h
+і               і   і   і   
+і               і   і   ГДДДflex
+і               і   і   і       index.rst
+і               і   і   і       lv_example_flex.h
+і               і   і   і       lv_example_flex_1.c
+і               і   і   і       lv_example_flex_1.py
+і               і   і   і       lv_example_flex_2.c
+і               і   і   і       lv_example_flex_2.py
+і               і   і   і       lv_example_flex_3.c
+і               і   і   і       lv_example_flex_3.py
+і               і   і   і       lv_example_flex_4.c
+і               і   і   і       lv_example_flex_4.py
+і               і   і   і       lv_example_flex_5.c
+і               і   і   і       lv_example_flex_5.py
+і               і   і   і       lv_example_flex_6.c
+і               і   і   і       lv_example_flex_6.py
+і               і   і   і       
+і               і   і   АДДДgrid
+і               і   і           index.rst
+і               і   і           lv_example_grid.h
+і               і   і           lv_example_grid_1.c
+і               і   і           lv_example_grid_1.py
+і               і   і           lv_example_grid_2.c
+і               і   і           lv_example_grid_2.py
+і               і   і           lv_example_grid_3.c
+і               і   і           lv_example_grid_3.py
+і               і   і           lv_example_grid_4.c
+і               і   і           lv_example_grid_4.py
+і               і   і           lv_example_grid_5.c
+і               і   і           lv_example_grid_5.py
+і               і   і           lv_example_grid_6.c
+і               і   і           lv_example_grid_6.py
+і               і   і           
+і               і   ГДДДlibs
+і               і   і   і   lv_example_libs.h
+і               і   і   і   
+і               і   і   ГДДДbmp
+і               і   і   і       example_16bit.bmp
+і               і   і   і       example_24bit.bmp
+і               і   і   і       example_32bit.bmp
+і               і   і   і       index.rst
+і               і   і   і       lv_example_bmp.h
+і               і   і   і       lv_example_bmp_1.c
+і               і   і   і       lv_example_bmp_1.py
+і               і   і   і       
+і               і   і   ГДДДffmpeg
+і               і   і   і       index.rst
+і               і   і   і       lv_example_ffmpeg.h
+і               і   і   і       lv_example_ffmpeg_1.c
+і               і   і   і       lv_example_ffmpeg_2.c
+і               і   і   і       
+і               і   і   ГДДДfreetype
+і               і   і   і       index.rst
+і               і   і   і       Lato-Regular.ttf
+і               і   і   і       lv_example_freetype.h
+і               і   і   і       lv_example_freetype_1.c
+і               і   і   і       lv_example_freetype_1.py
+і               і   і   і       
+і               і   і   ГДДДgif
+і               і   і   і       img_bulb_gif.c
+і               і   і   і       img_bulb_gif.py
+і               і   і   і       index.rst
+і               і   і   і       lv_example_gif.h
+і               і   і   і       lv_example_gif_1.c
+і               і   і   і       lv_example_gif_1.py
+і               і   і   і       
+і               і   і   ГДДДpng
+і               і   і   і       img_wink_png.c
+і               і   і   і       img_wink_png.py
+і               і   і   і       index.rst
+і               і   і   і       lv_example_png.h
+і               і   і   і       lv_example_png_1.c
+і               і   і   і       lv_example_png_1.py
+і               і   і   і       
+і               і   і   ГДДДqrcode
+і               і   і   і       index.rst
+і               і   і   і       lv_example_qrcode.h
+і               і   і   і       lv_example_qrcode_1.c
+і               і   і   і       lv_example_qrcode_1.py
+і               і   і   і       
+і               і   і   ГДДДrlottie
+і               і   і   і       index.rst
+і               і   і   і       lv_example_rlottie.h
+і               і   і   і       lv_example_rlottie_1.c
+і               і   і   і       lv_example_rlottie_1.py
+і               і   і   і       lv_example_rlottie_2.c
+і               і   і   і       lv_example_rlottie_2.py
+і               і   і   і       lv_example_rlottie_approve.c
+і               і   і   і       lv_example_rlottie_approve.json
+і               і   і   і       lv_example_rlottie_approve.py
+і               і   і   і       
+і               і   і   АДДДsjpg
+і               і   і           index.rst
+і               і   і           lv_example_sjpg.h
+і               і   і           lv_example_sjpg_1.c
+і               і   і           lv_example_sjpg_1.py
+і               і   і           small_image.sjpg
+і               і   і           
+і               і   ГДДДothers
+і               і   і   і   lv_example_others.h
+і               і   і   і   
+і               і   і   ГДДДfragment
+і               і   і   і       index.rst
+і               і   і   і       lv_example_fragment.h
+і               і   і   і       lv_example_fragment_1.c
+і               і   і   і       lv_example_fragment_2.c
+і               і   і   і       
+і               і   і   ГДДДgridnav
+і               і   і   і       index.rst
+і               і   і   і       lv_example_gridnav.h
+і               і   і   і       lv_example_gridnav_1.c
+і               і   і   і       lv_example_gridnav_2.c
+і               і   і   і       lv_example_gridnav_3.c
+і               і   і   і       lv_example_gridnav_4.c
+і               і   і   і       
+і               і   і   ГДДДime
+і               і   і   і       index.rst
+і               і   і   і       lv_example_ime_pinyin.h
+і               і   і   і       lv_example_ime_pinyin_1.c
+і               і   і   і       lv_example_ime_pinyin_2.c
+і               і   і   і       
+і               і   і   ГДДДimgfont
+і               і   і   і       index.rst
+і               і   і   і       lv_example_imgfont.h
+і               і   і   і       lv_example_imgfont_1.c
+і               і   і   і       
+і               і   і   ГДДДmonkey
+і               і   і   і       index.rst
+і               і   і   і       lv_example_monkey.h
+і               і   і   і       lv_example_monkey_1.c
+і               і   і   і       lv_example_monkey_2.c
+і               і   і   і       lv_example_monkey_3.c
+і               і   і   і       
+і               і   і   ГДДДmsg
+і               і   і   і       index.rst
+і               і   і   і       lv_example_msg.h
+і               і   і   і       lv_example_msg_1.c
+і               і   і   і       lv_example_msg_2.c
+і               і   і   і       lv_example_msg_3.c
+і               і   і   і       
+і               і   і   АДДДsnapshot
+і               і   і           index.rst
+і               і   і           lv_example_snapshot.h
+і               і   і           lv_example_snapshot_1.c
+і               і   і           lv_example_snapshot_1.py
+і               і   і           
+і               і   ГДДДporting
+і               і   і       lv_port_disp_template.c
+і               і   і       lv_port_disp_template.h
+і               і   і       lv_port_fs_template.c
+і               і   і       lv_port_fs_template.h
+і               і   і       lv_port_indev_template.c
+і               і   і       lv_port_indev_template.h
+і               і   і       
+і               і   ГДДДscroll
+і               і   і       index.rst
+і               і   і       lv_example_scroll.h
+і               і   і       lv_example_scroll_1.c
+і               і   і       lv_example_scroll_1.py
+і               і   і       lv_example_scroll_2.c
+і               і   і       lv_example_scroll_2.py
+і               і   і       lv_example_scroll_3.c
+і               і   і       lv_example_scroll_3.py
+і               і   і       lv_example_scroll_4.c
+і               і   і       lv_example_scroll_4.py
+і               і   і       lv_example_scroll_5.c
+і               і   і       lv_example_scroll_5.py
+і               і   і       lv_example_scroll_6.c
+і               і   і       lv_example_scroll_6.py
+і               і   і       
+і               і   ГДДДstyles
+і               і   і       index.rst
+і               і   і       lv_example_style.h
+і               і   і       lv_example_style_1.c
+і               і   і       lv_example_style_1.py
+і               і   і       lv_example_style_10.c
+і               і   і       lv_example_style_10.py
+і               і   і       lv_example_style_11.c
+і               і   і       lv_example_style_11.py
+і               і   і       lv_example_style_12.c
+і               і   і       lv_example_style_12.py
+і               і   і       lv_example_style_13.c
+і               і   і       lv_example_style_13.py
+і               і   і       lv_example_style_14.c
+і               і   і       lv_example_style_14.py
+і               і   і       lv_example_style_15.c
+і               і   і       lv_example_style_2.c
+і               і   і       lv_example_style_2.py
+і               і   і       lv_example_style_3.c
+і               і   і       lv_example_style_3.py
+і               і   і       lv_example_style_4.c
+і               і   і       lv_example_style_4.py
+і               і   і       lv_example_style_5.c
+і               і   і       lv_example_style_5.py
+і               і   і       lv_example_style_6.c
+і               і   і       lv_example_style_6.py
+і               і   і       lv_example_style_7.c
+і               і   і       lv_example_style_7.py
+і               і   і       lv_example_style_8.c
+і               і   і       lv_example_style_8.py
+і               і   і       lv_example_style_9.c
+і               і   і       lv_example_style_9.py
+і               і   і       
+і               і   АДДДwidgets
+і               і       і   lv_example_widgets.h
+і               і       і   
+і               і       ГДДДanimimg
+і               і       і       index.rst
+і               і       і       lv_example_animimg_1.c
+і               і       і       lv_example_animimg_1.py
+і               і       і       
+і               і       ГДДДarc
+і               і       і       index.rst
+і               і       і       lv_example_arc_1.c
+і               і       і       lv_example_arc_1.py
+і               і       і       lv_example_arc_2.c
+і               і       і       lv_example_arc_2.py
+і               і       і       
+і               і       ГДДДbar
+і               і       і       index.rst
+і               і       і       lv_example_bar_1.c
+і               і       і       lv_example_bar_1.py
+і               і       і       lv_example_bar_2.c
+і               і       і       lv_example_bar_2.py
+і               і       і       lv_example_bar_3.c
+і               і       і       lv_example_bar_3.py
+і               і       і       lv_example_bar_4.c
+і               і       і       lv_example_bar_4.py
+і               і       і       lv_example_bar_5.c
+і               і       і       lv_example_bar_5.py
+і               і       і       lv_example_bar_6.c
+і               і       і       lv_example_bar_6.py
+і               і       і       test.py
+і               і       і       
+і               і       ГДДДbtn
+і               і       і       index.rst
+і               і       і       lv_example_btn_1.c
+і               і       і       lv_example_btn_1.py
+і               і       і       lv_example_btn_2.c
+і               і       і       lv_example_btn_2.py
+і               і       і       lv_example_btn_3.c
+і               і       і       lv_example_btn_3.py
+і               і       і       
+і               і       ГДДДbtnmatrix
+і               і       і       index.rst
+і               і       і       lv_example_btnmatrix_1.c
+і               і       і       lv_example_btnmatrix_1.py
+і               і       і       lv_example_btnmatrix_2.c
+і               і       і       lv_example_btnmatrix_2.py
+і               і       і       lv_example_btnmatrix_3.c
+і               і       і       lv_example_btnmatrix_3.py
+і               і       і       
+і               і       ГДДДcalendar
+і               і       і       index.rst
+і               і       і       lv_example_calendar_1.c
+і               і       і       lv_example_calendar_1.py
+і               і       і       
+і               і       ГДДДcanvas
+і               і       і       index.rst
+і               і       і       lv_example_canvas_1.c
+і               і       і       lv_example_canvas_1.py
+і               і       і       lv_example_canvas_2.c
+і               і       і       lv_example_canvas_2.py
+і               і       і       
+і               і       ГДДДchart
+і               і       і       index.rst
+і               і       і       lv_example_chart_1.c
+і               і       і       lv_example_chart_1.py
+і               і       і       lv_example_chart_2.c
+і               і       і       lv_example_chart_2.py
+і               і       і       lv_example_chart_3.c
+і               і       і       lv_example_chart_3.py
+і               і       і       lv_example_chart_4.c
+і               і       і       lv_example_chart_4.py
+і               і       і       lv_example_chart_5.c
+і               і       і       lv_example_chart_5.py
+і               і       і       lv_example_chart_6.c
+і               і       і       lv_example_chart_6.py
+і               і       і       lv_example_chart_7.c
+і               і       і       lv_example_chart_7.py
+і               і       і       lv_example_chart_8.c
+і               і       і       lv_example_chart_8.py
+і               і       і       lv_example_chart_9.c
+і               і       і       lv_example_chart_9.py
+і               і       і       
+і               і       ГДДДcheckbox
+і               і       і       index.rst
+і               і       і       lv_example_checkbox_1.c
+і               і       і       lv_example_checkbox_1.py
+і               і       і       lv_example_checkbox_2.c
+і               і       і       
+і               і       ГДДДcolorwheel
+і               і       і       index.rst
+і               і       і       lv_example_colorwheel_1.c
+і               і       і       lv_example_colorwheel_1.py
+і               і       і       
+і               і       ГДДДdropdown
+і               і       і       index.rst
+і               і       і       lv_example_dropdown_1.c
+і               і       і       lv_example_dropdown_1.py
+і               і       і       lv_example_dropdown_2.c
+і               і       і       lv_example_dropdown_2.py
+і               і       і       lv_example_dropdown_3.c
+і               і       і       lv_example_dropdown_3.py
+і               і       і       
+і               і       ГДДДimg
+і               і       і       index.rst
+і               і       і       lv_example_img_1.c
+і               і       і       lv_example_img_1.py
+і               і       і       lv_example_img_2.c
+і               і       і       lv_example_img_2.py
+і               і       і       lv_example_img_3.c
+і               і       і       lv_example_img_3.py
+і               і       і       lv_example_img_4.c
+і               і       і       lv_example_img_4.py
+і               і       і       
+і               і       ГДДДimgbtn
+і               і       і       index.rst
+і               і       і       lv_example_imgbtn_1.c
+і               і       і       lv_example_imgbtn_1.py
+і               і       і       
+і               і       ГДДДkeyboard
+і               і       і       index.rst
+і               і       і       lv_example_keyboard_1.c
+і               і       і       lv_example_keyboard_1.py
+і               і       і       
+і               і       ГДДДlabel
+і               і       і       index.rst
+і               і       і       lv_example_label_1.c
+і               і       і       lv_example_label_1.py
+і               і       і       lv_example_label_2.c
+і               і       і       lv_example_label_2.py
+і               і       і       lv_example_label_3.c
+і               і       і       lv_example_label_3.py
+і               і       і       lv_example_label_4.c
+і               і       і       lv_example_label_5.c
+і               і       і       lv_example_label_5.py
+і               і       і       
+і               і       ГДДДled
+і               і       і       index.rst
+і               і       і       lv_example_led_1.c
+і               і       і       lv_example_led_1.py
+і               і       і       
+і               і       ГДДДline
+і               і       і       index.rst
+і               і       і       lv_example_line_1.c
+і               і       і       lv_example_line_1.py
+і               і       і       
+і               і       ГДДДlist
+і               і       і       index.rst
+і               і       і       lv_example_list_1.c
+і               і       і       lv_example_list_1.py
+і               і       і       lv_example_list_2.c
+і               і       і       lv_example_list_2.py
+і               і       і       test.py
+і               і       і       
+і               і       ГДДДmenu
+і               і       і       index.rst
+і               і       і       lv_example_menu_1.c
+і               і       і       lv_example_menu_1.py
+і               і       і       lv_example_menu_2.c
+і               і       і       lv_example_menu_2.py
+і               і       і       lv_example_menu_3.c
+і               і       і       lv_example_menu_3.py
+і               і       і       lv_example_menu_4.c
+і               і       і       lv_example_menu_4.py
+і               і       і       lv_example_menu_5.c
+і               і       і       
+і               і       ГДДДmeter
+і               і       і       index.rst
+і               і       і       lv_example_meter_1.c
+і               і       і       lv_example_meter_1.py
+і               і       і       lv_example_meter_2.c
+і               і       і       lv_example_meter_2.py
+і               і       і       lv_example_meter_3.c
+і               і       і       lv_example_meter_3.py
+і               і       і       lv_example_meter_4.c
+і               і       і       lv_example_meter_4.py
+і               і       і       
+і               і       ГДДДmsgbox
+і               і       і       index.rst
+і               і       і       lv_example_msgbox_1.c
+і               і       і       lv_example_msgbox_1.py
+і               і       і       
+і               і       ГДДДobj
+і               і       і       index.rst
+і               і       і       lv_example_obj_1.c
+і               і       і       lv_example_obj_1.py
+і               і       і       lv_example_obj_2.c
+і               і       і       lv_example_obj_2.py
+і               і       і       
+і               і       ГДДДroller
+і               і       і       index.rst
+і               і       і       lv_example_roller_1.c
+і               і       і       lv_example_roller_1.py
+і               і       і       lv_example_roller_2.c
+і               і       і       lv_example_roller_2.py
+і               і       і       lv_example_roller_3.c
+і               і       і       lv_example_roller_3.py
+і               і       і       
+і               і       ГДДДslider
+і               і       і       index.rst
+і               і       і       lv_example_slider_1.c
+і               і       і       lv_example_slider_1.py
+і               і       і       lv_example_slider_2.c
+і               і       і       lv_example_slider_2.py
+і               і       і       lv_example_slider_3.c
+і               і       і       lv_example_slider_3.py
+і               і       і       
+і               і       ГДДДspan
+і               і       і       index.rst
+і               і       і       lv_example_span_1.c
+і               і       і       lv_example_span_1.py
+і               і       і       
+і               і       ГДДДspinbox
+і               і       і       index.rst
+і               і       і       lv_example_spinbox_1.c
+і               і       і       lv_example_spinbox_1.py
+і               і       і       
+і               і       ГДДДspinner
+і               і       і       index.rst
+і               і       і       lv_example_spinner_1.c
+і               і       і       lv_example_spinner_1.py
+і               і       і       
+і               і       ГДДДswitch
+і               і       і       index.rst
+і               і       і       lv_example_switch_1.c
+і               і       і       lv_example_switch_1.py
+і               і       і       
+і               і       ГДДДtable
+і               і       і       index.rst
+і               і       і       lv_example_table_1.c
+і               і       і       lv_example_table_1.py
+і               і       і       lv_example_table_2.c
+і               і       і       lv_example_table_2.py
+і               і       і       
+і               і       ГДДДtabview
+і               і       і       index.rst
+і               і       і       lv_example_tabview_1.c
+і               і       і       lv_example_tabview_1.py
+і               і       і       lv_example_tabview_2.c
+і               і       і       lv_example_tabview_2.py
+і               і       і       
+і               і       ГДДДtextarea
+і               і       і       index.rst
+і               і       і       lv_example_textarea_1.c
+і               і       і       lv_example_textarea_1.py
+і               і       і       lv_example_textarea_2.c
+і               і       і       lv_example_textarea_2.py
+і               і       і       lv_example_textarea_3.c
+і               і       і       lv_example_textarea_3.py
+і               і       і       
+і               і       ГДДДtileview
+і               і       і       index.rst
+і               і       і       lv_example_tileview_1.c
+і               і       і       lv_example_tileview_1.py
+і               і       і       
+і               і       АДДДwin
+і               і               index.rst
+і               і               lv_example_win_1.c
+і               і               lv_example_win_1.py
+і               і               
+і               ГДДДscripts
+і               і   і   .gitignore
+і               і   і   build_html_examples.sh
+і               і   і   changelog-template.hbs
+і               і   і   changelog_gen.sh
+і               і   і   code-format.cfg
+і               і   і   code-format.py
+і               і   і   cppcheck_run.sh
+і               і   і   Doxyfile
+і               і   і   filetohex.py
+і               і   і   find_version.sh
+і               і   і   genexamplelist.sh
+і               і   і   infer_run.sh
+і               і   і   install-prerequisites.sh
+і               і   і   jpg_to_sjpg.py
+і               і   і   lv_conf_internal_gen.py
+і               і   і   style_api_gen.py
+і               і   і   
+і               і   ГДДДbuilt_in_font
+і               і   і       built_in_font_gen.py
+і               і   і       DejaVuSans.ttf
+і               і   і       FontAwesome5-Solid+Brands+Regular.woff
+і               і   і       generate_all.py
+і               і   і       Montserrat-Medium.ttf
+і               і   і       SimSun.woff
+і               і   і       unscii-8.ttf
+і               і   і       
+і               і   АДДДrelease
+і               і           com.py
+і               і           commits.txt
+і               і           patch.py
+і               і           release.py
+і               і           
+і               АДДДsrc
+і                   і   lvgl.h
+і                   і   lv_api_map.h
+і                   і   lv_conf_internal.h
+і                   і   lv_conf_kconfig.h
+і                   і   
+і                   ГДДДcore
+і                   і       lv_core.mk
+і                   і       lv_disp.c
+і                   і       lv_disp.h
+і                   і       lv_event.c
+і                   і       lv_event.h
+і                   і       lv_group.c
+і                   і       lv_group.h
+і                   і       lv_indev.c
+і                   і       lv_indev.h
+і                   і       lv_indev_scroll.c
+і                   і       lv_indev_scroll.h
+і                   і       lv_obj.c
+і                   і       lv_obj.h
+і                   і       lv_obj_class.c
+і                   і       lv_obj_class.h
+і                   і       lv_obj_draw.c
+і                   і       lv_obj_draw.h
+і                   і       lv_obj_pos.c
+і                   і       lv_obj_pos.h
+і                   і       lv_obj_scroll.c
+і                   і       lv_obj_scroll.h
+і                   і       lv_obj_style.c
+і                   і       lv_obj_style.h
+і                   і       lv_obj_style_gen.c
+і                   і       lv_obj_style_gen.h
+і                   і       lv_obj_tree.c
+і                   і       lv_obj_tree.h
+і                   і       lv_refr.c
+і                   і       lv_refr.h
+і                   і       lv_theme.c
+і                   і       lv_theme.h
+і                   і       
+і                   ГДДДdraw
+і                   і   і   lv_draw.c
+і                   і   і   lv_draw.h
+і                   і   і   lv_draw.mk
+і                   і   і   lv_draw_arc.c
+і                   і   і   lv_draw_arc.h
+і                   і   і   lv_draw_img.c
+і                   і   і   lv_draw_img.h
+і                   і   і   lv_draw_label.c
+і                   і   і   lv_draw_label.h
+і                   і   і   lv_draw_layer.c
+і                   і   і   lv_draw_layer.h
+і                   і   і   lv_draw_line.c
+і                   і   і   lv_draw_line.h
+і                   і   і   lv_draw_mask.c
+і                   і   і   lv_draw_mask.h
+і                   і   і   lv_draw_rect.c
+і                   і   і   lv_draw_rect.h
+і                   і   і   lv_draw_transform.c
+і                   і   і   lv_draw_transform.h
+і                   і   і   lv_draw_triangle.c
+і                   і   і   lv_draw_triangle.h
+і                   і   і   lv_img_buf.c
+і                   і   і   lv_img_buf.h
+і                   і   і   lv_img_cache.c
+і                   і   і   lv_img_cache.h
+і                   і   і   lv_img_decoder.c
+і                   і   і   lv_img_decoder.h
+і                   і   і   
+і                   і   ГДДДarm2d
+і                   і   і       lv_draw_arm2d.mk
+і                   і   і       lv_gpu_arm2d.c
+і                   і   і       lv_gpu_arm2d.h
+і                   і   і       
+і                   і   ГДДДnxp
+і                   і   і   і   lv_draw_nxp.mk
+і                   і   і   і   
+і                   і   і   ГДДДpxp
+і                   і   і   і       lv_draw_nxp_pxp.mk
+і                   і   і   і       lv_draw_pxp.c
+і                   і   і   і       lv_draw_pxp.h
+і                   і   і   і       lv_draw_pxp_blend.c
+і                   і   і   і       lv_draw_pxp_blend.h
+і                   і   і   і       lv_gpu_nxp_pxp.c
+і                   і   і   і       lv_gpu_nxp_pxp.h
+і                   і   і   і       lv_gpu_nxp_pxp_osa.c
+і                   і   і   і       lv_gpu_nxp_pxp_osa.h
+і                   і   і   і       
+і                   і   і   АДДДvglite
+і                   і   і           lv_draw_nxp_vglite.mk
+і                   і   і           lv_draw_vglite.c
+і                   і   і           lv_draw_vglite.h
+і                   і   і           lv_draw_vglite_arc.c
+і                   і   і           lv_draw_vglite_arc.h
+і                   і   і           lv_draw_vglite_blend.c
+і                   і   і           lv_draw_vglite_blend.h
+і                   і   і           lv_draw_vglite_line.c
+і                   і   і           lv_draw_vglite_line.h
+і                   і   і           lv_draw_vglite_rect.c
+і                   і   і           lv_draw_vglite_rect.h
+і                   і   і           lv_vglite_buf.c
+і                   і   і           lv_vglite_buf.h
+і                   і   і           lv_vglite_utils.c
+і                   і   і           lv_vglite_utils.h
+і                   і   і           
+і                   і   ГДДДrenesas
+і                   і   і       lv_draw_renesas.mk
+і                   і   і       lv_gpu_d2_draw_label.c
+і                   і   і       lv_gpu_d2_ra6m3.c
+і                   і   і       lv_gpu_d2_ra6m3.h
+і                   і   і       
+і                   і   ГДДДsdl
+і                   і   і       lv_draw_sdl.c
+і                   і   і       lv_draw_sdl.h
+і                   і   і       lv_draw_sdl.mk
+і                   і   і       lv_draw_sdl_arc.c
+і                   і   і       lv_draw_sdl_bg.c
+і                   і   і       lv_draw_sdl_composite.c
+і                   і   і       lv_draw_sdl_composite.h
+і                   і   і       lv_draw_sdl_img.c
+і                   і   і       lv_draw_sdl_img.h
+і                   і   і       lv_draw_sdl_label.c
+і                   і   і       lv_draw_sdl_layer.c
+і                   і   і       lv_draw_sdl_layer.h
+і                   і   і       lv_draw_sdl_line.c
+і                   і   і       lv_draw_sdl_mask.c
+і                   і   і       lv_draw_sdl_mask.h
+і                   і   і       lv_draw_sdl_polygon.c
+і                   і   і       lv_draw_sdl_priv.h
+і                   і   і       lv_draw_sdl_rect.c
+і                   і   і       lv_draw_sdl_rect.h
+і                   і   і       lv_draw_sdl_stack_blur.c
+і                   і   і       lv_draw_sdl_stack_blur.h
+і                   і   і       lv_draw_sdl_texture_cache.c
+і                   і   і       lv_draw_sdl_texture_cache.h
+і                   і   і       lv_draw_sdl_utils.c
+і                   і   і       lv_draw_sdl_utils.h
+і                   і   і       README.md
+і                   і   і       
+і                   і   ГДДДstm32_dma2d
+і                   і   і       lv_draw_stm32_dma2d.mk
+і                   і   і       lv_gpu_stm32_dma2d.c
+і                   і   і       lv_gpu_stm32_dma2d.h
+і                   і   і       
+і                   і   ГДДДsw
+і                   і   і       lv_draw_sw.c
+і                   і   і       lv_draw_sw.h
+і                   і   і       lv_draw_sw.mk
+і                   і   і       lv_draw_sw_arc.c
+і                   і   і       lv_draw_sw_blend.c
+і                   і   і       lv_draw_sw_blend.h
+і                   і   і       lv_draw_sw_dither.c
+і                   і   і       lv_draw_sw_dither.h
+і                   і   і       lv_draw_sw_gradient.c
+і                   і   і       lv_draw_sw_gradient.h
+і                   і   і       lv_draw_sw_img.c
+і                   і   і       lv_draw_sw_layer.c
+і                   і   і       lv_draw_sw_letter.c
+і                   і   і       lv_draw_sw_line.c
+і                   і   і       lv_draw_sw_polygon.c
+і                   і   і       lv_draw_sw_rect.c
+і                   і   і       lv_draw_sw_transform.c
+і                   і   і       
+і                   і   АДДДswm341_dma2d
+і                   і           lv_draw_swm341_dma2d.mk
+і                   і           lv_gpu_swm341_dma2d.c
+і                   і           lv_gpu_swm341_dma2d.h
+і                   і           
+і                   ГДДДextra
+і                   і   і   lv_extra.c
+і                   і   і   lv_extra.h
+і                   і   і   lv_extra.mk
+і                   і   і   README.md
+і                   і   і   
+і                   і   ГДДДlayouts
+і                   і   і   і   lv_layouts.h
+і                   і   і   і   
+і                   і   і   ГДДДflex
+і                   і   і   і       lv_flex.c
+і                   і   і   і       lv_flex.h
+і                   і   і   і       
+і                   і   і   АДДДgrid
+і                   і   і           lv_grid.c
+і                   і   і           lv_grid.h
+і                   і   і           
+і                   і   ГДДДlibs
+і                   і   і   і   lv_libs.h
+і                   і   і   і   
+і                   і   і   ГДДДbmp
+і                   і   і   і       lv_bmp.c
+і                   і   і   і       lv_bmp.h
+і                   і   і   і       
+і                   і   і   ГДДДffmpeg
+і                   і   і   і       lv_ffmpeg.c
+і                   і   і   і       lv_ffmpeg.h
+і                   і   і   і       
+і                   і   і   ГДДДfreetype
+і                   і   і   і       arial.ttf
+і                   і   і   і       lv_freetype.c
+і                   і   і   і       lv_freetype.h
+і                   і   і   і       
+і                   і   і   ГДДДfsdrv
+і                   і   і   і       lv_fsdrv.h
+і                   і   і   і       lv_fs_fatfs.c
+і                   і   і   і       lv_fs_littlefs.c
+і                   і   і   і       lv_fs_posix.c
+і                   і   і   і       lv_fs_stdio.c
+і                   і   і   і       lv_fs_win32.c
+і                   і   і   і       
+і                   і   і   ГДДДgif
+і                   і   і   і       gifdec.c
+і                   і   і   і       gifdec.h
+і                   і   і   і       lv_gif.c
+і                   і   і   і       lv_gif.h
+і                   і   і   і       
+і                   і   і   ГДДДpng
+і                   і   і   і       lodepng.c
+і                   і   і   і       lodepng.h
+і                   і   і   і       lv_png.c
+і                   і   і   і       lv_png.h
+і                   і   і   і       
+і                   і   і   ГДДДqrcode
+і                   і   і   і       lv_qrcode.c
+і                   і   і   і       lv_qrcode.h
+і                   і   і   і       qrcodegen.c
+і                   і   і   і       qrcodegen.h
+і                   і   і   і       
+і                   і   і   ГДДДrlottie
+і                   і   і   і       lv_rlottie.c
+і                   і   і   і       lv_rlottie.h
+і                   і   і   і       
+і                   і   і   ГДДДsjpg
+і                   і   і   і       lv_sjpg.c
+і                   і   і   і       lv_sjpg.h
+і                   і   і   і       tjpgd.c
+і                   і   і   і       tjpgd.h
+і                   і   і   і       tjpgdcnf.h
+і                   і   і   і       
+і                   і   і   АДДДtiny_ttf
+і                   і   і           lv_tiny_ttf.c
+і                   і   і           lv_tiny_ttf.h
+і                   і   і           stb_rect_pack.h
+і                   і   і           stb_truetype_htcw.h
+і                   і   і           
+і                   і   ГДДДothers
+і                   і   і   і   lv_others.h
+і                   і   і   і   
+і                   і   і   ГДДДfragment
+і                   і   і   і       lv_fragment.c
+і                   і   і   і       lv_fragment.h
+і                   і   і   і       lv_fragment_manager.c
+і                   і   і   і       README.md
+і                   і   і   і       
+і                   і   і   ГДДДgridnav
+і                   і   і   і       lv_gridnav.c
+і                   і   і   і       lv_gridnav.h
+і                   і   і   і       
+і                   і   і   ГДДДime
+і                   і   і   і       lv_ime_pinyin.c
+і                   і   і   і       lv_ime_pinyin.h
+і                   і   і   і       
+і                   і   і   ГДДДimgfont
+і                   і   і   і       lv_imgfont.c
+і                   і   і   і       lv_imgfont.h
+і                   і   і   і       
+і                   і   і   ГДДДmonkey
+і                   і   і   і       lv_monkey.c
+і                   і   і   і       lv_monkey.h
+і                   і   і   і       
+і                   і   і   ГДДДmsg
+і                   і   і   і       lv_msg.c
+і                   і   і   і       lv_msg.h
+і                   і   і   і       
+і                   і   і   АДДДsnapshot
+і                   і   і           lv_snapshot.c
+і                   і   і           lv_snapshot.h
+і                   і   і           
+і                   і   ГДДДthemes
+і                   і   і   і   lv_themes.h
+і                   і   і   і   
+і                   і   і   ГДДДbasic
+і                   і   і   і       lv_theme_basic.c
+і                   і   і   і       lv_theme_basic.h
+і                   і   і   і       
+і                   і   і   ГДДДdefault
+і                   і   і   і       lv_theme_default.c
+і                   і   і   і       lv_theme_default.h
+і                   і   і   і       
+і                   і   і   АДДДmono
+і                   і   і           lv_theme_mono.c
+і                   і   і           lv_theme_mono.h
+і                   і   і           
+і                   і   АДДДwidgets
+і                   і       і   lv_widgets.h
+і                   і       і   
+і                   і       ГДДДanimimg
+і                   і       і       lv_animimg.c
+і                   і       і       lv_animimg.h
+і                   і       і       
+і                   і       ГДДДcalendar
+і                   і       і       lv_calendar.c
+і                   і       і       lv_calendar.h
+і                   і       і       lv_calendar_header_arrow.c
+і                   і       і       lv_calendar_header_arrow.h
+і                   і       і       lv_calendar_header_dropdown.c
+і                   і       і       lv_calendar_header_dropdown.h
+і                   і       і       
+і                   і       ГДДДchart
+і                   і       і       lv_chart.c
+і                   і       і       lv_chart.h
+і                   і       і       
+і                   і       ГДДДcolorwheel
+і                   і       і       lv_colorwheel.c
+і                   і       і       lv_colorwheel.h
+і                   і       і       
+і                   і       ГДДДimgbtn
+і                   і       і       lv_imgbtn.c
+і                   і       і       lv_imgbtn.h
+і                   і       і       
+і                   і       ГДДДkeyboard
+і                   і       і       lv_keyboard.c
+і                   і       і       lv_keyboard.h
+і                   і       і       
+і                   і       ГДДДled
+і                   і       і       lv_led.c
+і                   і       і       lv_led.h
+і                   і       і       
+і                   і       ГДДДlist
+і                   і       і       lv_list.c
+і                   і       і       lv_list.h
+і                   і       і       
+і                   і       ГДДДmenu
+і                   і       і       lv_menu.c
+і                   і       і       lv_menu.h
+і                   і       і       
+і                   і       ГДДДmeter
+і                   і       і       lv_meter.c
+і                   і       і       lv_meter.h
+і                   і       і       
+і                   і       ГДДДmsgbox
+і                   і       і       lv_msgbox.c
+і                   і       і       lv_msgbox.h
+і                   і       і       
+і                   і       ГДДДspan
+і                   і       і       lv_span.c
+і                   і       і       lv_span.h
+і                   і       і       
+і                   і       ГДДДspinbox
+і                   і       і       lv_spinbox.c
+і                   і       і       lv_spinbox.h
+і                   і       і       
+і                   і       ГДДДspinner
+і                   і       і       lv_spinner.c
+і                   і       і       lv_spinner.h
+і                   і       і       
+і                   і       ГДДДtabview
+і                   і       і       lv_tabview.c
+і                   і       і       lv_tabview.h
+і                   і       і       
+і                   і       ГДДДtileview
+і                   і       і       lv_tileview.c
+і                   і       і       lv_tileview.h
+і                   і       і       
+і                   і       АДДДwin
+і                   і               lv_win.c
+і                   і               lv_win.h
+і                   і               
+і                   ГДДДfont
+і                   і       korean.ttf
+і                   і       lv_font.c
+і                   і       lv_font.h
+і                   і       lv_font.mk
+і                   і       lv_font_dejavu_16_persian_hebrew.c
+і                   і       lv_font_fmt_txt.c
+і                   і       lv_font_fmt_txt.h
+і                   і       lv_font_loader.c
+і                   і       lv_font_loader.h
+і                   і       lv_font_montserrat_10.c
+і                   і       lv_font_montserrat_12.c
+і                   і       lv_font_montserrat_12_subpx.c
+і                   і       lv_font_montserrat_14.c
+і                   і       lv_font_montserrat_16.c
+і                   і       lv_font_montserrat_18.c
+і                   і       lv_font_montserrat_20.c
+і                   і       lv_font_montserrat_22.c
+і                   і       lv_font_montserrat_24.c
+і                   і       lv_font_montserrat_26.c
+і                   і       lv_font_montserrat_28.c
+і                   і       lv_font_montserrat_28_compressed.c
+і                   і       lv_font_montserrat_30.c
+і                   і       lv_font_montserrat_32.c
+і                   і       lv_font_montserrat_34.c
+і                   і       lv_font_montserrat_36.c
+і                   і       lv_font_montserrat_38.c
+і                   і       lv_font_montserrat_40.c
+і                   і       lv_font_montserrat_42.c
+і                   і       lv_font_montserrat_44.c
+і                   і       lv_font_montserrat_46.c
+і                   і       lv_font_montserrat_48.c
+і                   і       lv_font_montserrat_8.c
+і                   і       lv_font_simsun_16_cjk.c
+і                   і       lv_font_unscii_16.c
+і                   і       lv_font_unscii_8.c
+і                   і       lv_symbol_def.h
+і                   і       
+і                   ГДДДhal
+і                   і       lv_hal.h
+і                   і       lv_hal.mk
+і                   і       lv_hal_disp.c
+і                   і       lv_hal_disp.h
+і                   і       lv_hal_indev.c
+і                   і       lv_hal_indev.h
+і                   і       lv_hal_tick.c
+і                   і       lv_hal_tick.h
+і                   і       
+і                   ГДДДmisc
+і                   і       lv_anim.c
+і                   і       lv_anim.h
+і                   і       lv_anim_timeline.c
+і                   і       lv_anim_timeline.h
+і                   і       lv_area.c
+і                   і       lv_area.h
+і                   і       lv_assert.h
+і                   і       lv_async.c
+і                   і       lv_async.h
+і                   і       lv_bidi.c
+і                   і       lv_bidi.h
+і                   і       lv_color.c
+і                   і       lv_color.h
+і                   і       lv_fs.c
+і                   і       lv_fs.h
+і                   і       lv_gc.c
+і                   і       lv_gc.h
+і                   і       lv_ll.c
+і                   і       lv_ll.h
+і                   і       lv_log.c
+і                   і       lv_log.h
+і                   і       lv_lru.c
+і                   і       lv_lru.h
+і                   і       lv_math.c
+і                   і       lv_math.h
+і                   і       lv_mem.c
+і                   і       lv_mem.h
+і                   і       lv_misc.mk
+і                   і       lv_printf.c
+і                   і       lv_printf.h
+і                   і       lv_style.c
+і                   і       lv_style.h
+і                   і       lv_style_gen.c
+і                   і       lv_style_gen.h
+і                   і       lv_templ.c
+і                   і       lv_templ.h
+і                   і       lv_timer.c
+і                   і       lv_timer.h
+і                   і       lv_tlsf.c
+і                   і       lv_tlsf.h
+і                   і       lv_txt.c
+і                   і       lv_txt.h
+і                   і       lv_txt_ap.c
+і                   і       lv_txt_ap.h
+і                   і       lv_types.h
+і                   і       lv_utils.c
+і                   і       lv_utils.h
+і                   і       
+і                   АДДДwidgets
+і                           lv_arc.c
+і                           lv_arc.h
+і                           lv_bar.c
+і                           lv_bar.h
+і                           lv_btn.c
+і                           lv_btn.h
+і                           lv_btnmatrix.c
+і                           lv_btnmatrix.h
+і                           lv_canvas.c
+і                           lv_canvas.h
+і                           lv_checkbox.c
+і                           lv_checkbox.h
+і                           lv_dropdown.c
+і                           lv_dropdown.h
+і                           lv_img.c
+і                           lv_img.h
+і                           lv_label.c
+і                           lv_label.h
+і                           lv_line.c
+і                           lv_line.h
+і                           lv_objx_templ.c
+і                           lv_objx_templ.h
+і                           lv_roller.c
+і                           lv_roller.h
+і                           lv_slider.c
+і                           lv_slider.h
+і                           lv_switch.c
+і                           lv_switch.h
+і                           lv_table.c
+і                           lv_table.h
+і                           lv_textarea.c
+і                           lv_textarea.h
+і                           lv_widgets.mk
+і                           
+ГДДД.vscode
+і       c_cpp_properties.json
+і       extensions.json
+і       launch.json
+і       
+ГДДДdata
+і       index.html
+і       
+ГДДДinclude
+і       config.h
+і       lv_conf.h
+і       README
+і       
+ГДДДlib
+і       README
+і       
+АДДДsrc
+    і   display.cpp
+    і   display.h
+    і   lvgl_port.cpp
+    і   lvgl_port.h
+    і   main.cpp
+    і   
+    ГДДДbusiness
+    і       business_time.cpp
+    і       business_time.h
+    і       
+    ГДДДclock
+    і       clock_engine.cpp
+    і       clock_engine.h
+    і       dst_engine.cpp
+    і       dst_engine.h
+    і       timezone.cpp
+    і       timezone.h
+    і       timezones_db.cpp
+    і       timezones_db.h
+    і       
+    ГДДДfonts
+    і       font_clock.h
+    і       
+    ГДДДgui
+    і       screen_main.cpp
+    і       screen_main.h
+    і       
+    ГДДДnetwork
+    і       web_handlers.cpp
+    і       web_pages.cpp
+    і       wifi_ap.cpp
+    і       wifi_ap.h
+    і       wifi_manager.cpp
+    і       wifi_manager.h
+    і       wifi_sta.cpp
+    і       wifi_sta.h
+    і       
+    ГДДДntp
+    і       ntp_manager.cpp
+    і       ntp_manager.h
+    і       
+    ГДДДstorage
+    і       preferences_manager.cpp
+    і       preferences_manager.h
+    і       
+    АДДДweb
+        і   filesystem.cpp
+        і   filesystem.h
+        і   web_api.cpp
+        і   web_api.h
+        і   web_handlers.cpp
+        і   web_handlers.h
+        і   web_routes.cpp
+        і   web_routes.h
+        і   web_server.cpp
+        і   web_server.h
+        і   
+        АДДДpages
+                page_about.cpp
+                page_clocks.cpp
+                page_home.cpp
+                page_network.cpp
+                page_system.cpp
+
+
+
+
+
+
+───.vscode
+│       c_cpp_properties.json
+│       extensions.json
+│       launch.json
+│
+├───data
+│       app.js
+│       index.html
+│       style.css
+│
+├───include
+│       config.h
+│       lv_conf.h
+│       README
+│
+├───lib
+│       README
+│
+└───src
+    │   display.cpp
+    │   display.h
+    │   lvgl_port.cpp
+    │   lvgl_port.h
+    │   main.cpp
+    │
+    ├───business
+    │       business_time.cpp
+    │       business_time.h
+    │
+    ├───clock
+    │       clock_engine.cpp
+    │       clock_engine.h
+    │       dst_engine.cpp
+    │       dst_engine.h
+    │       timezone.cpp
+    │       timezone.h
+    │       timezones_db.cpp
+    │       timezones_db.h
+    │
+    ├───fonts
+    │       font_clock.h
+    │
+    ├───gui
+    │       screen_main.cpp
+    │       screen_main.h
+    │
+    ├───network
+    │       web_handlers.cpp
+    │       web_pages.cpp
+    │       wifi_ap.cpp
+    │       wifi_ap.h
+    │       wifi_manager.cpp
+    │       wifi_manager.h
+    │       wifi_sta.cpp
+    │       wifi_sta.h
+    │
+    ├───ntp
+    │       ntp_manager.cpp
+    │       ntp_manager.h
+    │
+    ├───storage
+    │       preferences_manager.cpp
+    │       preferences_manager.h
+    │
+    └───web
+        │   filesystem.cpp
+        │   filesystem.h
+        │   web_api.cpp
+        │   web_api.h
+        │   web_handlers.cpp
+        │   web_handlers.h
+        │   web_routes.cpp
+        │   web_routes.h
+        │   web_server.cpp
+        │   web_server.h
+        │
+        └───pages
+                page_about.cpp
+                page_clocks.cpp
+                page_home.cpp
+                page_network.cpp
+                page_system.cpp
+                
