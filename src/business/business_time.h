@@ -14,6 +14,14 @@ enum BusinessState
     BUSINESS_ACTIVE
 };
 
+enum ClockMarkerState
+{
+    MARKER_RED = 0,             // Non-working time
+    MARKER_GREEN,               // Working time
+    MARKER_YELLOW,              // Less than 30 minutes to end
+    MARKER_BLUE                 // Less than 30 minutes to start
+};
+
 //------------------------------------------------------------
 // Working schedule
 //------------------------------------------------------------
@@ -35,6 +43,10 @@ struct BusinessHours
 //------------------------------------------------------------
 
 BusinessState businessGetState(
+    const tm &localTime,
+    const BusinessHours &schedule);
+
+ClockMarkerState businessGetMarkerState(
     const tm &localTime,
     const BusinessHours &schedule);
 

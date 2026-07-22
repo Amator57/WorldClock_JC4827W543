@@ -242,3 +242,26 @@ async function saveClocks()
 }
 
 window.onload = () => loadNetwork();
+
+async function triggerSalute()
+{
+    try
+    {
+        const response = await fetch("/api/salute", {
+            method: "POST"
+        });
+        if (response.ok)
+        {
+            alert("Fireworks triggered on clock screen!");
+        }
+        else
+        {
+            alert("Error triggering fireworks.");
+        }
+    }
+    catch (e)
+    {
+        console.error(e);
+        alert("Communication error.");
+    }
+}

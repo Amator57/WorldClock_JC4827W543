@@ -5,6 +5,7 @@
 
 #include "../storage/preferences_manager.h"
 #include "../clock/timezones_db.h"
+#include "../gui/screen_main.h"
 
 //------------------------------------------------------------
 // Local functions
@@ -347,6 +348,21 @@ server.on(
 
             sendJson(request, doc);
         });
+    //--------------------------------------------------------
+    // Trigger Salute
+    //--------------------------------------------------------
+
+    server.on(
+        "/api/salute",
+        HTTP_POST,
+        [](AsyncWebServerRequest *request)
+        {
+            startSaluteAnimation();
+            JsonDocument doc;
+            doc["status"] = "ok";
+            sendJson(request, doc);
+        });
+
     //--------------------------------------------------------
     // API information
     //--------------------------------------------------------

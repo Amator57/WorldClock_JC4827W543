@@ -79,18 +79,23 @@ if (!filesystemInit())
 
     "Kyiv",
     "12:34:56",
+    0,
 
     "Delhi",
     "16:04:56",
+    0,
 
     "Washington",
     "05:34:56",
+    0,
 
     "Valencia",
     "11:34:56",
+    0,
 
     "Tokyo",
     "19:34:56",
+    0,
 
     "15 Jul 2026",
 
