@@ -50,7 +50,7 @@ async function loadNetwork()
     {
         const cfg = await readJson("/api/network");
         document.getElementById("wifi_ssid").value = cfg.ssid || "";
-        document.getElementById("wifi_password").value = cfg.password || "";
+        document.getElementById("wifi_password").value = "";
         document.getElementById("wifi_dhcp").checked =
             cfg.dhcp !== undefined ? cfg.dhcp : true;
         document.getElementById("wifi_ip").value = cfg.ip || "192.168.1.100";
@@ -71,13 +71,16 @@ async function saveNetwork()
     const cfg =
     {
         ssid: document.getElementById("wifi_ssid").value,
-        password: document.getElementById("wifi_password").value,
         dhcp: document.getElementById("wifi_dhcp").checked,
         ip: document.getElementById("wifi_ip").value,
         subnet: document.getElementById("wifi_subnet").value,
         gateway: document.getElementById("wifi_gateway").value,
         dns: document.getElementById("wifi_dns").value
     };
+
+    const password = document.getElementById("wifi_password").value;
+    if (password.length > 0)
+        cfg.password = password;
 
     try
     {

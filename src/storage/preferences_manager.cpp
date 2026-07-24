@@ -289,7 +289,7 @@ void prefSetClockCount(uint8_t count)
 
 uint8_t prefGetClockCount()
 {
-    return prefs.getUChar("clk_count", 3);
+    return prefs.getUChar("clk_count", MAX_WORLD_CLOCKS);
 }
 
 //------------------------------------------------------------

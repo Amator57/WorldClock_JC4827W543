@@ -49,12 +49,3 @@ BusinessState businessGetState(
 ClockMarkerState businessGetMarkerState(
     const tm &localTime,
     const BusinessHours &schedule);
-
-BusinessState businessOverlapState(
-    const tm &referenceTime,
-    const BusinessHours &referenceSchedule,
-
-    const tm &remoteTime,
-    const BusinessHours &remoteSchedule,
-
-    uint16_t warningMinutes);

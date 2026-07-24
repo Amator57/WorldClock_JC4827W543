@@ -19,8 +19,6 @@ void ntpLoop();
 // Status
 //------------------------------------------------------------
 
-bool ntpIsSynchronized();
-
 const char *ntpStatusString();
 
 //------------------------------------------------------------
@@ -28,11 +26,3 @@ const char *ntpStatusString();
 //------------------------------------------------------------
 
 bool ntpGetUTCTime(struct tm *timeinfo);
-
-//------------------------------------------------------------
-// Date & Time strings
-//------------------------------------------------------------
-
-void ntpGetDateString(char *buffer, size_t len);
-
-void ntpGetTimeString(char *buffer, size_t len);

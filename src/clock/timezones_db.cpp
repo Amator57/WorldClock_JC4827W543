@@ -354,16 +354,3 @@ const TimeZoneInfo *findTimeZoneByEnglish(const char *name)
 
     return nullptr;
 }
-
-//------------------------------------------------------------
-
-const TimeZoneInfo *findTimeZoneByUkrainian(const char *name)
-{
-    for (uint16_t i = 0; i < timeZonesCount; i++)
-    {
-        if (strcmp(name, timeZones[i].nameUA) == 0)
-            return &timeZones[i];
-    }
-
-    return nullptr;
-}

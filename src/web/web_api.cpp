@@ -135,13 +135,13 @@ void webApiInit(AsyncWebServer &server)
         {
             JsonDocument doc;
 
-            doc["ssid"]    = prefGetWiFiSSID();
-            doc["password"] = prefGetWiFiPassword();
-            doc["dhcp"]    = prefGetWiFiDHCP();
-            doc["ip"]      = prefGetWiFiIP();
-            doc["subnet"]  = prefGetWiFiSubnet();
-            doc["gateway"] = prefGetWiFiGateway();
-            doc["dns"]     = prefGetWiFiDNS();
+            doc["ssid"]     = prefGetWiFiSSID();
+            doc["hasPassword"] = !prefGetWiFiPassword().isEmpty();
+            doc["dhcp"]     = prefGetWiFiDHCP();
+            doc["ip"]       = prefGetWiFiIP();
+            doc["subnet"]   = prefGetWiFiSubnet();
+            doc["gateway"]  = prefGetWiFiGateway();
+            doc["dns"]      = prefGetWiFiDNS();
 
             sendJson(request, doc);
         });

@@ -4,26 +4,28 @@
 
 bool filesystemInit()
 {
-    if (LittleFS.begin(true))
+    if (!LittleFS.begin(true))
     {
-        Serial.println("LittleFS mounted.");
+        Serial.println("LittleFS mount failed.");
 
-        return true;
+        return false;
     }
-File root = LittleFS.open("/");
 
-File file = root.openNextFile();
+    Serial.println("LittleFS mounted.");
 
-Serial.println("LittleFS files:");
+    File root = LittleFS.open("/");
 
-while (file)
-{
-    Serial.print("  ");
-    Serial.println(file.name());
+    File file = root.openNextFile();
 
-    file = root.openNextFile();
-}
-    Serial.println("LittleFS mount failed.");
+    Serial.println("LittleFS files:");
 
-    return false;
+    while (file)
+    {
+        Serial.print("  ");
+        Serial.println(file.name());
+
+        file = root.openNextFile();
+    }
+
+    return true;
 }

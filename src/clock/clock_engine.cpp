@@ -12,12 +12,18 @@
 #include "../ntp/ntp_manager.h"
 #include "../storage/preferences_manager.h"
 #include "../business/business_time.h"
+#include "../sensor/bme_manager.h"
 
 //------------------------------------------------------------
 
 static uint32_t lastUpdate = 0;
 static int lastSaluteYear = -1;
 static int lastSaluteYday = -1;
+
+// View alternation: 30s clock, 30s environment.
+static const uint32_t VIEW_PERIOD_MS = 30000;
+static uint8_t  currentView    = SCREEN_VIEW_CLOCK;
+static uint32_t lastViewSwitch = 0;
 
 //------------------------------------------------------------
 
@@ -155,6 +161,9 @@ static tm getLocalTimeStruct(
 void clockEngineInit()
 {
     lastUpdate = 0;
+    currentView = SCREEN_VIEW_CLOCK;
+    lastViewSwitch = millis();
+    screenViewSet(currentView);
 }
 
 //------------------------------------------------------------
@@ -165,6 +174,29 @@ void clockEngineUpdate()
         return;
 
     lastUpdate = millis();
+
+    //--------------------------------------------------------
+    // Alternate between clock and environment views.
+    //--------------------------------------------------------
+    if (millis() - lastViewSwitch >= VIEW_PERIOD_MS)
+    {
+        lastViewSwitch = millis();
+        currentView = (currentView == SCREEN_VIEW_CLOCK)
+                          ? SCREEN_VIEW_ENV
+                          : SCREEN_VIEW_CLOCK;
+        screenViewSet(currentView);
+    }
+
+    //--------------------------------------------------------
+    // Environment view: show averaged sensor data.
+    //--------------------------------------------------------
+    if (currentView == SCREEN_VIEW_ENV)
+    {
+        float tempC, humPct, presHpa;
+        bmeGetAverage(tempC, humPct, presHpa);
+        screenEnvUpdate(tempC, humPct, presHpa);
+        return;
+    }
 
     struct tm utc;
 
@@ -183,9 +215,6 @@ void clockEngineUpdate()
         return;
     }
 
-    char dateString[24];
-    strftime(dateString, sizeof(dateString), "%d %b %Y", &utc);
-
     String cities[5] =
     {
         prefGetCity(0), prefGetCity(1), prefGetCity(2),
@@ -197,13 +226,30 @@ void clockEngineUpdate()
     const char *names[5];
     uint8_t states[5];
 
+    uint8_t refIndex = prefGetReferenceCity();
+    if (refIndex >= 5)
+        refIndex = 0;
+
+    struct tm refLocalTime = utc;
+    bool refLocalTimeValid = false;
+
     for (uint8_t i = 0; i < 5; i++)
     {
-        zones[i] = findTimeZoneByEnglish(cities[i].c_str());
+        zones[i] = getTimeZone(prefGetTimeZone(i));
+        if (!zones[i])
+            zones[i] = findTimeZoneByEnglish(cities[i].c_str());
+
         formatCityTime(zones[i], utc, times[i], sizeof(times[i]));
         names[i] = zones[i] ? zones[i]->nameEN : cities[i].c_str();
 
         struct tm localTime = getLocalTimeStruct(zones[i], utc);
+
+        if (i == refIndex)
+        {
+            refLocalTime = localTime;
+            refLocalTimeValid = true;
+        }
+
         BusinessHours schedule;
         uint16_t workStart = prefGetWorkStart(i);
         uint16_t workEnd = prefGetWorkEnd(i);
@@ -235,6 +281,12 @@ void clockEngineUpdate()
             }
         }
     }
+
+    char dateString[24];
+    if (refLocalTimeValid)
+        strftime(dateString, sizeof(dateString), "%a %d %b %Y", &refLocalTime);
+    else
+        strftime(dateString, sizeof(dateString), "%a %d %b %Y", &utc);
 
     char wifiText[32];
     strcpy(wifiText, WiFi.status() == WL_CONNECTED ?

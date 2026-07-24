@@ -70,31 +70,6 @@ void ntpLoop()
         Serial.println("NTP synchronized!");
     }
 }
-/*
-void ntpLoop()
-{
-    if (synchronized)
-        return;
-
-    if (WiFi.status() != WL_CONNECTED)
-        return;
-
-    struct tm timeinfo;
-
-    if (getLocalTime(&timeinfo, 100))
-    {
-        synchronized = true;
-
-        strcpy(statusText, "OK");
-    }
-}
-*/
-//------------------------------------------------------------
-
-bool ntpIsSynchronized()
-{
-    return synchronized;
-}
 
 //------------------------------------------------------------
 
@@ -111,44 +86,4 @@ bool ntpGetUTCTime(struct tm *timeinfo)
         return false;
 
     return getLocalTime(timeinfo, 10);
-}
-
-//------------------------------------------------------------
-
-void ntpGetDateString(char *buffer, size_t len)
-{
-    struct tm tm;
-
-    if (!ntpGetUTCTime(&tm))
-    {
-        strncpy(buffer, "-- --- ----", len);
-        buffer[len - 1] = 0;
-        return;
-    }
-
-    strftime(
-        buffer,
-        len,
-        "%d %b %Y",
-        &tm);
-}
-
-//------------------------------------------------------------
-
-void ntpGetTimeString(char *buffer, size_t len)
-{
-    struct tm tm;
-
-    if (!ntpGetUTCTime(&tm))
-    {
-        strncpy(buffer, "--:--:--", len);
-        buffer[len - 1] = 0;
-        return;
-    }
-
-    strftime(
-        buffer,
-        len,
-        "%H:%M:%S",
-        &tm);
 }

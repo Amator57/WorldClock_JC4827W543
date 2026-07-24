@@ -2,6 +2,7 @@
 #include <Arduino.h>
 #include <math.h>
 #include <stdlib.h>
+#include "../fonts/font_clock.h"
 
 //------------------------------------------------------------
 // Objects
@@ -31,6 +32,18 @@ static lv_obj_t *lblNTP;
 static lv_obj_t *lblIP;
 
 static lv_obj_t *markerClocks[5];
+
+//------------------------------------------------------------
+// Environment view objects
+//------------------------------------------------------------
+
+static lv_obj_t *lblEnvTitle;
+static lv_obj_t *lblTempLabel;
+static lv_obj_t *lblTempValue;
+static lv_obj_t *lblHumLabel;
+static lv_obj_t *lblHumValue;
+static lv_obj_t *lblPresLabel;
+static lv_obj_t *lblPresValue;
 
 //------------------------------------------------------------
 
@@ -83,7 +96,7 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblTime1,
-        &lv_font_montserrat_24,
+        &font_clock,
         0);
 
     lv_obj_set_pos(
@@ -111,7 +124,7 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblTime2,
-        &lv_font_montserrat_24,
+        &font_clock,
         0);
 
     lv_obj_set_pos(
@@ -139,7 +152,7 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblTime3,
-        &lv_font_montserrat_24,
+        &font_clock,
         0);
 
     lv_obj_set_pos(
@@ -166,7 +179,7 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblTime4,
-        &lv_font_montserrat_24,
+        &font_clock,
         0);
 
     lv_obj_set_pos(
@@ -194,7 +207,7 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblTime5,
-        &lv_font_montserrat_24,
+        &font_clock,
         0);
 
     lv_obj_set_pos(
@@ -309,6 +322,52 @@ void screenMainCreate()
     lv_label_set_text(lblNTP, "NTP: Waiting");
 
     lv_label_set_text(lblIP, "IP: ---");
+
+    //--------------------------------------------------------
+    // Environment view (hidden by default)
+    //--------------------------------------------------------
+
+    lblEnvTitle = lv_label_create(scr);
+    lv_obj_set_style_text_font(lblEnvTitle, &lv_font_montserrat_24, 0);
+    lv_obj_set_pos(lblEnvTitle, 120, 5);
+    lv_label_set_text(lblEnvTitle, "ENVIRONMENT");
+    lv_obj_add_flag(lblEnvTitle, LV_OBJ_FLAG_HIDDEN);
+
+    lblTempLabel = lv_label_create(scr);
+    lv_obj_set_style_text_font(lblTempLabel, &lv_font_montserrat_18, 0);
+    lv_obj_set_pos(lblTempLabel, 40, 65);
+    lv_label_set_text(lblTempLabel, "Temperature");
+    lv_obj_add_flag(lblTempLabel, LV_OBJ_FLAG_HIDDEN);
+
+    lblTempValue = lv_label_create(scr);
+    lv_obj_set_style_text_font(lblTempValue, &lv_font_montserrat_28, 0);
+    lv_obj_set_pos(lblTempValue, 260, 57);
+    lv_label_set_text(lblTempValue, "--.- C");
+    lv_obj_add_flag(lblTempValue, LV_OBJ_FLAG_HIDDEN);
+
+    lblHumLabel = lv_label_create(scr);
+    lv_obj_set_style_text_font(lblHumLabel, &lv_font_montserrat_18, 0);
+    lv_obj_set_pos(lblHumLabel, 40, 125);
+    lv_label_set_text(lblHumLabel, "Humidity");
+    lv_obj_add_flag(lblHumLabel, LV_OBJ_FLAG_HIDDEN);
+
+    lblHumValue = lv_label_create(scr);
+    lv_obj_set_style_text_font(lblHumValue, &lv_font_montserrat_28, 0);
+    lv_obj_set_pos(lblHumValue, 260, 117);
+    lv_label_set_text(lblHumValue, "--.- %");
+    lv_obj_add_flag(lblHumValue, LV_OBJ_FLAG_HIDDEN);
+
+    lblPresLabel = lv_label_create(scr);
+    lv_obj_set_style_text_font(lblPresLabel, &lv_font_montserrat_18, 0);
+    lv_obj_set_pos(lblPresLabel, 40, 185);
+    lv_label_set_text(lblPresLabel, "Pressure");
+    lv_obj_add_flag(lblPresLabel, LV_OBJ_FLAG_HIDDEN);
+
+    lblPresValue = lv_label_create(scr);
+    lv_obj_set_style_text_font(lblPresValue, &lv_font_montserrat_28, 0);
+    lv_obj_set_pos(lblPresValue, 260, 177);
+    lv_label_set_text(lblPresValue, "----.- hPa");
+    lv_obj_add_flag(lblPresValue, LV_OBJ_FLAG_HIDDEN);
 }
 static void updateMarkerColor(lv_obj_t *marker, uint8_t state)
 {
@@ -396,6 +455,86 @@ void screenMainUpdate(
 }
 
 //------------------------------------------------------------
+// View switching helpers
+//------------------------------------------------------------
+
+static void setWidgetVisible(lv_obj_t *obj, bool visible)
+{
+    if (!obj)
+        return;
+
+    if (visible)
+        lv_obj_clear_flag(obj, LV_OBJ_FLAG_HIDDEN);
+    else
+        lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
+}
+
+void screenViewSet(uint8_t view)
+{
+    bool clockVisible = (view == SCREEN_VIEW_CLOCK);
+
+    // Clock view widgets
+    setWidgetVisible(lblTitle, clockVisible);
+
+    setWidgetVisible(lblCity1, clockVisible);
+    setWidgetVisible(lblTime1, clockVisible);
+    setWidgetVisible(lblCity2, clockVisible);
+    setWidgetVisible(lblTime2, clockVisible);
+    setWidgetVisible(lblCity3, clockVisible);
+    setWidgetVisible(lblTime3, clockVisible);
+    setWidgetVisible(lblCity4, clockVisible);
+    setWidgetVisible(lblTime4, clockVisible);
+    setWidgetVisible(lblCity5, clockVisible);
+    setWidgetVisible(lblTime5, clockVisible);
+
+    for (int i = 0; i < 5; i++)
+        setWidgetVisible(markerClocks[i], clockVisible);
+
+    // Environment view widgets
+    setWidgetVisible(lblEnvTitle, !clockVisible);
+    setWidgetVisible(lblTempLabel, !clockVisible);
+    setWidgetVisible(lblTempValue, !clockVisible);
+    setWidgetVisible(lblHumLabel, !clockVisible);
+    setWidgetVisible(lblHumValue, !clockVisible);
+    setWidgetVisible(lblPresLabel, !clockVisible);
+    setWidgetVisible(lblPresValue, !clockVisible);
+}
+
+void screenEnvUpdate(float temperatureC,
+                     float humidityPct,
+                     float pressureHpa)
+{
+    char buf[20];
+
+    if (lblTempValue)
+    {
+        if (isnan(temperatureC))
+            snprintf(buf, sizeof(buf), "--.- C");
+        else
+            snprintf(buf, sizeof(buf), "%.1f C", temperatureC);
+        lv_label_set_text(lblTempValue, buf);
+    }
+
+    if (lblHumValue)
+    {
+        if (isnan(humidityPct))
+            snprintf(buf, sizeof(buf), "--.- %%");
+        else
+            snprintf(buf, sizeof(buf), "%.1f %%", humidityPct);
+        lv_label_set_text(lblHumValue, buf);
+    }
+
+    if (lblPresValue)
+    {
+        if (isnan(pressureHpa))
+            snprintf(buf, sizeof(buf), "----.- hPa");
+        else
+            snprintf(buf, sizeof(buf), "%.1f hPa", pressureHpa);
+        lv_label_set_text(lblPresValue, buf);
+    }
+}
+
+//------------------------------------------------------------
 // Fireworks (Salute) Animation
 //------------------------------------------------------------
 
@@ -407,7 +546,7 @@ static void animReadyCb(lv_anim_t *a)
     lv_obj_t *obj = (lv_obj_t *)a->var;
     if (obj)
     {
-        lv_obj_del(obj);
+        lv_obj_del_async(obj);
     }
 }
 
@@ -459,7 +598,6 @@ static void spawnExplosion(int cx, int cy)
         lv_anim_set_time(&a_x, duration);
         lv_anim_set_exec_cb(&a_x, (lv_anim_exec_xcb_t)lv_obj_set_x);
         lv_anim_set_path_cb(&a_x, lv_anim_path_ease_out);
-        lv_anim_set_ready_cb(&a_x, animReadyCb);
 
         // Y animation
         lv_anim_t a_y;
@@ -470,7 +608,10 @@ static void spawnExplosion(int cx, int cy)
         lv_anim_set_exec_cb(&a_y, (lv_anim_exec_xcb_t)lv_obj_set_y);
         lv_anim_set_path_cb(&a_y, lv_anim_path_ease_out);
 
-        // Opacity animation (fade out)
+        // Opacity animation (fade out). Ready-cb lives on the LAST
+        // animation so x/y have already applied their final value;
+        // async delete avoids use-after-free of the still-registered
+        // sibling animations.
         lv_anim_t a_opa;
         lv_anim_init(&a_opa);
         lv_anim_set_var(&a_opa, part);
@@ -480,6 +621,7 @@ static void spawnExplosion(int cx, int cy)
             lv_obj_set_style_opa((lv_obj_t *)var, val, 0);
         });
         lv_anim_set_path_cb(&a_opa, lv_anim_path_ease_out);
+        lv_anim_set_ready_cb(&a_opa, animReadyCb);
 
         lv_anim_start(&a_x);
         lv_anim_start(&a_y);
@@ -491,7 +633,7 @@ static void saluteSpawnCb(lv_timer_t *t)
 {
     if (millis() - saluteStartTime >= 60000)
     {
-        // 160 seconds finished, stop spawning
+        // 60 seconds finished, stop spawning
         lv_timer_del(t);
         saluteSpawnTimer = nullptr;
         return;

@@ -8,6 +8,7 @@
 //------------------------------------------------------------
 
 static AsyncWebServer server(80);
+static bool serverRunning = false;
 
 //------------------------------------------------------------
 
@@ -17,19 +18,6 @@ bool webServerInit()
     Serial.println("--------------------------------");
     Serial.println("WEB SERVER");
     Serial.println("--------------------------------");
-
-    //--------------------------------------------------------
-    // LittleFS
-    //--------------------------------------------------------
-
-    if (!LittleFS.begin(true))
-    {
-        Serial.println("LittleFS mount failed.");
-
-        return false;
-    }
-
-    Serial.println("LittleFS mounted.");
 
     //--------------------------------------------------------
     // Main page
@@ -73,6 +61,8 @@ bool webServerInit()
 
     server.begin();
 
+    serverRunning = true;
+
     Serial.println("Web server started.");
 
     return true;
@@ -83,4 +73,11 @@ bool webServerInit()
 void webServerLoop()
 {
     // AsyncWebServer
+}
+
+//------------------------------------------------------------
+
+bool webServerIsRunning()
+{
+    return serverRunning;
 }

@@ -11,6 +11,25 @@ void screenMainCreate();
 void startSaluteAnimation();
 
 //------------------------------------------------------------
+// Display views
+//------------------------------------------------------------
+
+enum ScreenView : uint8_t
+{
+    SCREEN_VIEW_CLOCK = 0,
+    SCREEN_VIEW_ENV   = 1
+};
+
+// Toggle between clock view and environment view.
+void screenViewSet(uint8_t view);
+
+// Update the environment view with averaged sensor data.
+// Pass NAN for any value that is unavailable (shown as "--").
+void screenEnvUpdate(float temperatureC,
+                     float humidityPct,
+                     float pressureHpa);
+
+//------------------------------------------------------------
 // Update screen
 //------------------------------------------------------------
 

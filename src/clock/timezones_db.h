@@ -45,6 +45,4 @@ extern const uint16_t timeZonesCount;
 
 const TimeZoneInfo *findTimeZoneByEnglish(const char *name);
 
-const TimeZoneInfo *findTimeZoneByUkrainian(const char *name);
-
 const TimeZoneInfo *getTimeZone(uint16_t index);

@@ -7,6 +7,7 @@
 #include "ntp/ntp_manager.h"
 #include "network/wifi_manager.h"
 #include "storage/preferences_manager.h"
+#include "sensor/bme_manager.h"
 #include "web/filesystem.h"
 #include "web/web_server.h"
 
@@ -65,6 +66,8 @@ prefLoadDefaults();
 
 if (!filesystemInit())
 {
+    Serial.println("Filesystem initialization failed.");
+
     while (true)
         delay(100);
 }
@@ -105,6 +108,15 @@ if (!filesystemInit())
 
     "IP : ---");
     */
+    //--------------------------------------------------------
+    // BME280 sensor
+    //--------------------------------------------------------
+
+    if (!bmeInit())
+    {
+        Serial.println("BME280 init failed (sensor offline).");
+    }
+
         clockEngineInit();
 //========================================================
 // WiFi
@@ -114,12 +126,17 @@ if (!filesystemInit())
 // Пізніше ці параметри будуть читатися з Preferences.
 
 wifiManagerInit();
-webServerInit();
 
+if (!webServerInit())
+{
+    Serial.println("Web Server init failed.");
+}
 
-ntpInit();
+if (!ntpInit())
+{
+    Serial.println("NTP init deferred (no network).");
+}
 
-Serial.println("Web Server started.");
 Serial.println("Ready.");
 }
 
@@ -131,6 +148,8 @@ wifiManagerLoop();
 webServerLoop();
 
 ntpLoop();
+
+bmeLoop();
 
 clockEngineUpdate();
 

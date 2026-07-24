@@ -61,36 +61,6 @@ BusinessState businessGetState(
 
 //------------------------------------------------------------
 
-BusinessState businessOverlapState(
-    const tm &referenceTime,
-    const BusinessHours &referenceSchedule,
-
-    const tm &remoteTime,
-    const BusinessHours &remoteSchedule,
-
-    uint16_t warningMinutes)
-{
-    BusinessState ref =
-        businessGetState(
-            referenceTime,
-            referenceSchedule);
-
-    BusinessState remote =
-        businessGetState(
-            remoteTime,
-            remoteSchedule);
-
-    if (ref != BUSINESS_ACTIVE)
-        return BUSINESS_OFF;
-
-    if (remote != BUSINESS_ACTIVE)
-        return BUSINESS_OFF;
-
-    return BUSINESS_ACTIVE;
-}
-
-//------------------------------------------------------------
-
 ClockMarkerState businessGetMarkerState(
     const tm &localTime,
     const BusinessHours &schedule)
