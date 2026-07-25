@@ -45,6 +45,15 @@ static lv_obj_t *lblHumValue;
 static lv_obj_t *lblPresLabel;
 static lv_obj_t *lblPresValue;
 
+// True when the active sensor has a humidity channel (BME280).
+static bool envHasHumidity = true;
+
+//------------------------------------------------------------
+// Battery / power status (IP5306) widget
+//------------------------------------------------------------
+
+static lv_obj_t *lblBattery;
+
 //------------------------------------------------------------
 
 void screenMainCreate()
@@ -297,6 +306,25 @@ void screenMainCreate()
         245);
 
     //--------------------------------------------------------
+    // Battery / power status (IP5306)
+    //--------------------------------------------------------
+
+    lblBattery = lv_label_create(scr);
+
+    lv_obj_set_style_text_font(
+        lblBattery,
+        &lv_font_montserrat_14,
+        0);
+
+    lv_obj_set_pos(
+        lblBattery,
+        390,
+        8);
+
+    lv_label_set_text(lblBattery, "");
+    lv_obj_add_flag(lblBattery, LV_OBJ_FLAG_HIDDEN);
+
+    //--------------------------------------------------------
     // Initial values
     //--------------------------------------------------------
 
@@ -347,25 +375,25 @@ void screenMainCreate()
 
     lblHumLabel = lv_label_create(scr);
     lv_obj_set_style_text_font(lblHumLabel, &lv_font_montserrat_18, 0);
-    lv_obj_set_pos(lblHumLabel, 40, 125);
+    lv_obj_set_pos(lblHumLabel, 40, 185);
     lv_label_set_text(lblHumLabel, "Humidity");
     lv_obj_add_flag(lblHumLabel, LV_OBJ_FLAG_HIDDEN);
 
     lblHumValue = lv_label_create(scr);
     lv_obj_set_style_text_font(lblHumValue, &lv_font_montserrat_28, 0);
-    lv_obj_set_pos(lblHumValue, 260, 117);
+    lv_obj_set_pos(lblHumValue, 260, 177);
     lv_label_set_text(lblHumValue, "--.- %");
     lv_obj_add_flag(lblHumValue, LV_OBJ_FLAG_HIDDEN);
 
     lblPresLabel = lv_label_create(scr);
     lv_obj_set_style_text_font(lblPresLabel, &lv_font_montserrat_18, 0);
-    lv_obj_set_pos(lblPresLabel, 40, 185);
+    lv_obj_set_pos(lblPresLabel, 40, 125);
     lv_label_set_text(lblPresLabel, "Pressure");
     lv_obj_add_flag(lblPresLabel, LV_OBJ_FLAG_HIDDEN);
 
     lblPresValue = lv_label_create(scr);
     lv_obj_set_style_text_font(lblPresValue, &lv_font_montserrat_28, 0);
-    lv_obj_set_pos(lblPresValue, 260, 177);
+    lv_obj_set_pos(lblPresValue, 260, 117);
     lv_label_set_text(lblPresValue, "----.- hPa");
     lv_obj_add_flag(lblPresValue, LV_OBJ_FLAG_HIDDEN);
 }
@@ -475,6 +503,7 @@ void screenViewSet(uint8_t view)
 
     // Clock view widgets
     setWidgetVisible(lblTitle, clockVisible);
+    setWidgetVisible(lblBattery, clockVisible);
 
     setWidgetVisible(lblCity1, clockVisible);
     setWidgetVisible(lblTime1, clockVisible);
@@ -491,13 +520,35 @@ void screenViewSet(uint8_t view)
         setWidgetVisible(markerClocks[i], clockVisible);
 
     // Environment view widgets
-    setWidgetVisible(lblEnvTitle, !clockVisible);
+    setWidgetVisible(lblEnvTitle,  !clockVisible);
     setWidgetVisible(lblTempLabel, !clockVisible);
     setWidgetVisible(lblTempValue, !clockVisible);
-    setWidgetVisible(lblHumLabel, !clockVisible);
-    setWidgetVisible(lblHumValue, !clockVisible);
+
+    const bool humVisible = !clockVisible && envHasHumidity;
+    setWidgetVisible(lblHumLabel, humVisible);
+    setWidgetVisible(lblHumValue, humVisible);
+
     setWidgetVisible(lblPresLabel, !clockVisible);
     setWidgetVisible(lblPresValue, !clockVisible);
+}
+
+//------------------------------------------------------------
+// Environment layout configuration
+//------------------------------------------------------------
+
+void screenEnvSetHumidity(bool hasHumidity)
+{
+    // The layout is fixed (Temperature / Pressure / Humidity) and is
+    // set once in screenMainCreate. Here we only record whether the
+    // humidity channel exists. For BMP280 the humidity row is hidden;
+    // Temperature and Pressure keep their normal positions.
+    envHasHumidity = hasHumidity;
+
+    if (!hasHumidity)
+    {
+        setWidgetVisible(lblHumLabel, false);
+        setWidgetVisible(lblHumValue, false);
+    }
 }
 
 void screenEnvUpdate(float temperatureC,
@@ -532,6 +583,33 @@ void screenEnvUpdate(float temperatureC,
             snprintf(buf, sizeof(buf), "%.1f hPa", pressureHpa);
         lv_label_set_text(lblPresValue, buf);
     }
+}
+
+//------------------------------------------------------------
+// Battery / power status (IP5306)
+//------------------------------------------------------------
+
+void screenBatteryUpdate(bool present, int8_t level, bool charging)
+{
+    if (!lblBattery)
+        return;
+
+    if (!present)
+    {
+        lv_obj_add_flag(lblBattery, LV_OBJ_FLAG_HIDDEN);
+        return;
+    }
+
+    lv_obj_clear_flag(lblBattery, LV_OBJ_FLAG_HIDDEN);
+
+    char buf[20];
+
+    if (level < 0)
+        snprintf(buf, sizeof(buf), "BAT --%s", charging ? " +" : "");
+    else
+        snprintf(buf, sizeof(buf), "BAT %d%%%s", level, charging ? " +" : "");
+
+    lv_label_set_text(lblBattery, buf);
 }
 
 //------------------------------------------------------------

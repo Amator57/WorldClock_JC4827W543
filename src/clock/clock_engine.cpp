@@ -13,6 +13,7 @@
 #include "../storage/preferences_manager.h"
 #include "../business/business_time.h"
 #include "../sensor/bme_manager.h"
+#include "../sensor/ip5306_manager.h"
 
 //------------------------------------------------------------
 
@@ -24,6 +25,10 @@ static int lastSaluteYday = -1;
 static const uint32_t VIEW_PERIOD_MS = 30000;
 static uint8_t  currentView    = SCREEN_VIEW_CLOCK;
 static uint32_t lastViewSwitch = 0;
+
+// Tracks the last applied display mode so we can react immediately
+// when the user changes it via the web interface.
+static uint8_t  lastDisplayMode = DISPLAY_MODE_ALTERNATE;
 
 //------------------------------------------------------------
 
@@ -161,8 +166,25 @@ static tm getLocalTimeStruct(
 void clockEngineInit()
 {
     lastUpdate = 0;
-    currentView = SCREEN_VIEW_CLOCK;
+    lastDisplayMode = prefGetDisplayMode();
     lastViewSwitch = millis();
+
+    switch (lastDisplayMode)
+    {
+        case DISPLAY_MODE_CLOCK_ONLY:
+            currentView = SCREEN_VIEW_CLOCK;
+            break;
+
+        case DISPLAY_MODE_ENV_ONLY:
+            currentView = SCREEN_VIEW_ENV;
+            break;
+
+        case DISPLAY_MODE_ALTERNATE:
+        default:
+            currentView = SCREEN_VIEW_CLOCK;
+            break;
+    }
+
     screenViewSet(currentView);
 }
 
@@ -176,9 +198,43 @@ void clockEngineUpdate()
     lastUpdate = millis();
 
     //--------------------------------------------------------
-    // Alternate between clock and environment views.
+    // Display mode handling.
+    //
+    //   DISPLAY_MODE_CLOCK_ONLY -> lock to clock view
+    //   DISPLAY_MODE_ENV_ONLY   -> lock to environment view
+    //   DISPLAY_MODE_ALTERNATE  -> swap every VIEW_PERIOD_MS
+    //
+    // When the mode just changed we reset the alternation timer
+    // so the first frame of the new mode stays on screen for the
+    // full period.
     //--------------------------------------------------------
-    if (millis() - lastViewSwitch >= VIEW_PERIOD_MS)
+    uint8_t mode = prefGetDisplayMode();
+
+    if (mode != lastDisplayMode)
+    {
+        lastDisplayMode = mode;
+        lastViewSwitch = millis();
+
+        switch (mode)
+        {
+            case DISPLAY_MODE_CLOCK_ONLY:
+                currentView = SCREEN_VIEW_CLOCK;
+                break;
+
+            case DISPLAY_MODE_ENV_ONLY:
+                currentView = SCREEN_VIEW_ENV;
+                break;
+
+            case DISPLAY_MODE_ALTERNATE:
+            default:
+                currentView = SCREEN_VIEW_CLOCK;
+                break;
+        }
+
+        screenViewSet(currentView);
+    }
+    else if (mode == DISPLAY_MODE_ALTERNATE &&
+             millis() - lastViewSwitch >= VIEW_PERIOD_MS)
     {
         lastViewSwitch = millis();
         currentView = (currentView == SCREEN_VIEW_CLOCK)
@@ -197,6 +253,13 @@ void clockEngineUpdate()
         screenEnvUpdate(tempC, humPct, presHpa);
         return;
     }
+
+    //--------------------------------------------------------
+    // Clock view: refresh the battery / power status widget.
+    //--------------------------------------------------------
+    screenBatteryUpdate(ip5306IsPresent(),
+                        ip5306GetLevel(),
+                        ip5306IsCharging());
 
     struct tm utc;
 

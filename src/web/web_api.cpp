@@ -8,6 +8,7 @@
 #include "../clock/timezones_db.h"
 #include "../gui/screen_main.h"
 #include "../sensor/bme_manager.h"
+#include "../display.h"
 
 //------------------------------------------------------------
 // Local functions
@@ -352,6 +353,81 @@ server.on(
 
             sendJson(request, doc);
         });
+    //--------------------------------------------------------
+    // Display settings (brightness + view mode)
+    //--------------------------------------------------------
+
+    server.on(
+        "/api/display",
+        HTTP_GET,
+        [](AsyncWebServerRequest *request)
+        {
+            JsonDocument doc;
+
+            doc["brightness"] = prefGetBrightness();
+            doc["mode"]       = prefGetDisplayMode();
+
+            sendJson(request, doc);
+        });
+
+    server.on(
+        "/api/display",
+        HTTP_POST,
+
+        [](AsyncWebServerRequest *request)
+        {
+            // empty
+        },
+
+        NULL,
+
+        [](AsyncWebServerRequest *request,
+           uint8_t *data,
+           size_t len,
+           size_t index,
+           size_t total)
+        {
+            JsonDocument doc;
+
+            DeserializationError err =
+                deserializeJson(doc, data, len);
+
+            if (err)
+            {
+                sendError(
+                    request,
+                    400,
+                    "JSON parse error");
+
+                return;
+            }
+
+            if (doc["brightness"].is<uint8_t>())
+            {
+                uint8_t b = doc["brightness"].as<uint8_t>();
+
+                if (b > 100)
+                    b = 100;
+
+                prefSetBrightness(b);
+                displaySetBrightness(b);
+            }
+
+            if (doc["mode"].is<uint8_t>())
+            {
+                uint8_t m = doc["mode"].as<uint8_t>();
+
+                if (m > DISPLAY_MODE_ENV_ONLY)
+                    m = DISPLAY_MODE_ALTERNATE;
+
+                prefSetDisplayMode(m);
+                // The clock engine picks the change up on its next
+                // 1-second tick, no extra notification needed.
+            }
+
+            sendOk(request);
+        });
+
     //--------------------------------------------------------
     // Trigger Salute
     //--------------------------------------------------------

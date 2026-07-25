@@ -10,6 +10,14 @@
 #define MAX_WORLD_CLOCKS 5
 
 //------------------------------------------------------------
+// Display mode
+//------------------------------------------------------------
+
+#define DISPLAY_MODE_ALTERNATE  0   // Clock and Meteo alternate every 30 s
+#define DISPLAY_MODE_CLOCK_ONLY 1   // Only world clocks
+#define DISPLAY_MODE_ENV_ONLY   2   // Only meteo (environment) data
+
+//------------------------------------------------------------
 // Initialization
 //------------------------------------------------------------
 
@@ -77,6 +85,10 @@ String prefGetLanguage();
 
 void prefSetBrightness(uint8_t brightness);
 uint8_t prefGetBrightness();
+
+// Display mode: see DISPLAY_MODE_* constants above.
+void prefSetDisplayMode(uint8_t mode);
+uint8_t prefGetDisplayMode();
 
 //------------------------------------------------------------
 // Preferences version

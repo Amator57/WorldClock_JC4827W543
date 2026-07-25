@@ -26,7 +26,7 @@ void preferencesEnd()
 // Preferences version
 //------------------------------------------------------------
 
-static const uint16_t PREF_VERSION = 2;
+static const uint16_t PREF_VERSION = 3;
 
 //------------------------------------------------------------
 
@@ -140,6 +140,15 @@ void prefLoadDefaults()
     if (prefGetBrightness() == 0)
     {
         prefSetBrightness(100);
+    }
+
+    //--------------------------------------------------------
+    // Display mode
+    //--------------------------------------------------------
+
+    if (prefGetDisplayMode() > DISPLAY_MODE_ENV_ONLY)
+    {
+        prefSetDisplayMode(DISPLAY_MODE_ALTERNATE);
     }
         //--------------------------------------------------------
     // Business hours
@@ -407,6 +416,27 @@ uint8_t prefGetBrightness()
     return prefs.getUChar(
         "brightness",
         100);
+}
+
+//------------------------------------------------------------
+// Display mode
+//------------------------------------------------------------
+
+void prefSetDisplayMode(uint8_t mode)
+{
+    if (mode > DISPLAY_MODE_ENV_ONLY)
+        mode = DISPLAY_MODE_ALTERNATE;
+
+    prefs.putUChar("disp_mode", mode);
+}
+
+//------------------------------------------------------------
+
+uint8_t prefGetDisplayMode()
+{
+    return prefs.getUChar(
+        "disp_mode",
+        DISPLAY_MODE_ALTERNATE);
 }
 
 //------------------------------------------------------------

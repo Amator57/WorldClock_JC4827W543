@@ -2,6 +2,11 @@
 
 #define GFX_BL 1
 
+// LEDC PWM parameters for the backlight.
+static const uint32_t BL_FREQ       = 5000;   // 5 kHz
+static const uint8_t  BL_RESOLUTION = 8;      // 8-bit -> 0..255
+static const uint8_t  BL_MIN_DUTY   = 16;     // below this the panel flickers / goes dark
+
 //------------------------------------------------------------
 // QSPI BUS
 //------------------------------------------------------------
@@ -42,8 +47,8 @@ Arduino_GFX *gfx =
 
 bool displayInit()
 {
-    pinMode(GFX_BL, OUTPUT);
-    digitalWrite(GFX_BL, HIGH);
+    ledcAttach(GFX_BL, BL_FREQ, BL_RESOLUTION);
+    displaySetBrightness(100);
 
     if (!gfx->begin())
     {
@@ -73,4 +78,27 @@ gfx->setTextColor(gfx->color565(255,255,255));
     gfx->println("480 x 272");
 
     return true;
+}
+
+//------------------------------------------------------------
+// Backlight brightness (LEDC PWM)
+//------------------------------------------------------------
+
+void displaySetBrightness(uint8_t percent)
+{
+    if (percent > 100)
+        percent = 100;
+
+    // Apply a simple gamma curve so low percentages feel linear.
+    // x_norm in [0..1] -> duty in [BL_MIN_DUTY..255].
+    float norm = percent / 100.0f;
+    float gamma = norm * norm;        // y = x^2
+
+    uint32_t duty = BL_MIN_DUTY + (uint32_t)((255 - BL_MIN_DUTY) * gamma);
+
+    // percent == 0 -> backlight fully off.
+    if (percent == 0)
+        duty = 0;
+
+    ledcWrite(GFX_BL, duty);
 }

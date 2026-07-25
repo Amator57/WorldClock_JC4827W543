@@ -29,6 +29,22 @@ void screenEnvUpdate(float temperatureC,
                      float humidityPct,
                      float pressureHpa);
 
+// Configure the environment view for the connected sensor.
+// When hasHumidity is false (BMP280) the humidity row is hidden and
+// the remaining two rows are re-centred. Call once after the sensor
+// is initialised and the screen is created.
+void screenEnvSetHumidity(bool hasHumidity);
+
+//------------------------------------------------------------
+// Battery / power status (IP5306)
+//
+// Shown in the top-right corner of the clock view.
+//   present  -> false hides the widget entirely
+//   level    -> 0..100, or -1 when unknown (shown as "--")
+//   charging -> true draws the "+" (charge-in-progress) marker
+//------------------------------------------------------------
+void screenBatteryUpdate(bool present, int8_t level, bool charging);
+
 //------------------------------------------------------------
 // Update screen
 //------------------------------------------------------------

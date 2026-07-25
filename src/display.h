@@ -11,4 +11,8 @@ extern Arduino_GFX *gfx;
 
 bool displayInit();
 
+// Set backlight brightness in percent (0..100).
+// Applies immediately via LEDC PWM on the backlight pin.
+void displaySetBrightness(uint8_t percent);
+
 #endif

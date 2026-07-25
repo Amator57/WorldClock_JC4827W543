@@ -9,6 +9,7 @@
 #include "storage/preferences_manager.h"
 #include "storage/meteo_log.h"
 #include "sensor/bme_manager.h"
+#include "sensor/ip5306_manager.h"
 #include "web/filesystem.h"
 #include "web/web_server.h"
 
@@ -48,6 +49,9 @@ prefLoadDefaults();
         while (true)
             delay(100);
     }
+
+    // Apply the saved backlight brightness.
+    displaySetBrightness(prefGetBrightness());
 
     //--------------------------------------------------------
     // LVGL
@@ -125,6 +129,16 @@ if (!filesystemInit())
         Serial.println("BME280 init failed (sensor offline).");
     }
 
+    // Adapt the environment view to the detected sensor
+    // (BME280 -> show humidity, BMP280 -> hide it).
+    screenEnvSetHumidity(bmeHasHumidity());
+
+    //--------------------------------------------------------
+    // IP5306 power-management IC (must run after bmeInit()
+    // because it shares the same I2C bus).
+    //--------------------------------------------------------
+    ip5306Init();
+
         clockEngineInit();
 //========================================================
 // WiFi
@@ -157,9 +171,11 @@ webServerLoop();
 
 ntpLoop();
 
-bmeLoop();
+    bmeLoop();
 
-clockEngineUpdate();
+    ip5306Loop();
+
+    clockEngineUpdate();
 
 lvglLoop();
 

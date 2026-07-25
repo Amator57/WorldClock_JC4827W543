@@ -32,6 +32,10 @@ async function showPage(pageName, button)
             await loadClocks();
             break;
 
+        case "display":
+            await loadDisplay();
+            break;
+
         case "system":
             await loadSystem();
             break;
@@ -739,4 +743,126 @@ async function triggerSalute()
         console.error(e);
         alert("Communication error.");
     }
+}
+
+//==========================================================
+// Display settings (brightness + view mode)
+//==========================================================
+
+let pendingBrightness = null;
+let brightnessSendTimer = null;
+
+async function loadDisplay()
+{
+    try
+    {
+        const cfg = await readJson("/api/display");
+
+        const brightness = Number(cfg.brightness);
+        if (!isNaN(brightness))
+        {
+            const slider = document.getElementById("brightness");
+            slider.value = brightness;
+            document.getElementById("brightnessValue").textContent = brightness;
+            pendingBrightness = brightness;
+        }
+
+        const mode = String(cfg.mode);
+        for (const radio of document.getElementsByName("displayMode"))
+        {
+            radio.checked = (radio.value === mode);
+        }
+    }
+    catch (e)
+    {
+        console.error(e);
+        alert("Display read error");
+    }
+}
+
+// Update the numeric label while dragging. The actual POST is
+// debounced so we don't flood the device on every pixel of movement.
+function onBrightnessInput()
+{
+    const slider = document.getElementById("brightness");
+    const value = Number(slider.value);
+    document.getElementById("brightnessValue").textContent = value;
+    pendingBrightness = value;
+
+    if (brightnessSendTimer !== null)
+        clearTimeout(brightnessSendTimer);
+
+    brightnessSendTimer = setTimeout(sendBrightnessLive, 250);
+}
+
+// Live preview: push brightness to the device without saving,
+// so the user sees the effect while dragging.
+async function sendBrightnessLive()
+{
+    if (pendingBrightness === null)
+        return;
+
+    const value = pendingBrightness;
+
+    try
+    {
+        await fetch("/api/display",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ brightness: value })
+        });
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+// "Apply" button: persist the current slider value.
+async function saveBrightness()
+{
+    const value = Number(document.getElementById("brightness").value);
+
+    try
+    {
+        const response = await fetch("/api/display",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ brightness: value })
+        });
+        alert(response.ok ? "Brightness saved." : "Save error.");
+    }
+    catch (e)
+    {
+        console.error(e);
+        alert("Communication error.");
+    }
+}
+
+function onModeChange()
+{
+    const selected = document.querySelector('input[name="displayMode"]:checked');
+    if (!selected)
+        return;
+
+    const mode = Number(selected.value);
+
+    fetch("/api/display",
+    {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: mode })
+    })
+    .then(r =>
+    {
+        if (!r.ok)
+            alert("Mode change failed.");
+    })
+    .catch(e =>
+    {
+        console.error(e);
+        alert("Communication error.");
+    });
 }

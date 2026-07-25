@@ -7,7 +7,7 @@
 
 <title>World Clock</title>
 
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 
 </head>
 
@@ -41,6 +41,11 @@
     <button class="tabButton"
             onclick="showPage('meteo',this)">
         Meteo
+    </button>
+
+    <button class="tabButton"
+            onclick="showPage('display',this)">
+        Display
     </button>
 
     <button class="tabButton"
@@ -228,6 +233,66 @@ Click the button below to launch a 60-second fireworks animation on the device's
 </div>
 
 <!-- ====================================================== -->
+<!-- DISPLAY -->
+<!-- ====================================================== -->
+
+<div id="display" class="page">
+
+<h2>Display</h2>
+
+<div class="card">
+
+<label>
+    Brightness: <span id="brightnessValue">--</span>%
+</label>
+
+<input
+    id="brightness"
+    type="range"
+    min="0"
+    max="100"
+    step="1"
+    value="100"
+    oninput="onBrightnessInput()">
+
+<button
+    class="saveButton"
+    onclick="saveBrightness()">
+    Apply
+</button>
+
+</div>
+
+<div class="card">
+
+<label>Screen content</label>
+
+<div class="radioRow">
+    <input type="radio" name="displayMode" id="dmAlternate" value="0" onchange="onModeChange()">
+    <label for="dmAlternate" class="checkboxLabel">
+        Clocks and meteo by turn (30 s each)
+    </label>
+</div>
+
+<div class="radioRow">
+    <input type="radio" name="displayMode" id="dmClock" value="1" onchange="onModeChange()">
+    <label for="dmClock" class="checkboxLabel">
+        Clocks only
+    </label>
+</div>
+
+<div class="radioRow">
+    <input type="radio" name="displayMode" id="dmEnv" value="2" onchange="onModeChange()">
+    <label for="dmEnv" class="checkboxLabel">
+        Meteo only
+    </label>
+</div>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
 <!-- SYSTEM -->
 <!-- ====================================================== -->
 
@@ -305,7 +370,7 @@ ESP32 World Clock
 
 </div>
 
-<script src="app.js?v=5"></script>
+<script src="app.js?v=6"></script>
 
 </body>
 </html>
