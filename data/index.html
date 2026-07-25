@@ -7,7 +7,7 @@
 
 <title>World Clock</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=5">
 
 </head>
 
@@ -36,6 +36,11 @@
     <button class="tabButton"
             onclick="showPage('clocks',this)">
         Clocks
+    </button>
+
+    <button class="tabButton"
+            onclick="showPage('meteo',this)">
+        Meteo
     </button>
 
     <button class="tabButton"
@@ -168,6 +173,61 @@ Click the button below to launch a 60-second fireworks animation on the device's
 </div>
 
 <!-- ====================================================== -->
+<!-- METEO -->
+<!-- ====================================================== -->
+
+<div id="meteo" class="page">
+
+<h2>Meteo data</h2>
+
+<div class="card" id="meteoSummary">
+    <div class="meteoStats">
+        <div class="meteoStat">
+            <span class="meteoStatLabel" style="color:#EF5350;">Temperature</span>
+            <span class="meteoStatValue" id="meteoCurTemp">--</span>
+        </div>
+        <div class="meteoStat">
+            <span class="meteoStatLabel" style="color:#4FC3F7;">Pressure</span>
+            <span class="meteoStatValue" id="meteoCurPres">--</span>
+        </div>
+        <div class="meteoStat" id="meteoHumStat">
+            <span class="meteoStatLabel" style="color:#66BB6A;">Humidity</span>
+            <span class="meteoStatValue" id="meteoCurHum">--</span>
+        </div>
+    </div>
+    <div class="meteoInfo" id="meteoInfo">Loading...</div>
+</div>
+
+<div class="card">
+    <h3>Sensor</h3>
+    <div class="meteoInfo" id="sensorInfo">Loading...</div>
+</div>
+
+<div class="card">
+    <div class="chartHeader">
+        <span class="chartLegend" style="color:#EF5350;">&#9632; Temperature, &deg;C</span>
+        <button class="refreshButton" onclick="loadMeteo()">Refresh</button>
+    </div>
+    <canvas id="chartTemp" class="meteoChart" height="160"></canvas>
+</div>
+
+<div class="card">
+    <div class="chartHeader">
+        <span class="chartLegend" style="color:#4FC3F7;">&#9632; Pressure, hPa</span>
+    </div>
+    <canvas id="chartPres" class="meteoChart" height="160"></canvas>
+</div>
+
+<div class="card" id="meteoHumCard">
+    <div class="chartHeader">
+        <span class="chartLegend" style="color:#66BB6A;">&#9632; Humidity, %</span>
+    </div>
+    <canvas id="chartHum" class="meteoChart" height="160"></canvas>
+</div>
+
+</div>
+
+<!-- ====================================================== -->
 <!-- SYSTEM -->
 <!-- ====================================================== -->
 
@@ -245,7 +305,7 @@ ESP32 World Clock
 
 </div>
 
-<script src="app.js"></script>
+<script src="app.js?v=5"></script>
 
 </body>
 </html>

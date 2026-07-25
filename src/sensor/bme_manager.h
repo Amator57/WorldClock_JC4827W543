@@ -32,9 +32,17 @@ void bmeLoop();
 
 bool bmeIsAvailable();
 
+// True when the active sensor provides humidity (BME280). BMP280
+// reports no humidity.
+bool bmeHasHumidity();
+
+// Human-readable active sensor: "BME280", "BMP280" or "none".
+const char *bmeGetActiveSensorName();
+
 // Returns averaged values over the last BME_AVG_SAMPLES samples.
 // Returns false (and NAN values) when sensor is not available or
-// no samples have been collected yet.
+// no samples have been collected yet. humidityPct is NAN when the
+// active sensor has no humidity channel.
 bool bmeGetAverage(float &temperatureC,
                    float &humidityPct,
                    float &pressureHpa);

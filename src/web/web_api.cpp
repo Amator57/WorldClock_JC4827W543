@@ -4,8 +4,10 @@
 #include <ArduinoJson.h>
 
 #include "../storage/preferences_manager.h"
+#include "../storage/meteo_log.h"
 #include "../clock/timezones_db.h"
 #include "../gui/screen_main.h"
+#include "../sensor/bme_manager.h"
 
 //------------------------------------------------------------
 // Local functions
@@ -95,6 +97,8 @@ void webApiInit(AsyncWebServer &server)
             doc["flashSize"] = ESP.getFlashChipSize();
             doc["freeHeap"] = ESP.getFreeHeap();
             doc["freePsram"] = ESP.getFreePsram();
+            doc["meteoCount"] = meteoLogCount();
+            doc["meteoCapacity"] = meteoLogCapacity();
 
             sendJson(request, doc);
         });
@@ -360,6 +364,43 @@ server.on(
             startSaluteAnimation();
             JsonDocument doc;
             doc["status"] = "ok";
+            sendJson(request, doc);
+        });
+
+    //--------------------------------------------------------
+    // Meteorological history (for charts)
+    //--------------------------------------------------------
+
+    server.on(
+        "/api/meteo",
+        HTTP_GET,
+        [](AsyncWebServerRequest *request)
+        {
+            String json;
+            uint16_t count = meteoLogSerializeJson(json);
+
+            (void)count;
+
+            request->send(
+                200,
+                "application/json",
+                json);
+        });
+
+    //--------------------------------------------------------
+    // Sensor info (auto-detected, read-only)
+    //--------------------------------------------------------
+
+    server.on(
+        "/api/sensor",
+        HTTP_GET,
+        [](AsyncWebServerRequest *request)
+        {
+            JsonDocument doc;
+
+            doc["active"]      = bmeGetActiveSensorName();
+            doc["hasHumidity"] = bmeHasHumidity();
+
             sendJson(request, doc);
         });
 

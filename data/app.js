@@ -35,6 +35,11 @@ async function showPage(pageName, button)
         case "system":
             await loadSystem();
             break;
+
+        case "meteo":
+            await loadSensor();
+            await loadMeteo();
+            break;
     }
 }
 
@@ -245,6 +250,473 @@ async function saveClocks()
 }
 
 window.onload = () => loadNetwork();
+
+//==========================================================
+// Meteo data & charts
+//==========================================================
+
+let meteoData = null;
+let sensorHasHumidity = true;
+
+//----------------------------------------------------------
+// Sensor info (auto-detected: BME280 / BMP280)
+//----------------------------------------------------------
+
+async function loadSensor()
+{
+    try
+    {
+        const s = await readJson("/api/sensor");
+        sensorHasHumidity = !!s.hasHumidity;
+
+        const info = document.getElementById("sensorInfo");
+        if (info)
+        {
+            const active = s.active || "none";
+            let text;
+            if (active === "none")
+            {
+                text = "No sensor detected. Check wiring (SDA/SCL/power).";
+            }
+            else
+            {
+                const hum = sensorHasHumidity
+                    ? "with humidity"
+                    : "no humidity channel";
+                text = `Detected: ${active} \u2014 ${hum}.`;
+            }
+            info.textContent = text;
+        }
+
+        applyHumidityVisibility();
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+function applyHumidityVisibility()
+{
+    const show = sensorHasHumidity;
+    const stat = document.getElementById("meteoHumStat");
+    const card = document.getElementById("meteoHumCard");
+    if (stat) stat.style.display = show ? "" : "none";
+    if (card) card.style.display = show ? "" : "none";
+}
+
+//----------------------------------------------------------
+// Chart state
+//----------------------------------------------------------
+const charts = [
+    { id: "chartTemp", canvas: null, values: [], color: "#EF5350", unit: "\u00B0C" },
+    { id: "chartPres", canvas: null, values: [], color: "#4FC3F7", unit: "hPa" },
+    { id: "chartHum",  canvas: null, values: [], color: "#66BB6A", unit: "%" }
+];
+const PAD = { L: 46, R: 12, T: 10, B: 18 };
+let meteoTime = [];
+let hoverT = null;
+let chartsBound = false;
+
+async function loadMeteo()
+{
+    const info = document.getElementById("meteoInfo");
+    try
+    {
+        meteoData = await readJson("/api/meteo");
+        meteoTime = meteoData.time || [];
+
+        charts[0].values = meteoData.temp || [];
+        charts[1].values = meteoData.pres || [];
+        charts[2].values = meteoData.hum  || [];
+
+        const count    = meteoData.count || 0;
+        const interval = meteoData.interval || 300;
+
+        if (!chartsBound)
+        {
+            charts[0].canvas = document.getElementById("chartTemp");
+            charts[1].canvas = document.getElementById("chartPres");
+            charts[2].canvas = document.getElementById("chartHum");
+            setupChartEvents();
+            chartsBound = true;
+            window.addEventListener("resize", redrawAll);
+        }
+
+        if (count === 0 || meteoTime.length === 0)
+        {
+            info.textContent = "No data yet. The first sample is recorded 5 minutes after the device starts.";
+            document.getElementById("meteoCurTemp").textContent = "--";
+            document.getElementById("meteoCurPres").textContent = "--";
+            document.getElementById("meteoCurHum").textContent  = "--";
+            for (const c of charts) c.values = [];
+            hoverT = null;
+            redrawAll();
+            return;
+        }
+
+        document.getElementById("meteoCurTemp").textContent = lastValue(charts[0].values, "\u00B0C");
+        document.getElementById("meteoCurPres").textContent = lastValue(charts[1].values, " hPa");
+        document.getElementById("meteoCurHum").textContent  = lastValue(charts[2].values, " %");
+
+        const shown     = meteoData.shown || meteoTime.length;
+        const spanHours = (count * interval) / 3600;
+        const days      = Math.round((spanHours / 24) * 10) / 10;
+        info.textContent =
+            `${count} samples \u00B7 ${shown} shown \u00B7 ~${days} days of history`;
+
+        hoverT = null;
+        redrawAll();
+    }
+    catch (e)
+    {
+        console.error(e);
+        info.textContent = "Failed to load meteo data.";
+        alert("Meteo read error");
+    }
+}
+
+//----------------------------------------------------------
+// Rendering
+//----------------------------------------------------------
+
+function redrawAll()
+{
+    for (const c of charts)
+        drawSeries(c);
+}
+
+function setupChartEvents()
+{
+    for (const c of charts)
+    {
+        const cv = c.canvas;
+        if (!cv) continue;
+        cv.addEventListener("mousemove", onHover);
+        cv.addEventListener("mouseleave", onLeave);
+    }
+}
+
+function chartFromCanvas(cv)
+{
+    for (const c of charts) if (c.canvas === cv) return c;
+    return null;
+}
+
+function clientXToPlot(cv, clientX)
+{
+    return clientX - cv.getBoundingClientRect().left;
+}
+
+function plotXToTime(c, px)
+{
+    const p = c._plot;
+    const n = meteoTime.length;
+    const tLo = n ? meteoTime[0] : 0;
+    const tHi = n ? meteoTime[n - 1] : 1;
+    if (!p) return tLo;
+    const frac = (px - p.padL) / p.plotW;
+    return tLo + frac * (tHi - tLo);
+}
+
+function nearestTimeIndex(t)
+{
+    const a = meteoTime;
+    const n = a.length;
+    if (n === 0) return -1;
+    if (t <= a[0]) return 0;
+    if (t >= a[n - 1]) return n - 1;
+    let lo = 0, hi = n - 1;
+    while (lo < hi)
+    {
+        const mid = (lo + hi) >> 1;
+        if (a[mid] < t) lo = mid + 1; else hi = mid;
+    }
+    if (lo > 0 && Math.abs(a[lo - 1] - t) < Math.abs(a[lo] - t)) return lo - 1;
+    return lo;
+}
+
+//----------------------------------------------------------
+// Hover tooltip
+//----------------------------------------------------------
+
+function onHover(e)
+{
+    if (meteoTime.length === 0) return;
+    const c = chartFromCanvas(e.currentTarget);
+    if (!c || !c._plot) return;
+    const px = clientXToPlot(c.canvas, e.clientX);
+    if (px < c._plot.padL || px > c._plot.padL + c._plot.plotW)
+    {
+        if (hoverT !== null) { hoverT = null; redrawAll(); }
+        hideTooltip();
+        return;
+    }
+    const t   = plotXToTime(c, px);
+    const idx = nearestTimeIndex(t);
+
+    // Tooltip follows the cursor on every move, but the chart is
+    // redrawn only when the snapped data point changes (avoids
+    // constant redraws that make the chart visually rescale).
+    const v       = idx >= 0 ? c.values[idx] : null;
+    const valStr  = (v === null || v === undefined || isNaN(v))
+        ? "\u2014"
+        : `${v} ${c.unit}`;
+    const timeStr = formatDateTime(idx >= 0 ? meteoTime[idx] : t);
+    showTooltip(e.clientX, e.clientY,
+        `<div class="ttTime">${timeStr}</div>` +
+        `<div class="ttVal" style="color:${c.color}">${valStr}</div>`);
+
+    const newHover = idx >= 0 ? meteoTime[idx] : t;
+    if (newHover !== hoverT)
+    {
+        hoverT = newHover;
+        redrawAll();
+    }
+}
+
+function onLeave()
+{
+    if (hoverT !== null) { hoverT = null; redrawAll(); }
+    hideTooltip();
+}
+
+function showTooltip(clientX, clientY, html)
+{
+    let el = document.getElementById("chartTooltip");
+    if (!el)
+    {
+        el = document.createElement("div");
+        el.id = "chartTooltip";
+        document.body.appendChild(el);
+    }
+    el.innerHTML = html;
+    el.style.display = "block";
+    const pad = 14;
+    let x = clientX + pad;
+    let y = clientY + pad;
+    if (x + el.offsetWidth > window.innerWidth)  x = clientX - el.offsetWidth - pad;
+    if (y + el.offsetHeight > window.innerHeight) y = clientY - el.offsetHeight - pad;
+    el.style.left = x + "px";
+    el.style.top  = y + "px";
+}
+
+function hideTooltip()
+{
+    const el = document.getElementById("chartTooltip");
+    if (el) el.style.display = "none";
+}
+
+function lastValue(arr, unit)
+{
+    for (let i = arr.length - 1; i >= 0; i--)
+    {
+        if (arr[i] !== null && arr[i] !== undefined && !isNaN(arr[i]))
+            return `${arr[i]} ${unit}`.trim();
+    }
+    return "--";
+}
+
+function drawSeries(chart)
+{
+    const canvas = chart.canvas;
+    const values = chart.values;
+    const color  = chart.color;
+    if (!canvas) return;
+    // Skip hidden charts (e.g. humidity card when sensor is BMP280).
+    if (canvas.offsetParent === null) return;
+
+    const ctx = canvas.getContext("2d");
+
+    // CSS pixel size; scale for device pixel ratio (crisp lines).
+    const cssW = canvas.clientWidth || canvas.parentElement.clientWidth || 600;
+
+    // Cache the logical height: canvas.height is a reflected
+    // attribute, so after the first draw getAttribute("height")
+    // returns the backing-store size (cssH*dpr). Re-reading it
+    // would multiply the height by dpr on every redraw.
+    if (!chart.cssH)
+        chart.cssH = parseInt(canvas.getAttribute("height")) || 160;
+    const cssH = chart.cssH;
+
+    const dpr = window.devicePixelRatio || 1;
+
+    // Reallocate the backing store only when the CSS size actually
+    // changes; otherwise moving the mouse would reset/clear the
+    // canvas every event and make the chart visually rescale.
+    const needW = Math.round(cssW * dpr);
+    const needH = Math.round(cssH * dpr);
+    if (canvas.width !== needW || canvas.height !== needH)
+    {
+        canvas.width  = needW;
+        canvas.height = needH;
+        canvas.style.height = cssH + "px";
+    }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    ctx.clearRect(0, 0, cssW, cssH);
+
+    const padL = PAD.L, padR = PAD.R, padT = PAD.T, padB = PAD.B;
+    const plotW = cssW - padL - padR;
+    const plotH = cssH - padT - padB;
+    chart._plot = { padL, padR, padT, padB, plotW, plotH, cssW, cssH };
+
+    // Background + frame.
+    ctx.fillStyle = "#263238";
+    ctx.fillRect(0, 0, cssW, cssH);
+    ctx.strokeStyle = "#37474F";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(padL, padT, plotW, plotH);
+
+    if (values.length === 0 || meteoTime.length === 0)
+    {
+        ctx.fillStyle = "#90A4AE";
+        ctx.font = "14px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("No data", cssW / 2, cssH / 2);
+        return;
+    }
+
+    const tLo = meteoTime[0];
+    const tHi = meteoTime[meteoTime.length - 1];
+    const tRange = (tHi - tLo) || 1;
+
+    // Min/max over all non-null values.
+    let min = Infinity, max = -Infinity;
+    for (let i = 0; i < values.length; i++)
+    {
+        const v = values[i];
+        if (v === null || v === undefined || isNaN(v)) continue;
+        if (v < min) min = v;
+        if (v > max) max = v;
+    }
+    if (!isFinite(min)) { min = 0; max = 1; }
+    if (max - min < 0.001) { min -= 1; max += 1; }
+    const range = max - min;
+    min -= range * 0.08;
+    max += range * 0.08;
+
+    const xOf = t => padL + ((t - tLo) / tRange) * plotW;
+    const yOf = v => padT + plotH - ((v - min) / (max - min)) * plotH;
+
+    // Horizontal gridlines + y labels.
+    ctx.strokeStyle = "#37474F";
+    ctx.fillStyle = "#90A4AE";
+    ctx.font = "11px Arial";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    const ticks = 4;
+    for (let i = 0; i <= ticks; i++)
+    {
+        const v = min + (i / ticks) * (max - min);
+        const y = yOf(v);
+        ctx.beginPath();
+        ctx.moveTo(padL, y);
+        ctx.lineTo(padL + plotW, y);
+        ctx.stroke();
+        ctx.fillText(v.toFixed(Math.abs(max - min) < 10 ? 1 : 0), padL - 6, y);
+    }
+
+    // X labels (visible start / end).
+    ctx.textBaseline = "top";
+    ctx.textAlign = "left";
+    ctx.fillText(formatDate(tLo), padL, cssH - padB + 3);
+    ctx.textAlign = "right";
+    ctx.fillText(formatDate(tHi), padL + plotW, cssH - padB + 3);
+
+    // The series line.
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.lineJoin = "round";
+    ctx.beginPath();
+    let pen = false;
+    for (let i = 0; i < values.length; i++)
+    {
+        const v = values[i];
+        if (v === null || v === undefined || isNaN(v)) { pen = false; continue; }
+        const x = xOf(meteoTime[i]);
+        const y = yOf(v);
+        if (!pen) { ctx.moveTo(x, y); pen = true; }
+        else      { ctx.lineTo(x, y); }
+    }
+    ctx.stroke();
+
+    // Crosshair (when hovering) or last-visible-point marker.
+    if (hoverT !== null && hoverT >= tLo && hoverT <= tHi)
+    {
+        const cx = xOf(hoverT);
+        ctx.save();
+        ctx.strokeStyle = "rgba(255,255,255,0.35)";
+        ctx.setLineDash([4, 3]);
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(cx, padT);
+        ctx.lineTo(cx, padT + plotH);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        const idx = nearestTimeIndex(hoverT);
+        if (idx >= 0)
+        {
+            const tt = meteoTime[idx];
+            const v  = values[idx];
+            if (tt >= tLo && tt <= tHi && v !== null && v !== undefined && !isNaN(v))
+            {
+                const dx = xOf(tt), dy = yOf(v);
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(dx, dy, 4, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = "#FFFFFF";
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.arc(dx, dy, 4, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+        }
+        ctx.restore();
+    }
+    else
+    {
+        let lastIdx = -1;
+        for (let i = values.length - 1; i >= 0; i--)
+        {
+            const t = meteoTime[i];
+            if (t < tLo || t > tHi) continue;
+            if (values[i] !== null && values[i] !== undefined && !isNaN(values[i]))
+            { lastIdx = i; break; }
+        }
+        if (lastIdx >= 0)
+        {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(xOf(meteoTime[lastIdx]), yOf(values[lastIdx]), 3, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+}
+
+function formatDateTime(unixSec)
+{
+    const d  = new Date(unixSec * 1000);
+    const dd = String(d.getDate()).padStart(2, "0");
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const hh = String(d.getHours()).padStart(2, "0");
+    const mi = String(d.getMinutes()).padStart(2, "0");
+    const ss = String(d.getSeconds()).padStart(2, "0");
+    return `${dd}.${mm} ${hh}:${mi}:${ss}`;
+}
+
+function formatDate(unixSec)
+{
+    const d = new Date(unixSec * 1000);
+    const dd = String(d.getDate()).padStart(2, "0");
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const hh = String(d.getHours()).padStart(2, "0");
+    const mi = String(d.getMinutes()).padStart(2, "0");
+    return `${dd}.${mm} ${hh}:${mi}`;
+}
 
 async function triggerSalute()
 {

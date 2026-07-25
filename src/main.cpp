@@ -7,6 +7,7 @@
 #include "ntp/ntp_manager.h"
 #include "network/wifi_manager.h"
 #include "storage/preferences_manager.h"
+#include "storage/meteo_log.h"
 #include "sensor/bme_manager.h"
 #include "web/filesystem.h"
 #include "web/web_server.h"
@@ -71,6 +72,13 @@ if (!filesystemInit())
     while (true)
         delay(100);
 }
+
+    //--------------------------------------------------------
+    // Meteo data logger
+    //--------------------------------------------------------
+
+    meteoLogInit();
+
     //--------------------------------------------------------
     // GUI
     //--------------------------------------------------------

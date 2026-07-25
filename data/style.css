@@ -369,3 +369,101 @@ select:focus{
 .workTimeRow input{
     min-width:0;
 }
+
+/*==========================================================
+    Meteo
+==========================================================*/
+
+.meteoStats{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+}
+
+.meteoStat{
+    flex:1 1 140px;
+    background:#404244;
+    border-radius:8px;
+    padding:14px;
+    text-align:center;
+}
+
+.meteoStatLabel{
+    display:block;
+    font-weight:bold;
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+.meteoStatValue{
+    display:block;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.meteoInfo{
+    margin-top:14px;
+    color:#BBBBBB;
+    font-size:14px;
+}
+
+.chartHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.chartLegend{
+    font-weight:bold;
+    font-size:15px;
+}
+
+.refreshButton{
+    padding:6px 16px;
+    background:#1976D2;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.refreshButton:hover{
+    background:#2196F3;
+}
+
+.meteoChart{
+    width:100%;
+    display:block;
+    background:#263238;
+    border-radius:6px;
+    cursor:crosshair;
+    touch-action:none;
+}
+
+#chartTooltip{
+    position:fixed;
+    z-index:1000;
+    display:none;
+    pointer-events:none;
+    background:#0D1117;
+    color:#FFFFFF;
+    border:1px solid #455A64;
+    border-radius:6px;
+    padding:6px 9px;
+    font-size:13px;
+    line-height:1.35;
+    box-shadow:0 2px 10px rgba(0,0,0,0.5);
+    white-space:nowrap;
+}
+
+#chartTooltip .ttTime{
+    color:#B0BEC5;
+    font-size:12px;
+    margin-bottom:2px;
+}
+
+#chartTooltip .ttVal{
+    font-weight:bold;
+}
