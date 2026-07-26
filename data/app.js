@@ -262,6 +262,11 @@ window.onload = () => loadNetwork();
 let meteoData = null;
 let sensorHasHumidity = true;
 
+// Chart range filter (Unix seconds, null = unbounded). When null on
+// loadMeteo() the inputs are pre-filled from the received data range.
+let meteoFrom = null;
+let meteoTo   = null;
+
 //----------------------------------------------------------
 // Sensor info (auto-detected: BME280 / BMP280)
 //----------------------------------------------------------
@@ -322,12 +327,79 @@ let meteoTime = [];
 let hoverT = null;
 let chartsBound = false;
 
+//----------------------------------------------------------
+// Range filter helpers
+//----------------------------------------------------------
+
+function meteoUrl()
+{
+    let url = "/api/meteo";
+    const q = [];
+    if (meteoFrom !== null) q.push("from=" + meteoFrom);
+    if (meteoTo   !== null) q.push("to="   + meteoTo);
+    if (q.length) url += "?" + q.join("&");
+    return url;
+}
+
+// "YYYY-MM-DDTHH:MM" in the browser's local timezone, suitable for
+// <input type="datetime-local">.
+function toLocalDateTimeInput(unixSec)
+{
+    const d  = new Date(unixSec * 1000);
+    const Y  = d.getFullYear();
+    const Mo = String(d.getMonth() + 1).padStart(2, "0");
+    const Da = String(d.getDate()).padStart(2, "0");
+    const H  = String(d.getHours()).padStart(2, "0");
+    const Mi = String(d.getMinutes()).padStart(2, "0");
+    return `${Y}-${Mo}-${Da}T${H}:${Mi}`;
+}
+
+// Parse a datetime-local string into Unix seconds (local time),
+// or null when empty / invalid.
+function fromLocalDateTimeInput(str)
+{
+    if (!str) return null;
+    const ms = new Date(str).getTime();
+    return isNaN(ms) ? null : Math.floor(ms / 1000);
+}
+
+// Read the inputs, store bounds, and reload. Swapped bounds are
+// quietly swapped rather than producing an empty result.
+function applyMeteoRange()
+{
+    let from = fromLocalDateTimeInput(document.getElementById("meteoFrom").value);
+    let to   = fromLocalDateTimeInput(document.getElementById("meteoTo").value);
+    if (from !== null && to !== null && from > to)
+        [from, to] = [to, from];
+    meteoFrom = from;
+    meteoTo   = to;
+
+    console.log("applyMeteoRange:", { from, to, url: meteoUrl() });
+
+    const info = document.getElementById("meteoInfo");
+    if (info) info.textContent = "Loading filtered data...";
+
+    loadMeteo();
+}
+
+// Clear bounds and inputs, reload the full history.
+function resetMeteoRange()
+{
+    meteoFrom = null;
+    meteoTo   = null;
+    const f = document.getElementById("meteoFrom");
+    const t = document.getElementById("meteoTo");
+    if (f) f.value = "";
+    if (t) t.value = "";
+    loadMeteo();
+}
+
 async function loadMeteo()
 {
     const info = document.getElementById("meteoInfo");
     try
     {
-        meteoData = await readJson("/api/meteo");
+        meteoData = await readJson(meteoUrl());
         meteoTime = meteoData.time || [];
 
         charts[0].values = meteoData.temp || [];
@@ -349,7 +421,10 @@ async function loadMeteo()
 
         if (count === 0 || meteoTime.length === 0)
         {
-            info.textContent = "No data yet. The first sample is recorded 5 minutes after the device starts.";
+            const filtered = (meteoFrom !== null || meteoTo !== null);
+            info.textContent = filtered
+                ? "No samples in the selected range."
+                : "No data yet. The first sample is recorded 5 minutes after the device starts.";
             document.getElementById("meteoCurTemp").textContent = "--";
             document.getElementById("meteoCurPres").textContent = "--";
             document.getElementById("meteoCurHum").textContent  = "--";
@@ -368,6 +443,18 @@ async function loadMeteo()
         const days      = Math.round((spanHours / 24) * 10) / 10;
         info.textContent =
             `${count} samples \u00B7 ${shown} shown \u00B7 ~${days} days of history`;
+
+        // Pre-fill empty inputs with the visible data range so the
+        // user can narrow it without typing the whole timestamp.
+        if (meteoTime.length > 0)
+        {
+            const fromInput = document.getElementById("meteoFrom");
+            const toInput   = document.getElementById("meteoTo");
+            if (fromInput && !fromInput.value)
+                fromInput.value = toLocalDateTimeInput(meteoTime[0]);
+            if (toInput && !toInput.value)
+                toInput.value = toLocalDateTimeInput(meteoTime[meteoTime.length - 1]);
+        }
 
         hoverT = null;
         redrawAll();

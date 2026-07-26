@@ -251,6 +251,25 @@ void clockEngineUpdate()
         float tempC, humPct, presHpa;
         bmeGetAverage(tempC, humPct, presHpa);
         screenEnvUpdate(tempC, humPct, presHpa);
+
+        // The status row (WiFi/NTP/IP) is always visible; keep it
+        // live even in the environment view, otherwise the IP label
+        // freezes at "IP : ---" right after boot.
+        char wifiText[32];
+        strcpy(wifiText, WiFi.status() == WL_CONNECTED ?
+            "WiFi : Connected" : "WiFi : Offline");
+
+        char ntpText[32];
+        snprintf(ntpText, sizeof(ntpText), "NTP : %s", ntpStatusString());
+
+        char ipText[40];
+        if (WiFi.status() == WL_CONNECTED)
+            snprintf(ipText, sizeof(ipText), "IP : %s",
+                WiFi.localIP().toString().c_str());
+        else
+            strcpy(ipText, "IP : ---");
+
+        screenStatusUpdate(wifiText, ntpText, ipText);
         return;
     }
 

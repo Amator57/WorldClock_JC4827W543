@@ -475,11 +475,14 @@ void screenMainUpdate(
 
     if (lblDate) lv_label_set_text(lblDate, date);
 
+    screenStatusUpdate(wifi, ntp, ip);
+}
+
+void screenStatusUpdate(const char *wifi, const char *ntp, const char *ip)
+{
     if (lblWiFi) lv_label_set_text(lblWiFi, wifi);
-
-    if (lblNTP) lv_label_set_text(lblNTP, ntp);
-
-    if (lblIP) lv_label_set_text(lblIP, ip);
+    if (lblNTP)  lv_label_set_text(lblNTP,  ntp);
+    if (lblIP)   lv_label_set_text(lblIP,   ip);
 }
 
 //------------------------------------------------------------

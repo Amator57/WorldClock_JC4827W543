@@ -445,6 +445,11 @@ server.on(
 
     //--------------------------------------------------------
     // Meteorological history (for charts)
+    //
+    // Optional query parameters:
+    //   from=<unix_sec>  - lower bound (inclusive) on sample time
+    //   to=<unix_sec>    - upper bound (inclusive) on sample time
+    // Both default to 0 (unbounded) when omitted or unparsable.
     //--------------------------------------------------------
 
     server.on(
@@ -452,10 +457,24 @@ server.on(
         HTTP_GET,
         [](AsyncWebServerRequest *request)
         {
-            String json;
-            uint16_t count = meteoLogSerializeJson(json);
+            uint32_t from = 0;
+            uint32_t to   = 0;
 
-            (void)count;
+            if (request->hasParam("from"))
+            {
+                from = (uint32_t)strtoul(
+                    request->getParam("from")->value().c_str(),
+                    nullptr, 10);
+            }
+            if (request->hasParam("to"))
+            {
+                to = (uint32_t)strtoul(
+                    request->getParam("to")->value().c_str(),
+                    nullptr, 10);
+            }
+
+            String json;
+            meteoLogSerializeJson(json, 600, from, to);
 
             request->send(
                 200,

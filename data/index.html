@@ -7,7 +7,7 @@
 
 <title>World Clock</title>
 
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=8">
 
 </head>
 
@@ -210,8 +210,23 @@ Click the button below to launch a 60-second fireworks animation on the device's
 
 <div class="card">
     <div class="chartHeader">
-        <span class="chartLegend" style="color:#EF5350;">&#9632; Temperature, &deg;C</span>
+        <span class="chartLegend">Chart range</span>
         <button class="refreshButton" onclick="loadMeteo()">Refresh</button>
+    </div>
+    <div class="rangePicker">
+        <label class="rangeLabel" for="meteoFrom">From</label>
+        <input type="datetime-local" id="meteoFrom" class="rangeInput">
+        <span class="rangeDash">&ndash;</span>
+        <label class="rangeLabel" for="meteoTo">To</label>
+        <input type="datetime-local" id="meteoTo" class="rangeInput">
+        <button class="saveButton" onclick="applyMeteoRange()">Apply</button>
+        <button class="resetButton" onclick="resetMeteoRange()">Reset</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="chartHeader">
+        <span class="chartLegend" style="color:#EF5350;">&#9632; Temperature, &deg;C</span>
     </div>
     <canvas id="chartTemp" class="meteoChart" height="160"></canvas>
 </div>
@@ -370,7 +385,7 @@ ESP32 World Clock
 
 </div>
 
-<script src="app.js?v=6"></script>
+<script src="app.js?v=8"></script>
 
 </body>
 </html>

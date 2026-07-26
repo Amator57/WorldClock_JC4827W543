@@ -121,6 +121,12 @@ bool lvglInit()
 
 //------------------------------------------------------
 
+// LVGL creates the perf-monitor label lazily on the first refresh
+// (see lv_refr.c) with a hard-coded bright-white text color, which
+// stands out against the otherwise dim UI. With LV_THEME_DEFAULT_DARK
+// enabled the rest of the UI is also light, so the default perf label
+// style now matches and no override is needed.
+
 void lvglLoop()
 {
     lv_timer_handler();

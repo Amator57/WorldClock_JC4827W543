@@ -218,25 +218,42 @@ static void appendFloat(String &out, int16_t raw, int16_t sentinel,
     out += buf;
 }
 
-uint16_t meteoLogSerializeJson(String &out, uint16_t maxPoints)
+uint16_t meteoLogSerializeJson(String &out, uint16_t maxPoints,
+                               uint32_t from, uint32_t to)
 {
-    uint16_t head = g_head;
+    uint16_t head  = g_head;
     uint16_t count = g_count;
 
+    // The ring is sorted ascending by time. Narrow [i0, i1) to the
+    // requested window; from/to == 0 means "no bound on that side".
+    uint16_t i0 = 0;
+    uint16_t i1 = count;
+
+    if (from > 0)
+    {
+        while (i0 < i1 && g_ring[(head + i0) % CAPACITY].time < from)
+            i0++;
+    }
+    if (to > 0)
+    {
+        while (i1 > i0 && g_ring[(head + i1 - 1) % CAPACITY].time > to)
+            i1--;
+    }
+
+    uint16_t n = (i1 > i0) ? (uint16_t)(i1 - i0) : 0;
+
     uint16_t step = 1;
-    if (count > maxPoints && maxPoints > 0)
-        step = (uint16_t)((count + maxPoints - 1) / maxPoints);
+    if (n > maxPoints && maxPoints > 0)
+        step = (uint16_t)((n + maxPoints - 1) / maxPoints);
 
     uint16_t shown = 0;
-    for (uint16_t i = 0; i < count; i += step)
+    for (uint16_t i = 0; i < n; i += step)
         shown++;
 
     out.reserve((uint32_t)shown * 40 + 128);
 
-    char numbuf[16];
-
     out = "{\"count\":";
-    out += count;
+    out += n;
     out += ",\"shown\":";
     out += shown;
     out += ",\"interval\":";
@@ -246,42 +263,42 @@ uint16_t meteoLogSerializeJson(String &out, uint16_t maxPoints)
 
     // time
     out += ",\"time\":[";
-    for (uint16_t i = 0, k = 0; i < count; i += step, k++)
+    for (uint16_t i = 0, k = 0; i < n; i += step, k++)
     {
         if (k) out += ",";
-        out += (unsigned long)g_ring[(head + i) % CAPACITY].time;
+        out += (unsigned long)g_ring[(head + i0 + i) % CAPACITY].time;
     }
     out += "]";
 
     // temperature (x100 -> degC)
     out += ",\"temp\":[";
-    for (uint16_t i = 0, k = 0; i < count; i += step, k++)
+    for (uint16_t i = 0, k = 0; i < n; i += step, k++)
     {
         if (k) out += ",";
-        appendFloat(out, g_ring[(head + i) % CAPACITY].temp,
+        appendFloat(out, g_ring[(head + i0 + i) % CAPACITY].temp,
                     0x7FFF, 0.01F, 2);
     }
     out += "]";
 
     // humidity (x10 -> %)
     out += ",\"hum\":[";
-    for (uint16_t i = 0, k = 0; i < count; i += step, k++)
+    for (uint16_t i = 0, k = 0; i < n; i += step, k++)
     {
         if (k) out += ",";
-        appendFloat(out, (int16_t)g_ring[(head + i) % CAPACITY].hum,
+        appendFloat(out, (int16_t)g_ring[(head + i0 + i) % CAPACITY].hum,
                     (int16_t)0xFFFF, 0.1F, 1);
     }
     out += "]";
 
     // pressure (x10 -> hPa)
     out += ",\"pres\":[";
-    for (uint16_t i = 0, k = 0; i < count; i += step, k++)
+    for (uint16_t i = 0, k = 0; i < n; i += step, k++)
     {
         if (k) out += ",";
-        appendFloat(out, (int16_t)g_ring[(head + i) % CAPACITY].pres,
+        appendFloat(out, (int16_t)g_ring[(head + i0 + i) % CAPACITY].pres,
                     (int16_t)0xFFFF, 0.1F, 1);
     }
     out += "]}";
 
-    return count;
+    return n;
 }

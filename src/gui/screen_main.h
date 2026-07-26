@@ -77,3 +77,13 @@ void screenMainUpdate(
     const char *ntp,
 
     const char *ip);
+
+//------------------------------------------------------------
+// Update only the always-visible status row (WiFi / NTP / IP).
+// Use this from views that otherwise skip screenMainUpdate() so
+// the IP address and network state stay current on the display.
+//------------------------------------------------------------
+
+void screenStatusUpdate(const char *wifi,
+                        const char *ntp,
+                        const char *ip);

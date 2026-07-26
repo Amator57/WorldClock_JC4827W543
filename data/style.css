@@ -433,6 +433,60 @@ select:focus{
     background:#2196F3;
 }
 
+.rangePicker{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
+}
+
+.rangeLabel{
+    font-size:14px;
+    color:#BBBBBB;
+}
+
+.rangeInput{
+    padding:6px 8px;
+    background:#263238;
+    color:#FFFFFF;
+    border:1px solid #455A64;
+    border-radius:6px;
+    font-size:14px;
+    font-family:inherit;
+}
+
+.rangeInput:focus{
+    outline:none;
+    border-color:#1976D2;
+}
+
+.rangeDash{
+    color:#90A4AE;
+    user-select:none;
+}
+
+/* Inside the range picker the save button stays compact
+   (the global .saveButton has large padding + top margin). */
+.rangePicker .saveButton{
+    margin-top:0;
+    padding:6px 16px;
+    font-size:14px;
+}
+
+.resetButton{
+    padding:6px 16px;
+    background:#37474F;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.resetButton:hover{
+    background:#455A64;
+}
+
 .meteoChart{
     width:100%;
     display:block;

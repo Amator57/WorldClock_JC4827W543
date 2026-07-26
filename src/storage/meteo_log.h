@@ -62,12 +62,21 @@ void meteoLogAddSample(float temperatureC,
 uint16_t meteoLogCount();    // number of stored samples
 uint16_t meteoLogCapacity(); // maximum number of samples kept
 
-// Serialize all stored samples to a compact JSON string suitable
-// for charting. The series are decimated to at most maxPoints points
-// to keep the payload small. Returns the number of stored samples.
+// Serialize stored samples to a compact JSON string suitable for
+// charting. The series are decimated to at most maxPoints points to
+// keep the payload small.
+//
+// Optional from/to (Unix seconds, 0 = unbounded) restrict the output
+// to samples whose timestamp falls inside [from, to]. The ring is
+// kept sorted ascending by time, so the visible slice is found with
+// two linear scans from the edges.
 //
 // Output format:
 //   { "count":N, "shown":M, "interval":300, "capacity":4320,
 //     "time":[t0,t1,...], "temp":[v|null,...],
 //     "hum":[v|null,...], "pres":[v|null,...] }
-uint16_t meteoLogSerializeJson(String &out, uint16_t maxPoints = 600);
+//
+// "count" is the number of samples inside the requested range (after
+// filtering); "shown" is the number actually emitted (after decimation).
+uint16_t meteoLogSerializeJson(String &out, uint16_t maxPoints = 600,
+                               uint32_t from = 0, uint32_t to = 0);
