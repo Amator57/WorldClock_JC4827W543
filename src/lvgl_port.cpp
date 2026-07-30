@@ -2,11 +2,22 @@
 #include "display.h"
 //#include "touch.h"
 
+#include <lvgl.h>
 #include <esp_heap_caps.h>
 
 static lv_disp_draw_buf_t draw_buf;
 static lv_color_t *disp_draw_buf = nullptr;
 static lv_disp_drv_t disp_drv;
+
+// Performance measurement, computed the same way as LVGL's built-in
+// perf monitor (see lv_refr.c):
+//   FPS = 1000 * frames / sum_of_render_times   (capped at refr limit)
+//   CPU = 100 - lv_timer_get_idle()
+static uint32_t frameCount = 0;   // completed frames in the window
+static uint32_t refrMicros = 0;   // accumulated refresh time in the window
+static uint32_t fpsValue   = 0;
+static uint8_t  cpuPercent = 0;
+static uint32_t measLastMs = 0;
 
 //------------------------------------------------------
 // Flush callback
@@ -35,7 +46,14 @@ static void my_disp_flush(lv_disp_drv_t *disp,
         h);
 #endif
 
+    // NOTE: lv_disp_flush_ready() clears the "flushing_last" flag, so
+    // we must sample it BEFORE signalling completion.
+    bool last = lv_disp_flush_is_last(disp);
+
     lv_disp_flush_ready(disp);
+
+    if (last)
+        frameCount++;
 }
 
 //------------------------------------------------------
@@ -129,9 +147,51 @@ bool lvglInit()
 
 void lvglLoop()
 {
+    uint32_t framesBefore = frameCount;
+    uint32_t t0 = micros();
+
     lv_timer_handler();
 
     gfx->flush();
 
+    // Charge the elapsed time to rendering only when a frame was
+    // actually produced during this handler call.
+    if (frameCount > framesBefore)
+        refrMicros += (micros() - t0);
+
+    uint32_t now = millis();
+
+    if (now - measLastMs >= 1000)
+    {
+        uint32_t renderMs = refrMicros / 1000UL;
+        if (renderMs == 0)
+            renderMs = 1;
+
+        uint32_t fps = 1000UL * frameCount / renderMs;
+
+        uint32_t fpsLimit = 1000UL / LV_DISP_DEF_REFR_PERIOD;
+        if (fps > fpsLimit)
+            fps = fpsLimit;
+
+        fpsValue   = fps;
+        cpuPercent = (uint8_t)(100 - lv_timer_get_idle());
+
+        frameCount = 0;
+        refrMicros = 0;
+        measLastMs = now;
+    }
+
     delay(5);
+}
+
+//------------------------------------------------------
+
+uint32_t lvglGetFPS()
+{
+    return fpsValue;
+}
+
+uint8_t lvglGetCPU()
+{
+    return (uint8_t)cpuPercent;
 }

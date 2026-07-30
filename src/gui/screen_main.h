@@ -87,3 +87,6 @@ void screenMainUpdate(
 void screenStatusUpdate(const char *wifi,
                         const char *ntp,
                         const char *ip);
+
+// Update the FPS/CPU readout shown at the right end of the status row.
+void screenPerfUpdate(uint32_t fps, uint8_t cpu);

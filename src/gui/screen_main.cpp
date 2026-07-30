@@ -30,8 +30,11 @@ static lv_obj_t *lblDate;
 static lv_obj_t *lblWiFi;
 static lv_obj_t *lblNTP;
 static lv_obj_t *lblIP;
+static lv_obj_t *lblFPS;
+static lv_obj_t *lblCPU;
 
 static lv_obj_t *markerClocks[5];
+static lv_obj_t *markerBars[5];
 
 //------------------------------------------------------------
 // Environment view objects
@@ -93,13 +96,13 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblCity1,
-        &lv_font_montserrat_16,
+        &lv_font_montserrat_18,
         0);
 
     lv_obj_set_pos(
         lblCity1,
         40,
-        40);
+        73);
 
     lblTime1 = lv_label_create(scr);
 
@@ -111,7 +114,7 @@ void screenMainCreate()
     lv_obj_set_pos(
         lblTime1,
         260,
-        34);
+        75);
 
     //--------------------------------------------------------
     // Clock 2
@@ -121,13 +124,13 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblCity2,
-        &lv_font_montserrat_16,
+        &lv_font_montserrat_18,
         0);
 
     lv_obj_set_pos(
         lblCity2,
         40,
-        75);
+        108);
 
     lblTime2 = lv_label_create(scr);
 
@@ -139,7 +142,7 @@ void screenMainCreate()
     lv_obj_set_pos(
         lblTime2,
         260,
-        69);
+        110);
 
     //--------------------------------------------------------
     // Clock 3
@@ -149,13 +152,13 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblCity3,
-        &lv_font_montserrat_16,
+        &lv_font_montserrat_18,
         0);
 
     lv_obj_set_pos(
         lblCity3,
         40,
-        110);
+        143);
 
     lblTime3 = lv_label_create(scr);
 
@@ -167,7 +170,7 @@ void screenMainCreate()
     lv_obj_set_pos(
         lblTime3,
         260,
-        104);
+        145);
            //--------------------------------------------------------
     // Clock 4
     //--------------------------------------------------------
@@ -176,13 +179,13 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblCity4,
-        &lv_font_montserrat_16,
+        &lv_font_montserrat_18,
         0);
 
     lv_obj_set_pos(
         lblCity4,
         40,
-        145);
+        178);
 
     lblTime4 = lv_label_create(scr);
 
@@ -194,7 +197,7 @@ void screenMainCreate()
     lv_obj_set_pos(
         lblTime4,
         260,
-        139);
+        180);
 
     //--------------------------------------------------------
     // Clock 5
@@ -204,13 +207,13 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblCity5,
-        &lv_font_montserrat_16,
+        &lv_font_montserrat_18,
         0);
 
     lv_obj_set_pos(
         lblCity5,
         40,
-        180);
+        213);
 
     lblTime5 = lv_label_create(scr);
 
@@ -222,7 +225,7 @@ void screenMainCreate()
     lv_obj_set_pos(
         lblTime5,
         260,
-        174);
+        215);
 
     //--------------------------------------------------------
     // Status Markers
@@ -237,8 +240,25 @@ void screenMainCreate()
         lv_obj_set_style_border_width(markerClocks[i], 0, 0);
         lv_obj_set_style_shadow_width(markerClocks[i], 0, 0);
         lv_obj_clear_flag(markerClocks[i], LV_OBJ_FLAG_SCROLLABLE);
-        lv_obj_set_pos(markerClocks[i], 15, 42 + i * 35);
-        lv_obj_set_style_bg_color(markerClocks[i], lv_color_hex(0xD32F2F), 0); // Default to Red
+        lv_obj_set_pos(markerClocks[i], 15, 75 + i * 35);
+        lv_obj_set_style_bg_color(markerClocks[i], lv_color_hex(0xFF0000), 0); // Default to Red
+    }
+
+    //--------------------------------------------------------
+    // Status Bars (larger duplicate of the markers, left of the time)
+    //--------------------------------------------------------
+
+    for (int i = 0; i < 5; i++)
+    {
+        markerBars[i] = lv_obj_create(scr);
+        lv_obj_set_size(markerBars[i], 18, 18);
+        lv_obj_set_style_radius(markerBars[i], 2, 0);
+        lv_obj_set_style_bg_opa(markerBars[i], LV_OPA_COVER, 0);
+        lv_obj_set_style_border_width(markerBars[i], 0, 0);
+        lv_obj_set_style_shadow_width(markerBars[i], 0, 0);
+        lv_obj_clear_flag(markerBars[i], LV_OBJ_FLAG_SCROLLABLE);
+        lv_obj_set_pos(markerBars[i], 236, 75 + i * 35);
+        lv_obj_set_style_bg_color(markerBars[i], lv_color_hex(0xFF0000), 0); // Default to Red
     }
 
     //--------------------------------------------------------
@@ -249,13 +269,14 @@ void screenMainCreate()
 
     lv_obj_set_style_text_font(
         lblDate,
-        &lv_font_montserrat_14,
+        &lv_font_montserrat_24,
         0);
 
-    lv_obj_set_pos(
+    lv_obj_align(
         lblDate,
-        15,
-        220);
+        LV_ALIGN_TOP_MID,
+        0,
+        34);
 
     //--------------------------------------------------------
     // WiFi
@@ -270,8 +291,8 @@ void screenMainCreate()
 
     lv_obj_set_pos(
         lblWiFi,
-        15,
-        245);
+        5,
+        250);
 
     //--------------------------------------------------------
     // NTP
@@ -286,8 +307,8 @@ void screenMainCreate()
 
     lv_obj_set_pos(
         lblNTP,
-        170,
-        245);
+        125,
+        250);
 
     //--------------------------------------------------------
     // IP
@@ -302,8 +323,36 @@ void screenMainCreate()
 
     lv_obj_set_pos(
         lblIP,
-        310,
-        245);
+        225,
+        250);
+
+    //--------------------------------------------------------
+    // FPS / CPU (rendering performance, last second)
+    //--------------------------------------------------------
+
+    lblFPS = lv_label_create(scr);
+
+    lv_obj_set_style_text_font(
+        lblFPS,
+        &lv_font_montserrat_12,
+        0);
+
+    lv_obj_set_pos(
+        lblFPS,
+        345,
+        250);
+
+    lblCPU = lv_label_create(scr);
+
+    lv_obj_set_style_text_font(
+        lblCPU,
+        &lv_font_montserrat_12,
+        0);
+
+    lv_obj_set_pos(
+        lblCPU,
+        410,
+        250);
 
     //--------------------------------------------------------
     // Battery / power status (IP5306)
@@ -351,49 +400,62 @@ void screenMainCreate()
 
     lv_label_set_text(lblIP, "IP: ---");
 
+    lv_label_set_text(lblFPS, "FPS:--");
+    lv_label_set_text(lblCPU, "CPU:--%");
+
     //--------------------------------------------------------
     // Environment view (hidden by default)
     //--------------------------------------------------------
 
     lblEnvTitle = lv_label_create(scr);
     lv_obj_set_style_text_font(lblEnvTitle, &lv_font_montserrat_24, 0);
-    lv_obj_set_pos(lblEnvTitle, 120, 5);
+    lv_obj_align(
+        lblEnvTitle,
+        LV_ALIGN_TOP_MID,
+        0,
+        5);
     lv_label_set_text(lblEnvTitle, "ENVIRONMENT");
     lv_obj_add_flag(lblEnvTitle, LV_OBJ_FLAG_HIDDEN);
 
     lblTempLabel = lv_label_create(scr);
     lv_obj_set_style_text_font(lblTempLabel, &lv_font_montserrat_18, 0);
-    lv_obj_set_pos(lblTempLabel, 40, 65);
+    lv_obj_set_style_text_color(lblTempLabel, lv_color_hex(0xFF0000), 0);
+    lv_obj_set_pos(lblTempLabel, 40, 74);
     lv_label_set_text(lblTempLabel, "Temperature");
     lv_obj_add_flag(lblTempLabel, LV_OBJ_FLAG_HIDDEN);
 
     lblTempValue = lv_label_create(scr);
     lv_obj_set_style_text_font(lblTempValue, &lv_font_montserrat_28, 0);
-    lv_obj_set_pos(lblTempValue, 260, 57);
+    lv_obj_set_style_text_color(lblTempValue, lv_color_hex(0xFF0000), 0);
+    lv_obj_set_pos(lblTempValue, 260, 66);
     lv_label_set_text(lblTempValue, "--.- C");
     lv_obj_add_flag(lblTempValue, LV_OBJ_FLAG_HIDDEN);
 
     lblHumLabel = lv_label_create(scr);
     lv_obj_set_style_text_font(lblHumLabel, &lv_font_montserrat_18, 0);
-    lv_obj_set_pos(lblHumLabel, 40, 185);
+    lv_obj_set_style_text_color(lblHumLabel, lv_color_hex(0x00E676), 0);
+    lv_obj_set_pos(lblHumLabel, 40, 194);
     lv_label_set_text(lblHumLabel, "Humidity");
     lv_obj_add_flag(lblHumLabel, LV_OBJ_FLAG_HIDDEN);
 
     lblHumValue = lv_label_create(scr);
     lv_obj_set_style_text_font(lblHumValue, &lv_font_montserrat_28, 0);
-    lv_obj_set_pos(lblHumValue, 260, 177);
+    lv_obj_set_style_text_color(lblHumValue, lv_color_hex(0x00E676), 0);
+    lv_obj_set_pos(lblHumValue, 260, 186);
     lv_label_set_text(lblHumValue, "--.- %");
     lv_obj_add_flag(lblHumValue, LV_OBJ_FLAG_HIDDEN);
 
     lblPresLabel = lv_label_create(scr);
     lv_obj_set_style_text_font(lblPresLabel, &lv_font_montserrat_18, 0);
-    lv_obj_set_pos(lblPresLabel, 40, 125);
+    lv_obj_set_style_text_color(lblPresLabel, lv_color_hex(0x448AFF), 0);
+    lv_obj_set_pos(lblPresLabel, 40, 134);
     lv_label_set_text(lblPresLabel, "Pressure");
     lv_obj_add_flag(lblPresLabel, LV_OBJ_FLAG_HIDDEN);
 
     lblPresValue = lv_label_create(scr);
     lv_obj_set_style_text_font(lblPresValue, &lv_font_montserrat_28, 0);
-    lv_obj_set_pos(lblPresValue, 260, 117);
+    lv_obj_set_style_text_color(lblPresValue, lv_color_hex(0x448AFF), 0);
+    lv_obj_set_pos(lblPresValue, 260, 126);
     lv_label_set_text(lblPresValue, "----.- hPa");
     lv_obj_add_flag(lblPresValue, LV_OBJ_FLAG_HIDDEN);
 }
@@ -414,7 +476,7 @@ static void updateMarkerColor(lv_obj_t *marker, uint8_t state)
             break;
         case 0: // MARKER_RED (non-working time)
         default:
-            color = lv_color_hex(0xD32F2F);
+            color = lv_color_hex(0xFF0000);
             break;
     }
     lv_obj_set_style_bg_color(marker, color, 0);
@@ -456,22 +518,27 @@ void screenMainUpdate(
     if (lblCity1) lv_label_set_text(lblCity1, city1);
     if (lblTime1) lv_label_set_text(lblTime1, time1);
     updateMarkerColor(markerClocks[0], markerState1);
+    updateMarkerColor(markerBars[0],   markerState1);
 
     if (lblCity2) lv_label_set_text(lblCity2, city2);
     if (lblTime2) lv_label_set_text(lblTime2, time2);
     updateMarkerColor(markerClocks[1], markerState2);
+    updateMarkerColor(markerBars[1],   markerState2);
 
     if (lblCity3) lv_label_set_text(lblCity3, city3);
     if (lblTime3) lv_label_set_text(lblTime3, time3);
     updateMarkerColor(markerClocks[2], markerState3);
+    updateMarkerColor(markerBars[2],   markerState3);
 
     if (lblCity4) lv_label_set_text(lblCity4, city4);
     if (lblTime4) lv_label_set_text(lblTime4, time4);
     updateMarkerColor(markerClocks[3], markerState4);
+    updateMarkerColor(markerBars[3],   markerState4);
 
     if (lblCity5) lv_label_set_text(lblCity5, city5);
     if (lblTime5) lv_label_set_text(lblTime5, time5);
     updateMarkerColor(markerClocks[4], markerState5);
+    updateMarkerColor(markerBars[4],   markerState5);
 
     if (lblDate) lv_label_set_text(lblDate, date);
 
@@ -483,6 +550,23 @@ void screenStatusUpdate(const char *wifi, const char *ntp, const char *ip)
     if (lblWiFi) lv_label_set_text(lblWiFi, wifi);
     if (lblNTP)  lv_label_set_text(lblNTP,  ntp);
     if (lblIP)   lv_label_set_text(lblIP,   ip);
+}
+
+void screenPerfUpdate(uint32_t fps, uint8_t cpu)
+{
+    char buf[16];
+
+    if (lblFPS)
+    {
+        snprintf(buf, sizeof(buf), "FPS:%u", (unsigned)fps);
+        lv_label_set_text(lblFPS, buf);
+    }
+
+    if (lblCPU)
+    {
+        snprintf(buf, sizeof(buf), "CPU:%u%%", (unsigned)cpu);
+        lv_label_set_text(lblCPU, buf);
+    }
 }
 
 //------------------------------------------------------------
@@ -520,7 +604,10 @@ void screenViewSet(uint8_t view)
     setWidgetVisible(lblTime5, clockVisible);
 
     for (int i = 0; i < 5; i++)
+    {
         setWidgetVisible(markerClocks[i], clockVisible);
+        setWidgetVisible(markerBars[i],   clockVisible);
+    }
 
     // Environment view widgets
     setWidgetVisible(lblEnvTitle,  !clockVisible);

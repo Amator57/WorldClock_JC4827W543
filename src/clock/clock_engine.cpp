@@ -14,6 +14,7 @@
 #include "../business/business_time.h"
 #include "../sensor/bme_manager.h"
 #include "../sensor/ip5306_manager.h"
+#include "../lvgl_port.h"
 
 //------------------------------------------------------------
 
@@ -196,6 +197,8 @@ void clockEngineUpdate()
         return;
 
     lastUpdate = millis();
+
+    screenPerfUpdate(lvglGetFPS(), lvglGetCPU());
 
     //--------------------------------------------------------
     // Display mode handling.
