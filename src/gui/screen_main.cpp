@@ -419,14 +419,14 @@ void screenMainCreate()
 
     lblTempLabel = lv_label_create(scr);
     lv_obj_set_style_text_font(lblTempLabel, &lv_font_montserrat_18, 0);
-    lv_obj_set_style_text_color(lblTempLabel, lv_color_hex(0xFF0000), 0);
+    lv_obj_set_style_text_color(lblTempLabel, lv_color_hex(0x00E676), 0);
     lv_obj_set_pos(lblTempLabel, 40, 74);
     lv_label_set_text(lblTempLabel, "Temperature");
     lv_obj_add_flag(lblTempLabel, LV_OBJ_FLAG_HIDDEN);
 
     lblTempValue = lv_label_create(scr);
     lv_obj_set_style_text_font(lblTempValue, &lv_font_montserrat_28, 0);
-    lv_obj_set_style_text_color(lblTempValue, lv_color_hex(0xFF0000), 0);
+    lv_obj_set_style_text_color(lblTempValue, lv_color_hex(0x00E676), 0);
     lv_obj_set_pos(lblTempValue, 260, 66);
     lv_label_set_text(lblTempValue, "--.- C");
     lv_obj_add_flag(lblTempValue, LV_OBJ_FLAG_HIDDEN);

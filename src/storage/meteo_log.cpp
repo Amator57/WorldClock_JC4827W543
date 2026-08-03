@@ -4,27 +4,45 @@
 #include <time.h>
 
 //------------------------------------------------------------
+//
+// Storage strategy
+// ----------------
+// The log file is pre-allocated at full capacity on first init
+// and never resized. Each new sample is written in-place at its
+// slot offset (10 bytes only), instead of rewriting the whole
+// file. The ring indices (head/count) are NOT persisted: on boot
+// they are reconstructed by scanning the records. This way every
+// flash block is hit evenly (each slot once per retention cycle),
+// which extends flash life by roughly an order of magnitude
+// compared to a full rewrite on every sample.
+//
+// Layout:  [Header][MeteoRecord x CAPACITY]
+//------------------------------------------------------------
 
 static const char *LOG_FILE = "/meteo.bin";
-static const uint32_t MAGIC = 0x4D455445; // "METE"
+static const uint32_t MAGIC = 0x4D455446; // "METF" (new format; legacy was "METE")
 
 // (24h * 60min / interval) * retentionDays
 static const uint16_t CAPACITY =
     (uint16_t)((24UL * 60UL) / (METEO_LOG_INTERVAL_SEC / 60UL)) *
     METEO_LOG_RETENTION_DAYS; // 4320
 
-// Earliest plausible Unix time; used to detect unsynchronised clock.
+// Earliest plausible Unix time; used to detect unsynchronised clock
+// and to distinguish a written slot from an empty one.
 static const uint32_t MIN_VALID_TIME = 1700000000; // ~Nov 2023
 
+// Legacy "METE" magic, used only for one-shot migration.
+static const uint32_t LEGACY_MAGIC = 0x4D455445;
+
 //------------------------------------------------------------
-// File header
+// File header (magic + capacity). Head/count are NOT stored
+// persistently; they are reconstructed from the data on boot.
 //------------------------------------------------------------
 
 struct Header
 {
     uint32_t magic;
     uint16_t capacity;
-    uint16_t count;
 } __attribute__((packed));
 
 //------------------------------------------------------------
@@ -55,7 +73,107 @@ static uint16_t encPres(float p)
 }
 
 //------------------------------------------------------------
-// Load the log from flash into the RAM ring buffer.
+// Reset the RAM ring to all-empty.
+//------------------------------------------------------------
+
+static void initRingEmpty()
+{
+    for (uint16_t i = 0; i < CAPACITY; i++)
+    {
+        g_ring[i].time = 0;
+        g_ring[i].temp = 0x7FFF;
+        g_ring[i].hum  = 0xFFFF;
+        g_ring[i].pres = 0xFFFF;
+    }
+    g_head  = 0;
+    g_count = 0;
+}
+
+//------------------------------------------------------------
+// Reconstruct head/count by scanning the records in RAM.
+//
+// During the initial fill, records are written sequentially
+// starting at slot 0; an empty slot (time < MIN_VALID_TIME)
+// therefore means the buffer is not yet full and head == 0.
+// Once the buffer is full, the newest sample sits right before
+// the oldest, so head = (newest + 1) % CAPACITY.
+//------------------------------------------------------------
+
+static void reconstructIndex()
+{
+    g_head  = 0;
+    g_count = 0;
+
+    uint16_t  newest  = 0xFFFF;
+    uint32_t  maxTime = 0;
+    bool      anyEmpty = false;
+
+    for (uint16_t i = 0; i < CAPACITY; i++)
+    {
+        if (g_ring[i].time < MIN_VALID_TIME)
+        {
+            anyEmpty = true;
+        }
+        else if (g_ring[i].time > maxTime)
+        {
+            maxTime = g_ring[i].time;
+            newest  = i;
+        }
+    }
+
+    if (newest == 0xFFFF)
+        return; // no data at all
+
+    if (anyEmpty)
+    {
+        uint16_t c = 0;
+        for (uint16_t i = 0; i < CAPACITY; i++)
+            if (g_ring[i].time >= MIN_VALID_TIME) c++;
+        g_head  = 0;
+        g_count = c;
+    }
+    else
+    {
+        g_head  = (uint16_t)((newest + 1) % CAPACITY);
+        g_count = CAPACITY;
+    }
+}
+
+//------------------------------------------------------------
+// Write the header + all CAPACITY records from the RAM ring.
+// Used once during init / migration, never on a normal sample.
+//------------------------------------------------------------
+
+static bool writeFullFile()
+{
+    uint32_t t0 = millis();
+
+    File f = LittleFS.open(LOG_FILE, "w");
+    if (!f)
+    {
+        Serial.println("MeteoLog: failed to create file");
+        return false;
+    }
+
+    Header h;
+    h.magic    = MAGIC;
+    h.capacity = CAPACITY;
+    f.write((const uint8_t *)&h, sizeof(h));
+
+    for (uint16_t i = 0; i < CAPACITY; i++)
+        f.write((const uint8_t *)&g_ring[i], sizeof(MeteoRecord));
+
+    f.close();
+
+    Serial.printf("MeteoLog: wrote full file (%u B) in %u ms\n",
+                  (unsigned)(sizeof(Header) + CAPACITY * sizeof(MeteoRecord)),
+                  (unsigned)(millis() - t0));
+    return true;
+}
+
+//------------------------------------------------------------
+// Load the whole file into the RAM ring. Returns false if the
+// file is missing, short, or has the wrong magic.
 //------------------------------------------------------------
 
 static bool load()
@@ -68,27 +186,21 @@ static bool load()
         return false;
 
     Header h;
-    if (f.readBytes((char *)&h, sizeof(h)) != sizeof(h) ||
-        h.magic != MAGIC)
+    if (f.readBytes((char *)&h, sizeof(h)) != sizeof(h) || h.magic != MAGIC)
     {
         f.close();
         return false;
     }
 
-    g_head = 0;
-    g_count = 0;
+    initRingEmpty();
 
-    uint16_t n = h.count;
-    if (n > CAPACITY)
-        n = CAPACITY;
-
-    for (uint16_t i = 0; i < n; i++)
+    for (uint16_t i = 0; i < CAPACITY; i++)
     {
-        MeteoRecord rec;
-        if (f.readBytes((char *)&rec, sizeof(rec)) != sizeof(rec))
-            break;
-        g_ring[i] = rec;
-        g_count++;
+        if (f.readBytes((char *)&g_ring[i], sizeof(MeteoRecord))
+            != sizeof(MeteoRecord))
+        {
+            break; // short file: leave the rest empty
+        }
     }
 
     f.close();
@@ -96,38 +208,69 @@ static bool load()
 }
 
 //------------------------------------------------------------
-// Persist the whole ring buffer to flash (oldest first).
+// Read the legacy "METE" format into the RAM ring so it can be
+// rewritten in the new format. Returns false if the file is not
+// a legacy log.
 //------------------------------------------------------------
 
-static bool flush()
+static bool migrateLegacy()
 {
-    uint32_t t0 = millis();
+    File f = LittleFS.open(LOG_FILE, "r");
+    if (!f)
+        return false;
 
-    File f = LittleFS.open(LOG_FILE, "w");
+    struct LegacyHeader
+    {
+        uint32_t magic;
+        uint16_t capacity;
+        uint16_t count;
+    } __attribute__((packed));
+
+    LegacyHeader lh;
+    if (f.readBytes((char *)&lh, sizeof(lh)) != sizeof(lh) ||
+        lh.magic != LEGACY_MAGIC)
+    {
+        f.close();
+        return false;
+    }
+
+    initRingEmpty();
+
+    uint16_t n = lh.count;
+    if (n > CAPACITY) n = CAPACITY;
+
+    for (uint16_t i = 0; i < n; i++)
+    {
+        MeteoRecord rec;
+        if (f.readBytes((char *)&rec, sizeof(rec)) != sizeof(rec))
+            break;
+        g_ring[i] = rec;
+    }
+
+    f.close();
+
+    Serial.printf("MeteoLog: migrating %u records from legacy format\n",
+                  (unsigned)n);
+    return true;
+}
+
+//------------------------------------------------------------
+// Persist one slot in-place (10 bytes only). This is the only
+// flash write performed on a normal sample.
+//------------------------------------------------------------
+
+static bool writeSlot(uint16_t idx)
+{
+    File f = LittleFS.open(LOG_FILE, "r+");
     if (!f)
     {
         Serial.println("MeteoLog: failed to open file for writing");
         return false;
     }
 
-    Header h;
-    h.magic = MAGIC;
-    h.capacity = CAPACITY;
-    h.count = g_count;
-
-    f.write((const uint8_t *)&h, sizeof(h));
-
-    for (uint16_t i = 0; i < g_count; i++)
-    {
-        uint16_t idx = (g_head + i) % CAPACITY;
-        f.write((const uint8_t *)&g_ring[idx], sizeof(MeteoRecord));
-    }
-
+    f.seek(sizeof(Header) + (uint32_t)idx * sizeof(MeteoRecord), SeekSet);
+    f.write((const uint8_t *)&g_ring[idx], sizeof(MeteoRecord));
     f.close();
-
-    Serial.printf("MeteoLog: flushed %u records in %u ms\n",
-                  (unsigned)g_count,
-                  (unsigned)(millis() - t0));
 
     return true;
 }
@@ -136,17 +279,22 @@ static bool flush()
 
 bool meteoLogInit()
 {
-    g_head = 0;
-    g_count = 0;
+    initRingEmpty();
 
-    bool loaded = load();
+    if (!load())
+    {
+        // Either first boot or legacy format: rebuild the file.
+        if (!migrateLegacy())
+            Serial.println("MeteoLog: no previous data (starting empty)");
+        writeFullFile();
+    }
 
-    Serial.printf("MeteoLog: capacity=%u loaded=%u\n",
+    reconstructIndex();
+
+    Serial.printf("MeteoLog: capacity=%u count=%u head=%u\n",
                   (unsigned)CAPACITY,
-                  (unsigned)g_count);
-
-    if (!loaded)
-        Serial.println("MeteoLog: no previous data (starting empty)");
+                  (unsigned)g_count,
+                  (unsigned)g_head);
 
     return true;
 }
@@ -182,7 +330,7 @@ void meteoLogAddSample(float temperatureC,
     g_ring[idx].hum  = encHum(humidityPct);
     g_ring[idx].pres = encPres(pressureHpa);
 
-    flush();
+    writeSlot(idx);
 }
 
 //------------------------------------------------------------

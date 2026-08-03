@@ -10,8 +10,15 @@
 // METEO_LOG_INTERVAL_SEC seconds and keeps the most recent
 // METEO_LOG_RETENTION_DAYS days of history.
 //
-// At 5 min / 15 days this is 4320 records (~42 KB), kept both in
-// RAM (ring buffer) and persisted to LittleFS as /meteo.bin.
+// At 5 min / 15 days this is 4320 records (~42 KB), kept in RAM
+// (ring buffer) and persisted to LittleFS as /meteo.bin.
+//
+// The file is pre-allocated at full size on first init and each
+// sample is written in-place (10 bytes at its slot offset). The
+// ring indices (head/count) are NOT persisted: they are rebuilt
+// by scanning the records on boot. This spreads flash wear evenly
+// across the whole file instead of erasing the same blocks on
+// every sample.
 //
 // Humidity is included so the format is ready for a BME280; with
 // the current BMP280 humidity is stored as "no data".
