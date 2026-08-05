@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 #include <ArduinoJson.h>
+#include <LittleFS.h>
 
 #include "../storage/preferences_manager.h"
 #include "../storage/meteo_log.h"
@@ -497,6 +498,74 @@ server.on(
             doc["hasHumidity"] = bmeHasHumidity();
 
             sendJson(request, doc);
+        });
+
+    //--------------------------------------------------------
+    // Clear the meteorological log (destructive: erases all
+    // retained history). Returns the post-clear count (always 0).
+    //--------------------------------------------------------
+
+    server.on(
+        "/api/meteo/clear",
+        HTTP_POST,
+        [](AsyncWebServerRequest *request)
+        {
+            meteoLogClear();
+            JsonDocument doc;
+            doc["status"] = "ok";
+            doc["count"]  = (unsigned long)meteoLogCount();
+            sendJson(request, doc);
+        });
+
+    //--------------------------------------------------------
+    // Restore /meteo.bin from a client-side backup.
+    //
+    // Accepts the raw binary file content (the exact bytes
+    // previously downloaded via GET /meteo.bin) in the POST
+    // body. Writes it to /meteo.bin and reloads the log.
+    //
+    // Used together with `pio run -t uploadfs` to preserve
+    // history across filesystem reflashes.
+    //--------------------------------------------------------
+
+    static File s_restoreFile;
+    static size_t s_restoreReceived;
+
+    server.on(
+        "/api/meteo/restore",
+        HTTP_POST,
+        [](AsyncWebServerRequest *request)
+        {
+            if (s_restoreFile)
+            {
+                s_restoreFile.close();
+                meteoLogInit(); // reload from the freshly written file
+            }
+
+            JsonDocument doc;
+            doc["status"]   = "ok";
+            doc["received"] = (unsigned long)s_restoreReceived;
+            doc["count"]    = (unsigned long)meteoLogCount();
+            sendJson(request, doc);
+        },
+        nullptr,
+        [](AsyncWebServerRequest *request,
+           uint8_t *data,
+           size_t len,
+           size_t index,
+           size_t total)
+        {
+            if (index == 0)
+            {
+                s_restoreFile     = LittleFS.open("/meteo.bin", "w");
+                s_restoreReceived = 0;
+            }
+
+            if (s_restoreFile)
+            {
+                s_restoreFile.write(data, len);
+                s_restoreReceived += len;
+            }
         });
 
     //--------------------------------------------------------

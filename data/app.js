@@ -833,6 +833,76 @@ async function triggerSalute()
 }
 
 //==========================================================
+// Clear meteorological history
+//==========================================================
+
+async function clearMeteo()
+{
+    if (!confirm("Erase ALL retained meteo history? This cannot be undone."))
+        return;
+
+    try
+    {
+        const response = await fetch("/api/meteo/clear", {
+            method: "POST"
+        });
+        if (response.ok)
+        {
+            alert("Meteo data cleared.");
+        }
+        else
+        {
+            alert("Error clearing meteo data.");
+        }
+    }
+    catch (e)
+    {
+        console.error(e);
+        alert("Communication error.");
+    }
+}
+
+//==========================================================
+// Restore meteo history from a downloaded backup file.
+//==========================================================
+
+async function restoreMeteo()
+{
+    const input = document.getElementById("meteoBackupFile");
+    if (!input || !input.files || !input.files[0])
+    {
+        alert("Select a backup file first.");
+        return;
+    }
+
+    if (!confirm("Restore meteo history from the selected file? "
+                 + "This overwrites the current log."))
+        return;
+
+    try
+    {
+        const response = await fetch("/api/meteo/restore", {
+            method: "POST",
+            body: input.files[0]
+        });
+        if (response.ok)
+        {
+            const data = await response.json();
+            alert("Restore complete. Samples stored: " + (data.count || 0));
+        }
+        else
+        {
+            alert("Error restoring meteo data.");
+        }
+    }
+    catch (e)
+    {
+        console.error(e);
+        alert("Communication error.");
+    }
+}
+
+//==========================================================
 // Display settings (brightness + view mode)
 //==========================================================
 

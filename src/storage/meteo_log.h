@@ -69,6 +69,10 @@ void meteoLogAddSample(float temperatureC,
 uint16_t meteoLogCount();    // number of stored samples
 uint16_t meteoLogCapacity(); // maximum number of samples kept
 
+// Erase the whole log: clears the RAM ring and rewrites the file
+// as empty. Used by the web UI "Clear meteo data" action.
+void meteoLogClear();
+
 // Serialize stored samples to a compact JSON string suitable for
 // charting. The series are decimated to at most maxPoints points to
 // keep the payload small.

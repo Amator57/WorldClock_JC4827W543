@@ -346,6 +346,18 @@ uint16_t meteoLogCapacity()
 }
 
 //------------------------------------------------------------
+// Wipe everything: RAM ring + flash file.
+//------------------------------------------------------------
+
+void meteoLogClear()
+{
+    initRingEmpty();
+    writeFullFile();
+
+    Serial.println("MeteoLog: cleared");
+}
+
+//------------------------------------------------------------
 // Serialize the log to a compact JSON document, decimated to at
 // most maxPoints points. Reads a snapshot of head/count; the only
 // concurrent writer is meteoLogAddSample (once every 5 minutes),

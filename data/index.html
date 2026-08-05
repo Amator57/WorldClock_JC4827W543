@@ -7,7 +7,7 @@
 
 <title>World Clock</title>
 
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 
 </head>
 
@@ -86,10 +86,48 @@ Select a menu item above.
 
 <h3>Test Fireworks (Salute)</h3>
 <p>
-Click the button below to launch a 60-second fireworks animation on the device's screen.
+Click the button below to launch a 30-minute fireworks animation on the device's screen.
 </p>
 <button class="saveButton" style="margin-top: 10px;" onclick="triggerSalute()">
     Launch Fireworks
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Clear Meteo Data</h3>
+<p>
+Erase all retained meteorological history (last 15 days of samples).
+This action cannot be undone.
+</p>
+<button class="saveButton" style="margin-top: 10px;" onclick="clearMeteo()">
+    Clear Meteo Data
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Meteo Data Backup / Restore</h3>
+<p>
+Download a binary copy of <code>/meteo.bin</code> (the full 15-day
+history) before reflashing the filesystem image, then restore it
+afterwards to keep the history intact.
+</p>
+
+<p style="margin-top: 10px;">
+    <a class="saveButton" href="/meteo.bin" download style="display:inline-block; text-decoration:none;">
+        Download Backup
+    </a>
+</p>
+
+<p style="margin-top: 10px;">
+    <input type="file" id="meteoBackupFile" accept=".bin,application/octet-stream">
+</p>
+
+<button class="saveButton" onclick="restoreMeteo()">
+    Restore from Backup
 </button>
 
 </div>
@@ -373,6 +411,10 @@ World Clock for ESP32-S3
 REST API version 1.0
 </p>
 
+<p>
+Author: Yevgeny Atamanov
+</p>
+
 </div>
 
 </div>
@@ -385,7 +427,7 @@ ESP32 World Clock
 
 </div>
 
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
 
 </body>
 </html>

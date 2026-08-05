@@ -709,6 +709,9 @@ void screenBatteryUpdate(bool present, int8_t level, bool charging)
 static lv_timer_t *saluteSpawnTimer = nullptr;
 static uint32_t saluteStartTime = 0;
 
+// Total duration of a salute run, milliseconds.
+static const uint32_t SALUTE_DURATION_MS = 30UL * 60UL * 1000UL; // 30 minutes
+
 static void animReadyCb(lv_anim_t *a)
 {
     lv_obj_t *obj = (lv_obj_t *)a->var;
@@ -799,9 +802,9 @@ static void spawnExplosion(int cx, int cy)
 
 static void saluteSpawnCb(lv_timer_t *t)
 {
-    if (millis() - saluteStartTime >= 60000)
+    if (millis() - saluteStartTime >= SALUTE_DURATION_MS)
     {
-        // 60 seconds finished, stop spawning
+        // Salute finished, stop spawning
         lv_timer_del(t);
         saluteSpawnTimer = nullptr;
         return;
