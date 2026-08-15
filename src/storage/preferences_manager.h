@@ -149,3 +149,6 @@ uint8_t prefGetAudioVolume();
 
 void prefSetAudioMuted(bool muted);
 bool prefGetAudioMuted();
+
+void prefSetSaluteSoundEnabled(bool enabled);
+bool prefGetSaluteSoundEnabled();

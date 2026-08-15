@@ -628,6 +628,7 @@ server.on(
             JsonDocument doc;
             doc["volume"] = audioGetVolume();
             doc["muted"]  = audioIsMuted();
+            doc["saluteSound"] = audioIsExplosionEnabled();
             sendJson(request, doc);
         });
 
@@ -662,6 +663,13 @@ server.on(
                 bool m = doc["muted"].as<bool>();
                 audioSetMuted(m);
                 prefSetAudioMuted(m);
+            }
+
+            if (doc["saluteSound"].is<bool>())
+            {
+                bool e = doc["saluteSound"].as<bool>();
+                audioSetExplosionEnabled(e);
+                prefSetSaluteSoundEnabled(e);
             }
 
             sendOk(request);

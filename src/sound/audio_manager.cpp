@@ -23,6 +23,7 @@
 static i2s_chan_handle_t g_txHandle   = nullptr;
 static bool            g_initialised = false;
 static bool            g_muted       = false;
+static bool            g_explosionEnabled = true;
 static uint8_t         g_volume      = 80;   // %
 static TaskHandle_t    g_task        = nullptr;
 
@@ -245,7 +246,7 @@ bool audioInit()
 
 void audioPlayExplosion()
 {
-    if (!g_initialised || !g_task)
+    if (!g_initialised || !g_task || !g_explosionEnabled)
         return;
     xTaskNotify(g_task, AUDIO_CMD_EXPLOSION, eSetValueWithOverwrite);
 }
@@ -279,4 +280,14 @@ void audioSetVolume(uint8_t percent)
 uint8_t audioGetVolume()
 {
     return g_volume;
+}
+
+void audioSetExplosionEnabled(bool enabled)
+{
+    g_explosionEnabled = enabled;
+}
+
+bool audioIsExplosionEnabled()
+{
+    return g_explosionEnabled;
 }

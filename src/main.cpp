@@ -146,6 +146,7 @@ if (!filesystemInit())
     audioInit();
     audioSetVolume(prefGetAudioVolume());
     audioSetMuted(prefGetAudioMuted());
+    audioSetExplosionEnabled(prefGetSaluteSoundEnabled());
 
         clockEngineInit();
 //========================================================

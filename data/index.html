@@ -7,7 +7,7 @@
 
 <title>World Clock</title>
 
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 
 </head>
 
@@ -105,6 +105,10 @@ Select a menu item above.
 <p>
 Click the button below to launch a 30-minute fireworks animation on the device's screen.
 </p>
+<div class="checkboxRow" style="margin-top: 10px;">
+    <input type="checkbox" id="saluteSound" onchange="onSaluteSoundChange()">
+    <label for="saluteSound" class="checkboxLabel">Explosion sounds with fireworks</label>
+</div>
 <button class="saveButton" style="margin-top: 10px;" onclick="triggerSalute()">
     Launch Fireworks
 </button>
@@ -448,7 +452,7 @@ ESP32 World Clock
 
 </div>
 
-<script src="app.js?v=10"></script>
+<script src="app.js?v=11"></script>
 
 </body>
 </html>

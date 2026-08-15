@@ -51,3 +51,10 @@ bool audioIsMuted();
 
 void audioSetVolume(uint8_t percent);
 uint8_t audioGetVolume();
+
+//------------------------------------------------------------
+// Firework explosion sounds (persistent via Preferences)
+//------------------------------------------------------------
+
+void audioSetExplosionEnabled(bool enabled);
+bool audioIsExplosionEnabled();

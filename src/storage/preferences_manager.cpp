@@ -612,3 +612,13 @@ bool prefGetAudioMuted()
 {
     return prefs.getBool("audio_mute", false);
 }
+
+void prefSetSaluteSoundEnabled(bool enabled)
+{
+    prefs.putBool("salute_snd", enabled);
+}
+
+bool prefGetSaluteSoundEnabled()
+{
+    return prefs.getBool("salute_snd", true);
+}

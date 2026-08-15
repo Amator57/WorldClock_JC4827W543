@@ -76,6 +76,7 @@ async function loadHomeControls()
             vs.value = v;
             document.getElementById("homeVolumeValue").textContent = v;
         }
+        document.getElementById("saluteSound").checked = aud.saluteSound !== false;
     }
     catch (e)
     {
@@ -109,6 +110,25 @@ async function sendHomeVolume()
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ volume: v })
+        });
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+async function onSaluteSoundChange()
+{
+    const enabled = document.getElementById("saluteSound").checked;
+
+    try
+    {
+        await fetch("/api/audio",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ saluteSound: enabled })
         });
     }
     catch (e)
