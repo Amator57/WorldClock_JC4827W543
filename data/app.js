@@ -22,6 +22,10 @@ async function showPage(pageName, button)
 
     switch (pageName)
     {
+        case "home":
+            await loadHomeControls();
+            break;
+
         case "network":
             await loadNetwork();
             break;
@@ -52,6 +56,70 @@ function toggleDHCPFields()
     const dhcp = document.getElementById("wifi_dhcp").checked;
     document.getElementById("staticIPFields").style.display = dhcp ? "none" : "block";
 }
+
+//==========================================================
+// Home: volume quick control
+//==========================================================
+
+let pendingHomeVolume = null;
+let homeVolumeTimer   = null;
+
+async function loadHomeControls()
+{
+    try
+    {
+        const aud = await readJson("/api/audio");
+        const v = Number(aud.volume);
+        if (!isNaN(v))
+        {
+            const vs = document.getElementById("homeVolume");
+            vs.value = v;
+            document.getElementById("homeVolumeValue").textContent = v;
+        }
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+function onHomeVolumeInput()
+{
+    const v = Number(document.getElementById("homeVolume").value);
+    document.getElementById("homeVolumeValue").textContent = v;
+    pendingHomeVolume = v;
+
+    if (homeVolumeTimer !== null)
+        clearTimeout(homeVolumeTimer);
+
+    homeVolumeTimer = setTimeout(sendHomeVolume, 200);
+}
+
+async function sendHomeVolume()
+{
+    if (pendingHomeVolume === null)
+        return;
+
+    const v = pendingHomeVolume;
+
+    try
+    {
+        await fetch("/api/audio",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ volume: v })
+        });
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+//==========================================================
+// Network
+//==========================================================
 
 async function loadNetwork()
 {

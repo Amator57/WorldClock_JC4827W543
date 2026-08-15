@@ -7,7 +7,7 @@
 
 <title>World Clock</title>
 
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 
 </head>
 
@@ -69,6 +69,23 @@
 <div id="home" class="page active">
 
 <h2>Home</h2>
+
+<div class="card">
+
+<label>
+    Volume: <span id="homeVolumeValue">--</span>%
+</label>
+
+<input
+    id="homeVolume"
+    type="range"
+    min="0"
+    max="100"
+    step="1"
+    value="80"
+    oninput="onHomeVolumeInput()">
+
+</div>
 
 <div class="card">
 
@@ -415,6 +432,10 @@ REST API version 1.0
 Author: Yevgeny Atamanov
 </p>
 
+<p>
+Gift to Anatoly Atamanov 2026
+</p>
+
 </div>
 
 </div>
@@ -427,7 +448,7 @@ ESP32 World Clock
 
 </div>
 
-<script src="app.js?v=9"></script>
+<script src="app.js?v=10"></script>
 
 </body>
 </html>

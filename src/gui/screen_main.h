@@ -8,7 +8,7 @@
 
 void screenMainCreate();
 
-void startSaluteAnimation();
+void startSaluteAnimation(uint32_t durationMs = 0);
 
 //------------------------------------------------------------
 // Display views

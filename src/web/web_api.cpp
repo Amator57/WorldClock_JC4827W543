@@ -8,7 +8,9 @@
 #include "../storage/meteo_log.h"
 #include "../clock/timezones_db.h"
 #include "../gui/screen_main.h"
+#include "../clock/clock_engine.h"
 #include "../sensor/bme_manager.h"
+#include "../sound/audio_manager.h"
 #include "../display.h"
 
 //------------------------------------------------------------
@@ -445,6 +447,32 @@ server.on(
         });
 
     //--------------------------------------------------------
+    // Trigger yearly notification (phrase + 60 s salute)
+    //--------------------------------------------------------
+
+    server.on(
+        "/api/notify",
+        HTTP_POST,
+        [](AsyncWebServerRequest *request)
+        {
+            triggerYearlyNotification();
+            JsonDocument doc;
+            doc["status"] = "ok";
+            sendJson(request, doc);
+        });
+
+    server.on(
+        "/api/notify-sep",
+        HTTP_POST,
+        [](AsyncWebServerRequest *request)
+        {
+            triggerSeptemberNotification();
+            JsonDocument doc;
+            doc["status"] = "ok";
+            sendJson(request, doc);
+        });
+
+    //--------------------------------------------------------
     // Meteorological history (for charts)
     //
     // Optional query parameters:
@@ -585,5 +613,58 @@ server.on(
 
             sendJson(request, doc);
         });
- 
+
+    //--------------------------------------------------------
+    // Audio (volume + mute). Volume is applied live AND persisted
+    // so the slider on the Home tab doubles as a live preview
+    // and a Save action.
+    //--------------------------------------------------------
+
+    server.on(
+        "/api/audio",
+        HTTP_GET,
+        [](AsyncWebServerRequest *request)
+        {
+            JsonDocument doc;
+            doc["volume"] = audioGetVolume();
+            doc["muted"]  = audioIsMuted();
+            sendJson(request, doc);
+        });
+
+    server.on(
+        "/api/audio",
+        HTTP_POST,
+        [](AsyncWebServerRequest *request) { /* empty */ },
+        nullptr,
+        [](AsyncWebServerRequest *request,
+           uint8_t *data,
+           size_t len,
+           size_t index,
+           size_t total)
+        {
+            JsonDocument doc;
+            if (deserializeJson(doc, data, len))
+            {
+                sendError(request, 400, "JSON parse error");
+                return;
+            }
+
+            if (doc["volume"].is<uint8_t>())
+            {
+                uint8_t v = doc["volume"].as<uint8_t>();
+                if (v > 100) v = 100;
+                audioSetVolume(v);
+                prefSetAudioVolume(v);
+            }
+
+            if (doc["muted"].is<bool>())
+            {
+                bool m = doc["muted"].as<bool>();
+                audioSetMuted(m);
+                prefSetAudioMuted(m);
+            }
+
+            sendOk(request);
+        });
+
 }

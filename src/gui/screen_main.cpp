@@ -3,6 +3,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include "../fonts/font_clock.h"
+#include "../sound/audio_manager.h"
+#include "../sound/phrase_ura.h"
 
 //------------------------------------------------------------
 // Objects
@@ -710,7 +712,24 @@ static lv_timer_t *saluteSpawnTimer = nullptr;
 static uint32_t saluteStartTime = 0;
 
 // Total duration of a salute run, milliseconds.
-static const uint32_t SALUTE_DURATION_MS = 30UL * 60UL * 1000UL; // 30 minutes
+static const uint32_t SALUTE_DEFAULT_MS = 30UL * 60UL * 1000UL; // 30 minutes
+static uint32_t s_saluteDurationMs = SALUTE_DEFAULT_MS;
+
+// Explosion sounds play only during the first minute.
+static const uint32_t SALUTE_SOUND_DURATION_MS = 60UL * 1000UL;  // 1 minute
+
+// After explosions, the phrase plays 3 times with 15-second gaps.
+static const uint8_t  PHRASE_REPEAT_COUNT  = 3;
+static const uint32_t PHRASE_INTERVAL_MS    = 7UL * 1000UL;
+
+// Spawn interval = explosion sound (2200 ms) + gap so each visual
+// flash is synced 1:1 with its boom + echo. Audio task cycle
+// (2200 ms stream + 200 ms flush) fits inside this window.
+static const uint32_t EXPLOSION_SPAWN_MS    = 2500;
+
+static bool     s_phraseStarted    = false;
+static uint8_t  s_phraseCount      = 0;
+static uint32_t s_lastPhraseTime   = 0;
 
 static void animReadyCb(lv_anim_t *a)
 {
@@ -733,6 +752,13 @@ static void spawnExplosion(int cx, int cy)
         0xFF9100, // Orange
         0xFF3D00  // Deep Orange
     };
+
+    // Trigger explosion sound only during the first minute.
+    if (saluteStartTime > 0 &&
+        millis() - saluteStartTime < SALUTE_SOUND_DURATION_MS)
+    {
+        audioPlayExplosion();
+    }
 
     int numParticles = 12 + rand() % 6; // 12 to 17 particles
     lv_obj_t *scr = lv_scr_act();
@@ -802,7 +828,9 @@ static void spawnExplosion(int cx, int cy)
 
 static void saluteSpawnCb(lv_timer_t *t)
 {
-    if (millis() - saluteStartTime >= SALUTE_DURATION_MS)
+    uint32_t elapsed = millis() - saluteStartTime;
+
+    if (elapsed >= s_saluteDurationMs)
     {
         // Salute finished, stop spawning
         lv_timer_del(t);
@@ -810,16 +838,39 @@ static void saluteSpawnCb(lv_timer_t *t)
         return;
     }
 
-    // Spawn a random explosion
-    // Display coordinates range: X in [80, 400], Y in [60, 180]
+    // --- Phrase sequence: only in long salutes (> sound phase) ---
+    if (s_saluteDurationMs > SALUTE_SOUND_DURATION_MS)
+    {
+        if (elapsed >= SALUTE_SOUND_DURATION_MS && !s_phraseStarted)
+        {
+            s_phraseStarted  = true;
+            s_lastPhraseTime = millis() - PHRASE_INTERVAL_MS; // play first immediately
+        }
+
+        if (s_phraseStarted && s_phraseCount < PHRASE_REPEAT_COUNT)
+        {
+            if (millis() - s_lastPhraseTime >= PHRASE_INTERVAL_MS)
+            {
+                audioPlayPhrase(PHRASE_URA, PHRASE_URA_SAMPLES);
+                s_lastPhraseTime = millis();
+                s_phraseCount++;
+            }
+        }
+    }
+
+    // Spawn a random explosion (visual always; sound only in first minute)
     int cx = 80 + rand() % 320;
     int cy = 60 + rand() % 120;
     spawnExplosion(cx, cy);
 }
 
-void startSaluteAnimation()
+void startSaluteAnimation(uint32_t durationMs)
 {
+    s_saluteDurationMs = durationMs > 0 ? durationMs : SALUTE_DEFAULT_MS;
     saluteStartTime = millis();
+    s_phraseStarted = false;
+    s_phraseCount   = 0;
+    s_lastPhraseTime = 0;
 
     // If there is already a running timer, delete it first to restart
     if (saluteSpawnTimer != nullptr)
@@ -830,6 +881,6 @@ void startSaluteAnimation()
     // Spawn first explosion immediately
     spawnExplosion(240, 100);
 
-    // Create a timer to spawn subsequent explosions every 1200 ms
-    saluteSpawnTimer = lv_timer_create(saluteSpawnCb, 1200, nullptr);
+    // Create a timer to spawn subsequent explosions synced to the sound
+    saluteSpawnTimer = lv_timer_create(saluteSpawnCb, EXPLOSION_SPAWN_MS, nullptr);
 }

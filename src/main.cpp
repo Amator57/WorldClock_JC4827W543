@@ -10,6 +10,7 @@
 #include "storage/meteo_log.h"
 #include "sensor/bme_manager.h"
 #include "sensor/ip5306_manager.h"
+#include "sound/audio_manager.h"
 #include "web/filesystem.h"
 #include "web/web_server.h"
 
@@ -138,6 +139,13 @@ if (!filesystemInit())
     // because it shares the same I2C bus).
     //--------------------------------------------------------
     ip5306Init();
+
+    //--------------------------------------------------------
+    // Audio (on-board I2S DAC -> NS4168 amplifier)
+    //--------------------------------------------------------
+    audioInit();
+    audioSetVolume(prefGetAudioVolume());
+    audioSetMuted(prefGetAudioMuted());
 
         clockEngineInit();
 //========================================================

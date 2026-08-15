@@ -139,3 +139,13 @@ uint8_t prefGetReferenceCity();
 void prefSetOverlapWarning(uint16_t minutes);
 
 uint16_t prefGetOverlapWarning();
+
+//------------------------------------------------------------
+// Audio (volume + mute)
+//------------------------------------------------------------
+
+void prefSetAudioVolume(uint8_t percent);
+uint8_t prefGetAudioVolume();
+
+void prefSetAudioMuted(bool muted);
+bool prefGetAudioMuted();

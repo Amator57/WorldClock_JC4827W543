@@ -588,3 +588,27 @@ uint16_t prefGetOverlapWarning()
 {
     return prefs.getUShort("overlap", 60);
 }
+
+//------------------------------------------------------------
+// Audio (volume + mute)
+//------------------------------------------------------------
+
+void prefSetAudioVolume(uint8_t percent)
+{
+    prefs.putUChar("audio_vol", percent);
+}
+
+uint8_t prefGetAudioVolume()
+{
+    return prefs.getUChar("audio_vol", 80);
+}
+
+void prefSetAudioMuted(bool muted)
+{
+    prefs.putBool("audio_mute", muted);
+}
+
+bool prefGetAudioMuted()
+{
+    return prefs.getBool("audio_mute", false);
+}
