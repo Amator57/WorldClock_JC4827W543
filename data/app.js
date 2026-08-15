@@ -213,6 +213,74 @@ async function loadSystem()
         console.error(e);
         alert("System read error");
     }
+
+    await loadArchive();
+}
+
+//==========================================================
+// Meteo archive (automatic 14-day backups)
+//==========================================================
+
+async function loadArchive()
+{
+    try
+    {
+        const arch = await readJson("/api/archive");
+
+        const lastEl = document.getElementById("archiveLast");
+        if (arch.last > 0)
+            lastEl.textContent = "Last archive: " +
+                new Date(arch.last * 1000).toLocaleString();
+        else
+            lastEl.textContent = "Last archive: never";
+
+        const listEl = document.getElementById("archiveFiles");
+        const files = Array.isArray(arch.files) ? arch.files : [];
+
+        if (files.length === 0)
+        {
+            listEl.textContent = "No archives yet.";
+            return;
+        }
+
+        let html = "";
+        for (const f of files)
+        {
+            const kb = (f.size / 1024).toFixed(1);
+            html += `<p style="margin:4px 0;">
+<a href="/archive/${encodeURIComponent(f.name)}" download>${f.name}</a>
+&nbsp;(${kb} KB)</p>`;
+        }
+        listEl.innerHTML = html;
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+async function archiveNow()
+{
+    if (!confirm("Create a meteo archive now?"))
+        return;
+
+    try
+    {
+        const response = await fetch("/api/archive/now", { method: "POST" });
+        const data = await response.json();
+
+        if (data.status === "ok")
+            alert(`Archive created: ${data.fileName}`);
+        else
+            alert("Error creating archive.");
+
+        await loadArchive();
+    }
+    catch (e)
+    {
+        console.error(e);
+        alert("Communication error.");
+    }
 }
 
 async function loadClocks()
@@ -964,7 +1032,8 @@ async function restoreMeteo()
     }
 
     if (!confirm("Restore meteo history from the selected file? "
-                 + "This overwrites the current log."))
+                 + "Samples collected after the backup are kept "
+                 + "and appended after the archive."))
         return;
 
     try

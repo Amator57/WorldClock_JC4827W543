@@ -73,6 +73,12 @@ uint16_t meteoLogCapacity(); // maximum number of samples kept
 // as empty. Used by the web UI "Clear meteo data" action.
 void meteoLogClear();
 
+// Reload the log from the file on flash (e.g. after /api/meteo/restore
+// overwrote it with an archive) while preserving the current data:
+// samples that are newer than the newest restored record are appended
+// after the archive, so nothing collected after the backup is lost.
+bool meteoLogReloadAndMerge();
+
 // Serialize stored samples to a compact JSON string suitable for
 // charting. The series are decimated to at most maxPoints points to
 // keep the payload small.

@@ -152,3 +152,10 @@ bool prefGetAudioMuted();
 
 void prefSetSaluteSoundEnabled(bool enabled);
 bool prefGetSaluteSoundEnabled();
+
+//------------------------------------------------------------
+// Meteo archive (last run time)
+//------------------------------------------------------------
+
+void prefSetArchiveLast(uint32_t unixTime);
+uint32_t prefGetArchiveLast();

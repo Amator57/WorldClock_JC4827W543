@@ -6,6 +6,7 @@
 
 #include "../storage/preferences_manager.h"
 #include "../storage/meteo_log.h"
+#include "../storage/meteo_archive.h"
 #include "../clock/timezones_db.h"
 #include "../gui/screen_main.h"
 #include "../clock/clock_engine.h"
@@ -567,7 +568,9 @@ server.on(
             if (s_restoreFile)
             {
                 s_restoreFile.close();
-                meteoLogInit(); // reload from the freshly written file
+                // Reload the archive and re-append the current samples
+                // that are newer than the archive's newest record.
+                meteoLogReloadAndMerge();
             }
 
             JsonDocument doc;
@@ -594,6 +597,51 @@ server.on(
                 s_restoreFile.write(data, len);
                 s_restoreReceived += len;
             }
+        });
+
+    //--------------------------------------------------------
+    // Meteo archive (automatic 15-day local backups).
+    //
+    // GET  /api/archive      -> { last, files:[{name,size}] }
+    // POST /api/archive/now  -> run the archive immediately
+    //
+    // Stored files are transferred manually by downloading them
+    // from /archive/<name> in the web UI.
+    //--------------------------------------------------------
+
+    server.on(
+        "/api/archive",
+        HTTP_GET,
+        [](AsyncWebServerRequest *request)
+        {
+            JsonDocument doc;
+            doc["last"] = prefGetArchiveLast();
+
+            String files;
+            meteoArchiveListJson(files);
+
+            String json;
+            serializeJson(doc, json);
+
+            // Splice the file list into the response.
+            json.remove(json.length() - 1); // drop '}'
+            json += ",\"files\":" + files + "}";
+
+            request->send(200, "application/json", json);
+        });
+
+    server.on(
+        "/api/archive/now",
+        HTTP_POST,
+        [](AsyncWebServerRequest *request)
+        {
+            MeteoArchiveResult res;
+            meteoArchiveRun(&res);
+
+            JsonDocument doc;
+            doc["status"]   = res.copied ? "ok" : "error";
+            doc["fileName"] = res.fileName;
+            sendJson(request, doc);
         });
 
     //--------------------------------------------------------

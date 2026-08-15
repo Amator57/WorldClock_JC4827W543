@@ -2,6 +2,7 @@
 
 #include <LittleFS.h>
 #include <time.h>
+#include <esp_heap_caps.h>
 
 //------------------------------------------------------------
 //
@@ -355,6 +356,86 @@ void meteoLogClear()
     writeFullFile();
 
     Serial.println("MeteoLog: cleared");
+}
+
+//------------------------------------------------------------
+// Restore-merge: reload the log from the file on flash (which the
+// /api/meteo/restore handler has just overwritten with an archive),
+// then re-append the current samples that are newer than the
+// archive's newest record. The current data lives in the RAM ring
+// until this point, so it is snapshotted (PSRAM preferred) before
+// the reload wipes it.
+//------------------------------------------------------------
+
+bool meteoLogReloadAndMerge()
+{
+    //----- 1. Snapshot the current samples (ascending order) -----
+
+    MeteoRecord *snap     = nullptr;
+    uint16_t     snapCount = 0;
+
+    if (g_count > 0)
+    {
+        size_t bytes = (size_t)g_count * sizeof(MeteoRecord);
+        snap = (MeteoRecord *)heap_caps_malloc(bytes, MALLOC_CAP_SPIRAM);
+        if (!snap)
+            snap = (MeteoRecord *)malloc(bytes);
+
+        if (snap)
+        {
+            for (uint16_t i = 0; i < g_count; i++)
+                snap[i] = g_ring[(g_head + i) % CAPACITY];
+            snapCount = g_count;
+        }
+        else
+        {
+            Serial.println("MeteoLog: merge snapshot alloc failed");
+        }
+    }
+
+    //----- 2. Reload the archive from flash -----
+
+    bool ok = meteoLogInit();
+
+    //----- 3. Append current samples newer than the archive -----
+
+    uint32_t newestRestored = 0;
+    if (g_count > 0)
+        newestRestored =
+            g_ring[(g_head + g_count - 1) % CAPACITY].time;
+
+    uint16_t appended = 0;
+    for (uint16_t i = 0; i < snapCount; i++)
+    {
+        if (snap[i].time <= newestRestored)
+            continue; // already covered by the archive
+
+        uint16_t idx;
+        if (g_count < CAPACITY)
+        {
+            idx = (g_head + g_count) % CAPACITY;
+            g_count++;
+        }
+        else
+        {
+            // Buffer full: overwrite the oldest and advance head.
+            idx   = g_head;
+            g_head = (g_head + 1) % CAPACITY;
+        }
+
+        g_ring[idx] = snap[i];
+        appended++;
+    }
+
+    free(snap);
+
+    if (appended > 0)
+        writeFullFile();
+
+    Serial.printf("MeteoLog: restore-merge appended %u current samples\n",
+                  (unsigned)appended);
+
+    return ok;
 }
 
 //------------------------------------------------------------

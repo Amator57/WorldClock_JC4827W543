@@ -7,7 +7,7 @@
 
 <title>World Clock</title>
 
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=13">
 
 </head>
 
@@ -412,6 +412,32 @@ afterwards to keep the history intact.
 
 </div>
 
+<div class="card">
+
+<h3>Meteo Archive (every 15 days)</h3>
+
+<p>
+The device automatically saves a copy of the meteo history every
+15 days (last 10 archives are kept). Download the files below to
+transfer them to your computer.
+</p>
+
+<p id="archiveLast">
+    Last archive: --
+</p>
+
+<button class="saveButton" style="margin-top: 6px;" onclick="archiveNow()">
+    Archive Now
+</button>
+
+<p style="margin-top: 12px;">
+    Stored archives (click to download):
+</p>
+
+<div id="archiveFiles">--</div>
+
+</div>
+
 </div>
 
 <!-- ====================================================== -->
@@ -452,7 +478,7 @@ ESP32 World Clock
 
 </div>
 
-<script src="app.js?v=11"></script>
+<script src="app.js?v=13"></script>
 
 </body>
 </html>

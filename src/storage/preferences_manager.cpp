@@ -622,3 +622,13 @@ bool prefGetSaluteSoundEnabled()
 {
     return prefs.getBool("salute_snd", true);
 }
+
+void prefSetArchiveLast(uint32_t unixTime)
+{
+    prefs.putUInt("arch_last", unixTime);
+}
+
+uint32_t prefGetArchiveLast()
+{
+    return prefs.getUInt("arch_last", 0);
+}

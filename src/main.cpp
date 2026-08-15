@@ -8,6 +8,7 @@
 #include "network/wifi_manager.h"
 #include "storage/preferences_manager.h"
 #include "storage/meteo_log.h"
+#include "storage/meteo_archive.h"
 #include "sensor/bme_manager.h"
 #include "sensor/ip5306_manager.h"
 #include "sound/audio_manager.h"
@@ -83,6 +84,9 @@ if (!filesystemInit())
     //--------------------------------------------------------
 
     meteoLogInit();
+
+    // Automatic 14-day archiving of the meteo log.
+    meteoArchiveInit();
 
     //--------------------------------------------------------
     // GUI
@@ -185,6 +189,8 @@ ntpLoop();
     ip5306Loop();
 
     clockEngineUpdate();
+
+    meteoArchiveTick();
 
 lvglLoop();
 
