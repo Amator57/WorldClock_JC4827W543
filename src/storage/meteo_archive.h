@@ -17,7 +17,7 @@
 //============================================================
 
 #ifndef METEO_ARCHIVE_INTERVAL_SEC
-#define METEO_ARCHIVE_INTERVAL_SEC (15UL * 24UL * 3600UL)
+#define METEO_ARCHIVE_INTERVAL_SEC (1UL * 24UL * 3600UL) // TEMP: 1 day for testing (was 15 days)
 #endif
 
 #ifndef METEO_ARCHIVE_MAX_FILES
@@ -52,5 +52,5 @@ void meteoArchiveTick();
 // reported through the optional result struct.
 bool meteoArchiveRun(MeteoArchiveResult *res = nullptr);
 
-// JSON list of stored archives: { "files":[{"name":..,"size":..}] }
+// JSON array of stored archives: [ {"name":..,"size":..} ]
 void meteoArchiveListJson(String &out);

@@ -36,6 +36,12 @@ static uint8_t listArchiveNames(String *names, uint8_t maxNames)
         String name = f.name();
         f.close();
 
+        // Some core versions return the full path instead of
+        // the basename; keep only the file name part.
+        int slash = name.lastIndexOf('/');
+        if (slash >= 0)
+            name = name.substring(slash + 1);
+
         if (!name.startsWith("meteo_") || !name.endsWith(".bin"))
             continue;
 
@@ -201,7 +207,7 @@ void meteoArchiveListJson(String &out)
     uint8_t count = listArchiveNames(
         names, METEO_ARCHIVE_MAX_FILES + 4);
 
-    out = "{\"files\":[";
+    out = "[";
     for (uint8_t i = 0; i < count && i < METEO_ARCHIVE_MAX_FILES + 4; i++)
     {
         String path = String(ARCHIVE_DIR) + "/" + names[i];
@@ -218,5 +224,5 @@ void meteoArchiveListJson(String &out)
         out += "{\"name\":\"" + names[i] +
                "\",\"size\":" + String((unsigned long)size) + "}";
     }
-    out += "]}";
+    out += "]";
 }

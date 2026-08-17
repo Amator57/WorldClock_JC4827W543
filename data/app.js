@@ -248,7 +248,7 @@ async function loadArchive()
         {
             const kb = (f.size / 1024).toFixed(1);
             html += `<p style="margin:4px 0;">
-<a href="/archive/${encodeURIComponent(f.name)}" download>${f.name}</a>
+<a href="/archive/${encodeURIComponent(f.name)}" download style="color:#fff;">${f.name}</a>
 &nbsp;(${kb} KB)</p>`;
         }
         listEl.innerHTML = html;
