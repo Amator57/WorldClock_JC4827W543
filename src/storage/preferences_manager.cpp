@@ -632,3 +632,23 @@ uint32_t prefGetArchiveLast()
 {
     return prefs.getUInt("arch_last", 0);
 }
+
+void prefSetArchiveRemind(bool remind)
+{
+    prefs.putBool("arch_remind", remind);
+}
+
+bool prefGetArchiveRemind()
+{
+    return prefs.getBool("arch_remind", false);
+}
+
+void prefSetArchiveReminderEnabled(bool enabled)
+{
+    prefs.putBool("arch_notice", enabled);
+}
+
+bool prefGetArchiveReminderEnabled()
+{
+    return prefs.getBool("arch_notice", true);
+}

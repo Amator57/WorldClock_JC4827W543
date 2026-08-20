@@ -174,6 +174,49 @@ static tm getLocalTimeStruct(const TimeZoneInfo *tz, const tm &utc) {
 
 //------------------------------------------------------------
 
+int32_t clockEngineClockUtcOffsetSec(uint8_t clockIndex) {
+  if (clockIndex >= MAX_WORLD_CLOCKS)
+    return 0;
+
+  const TimeZoneInfo *tz = getTimeZone(prefGetTimeZone(clockIndex));
+  if (!tz)
+    tz = findTimeZoneByEnglish(prefGetCity(clockIndex).c_str());
+  if (!tz)
+    return 0;
+
+  int32_t offset = (tz->utcHour * 60 + tz->utcMinute) * 60;
+
+  struct tm utc;
+  if (ntpGetUTCTime(&utc) && isDstActive(tz, utc))
+    offset += 3600;
+
+  return offset;
+}
+
+//------------------------------------------------------------
+// "Archive needed" reminder: for 5 seconds once per alternation
+// cycle (or every ARCH_REMIND_PERIOD_MS in fixed view modes)
+// while /archive is full and the reminder is enabled in the web
+// UI. Cleared when all archives are downloaded to a computer.
+//------------------------------------------------------------
+
+static const uint32_t ARCH_REMIND_PERIOD_MS = 15UL * 60UL * 1000UL;
+static uint32_t lastArchRemindMs = 0;
+
+static void showArchiveReminderIfNeeded(uint32_t periodMs) {
+  if (!prefGetArchiveRemind() || !prefGetArchiveReminderEnabled())
+    return;
+
+  uint32_t nowMs = millis();
+  if (lastArchRemindMs != 0 && nowMs - lastArchRemindMs < periodMs)
+    return;
+  lastArchRemindMs = nowMs;
+
+  screenNoticeShow("Meteo data memory is full.\nArchive needed!", 5000);
+}
+
+//------------------------------------------------------------
+
 void clockEngineInit() {
   lastUpdate = 0;
   lastDisplayMode = prefGetDisplayMode();
@@ -246,7 +289,20 @@ void clockEngineUpdate() {
     currentView = (currentView == SCREEN_VIEW_CLOCK) ? SCREEN_VIEW_ENV
                                                      : SCREEN_VIEW_CLOCK;
     screenViewSet(currentView);
+
+    // "Archive needed" reminder: shown once per alternation
+    // cycle (when the meteo view appears) while the /archive
+    // folder is full and the reminder is not disabled.
+    if (currentView == SCREEN_VIEW_ENV)
+      showArchiveReminderIfNeeded(VIEW_PERIOD_MS);
   }
+
+  //--------------------------------------------------------
+  // In the fixed display modes there is no view switch, so the
+  // reminder (when active) is shown periodically instead.
+  //--------------------------------------------------------
+  if (mode != DISPLAY_MODE_ALTERNATE)
+    showArchiveReminderIfNeeded(ARCH_REMIND_PERIOD_MS);
 
   //--------------------------------------------------------
   // Environment view: show averaged sensor data.

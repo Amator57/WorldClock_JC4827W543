@@ -159,3 +159,12 @@ bool prefGetSaluteSoundEnabled();
 
 void prefSetArchiveLast(uint32_t unixTime);
 uint32_t prefGetArchiveLast();
+
+// Reminder flag: /archive is full (MAX files stored) and the
+// data should be downloaded to a computer.
+void prefSetArchiveRemind(bool remind);
+bool prefGetArchiveRemind();
+
+// User toggle for the on-screen archive reminder (web UI).
+void prefSetArchiveReminderEnabled(bool enabled);
+bool prefGetArchiveReminderEnabled();

@@ -345,6 +345,10 @@ server.on(
                 clock["city"] = prefGetCity(i);
                 clock["timezone"] = prefGetTimeZone(i);
 
+                // Current UTC offset incl. DST; the meteo web UI
+                // renders time in the first clock's timezone.
+                clock["utcOffset"] = clockEngineClockUtcOffsetSec(i);
+
                 clock["workStart"] = prefGetWorkStart(i);
                 clock["workEnd"] = prefGetWorkEnd(i);
 
@@ -616,6 +620,8 @@ server.on(
         {
             JsonDocument doc;
             doc["last"] = prefGetArchiveLast();
+            doc["remind"] = prefGetArchiveRemind();
+            doc["reminderEnabled"] = prefGetArchiveReminderEnabled();
 
             String files;
             meteoArchiveListJson(files);
@@ -630,6 +636,45 @@ server.on(
             request->send(200, "application/json", json);
         });
 
+    // Acknowledgement from the web UI: all stored archives have
+    // been downloaded to a computer -> clear the on-screen
+    // "archive needed" reminder.
+    server.on(
+        "/api/archive/downloaded",
+        HTTP_POST,
+        [](AsyncWebServerRequest *request)
+        {
+            prefSetArchiveRemind(false);
+
+            JsonDocument doc;
+            doc["status"] = "ok";
+            sendJson(request, doc);
+        });
+
+    // Enable/disable the on-screen archive reminder.
+    server.on(
+        "/api/archive/reminder",
+        HTTP_POST,
+        nullptr,
+        nullptr,
+        [](AsyncWebServerRequest *request,
+           uint8_t *data,
+           size_t len,
+           size_t index,
+           size_t total)
+        {
+            JsonDocument doc;
+            deserializeJson(doc, data, len);
+
+            if (doc["enabled"].is<bool>())
+                prefSetArchiveReminderEnabled(doc["enabled"]);
+
+            JsonDocument out;
+            out["status"] = "ok";
+            out["enabled"] = prefGetArchiveReminderEnabled();
+            sendJson(request, out);
+        });
+
     server.on(
         "/api/archive/now",
         HTTP_POST,
@@ -642,6 +687,44 @@ server.on(
             doc["status"]   = res.copied ? "ok" : "error";
             doc["fileName"] = res.fileName;
             sendJson(request, doc);
+        });
+
+    // GET /archive/<name>.csv -> one stored archive converted to
+    // CSV on the fly (the .bin copy stays on flash so Restore
+    // from Backup keeps working).
+    server.on(
+        "/archive/*.csv",
+        HTTP_GET,
+        [](AsyncWebServerRequest *request)
+        {
+            static const char *PREFIX = "/archive/";
+
+            String url  = request->url();
+            String base = url.substring(strlen(PREFIX));
+            base.remove(base.length() - 4); // drop ".csv"
+            if (base.endsWith(".bin"))      // accept name.bin.csv too
+                base.remove(base.length() - 4);
+
+            // Only plain archive base names are allowed (no path
+            // tricks like ../).
+            if (!base.startsWith("meteo_") || base.indexOf('/') >= 0)
+            {
+                request->send(404, "text/plain", "Archive not found");
+                return;
+            }
+
+            String csv;
+            if (!meteoArchiveToCsv((base + ".bin").c_str(), csv))
+            {
+                request->send(404, "text/plain", "Archive not found");
+                return;
+            }
+
+            AsyncWebServerResponse *res =
+                request->beginResponse(200, "text/csv", csv);
+            res->addHeader("Content-Disposition",
+                           "attachment; filename=\"" + base + ".csv\"");
+            request->send(res);
         });
 
     //--------------------------------------------------------

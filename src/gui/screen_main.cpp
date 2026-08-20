@@ -60,6 +60,42 @@ static bool envHasHumidity = true;
 static lv_obj_t *lblBattery;
 
 //------------------------------------------------------------
+// Transient notice overlay ("archive needed" reminder)
+//------------------------------------------------------------
+
+static lv_obj_t *noticePanel  = nullptr;
+static lv_obj_t *noticeLabel  = nullptr;
+static lv_timer_t *noticeTimer = nullptr;
+
+static void noticeHideCb(lv_timer_t *t)
+{
+    LV_UNUSED(t);
+    if (noticePanel)
+        lv_obj_add_flag(noticePanel, LV_OBJ_FLAG_HIDDEN);
+    if (noticeTimer)
+    {
+        lv_timer_del(noticeTimer);
+        noticeTimer = nullptr;
+    }
+}
+
+void screenNoticeShow(const char *text, uint32_t durationMs)
+{
+    if (!noticePanel)
+        return;
+
+    lv_label_set_text(noticeLabel, text);
+    lv_obj_clear_flag(noticePanel, LV_OBJ_FLAG_HIDDEN);
+    lv_obj_move_foreground(noticePanel);
+
+    // Restart the auto-hide timer on repeated calls.
+    if (noticeTimer)
+        lv_timer_del(noticeTimer);
+    noticeTimer = lv_timer_create(noticeHideCb, durationMs, nullptr);
+    lv_timer_set_repeat_count(noticeTimer, 1);
+}
+
+//------------------------------------------------------------
 
 void screenMainCreate()
 {
@@ -435,14 +471,14 @@ void screenMainCreate()
 
     lblHumLabel = lv_label_create(scr);
     lv_obj_set_style_text_font(lblHumLabel, &lv_font_montserrat_18, 0);
-    lv_obj_set_style_text_color(lblHumLabel, lv_color_hex(0x00E676), 0);
+    lv_obj_set_style_text_color(lblHumLabel, lv_color_hex(0xFFEB3B), 0);
     lv_obj_set_pos(lblHumLabel, 40, 194);
     lv_label_set_text(lblHumLabel, "Humidity");
     lv_obj_add_flag(lblHumLabel, LV_OBJ_FLAG_HIDDEN);
 
     lblHumValue = lv_label_create(scr);
     lv_obj_set_style_text_font(lblHumValue, &lv_font_montserrat_28, 0);
-    lv_obj_set_style_text_color(lblHumValue, lv_color_hex(0x00E676), 0);
+    lv_obj_set_style_text_color(lblHumValue, lv_color_hex(0xFFEB3B), 0);
     lv_obj_set_pos(lblHumValue, 260, 186);
     lv_label_set_text(lblHumValue, "--.- %");
     lv_obj_add_flag(lblHumValue, LV_OBJ_FLAG_HIDDEN);
@@ -460,6 +496,31 @@ void screenMainCreate()
     lv_obj_set_pos(lblPresValue, 260, 126);
     lv_label_set_text(lblPresValue, "----.- hPa");
     lv_obj_add_flag(lblPresValue, LV_OBJ_FLAG_HIDDEN);
+
+    //--------------------------------------------------------
+    // Transient notice overlay (hidden by default, top-most)
+    //--------------------------------------------------------
+
+    noticePanel = lv_obj_create(scr);
+    lv_obj_set_size(noticePanel, 420, 110);
+    lv_obj_align(noticePanel, LV_ALIGN_CENTER, 0, 0);
+    lv_obj_set_style_bg_color(noticePanel, lv_color_hex(0xB3541E), 0);
+    lv_obj_set_style_bg_opa(noticePanel, LV_OPA_COVER, 0);
+    lv_obj_set_style_border_width(noticePanel, 3, 0);
+    lv_obj_set_style_border_color(noticePanel, lv_color_hex(0xFFB74D), 0);
+    lv_obj_set_style_radius(noticePanel, 12, 0);
+    lv_obj_clear_flag(noticePanel, LV_OBJ_FLAG_SCROLLABLE);
+
+    noticeLabel = lv_label_create(noticePanel);
+    lv_obj_set_style_text_font(noticeLabel, &lv_font_montserrat_20, 0);
+    lv_obj_set_style_text_color(noticeLabel, lv_color_white(), 0);
+    lv_obj_align(noticeLabel, LV_ALIGN_CENTER, 0, 0);
+    lv_label_set_text(noticeLabel, "");
+    lv_label_set_long_mode(noticeLabel, LV_LABEL_LONG_WRAP);
+    lv_obj_set_width(noticeLabel, 380);
+    lv_obj_set_style_text_align(noticeLabel, LV_TEXT_ALIGN_CENTER, 0);
+
+    lv_obj_add_flag(noticePanel, LV_OBJ_FLAG_HIDDEN);
 }
 static void updateMarkerColor(lv_obj_t *marker, uint8_t state)
 {

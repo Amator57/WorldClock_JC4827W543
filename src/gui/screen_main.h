@@ -90,3 +90,10 @@ void screenStatusUpdate(const char *wifi,
 
 // Update the FPS/CPU readout shown at the right end of the status row.
 void screenPerfUpdate(uint32_t fps, uint8_t cpu);
+
+//------------------------------------------------------------
+// Transient on-screen notice (top-most overlay). Shows the given
+// text centered on the screen for durationMs milliseconds, then
+// hides automatically. Used for the "archive needed" reminder.
+//------------------------------------------------------------
+void screenNoticeShow(const char *text, uint32_t durationMs);

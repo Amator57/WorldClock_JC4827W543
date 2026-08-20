@@ -144,7 +144,13 @@ afterwards to keep the history intact.
 </p>
 
 <p style="margin-top: 10px;">
-    <input type="file" id="meteoBackupFile" accept=".bin,application/octet-stream">
+    <input type="file" id="meteoBackupFile" accept=".bin,application/octet-stream"
+           style="display:none;" onchange="onMeteoBackupChange()">
+    <a class="saveButton" style="display:inline-block; text-decoration:none; cursor:pointer;"
+       onclick="document.getElementById('meteoBackupFile').click()">
+        Choose File
+    </a>
+    <span id="meteoBackupName" style="margin-left: 8px;">No file selected</span>
 </p>
 
 <button class="saveButton" onclick="restoreMeteo()">
@@ -426,9 +432,25 @@ transfer them to your computer.
     Last archive: --
 </p>
 
+<p id="archiveRemindState" style="color:#FFB74D;"></p>
+
 <button class="saveButton" style="margin-top: 6px;" onclick="archiveNow()">
     Archive Now
 </button>
+
+<button class="saveButton" style="margin-top: 6px; margin-left: 8px;" onclick="downloadAllArchives()">
+    Save All Archives
+</button>
+
+<div class="checkboxRow" style="margin-top: 12px;">
+    <input type="checkbox" id="archiveReminderEnabled" onchange="toggleArchiveReminder()">
+    <label for="archiveReminderEnabled" class="checkboxLabel">Show "archive needed" reminder on screen</label>
+</div>
+
+<div class="checkboxRow" style="margin-top: 8px;">
+    <input type="checkbox" id="archiveCsvMode">
+    <label for="archiveCsvMode" class="checkboxLabel">Download archives as CSV</label>
+</div>
 
 <p style="margin-top: 12px;">
     Stored archives (click to download):
@@ -478,7 +500,7 @@ ESP32 World Clock
 
 </div>
 
-<script src="app.js?v=14"></script>
+<script src="app.js?v=17"></script>
 
 </body>
 </html>

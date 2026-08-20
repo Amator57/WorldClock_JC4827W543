@@ -9,6 +9,12 @@
 
 static bool apMode = false;
 
+// Reconnect handling: after the connection drops, give the WiFi
+// stack a grace period to auto-reconnect on its own; if it does
+// not recover, trigger a full reconnect attempt.
+static const uint32_t RECONNECT_GRACE_MS = 15000;
+static uint32_t s_disconnectMs = 0; // 0 = connected / not seen yet
+
 //------------------------------------------------------------
 // Initialization
 //------------------------------------------------------------
@@ -57,10 +63,34 @@ bool wifiManagerInit()
 
 void wifiManagerLoop()
 {
-    // Reserved for future:
-    // reconnect
-    // captive portal
-    // OTA
+    if (apMode)
+        return; // AP mode is a setup fallback: no auto-switching
+
+    if (wifiSTAIsConnected())
+    {
+        s_disconnectMs = 0;
+        return;
+    }
+
+    // Connection just lost: let the stack try auto-reconnect first.
+    if (s_disconnectMs == 0)
+    {
+        s_disconnectMs = millis();
+        Serial.println("WiFi: connection lost, waiting for auto-reconnect...");
+        return;
+    }
+
+    // Still down after the grace period: reconnect manually.
+    if (millis() - s_disconnectMs < RECONNECT_GRACE_MS)
+        return;
+
+    Serial.println("WiFi: reconnecting...");
+    s_disconnectMs = 0;
+
+    if (wifiSTAConnect())
+        Serial.println("WiFi: reconnected.");
+    else
+        Serial.println("WiFi: reconnect failed, will retry.");
 }
 //------------------------------------------------------------
 // Status

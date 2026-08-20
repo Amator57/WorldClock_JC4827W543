@@ -61,6 +61,7 @@ bool wifiSTAConnect()
     Serial.println(ssid);
 
     WiFi.mode(WIFI_STA);
+    WiFi.setAutoReconnect(true);
 
     WiFi.begin(
         ssid.c_str(),

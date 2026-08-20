@@ -221,18 +221,37 @@ async function loadSystem()
 // Meteo archive (automatic 14-day backups)
 //==========================================================
 
+// Archive file names downloaded to the computer in this page
+// session. When every stored archive has been downloaded, the
+// device is told to clear the on-screen "archive needed"
+// reminder (POST /api/archive/downloaded).
+let archDownloaded = new Set();
+
 async function loadArchive()
 {
     try
     {
+        await refreshMeteoTzOffset();
+
         const arch = await readJson("/api/archive");
 
         const lastEl = document.getElementById("archiveLast");
         if (arch.last > 0)
-            lastEl.textContent = "Last archive: " +
-                new Date(arch.last * 1000).toLocaleString();
+            lastEl.textContent = "Last archive: " + formatDateTime(arch.last);
         else
             lastEl.textContent = "Last archive: never";
+
+        const remindEl = document.getElementById("archiveRemindState");
+        if (remindEl)
+        {
+            remindEl.textContent = arch.remind
+                ? "Reminder active: archive memory is full. Download the archives to your computer."
+                : "";
+        }
+
+        const cb = document.getElementById("archiveReminderEnabled");
+        if (cb && document.activeElement !== cb)
+            cb.checked = arch.reminderEnabled !== false;
 
         const listEl = document.getElementById("archiveFiles");
         const files = Array.isArray(arch.files) ? arch.files : [];
@@ -248,7 +267,8 @@ async function loadArchive()
         {
             const kb = (f.size / 1024).toFixed(1);
             html += `<p style="margin:4px 0;">
-<a href="/archive/${encodeURIComponent(f.name)}" download style="color:#fff;">${f.name}</a>
+<a href="/archive/${encodeURIComponent(f.name)}" download
+   style="color:#fff;" onclick="downloadArchive(event, '${f.name}')">${f.name}</a>
 &nbsp;(${kb} KB)</p>`;
         }
         listEl.innerHTML = html;
@@ -256,6 +276,118 @@ async function loadArchive()
     catch (e)
     {
         console.error(e);
+    }
+}
+
+// Download one archive to the computer via fetch (so we know it
+// really completed) and acknowledge when everything is saved.
+// With the "Download archives as CSV" checkbox enabled the file
+// is converted to CSV by the device (/archive/<name>.csv).
+async function downloadArchive(event, name)
+{
+    if (event)
+        event.preventDefault();
+
+    const csvEl = document.getElementById("archiveCsvMode");
+    const asCsv = csvEl && csvEl.checked;
+    const saveName = asCsv ? name.replace(/\.bin$/, ".csv") : name;
+
+    try
+    {
+        const response = await fetch("/archive/"
+            + encodeURIComponent(name.replace(/\.bin$/, ""))
+            + (asCsv ? ".csv" : ""));
+        if (!response.ok)
+            throw new Error(`HTTP ${response.status}`);
+
+        const blob = await response.blob();
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement("a");
+        a.href     = url;
+        a.download = saveName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+
+        archDownloaded.add(name);
+        await acknowledgeArchives();
+    }
+    catch (e)
+    {
+        console.error(e);
+        alert(`Download failed: ${name}`);
+    }
+}
+
+// Download every stored archive sequentially, then acknowledge.
+async function downloadAllArchives()
+{
+    try
+    {
+        const arch = await readJson("/api/archive");
+        const files = Array.isArray(arch.files) ? arch.files : [];
+
+        if (files.length === 0)
+        {
+            alert("No archives stored yet.");
+            return;
+        }
+
+        for (const f of files)
+            await downloadArchive(null, f.name);
+
+        await acknowledgeArchives();
+        await loadArchive();
+        alert(`Saved ${files.length} archive file(s) to your computer.`);
+    }
+    catch (e)
+    {
+        console.error(e);
+        alert("Communication error.");
+    }
+}
+
+// Tell the device that all currently stored archives have been
+// downloaded; it clears the on-screen reminder.
+async function acknowledgeArchives()
+{
+    try
+    {
+        const arch = await readJson("/api/archive");
+        const files = Array.isArray(arch.files) ? arch.files : [];
+
+        const all = files.every(f => archDownloaded.has(f.name));
+        if (!all)
+            return;
+
+        await fetch("/api/archive/downloaded", { method: "POST" });
+        archDownloaded.clear();
+        await loadArchive();
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+async function toggleArchiveReminder()
+{
+    const enabled = document.getElementById("archiveReminderEnabled").checked;
+
+    try
+    {
+        await fetch("/api/archive/reminder",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ enabled: enabled })
+        });
+    }
+    catch (e)
+    {
+        console.error(e);
+        alert("Communication error.");
     }
 }
 
@@ -423,6 +555,33 @@ let sensorHasHumidity = true;
 let meteoFrom = null;
 let meteoTo   = null;
 
+// Meteo times are displayed in the timezone of the FIRST clock
+// (index 0), not in the browser's local timezone. The offset
+// (seconds, incl. DST) comes from /api/clocks -> clocks[0].utcOffset.
+let meteoTzOffsetSec = 0;
+
+async function refreshMeteoTzOffset()
+{
+    try
+    {
+        const cfg = await readJson("/api/clocks");
+        const first = (cfg.clocks && cfg.clocks[0]) || null;
+        if (first && Number.isFinite(first.utcOffset))
+            meteoTzOffsetSec = first.utcOffset;
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+// Date helper: returns a Date whose UTC getters yield the wall
+// time of the first clock for the given Unix timestamp.
+function meteoShiftedDate(unixSec)
+{
+    return new Date((unixSec + meteoTzOffsetSec) * 1000);
+}
+
 //----------------------------------------------------------
 // Sensor info (auto-detected: BME280 / BMP280)
 //----------------------------------------------------------
@@ -497,26 +656,29 @@ function meteoUrl()
     return url;
 }
 
-// "YYYY-MM-DDTHH:MM" in the browser's local timezone, suitable for
+// "YYYY-MM-DDTHH:MM" in the FIRST clock's timezone, suitable for
 // <input type="datetime-local">.
 function toLocalDateTimeInput(unixSec)
 {
-    const d  = new Date(unixSec * 1000);
-    const Y  = d.getFullYear();
-    const Mo = String(d.getMonth() + 1).padStart(2, "0");
-    const Da = String(d.getDate()).padStart(2, "0");
-    const H  = String(d.getHours()).padStart(2, "0");
-    const Mi = String(d.getMinutes()).padStart(2, "0");
+    const d  = meteoShiftedDate(unixSec);
+    const Y  = d.getUTCFullYear();
+    const Mo = String(d.getUTCMonth() + 1).padStart(2, "0");
+    const Da = String(d.getUTCDate()).padStart(2, "0");
+    const H  = String(d.getUTCHours()).padStart(2, "0");
+    const Mi = String(d.getUTCMinutes()).padStart(2, "0");
     return `${Y}-${Mo}-${Da}T${H}:${Mi}`;
 }
 
-// Parse a datetime-local string into Unix seconds (local time),
-// or null when empty / invalid.
+// Parse a datetime-local string as a time in the FIRST clock's
+// timezone into Unix seconds, or null when empty / invalid.
 function fromLocalDateTimeInput(str)
 {
     if (!str) return null;
-    const ms = new Date(str).getTime();
-    return isNaN(ms) ? null : Math.floor(ms / 1000);
+    const m = str.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
+    if (!m) return null;
+    return Math.floor(
+        Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]) / 1000)
+        - meteoTzOffsetSec;
 }
 
 // Read the inputs, store bounds, and reload. Swapped bounds are
@@ -552,6 +714,8 @@ function resetMeteoRange()
 
 async function loadMeteo()
 {
+    await refreshMeteoTzOffset();
+
     const info = document.getElementById("meteoInfo");
     try
     {
@@ -946,22 +1110,22 @@ function drawSeries(chart)
 
 function formatDateTime(unixSec)
 {
-    const d  = new Date(unixSec * 1000);
-    const dd = String(d.getDate()).padStart(2, "0");
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const hh = String(d.getHours()).padStart(2, "0");
-    const mi = String(d.getMinutes()).padStart(2, "0");
-    const ss = String(d.getSeconds()).padStart(2, "0");
+    const d  = meteoShiftedDate(unixSec);
+    const dd = String(d.getUTCDate()).padStart(2, "0");
+    const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
+    const hh = String(d.getUTCHours()).padStart(2, "0");
+    const mi = String(d.getUTCMinutes()).padStart(2, "0");
+    const ss = String(d.getUTCSeconds()).padStart(2, "0");
     return `${dd}.${mm} ${hh}:${mi}:${ss}`;
 }
 
 function formatDate(unixSec)
 {
-    const d = new Date(unixSec * 1000);
-    const dd = String(d.getDate()).padStart(2, "0");
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const hh = String(d.getHours()).padStart(2, "0");
-    const mi = String(d.getMinutes()).padStart(2, "0");
+    const d = meteoShiftedDate(unixSec);
+    const dd = String(d.getUTCDate()).padStart(2, "0");
+    const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
+    const hh = String(d.getUTCHours()).padStart(2, "0");
+    const mi = String(d.getUTCMinutes()).padStart(2, "0");
     return `${dd}.${mm} ${hh}:${mi}`;
 }
 
@@ -1021,6 +1185,16 @@ async function clearMeteo()
 //==========================================================
 // Restore meteo history from a downloaded backup file.
 //==========================================================
+
+function onMeteoBackupChange()
+{
+    const input = document.getElementById("meteoBackupFile");
+    const name  = document.getElementById("meteoBackupName");
+    if (name)
+        name.textContent = (input && input.files && input.files[0])
+            ? input.files[0].name
+            : "No file selected";
+}
 
 async function restoreMeteo()
 {

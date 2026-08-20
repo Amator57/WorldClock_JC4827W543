@@ -5,10 +5,11 @@
 //============================================================
 // Automatic archiving of the meteorological log.
 //
-// Every METEO_ARCHIVE_INTERVAL_SEC (15 days) the current
-// /meteo.bin is copied to /archive/meteo_YYYYMMDD.bin (LittleFS).
-// Only the newest METEO_ARCHIVE_MAX_FILES copies are kept on
-// flash; older ones are deleted.
+// Every METEO_ARCHIVE_INTERVAL_SEC (15 days), at 00:00 local
+// time of the FIRST clock (index 0), the current /meteo.bin is
+// copied to /archive/meteo_YYYYMMDD.bin (LittleFS). Only the
+// newest METEO_ARCHIVE_MAX_FILES copies are kept on flash;
+// older ones are deleted.
 //
 // Archives are transferred to an external network device
 // manually: the web UI lists the stored files and the user
@@ -21,7 +22,7 @@
 #endif
 
 #ifndef METEO_ARCHIVE_MAX_FILES
-#define METEO_ARCHIVE_MAX_FILES 10
+#define METEO_ARCHIVE_MAX_FILES 2 // TEMP: 2 files for testing (was 10)
 #endif
 
 //------------------------------------------------------------
@@ -42,8 +43,9 @@ struct MeteoArchiveResult
 bool meteoArchiveInit();
 
 // Periodic check (throttled internally to once a minute). Call
-// from loop(). Runs the archive when the clock is synchronised,
-// the log has data and METEO_ARCHIVE_INTERVAL_SEC has elapsed
+// from loop(). Runs the archive when a new local day of the
+// first clock starts (00:00), the clock is synchronised, the
+// log has data and METEO_ARCHIVE_INTERVAL_SEC has elapsed
 // since the last successful run.
 void meteoArchiveTick();
 
@@ -54,3 +56,10 @@ bool meteoArchiveRun(MeteoArchiveResult *res = nullptr);
 
 // JSON array of stored archives: [ {"name":..,"size":..} ]
 void meteoArchiveListJson(String &out);
+
+// Render one stored archive (the .bin base name, e.g.
+// "meteo_20260818.bin") as CSV: unix_time,date_time,temp_c,
+// hum_pct,pres_hpa. Timestamps use the local time of the first
+// clock; missing sensor values become empty fields. Returns
+// false when the file does not exist or has an unknown format.
+bool meteoArchiveToCsv(const char *binName, String &out);
