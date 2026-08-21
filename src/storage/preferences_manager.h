@@ -168,3 +168,12 @@ bool prefGetArchiveRemind();
 // User toggle for the on-screen archive reminder (web UI).
 void prefSetArchiveReminderEnabled(bool enabled);
 bool prefGetArchiveReminderEnabled();
+
+//------------------------------------------------------------
+// Meteo sensor calibration
+//------------------------------------------------------------
+
+// Additive temperature correction (degC) applied to raw sensor
+// readings. Range: -10.0 .. +10.0, resolution 0.1.
+void prefSetTempOffset(float offset);
+float prefGetTempOffset();

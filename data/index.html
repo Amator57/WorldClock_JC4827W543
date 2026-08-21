@@ -89,6 +89,29 @@
 
 <div class="card">
 
+<label>
+    Temperature correction: <span id="tempOffsetValue">--</span>&deg;C
+</label>
+
+<input
+    id="tempOffset"
+    type="number"
+    min="-10"
+    max="10"
+    step="0.1"
+    value="0"
+    oninput="onTempOffsetInput()">
+
+<p>
+    Additive correction applied to the raw sensor readings
+    (range -10.0 .. +10.0&deg;C, step 0.1). Affects the display,
+    web UI and the meteo log.
+</p>
+
+</div>
+
+<div class="card">
+
 <p>
 Welcome to World Clock configuration.
 </p>
@@ -500,7 +523,7 @@ ESP32 World Clock
 
 </div>
 
-<script src="app.js?v=17"></script>
+<script src="app.js?v=18"></script>
 
 </body>
 </html>

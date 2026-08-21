@@ -652,3 +652,25 @@ bool prefGetArchiveReminderEnabled()
 {
     return prefs.getBool("arch_notice", true);
 }
+
+//------------------------------------------------------------
+// Meteo sensor calibration
+//------------------------------------------------------------
+
+void prefSetTempOffset(float offset)
+{
+    if (offset > 10.0F)  offset = 10.0F;
+    if (offset < -10.0F) offset = -10.0F;
+
+    prefs.putFloat("temp_off", offset);
+}
+
+float prefGetTempOffset()
+{
+    float v = prefs.getFloat("temp_off", 0.0F);
+
+    if (v > 10.0F)  v = 10.0F;
+    if (v < -10.0F) v = -10.0F;
+
+    return v;
+}

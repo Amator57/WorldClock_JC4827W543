@@ -5,6 +5,7 @@
 
 #include "bme280_drv.h"
 #include "../storage/meteo_log.h"
+#include "../storage/preferences_manager.h"
 
 //------------------------------------------------------------
 // Supports both BMP280 (temp + pressure) and BME280
@@ -38,6 +39,10 @@ static uint32_t lastSample = 0;
 // 5-minute meteo logger trigger.
 static uint32_t lastLog = 0;
 
+// Additive temperature correction (degC), loaded from
+// preferences at init and applied to every raw reading.
+static float tempOffset = 0.0F;
+
 //------------------------------------------------------------
 
 static uint8_t detectKindByChipId(uint8_t addr)
@@ -58,6 +63,8 @@ static uint8_t detectKindByChipId(uint8_t addr)
 
 bool bmeInit()
 {
+    tempOffset = prefGetTempOffset();
+
     Wire.begin(BME_SDA, BME_SCL);
     Wire.setClock(100000); // 100 kHz, safe for long wires / cheap modules
 
@@ -202,6 +209,11 @@ void bmeLoop()
         h = NAN;
     }
 
+    // Apply the user temperature correction to every raw reading
+    // so averages, the display and the log all stay consistent.
+    if (!isnan(t))
+        t += tempOffset;
+
     tempBuf[bufIndex] = t;
     humBuf[bufIndex]  = h;
     presBuf[bufIndex] = p;
@@ -293,4 +305,20 @@ bool bmeGetAverage(float &temperatureC,
         humidityPct = sumH / hCount;
 
     return true;
+}
+
+//------------------------------------------------------------
+
+void bmeSetTempOffset(float offset)
+{
+    if (offset > 10.0F)  offset = 10.0F;
+    if (offset < -10.0F) offset = -10.0F;
+
+    tempOffset = offset;
+    prefSetTempOffset(offset);
+}
+
+float bmeGetTempOffset()
+{
+    return tempOffset;
 }

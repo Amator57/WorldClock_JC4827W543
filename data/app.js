@@ -82,6 +82,22 @@ async function loadHomeControls()
     {
         console.error(e);
     }
+
+    try
+    {
+        const sens = await readJson("/api/sensor");
+        const t = Number(sens.tempOffset);
+        if (!isNaN(t))
+        {
+            document.getElementById("tempOffset").value = t;
+            document.getElementById("tempOffsetValue").textContent =
+                t.toFixed(1);
+        }
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
 }
 
 function onHomeVolumeInput()
@@ -110,6 +126,50 @@ async function sendHomeVolume()
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ volume: v })
+        });
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+//==========================================================
+// Home: temperature correction quick control
+//==========================================================
+
+let pendingTempOffset = null;
+let tempOffsetTimer   = null;
+
+function onTempOffsetInput()
+{
+    const v = Number(document.getElementById("tempOffset").value);
+    if (isNaN(v))
+        return;
+
+    document.getElementById("tempOffsetValue").textContent = v.toFixed(1);
+    pendingTempOffset = v;
+
+    if (tempOffsetTimer !== null)
+        clearTimeout(tempOffsetTimer);
+
+    tempOffsetTimer = setTimeout(sendTempOffset, 400);
+}
+
+async function sendTempOffset()
+{
+    if (pendingTempOffset === null)
+        return;
+
+    const v = pendingTempOffset;
+
+    try
+    {
+        await fetch("/api/sensor",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ tempOffset: v })
         });
     }
     catch (e)

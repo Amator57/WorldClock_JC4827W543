@@ -517,7 +517,11 @@ server.on(
         });
 
     //--------------------------------------------------------
-    // Sensor info (auto-detected, read-only)
+    // Sensor info (auto-detected) + temperature calibration.
+    //
+    // POST body: { "tempOffset": <float, -10.0..10.0> }
+    // The additive correction is applied to every raw reading
+    // (display, web UI and the meteo log) and persisted.
     //--------------------------------------------------------
 
     server.on(
@@ -529,8 +533,33 @@ server.on(
 
             doc["active"]      = bmeGetActiveSensorName();
             doc["hasHumidity"] = bmeHasHumidity();
+            doc["tempOffset"]  = bmeGetTempOffset();
 
             sendJson(request, doc);
+        });
+
+    server.on(
+        "/api/sensor",
+        HTTP_POST,
+        [](AsyncWebServerRequest *request) { /* empty */ },
+        nullptr,
+        [](AsyncWebServerRequest *request,
+           uint8_t *data,
+           size_t len,
+           size_t index,
+           size_t total)
+        {
+            JsonDocument doc;
+            if (deserializeJson(doc, data, len))
+            {
+                sendError(request, 400, "JSON parse error");
+                return;
+            }
+
+            if (doc["tempOffset"].is<float>())
+                bmeSetTempOffset(doc["tempOffset"].as<float>());
+
+            sendOk(request);
         });
 
     //--------------------------------------------------------

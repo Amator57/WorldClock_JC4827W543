@@ -46,3 +46,10 @@ const char *bmeGetActiveSensorName();
 bool bmeGetAverage(float &temperatureC,
                    float &humidityPct,
                    float &pressureHpa);
+
+// Additive temperature correction (degC) applied to every raw
+// reading, so averaged values, the display and the meteo log all
+// see corrected data. Setter persists the value and applies it
+// to subsequent samples. Range: -10.0 .. +10.0.
+void bmeSetTempOffset(float offset);
+float bmeGetTempOffset();

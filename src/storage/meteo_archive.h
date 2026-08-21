@@ -18,11 +18,11 @@
 //============================================================
 
 #ifndef METEO_ARCHIVE_INTERVAL_SEC
-#define METEO_ARCHIVE_INTERVAL_SEC (1UL * 24UL * 3600UL) // TEMP: 1 day for testing (was 15 days)
+#define METEO_ARCHIVE_INTERVAL_SEC (15UL * 24UL * 3600UL) // TEMP: 1 day for testing (was 15 days)
 #endif
 
 #ifndef METEO_ARCHIVE_MAX_FILES
-#define METEO_ARCHIVE_MAX_FILES 2 // TEMP: 2 files for testing (was 10)
+#define METEO_ARCHIVE_MAX_FILES 10 // TEMP: 2 files for testing (was 10)
 #endif
 
 //------------------------------------------------------------
