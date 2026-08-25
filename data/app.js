@@ -601,7 +601,9 @@ async function saveClocks()
     }
 }
 
-window.onload = () => loadNetwork();
+// "Home" is the default active tab, so its controls must be
+// populated from the device on every page load.
+window.onload = () => loadHomeControls();
 
 //==========================================================
 // Meteo data & charts

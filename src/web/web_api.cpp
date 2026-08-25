@@ -757,24 +757,6 @@ server.on(
         });
 
     //--------------------------------------------------------
-    // API information
-    //--------------------------------------------------------
-
-    server.on(
-        "/api",
-        HTTP_GET,
-        [](AsyncWebServerRequest *request)
-        {
-            JsonDocument doc;
-
-            doc["project"] = "World Clock";
-            doc["api"] = "1.0";
-            doc["status"] = "ok";
-
-            sendJson(request, doc);
-        });
-
-    //--------------------------------------------------------
     // Audio (volume + mute). Volume is applied live AND persisted
     // so the slider on the Home tab doubles as a live preview
     // and a Save action.
@@ -833,6 +815,29 @@ server.on(
             }
 
             sendOk(request);
+        });
+
+    //--------------------------------------------------------
+    // API information.
+    //
+    // MUST stay the LAST registered /api handler: the server
+    // prefix-matches URIs, so an earlier "/api" would swallow
+    // every GET endpoint registered after it (this is exactly
+    // what broke GET /api/audio -> volume showed "--").
+    //--------------------------------------------------------
+
+    server.on(
+        "/api",
+        HTTP_GET,
+        [](AsyncWebServerRequest *request)
+        {
+            JsonDocument doc;
+
+            doc["project"] = "World Clock";
+            doc["api"] = "1.0";
+            doc["status"] = "ok";
+
+            sendJson(request, doc);
         });
 
 }
