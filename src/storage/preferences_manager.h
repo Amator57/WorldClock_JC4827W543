@@ -177,3 +177,8 @@ bool prefGetArchiveReminderEnabled();
 // readings. Range: -10.0 .. +10.0, resolution 0.1.
 void prefSetTempOffset(float offset);
 float prefGetTempOffset();
+
+// Additive humidity correction (%) applied to raw sensor
+// readings. Range: -25.0 .. +25.0, resolution 0.1.
+void prefSetHumiOffset(float offset);
+float prefGetHumiOffset();

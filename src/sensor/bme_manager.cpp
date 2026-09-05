@@ -43,6 +43,10 @@ static uint32_t lastLog = 0;
 // preferences at init and applied to every raw reading.
 static float tempOffset = 0.0F;
 
+// Additive humidity correction (%), loaded from preferences at
+// init and applied to every raw humidity reading.
+static float humiOffset = 0.0F;
+
 //------------------------------------------------------------
 
 static uint8_t detectKindByChipId(uint8_t addr)
@@ -64,6 +68,7 @@ static uint8_t detectKindByChipId(uint8_t addr)
 bool bmeInit()
 {
     tempOffset = prefGetTempOffset();
+    humiOffset = prefGetHumiOffset();
 
     Wire.begin(BME_SDA, BME_SCL);
     Wire.setClock(100000); // 100 kHz, safe for long wires / cheap modules
@@ -214,6 +219,15 @@ void bmeLoop()
     if (!isnan(t))
         t += tempOffset;
 
+    // Apply the user humidity correction and clamp to the
+    // physically valid 0..100% range.
+    if (!isnan(h))
+    {
+        h += humiOffset;
+        if (h > 100.0F) h = 100.0F;
+        if (h < 0.0F)   h = 0.0F;
+    }
+
     tempBuf[bufIndex] = t;
     humBuf[bufIndex]  = h;
     presBuf[bufIndex] = p;
@@ -321,4 +335,18 @@ void bmeSetTempOffset(float offset)
 float bmeGetTempOffset()
 {
     return tempOffset;
+}
+
+void bmeSetHumiOffset(float offset)
+{
+    if (offset > 25.0F)  offset = 25.0F;
+    if (offset < -25.0F) offset = -25.0F;
+
+    humiOffset = offset;
+    prefSetHumiOffset(offset);
+}
+
+float bmeGetHumiOffset()
+{
+    return humiOffset;
 }

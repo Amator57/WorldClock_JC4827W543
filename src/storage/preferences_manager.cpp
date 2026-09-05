@@ -674,3 +674,21 @@ float prefGetTempOffset()
 
     return v;
 }
+
+void prefSetHumiOffset(float offset)
+{
+    if (offset > 25.0F)  offset = 25.0F;
+    if (offset < -25.0F) offset = -25.0F;
+
+    prefs.putFloat("humi_off", offset);
+}
+
+float prefGetHumiOffset()
+{
+    float v = prefs.getFloat("humi_off", 0.0F);
+
+    if (v > 25.0F)  v = 25.0F;
+    if (v < -25.0F) v = -25.0F;
+
+    return v;
+}

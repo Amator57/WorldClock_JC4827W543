@@ -93,6 +93,13 @@ async function loadHomeControls()
             document.getElementById("tempOffsetValue").textContent =
                 t.toFixed(1);
         }
+        const h = Number(sens.humiOffset);
+        if (!isNaN(h))
+        {
+            document.getElementById("humiOffset").value = h;
+            document.getElementById("humiOffsetValue").textContent =
+                h.toFixed(1);
+        }
     }
     catch (e)
     {
@@ -170,6 +177,50 @@ async function sendTempOffset()
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ tempOffset: v })
+        });
+    }
+    catch (e)
+    {
+        console.error(e);
+    }
+}
+
+//==========================================================
+// Home: humidity correction quick control
+//==========================================================
+
+let pendingHumiOffset = null;
+let humiOffsetTimer   = null;
+
+function onHumiOffsetInput()
+{
+    const v = Number(document.getElementById("humiOffset").value);
+    if (isNaN(v))
+        return;
+
+    document.getElementById("humiOffsetValue").textContent = v.toFixed(1);
+    pendingHumiOffset = v;
+
+    if (humiOffsetTimer !== null)
+        clearTimeout(humiOffsetTimer);
+
+    humiOffsetTimer = setTimeout(sendHumiOffset, 400);
+}
+
+async function sendHumiOffset()
+{
+    if (pendingHumiOffset === null)
+        return;
+
+    const v = pendingHumiOffset;
+
+    try
+    {
+        await fetch("/api/sensor",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ humiOffset: v })
         });
     }
     catch (e)

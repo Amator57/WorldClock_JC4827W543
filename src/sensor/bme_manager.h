@@ -53,3 +53,9 @@ bool bmeGetAverage(float &temperatureC,
 // to subsequent samples. Range: -10.0 .. +10.0.
 void bmeSetTempOffset(float offset);
 float bmeGetTempOffset();
+
+// Additive humidity correction (%) applied to every raw reading.
+// The corrected value is clamped to 0..100%. Setter persists the
+// value. Range: -25.0 .. +25.0.
+void bmeSetHumiOffset(float offset);
+float bmeGetHumiOffset();

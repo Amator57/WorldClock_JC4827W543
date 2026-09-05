@@ -517,10 +517,12 @@ server.on(
         });
 
     //--------------------------------------------------------
-    // Sensor info (auto-detected) + temperature calibration.
+    // Sensor info (auto-detected) + temperature/humidity
+    // calibration.
     //
-    // POST body: { "tempOffset": <float, -10.0..10.0> }
-    // The additive correction is applied to every raw reading
+    // POST body: { "tempOffset": <float, -10.0..10.0>,
+    //              "humiOffset": <float, -25.0..25.0> }
+    // The additive corrections are applied to every raw reading
     // (display, web UI and the meteo log) and persisted.
     //--------------------------------------------------------
 
@@ -534,6 +536,7 @@ server.on(
             doc["active"]      = bmeGetActiveSensorName();
             doc["hasHumidity"] = bmeHasHumidity();
             doc["tempOffset"]  = bmeGetTempOffset();
+            doc["humiOffset"]  = bmeGetHumiOffset();
 
             sendJson(request, doc);
         });
@@ -558,6 +561,9 @@ server.on(
 
             if (doc["tempOffset"].is<float>())
                 bmeSetTempOffset(doc["tempOffset"].as<float>());
+
+            if (doc["humiOffset"].is<float>())
+                bmeSetHumiOffset(doc["humiOffset"].as<float>());
 
             sendOk(request);
         });
